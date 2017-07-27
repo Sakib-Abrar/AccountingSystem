@@ -1,0 +1,254 @@
+﻿<Window x:Class="AccountingSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingSystem"
+        mc:Ignorable="d"
+        Title="Rasulgonj Multi Purpose Co-operative Society Ltd." HorizontalAlignment="Left" VerticalAlignment="Top" Width="1367" Height="768">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="202" Background="#bdbdbd">
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,151,0">Entries</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/entry.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+
+                </Expander>
+
+
+
+
+
+
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,151,0">Assets</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/home.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+
+
+                </Expander>
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,151,0">Members</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/member.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                        <MenuItem Header="_Member Loan Account" Width="199" Padding="6,4"/>
+                        <MenuItem Header="_Member Ledger"  Width="199" Padding="6,4" />
+                    </Menu>
+
+                </Expander>
+
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,151,0">Loan Info</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/loan.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                        <MenuItem Header="_Daily Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Weekly Ledger"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Loan Details"  Width="199" Padding="6,4" FontSize="16" />
+                    </Menu>
+
+                </Expander>
+
+
+
+
+
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,151,0">Saving</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/save.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                        <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Fixed Deposit Ledger"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
+                    </Menu>
+
+                </Expander>
+
+
+
+
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Bold" FontFamily="Prestige Elite Std"  Padding="0,0,151,0" FontSize="17">Balance Sheet</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/balance.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                        <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Fixed Deposit Ledger"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
+                    </Menu>
+
+                </Expander>
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight" >
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std" Padding="0,0,150,0" >Fund</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/fund.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                        <MenuItem Header="_Security Fund" Width="200" Padding="6,4" FontSize="16" Click="LoadSecurityFundView"/>
+                        <MenuItem Header="_Reserved Fund"  Width="200" Padding="6,4" FontSize="16" Click="LoadReservedFundView" />
+                        <MenuItem Header="_Competitive Development Fund" Padding="6,4" FontSize="16" />
+                    </Menu>
+
+
+
+                </Expander>
+
+
+
+
+
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Bold" FontFamily="Prestige Elite Std"  Padding="0,0,151,0" FontSize="20">Accounts</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/account.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                        <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Fixed Deposit Ledger"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
+                    </Menu>
+
+                </Expander>
+
+
+
+
+
+
+                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator FlowDirection="LeftToRight">
+
+                            <TextBlock Margin="15,3,0,0" FontWeight="Bold" FontFamily="Prestige Elite Std"  Padding="0,0,151,0" FontSize="20">Expenses</TextBlock>
+
+                            <BulletDecorator.Bullet>
+                                <Image Width="25" Source="/Images/save.png"/>
+                            </BulletDecorator.Bullet>
+
+
+                        </BulletDecorator>
+                    </Expander.Header>
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                        <MenuItem Header="_Salary" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Stuff" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Office Rent"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Miscellenous"  Width="199" Padding="6,4" FontSize="16" />
+                    </Menu>
+
+                </Expander>
+
+            </StackPanel>
+            <Frame Name="MainFrame" Content="" NavigationUIVisibility="Hidden" Width="1157"/>
+
+
+        </StackPanel>
+    </Grid>
+
+
+</Window>
