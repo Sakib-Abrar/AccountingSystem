@@ -150,6 +150,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>AccountingSystemDatabase.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\titleImage.jpg" />
     <Resource Include="Images\account.png" />
     <Resource Include="Images\balance.png" />
     <Resource Include="Images\entry.png" />
