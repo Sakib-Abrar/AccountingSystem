@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using AccountingSystem.Controller;
 using AccountingSystem.Models;
 using System.Data.SqlClient;
-
 namespace AccountingSystem.Views
 {
     /// <summary>
@@ -15,21 +14,19 @@ namespace AccountingSystem.Views
         public SecurityFundView()
         {
             InitializeComponent();
+            DataContext = new SecurityFund();
             SecurityFund data = new SecurityFund();
             securityFund.ItemsSource = data.GetData();
         }
-
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
         private double last_remains()
         {
-            //SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Dotnet_project\Test\Test\complete.mdf;Integrated Security=True;");         
             Connection conn = new Connection();
             double remains = 0.00;
             string query = "SELECT TOP 1 * FROM SecurityFund ORDER BY Security_Id DESC";
-            // SqlCommand cmd = new SqlCommand(, conn);
             conn.OpenConection();
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
@@ -40,7 +37,7 @@ namespace AccountingSystem.Views
             return remains;
         }
         protected void Save_Click(object sender, RoutedEventArgs e)
-        {
+        {   
             double remains = this.last_remains();
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {

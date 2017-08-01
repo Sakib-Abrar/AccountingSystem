@@ -27,16 +27,16 @@ namespace AccountingSystem.Models
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                ReservedFund entry = new ReservedFund();
-                entry.Date = (DateTime)reader["Reserved_Date"];
-                entry.Previous = (double)reader["Reserved_Previous"];
-                entry.Current = (double)reader["Reserved_Current"];
-                entry.Remaining = (double)reader["Reserved_Remaining"];
-                entry.Withdraw = (double)reader["Reserved_Withdraw"];
-                entry.Total = (double)reader["Reserved_Total"];
-                entries.Add(entry);
+                entries.Add(new ReservedFund()
+                {
+                    Date = (DateTime)reader["Reserved_Date"],
+                    Previous = (double)reader["Reserved_Previous"],
+                    Current = (double)reader["Reserved_Current"],
+                    Remaining = (double)reader["Reserved_Remaining"],
+                    Withdraw = (double)reader["Reserved_Withdraw"],
+                    Total = (double)reader["Reserved_Total"],
+            });
             }
-            // conn.Close();
             conn.CloseConnection();
             return entries;
         }
