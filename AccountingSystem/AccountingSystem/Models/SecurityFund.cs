@@ -9,26 +9,64 @@ namespace AccountingSystem.Models
 {
     class SecurityFund : INotifyPropertyChanged, IDataErrorInfo
     {
-        private string m_name="";
-        public DateTime Date { get; set; }
+        /// <summary>
+        /// UselessParse is used for TryParse method which needs an output parameter but we don't.
+        /// </summary>
+        private double uselessParse;
+        private string m_details="";
+        /// <summary>
+        /// double? is used to make double nullable.Otherwise we would get zero in textbox initially.But we want it empty.
+        /// </summary>
+        private double? m_deposit;
+        private double? m_expenses ;
         public int SelectedIndex { get; set; }
+        public DateTime Date { get; set; }
         public string Details {
             get {
-                return m_name;
+                return m_details;
             }
             set
             {
-                if (m_name != value)
+                if (m_details != value)
                 {
-                    m_name = value;
+                    m_details = value;
                 }
                 OnPropertyChanged("Details");
             }
         }
-        public double Deposit { get; set; }
-        public double Expenses { get; set; }
+        public double? Deposit
+        {
+            get
+            {
+                return m_deposit;
+            }
+            set
+            {
+                if (m_deposit != value)
+                {
+                    m_deposit = value;
+                }
+                OnPropertyChanged("Deposit");
+            }
+        }
+        public double? Expenses
+        {
+            get
+            {
+                return m_expenses;
+            }
+            set
+            {
+                if (m_expenses != value)
+                {
+                    m_expenses = value;
+                }
+                OnPropertyChanged("Expenses");
+            }
+        }
         public double Remains { get; set; }
 
+        #region PopulateTable
         public List<SecurityFund> GetData()
         {
             Connection conn = new Connection();
@@ -49,7 +87,7 @@ namespace AccountingSystem.Models
             conn.CloseConnection();
             return entries;
         }
-
+        #endregion
 
         #region Validation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -90,6 +128,18 @@ namespace AccountingSystem.Models
                     if (string.IsNullOrWhiteSpace(Details))
                     {
                         validationMessage = "No Details Available";
+                    }
+                    break;
+                case "Deposit":
+                    if (!double.TryParse(Deposit.ToString(),out uselessParse))
+                    {
+                        validationMessage = "Only Digits Are Allowed";
+                    }
+                    break;
+                case "Expenses":
+                    if (!double.TryParse(Deposit.ToString(), out uselessParse))
+                    {
+                        validationMessage = "Only Digits Are Allowed";
                     }
                     break;
             }
