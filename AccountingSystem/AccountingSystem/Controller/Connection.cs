@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace AccountingSystem.Controller
 {
@@ -10,8 +11,13 @@ namespace AccountingSystem.Controller
 
         public void OpenConection()
         {
-            conn = new SqlConnection(ConnectionString);
-            conn.Open();
+            try {
+                conn = new SqlConnection(ConnectionString);
+                conn.Open();
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("PC not Responding.\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            }
         }
         public void CloseConnection()
         {

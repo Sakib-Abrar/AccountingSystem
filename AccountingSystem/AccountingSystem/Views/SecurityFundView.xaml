@@ -67,7 +67,7 @@
                 <Label Content="Details :" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="Details" HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="{Binding Details, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Deposit :" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="Deposit" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                <TextBox Name="Deposit" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Deposit, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Expenses :" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="Expenses" HorizontalAlignment="Left" Height="23" Margin="90,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
