@@ -16,6 +16,8 @@ namespace AccountingSystem.Models
 
 
 
+        public double ID { get; set; }
+
         public List<ReservedFund> GetData()
         {
 
@@ -29,6 +31,7 @@ namespace AccountingSystem.Models
             {
                 entries.Add(new ReservedFund()
                 {
+                    ID = (int)reader["Reserved_Id"],
                     Date = (DateTime)reader["Reserved_Date"],
                     Previous = (double)reader["Reserved_Previous"],
                     Current = (double)reader["Reserved_Current"],

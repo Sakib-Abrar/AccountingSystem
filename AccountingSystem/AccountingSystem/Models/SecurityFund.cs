@@ -65,6 +65,7 @@ namespace AccountingSystem.Models
             }
         }
         public double Remains { get; set; }
+        public double ID { get; set; }
 
         #region PopulateTable
         public List<SecurityFund> GetData()
@@ -77,6 +78,7 @@ namespace AccountingSystem.Models
             while (reader.Read())
             {
                 entries.Add(new SecurityFund() {
+                ID = (int)reader["Security_Id"],
                 Date = (DateTime)reader["Security_Date"],
                 Details = (string)reader["Security_Details"],
                 Deposit = (double)reader["Security_Deposit"],
