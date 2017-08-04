@@ -27,5 +27,13 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new SalaryView());
         }
+        private void LoadOfficeRentView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new OfficeRentView());
+        }
+        private void LoadCooperativeDevelopmentView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CooperativeDevelopmentView());
+        }
     }
     }

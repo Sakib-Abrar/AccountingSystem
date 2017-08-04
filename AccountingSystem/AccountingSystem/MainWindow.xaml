@@ -178,7 +178,7 @@
                     <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
                         <MenuItem Header="_Security Fund" Width="200" Padding="6,4" FontSize="16" Click="LoadSecurityFundView"/>
                         <MenuItem Header="_Reserved Fund"  Width="200" Padding="6,4" FontSize="16" Click="LoadReservedFundView" />
-                        <MenuItem Header="_Competitive Development Fund" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Cooperative Development Fund" Padding="6,4" FontSize="16" Click="LoadCooperativeDevelopmentView" />
                     </Menu>
 
 
@@ -212,6 +212,7 @@
                         <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
                         <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Shareble Profit"  Width="199" Padding="6,4" FontSize="16" />
                     </Menu>
 
                 </Expander>
@@ -237,7 +238,7 @@
                     <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
                         <MenuItem Header="_Salary" Width="199" Padding="6,4" FontSize="16" Click="LoadSalaryView"/>
                         <MenuItem Header="_Stuff" Width="199" Padding="6,4" FontSize="16"/>
-                        <MenuItem Header="_Office Rent"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Office Rent"  Width="199" Padding="6,4" FontSize="16" Click="LoadOfficeRentView"/>
                         <MenuItem Header="_Miscellenous"  Width="199" Padding="6,4" FontSize="16" />
                     </Menu>
 
