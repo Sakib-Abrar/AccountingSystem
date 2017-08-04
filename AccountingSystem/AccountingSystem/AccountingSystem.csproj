@@ -85,9 +85,13 @@
     </ApplicationDefinition>
     <Compile Include="Controller\Connection.cs" />
     <Compile Include="Models\ReservedFund.cs" />
+    <Compile Include="Models\Salary.cs" />
     <Compile Include="Models\SecurityFund.cs" />
     <Compile Include="Views\ReservedFundView.xaml.cs">
       <DependentUpon>ReservedFundView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalaryView.xaml.cs">
+      <DependentUpon>SalaryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SecurityFundView.xaml.cs">
       <DependentUpon>SecurityFundView.xaml</DependentUpon>
@@ -105,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ReservedFundView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SalaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

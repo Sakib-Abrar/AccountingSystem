@@ -19,6 +19,13 @@
                         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
                             <DataGrid x:Name="securityFund" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
                                 <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="150">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
                                     <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="190">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">

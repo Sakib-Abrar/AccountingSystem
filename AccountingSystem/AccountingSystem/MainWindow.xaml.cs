@@ -23,5 +23,9 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new ReservedFundView());
         }
+        private void LoadSalaryView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SalaryView());
+        }
     }
     }

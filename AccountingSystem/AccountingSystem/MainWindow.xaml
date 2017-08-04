@@ -235,7 +235,7 @@
                         </BulletDecorator>
                     </Expander.Header>
                     <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
-                        <MenuItem Header="_Salary" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_Salary" Width="199" Padding="6,4" FontSize="16" Click="LoadSalaryView"/>
                         <MenuItem Header="_Stuff" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Office Rent"  Width="199" Padding="6,4" FontSize="16" />
                         <MenuItem Header="_Miscellenous"  Width="199" Padding="6,4" FontSize="16" />
