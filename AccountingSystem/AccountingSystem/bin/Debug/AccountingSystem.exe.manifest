@@ -42,6 +42,7 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="163776">
@@ -51,12 +52,16 @@
 =======
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="182720">
 >>>>>>> master
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="164288">
+>>>>>>> Stashed changes
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
         <dsig:DigestValue>ScqfHiqkxPL6wpJchYj11sbZRKwy/wCZuMcWUEfE67Y=</dsig:DigestValue>
@@ -66,6 +71,9 @@
 =======
         <dsig:DigestValue>Jyx5G3dZMrzB3gpf9Cv/DmIy0U3yjJt+GQNNF5W/+zI=</dsig:DigestValue>
 >>>>>>> master
+=======
+        <dsig:DigestValue>Z7+ou3V5aOCSJE78mq1XfDMOWmVL/NLJ5pXVsXtZv+4=</dsig:DigestValue>
+>>>>>>> Stashed changes
       </hash>
     </dependentAssembly>
   </dependency>
@@ -84,6 +92,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
       <dsig:DigestValue>dzaA01li4yQHwvkH3gDgYTkUYAlCO4zgUiOM+5Z+YhA=</dsig:DigestValue>
@@ -93,6 +102,9 @@
 =======
       <dsig:DigestValue>x5xIBSFvaLoivut7sK2HVzmFggcYjT+dJjwD2KPEU9s=</dsig:DigestValue>
 >>>>>>> master
+=======
+      <dsig:DigestValue>mhkZjiz18IgTE7qvgbxNKTL2GNGFCMOhgbKup2k64ZM=</dsig:DigestValue>
+>>>>>>> Stashed changes
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="1114112" writeableType="applicationData">
@@ -101,6 +113,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
       <dsig:DigestValue>EtZ8NjwsfK/nTvB4Tb5KvUC4yss6QA8g6BmacXWgvVE=</dsig:DigestValue>
@@ -110,6 +123,9 @@
 =======
       <dsig:DigestValue>X8QpMn2NevQ3Bf1wLRVVHdMsmc5945JScI0fAdfUW0w=</dsig:DigestValue>
 >>>>>>> master
+=======
+      <dsig:DigestValue>WC3rbFJBFo40CBJ09WcvdjpMS9TsvpdWeammHdaebiM=</dsig:DigestValue>
+>>>>>>> Stashed changes
     </hash>
   </file>
 </asmv1:assembly>

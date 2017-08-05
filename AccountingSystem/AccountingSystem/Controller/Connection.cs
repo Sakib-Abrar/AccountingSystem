@@ -6,8 +6,8 @@ namespace AccountingSystem.Controller
 {
     class Connection
     {
-        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
-       // public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+        //public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
 
         SqlConnection conn;
 
@@ -18,40 +18,68 @@ namespace AccountingSystem.Controller
                 conn.Open();
             }
             catch (SqlException ex) {
-                MessageBox.Show("PC not Responding.\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                MessageBox.Show("We have Encountered a Problem.Please Try Again.\nError:" + ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
             }
         }
         public void CloseConnection()
         {
-            conn.Close();
+            try { 
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
         public void ExecuteQueries(string Query_)
         {
-            SqlCommand cmd = new SqlCommand(Query_, conn);
-            cmd.ExecuteNonQuery();
-        }
+            try {
+                SqlCommand cmd = new SqlCommand(Query_, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:" + ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            }
+}
         public void ExecuteScalar(string Query_)
         {
-            SqlCommand cmd = new SqlCommand(Query_, conn);
-            cmd.ExecuteScalar();
-        }
+            try { 
+                SqlCommand cmd = new SqlCommand(Query_, conn);
+                cmd.ExecuteScalar();
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            }
+}
 
 
         public SqlDataReader DataReader(string Query_)
         {
-            SqlCommand cmd = new SqlCommand(Query_, conn);
-            SqlDataReader dr = cmd.ExecuteReader();
-            return dr;
-        }
+            try {
+                SqlCommand cmd = new SqlCommand(Query_, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                return dr;
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                return null;
+            }
+}
 
 
         public object ShowDataInGridView(string Query_)
         {
-            SqlDataAdapter dr = new SqlDataAdapter(Query_, ConnectionString);
-            DataSet ds = new DataSet();
-            dr.Fill(ds);
-            object dataum = ds.Tables[0];
-            return dataum;
-        }
+            try {
+                SqlDataAdapter dr = new SqlDataAdapter(Query_, ConnectionString);
+                DataSet ds = new DataSet();
+                dr.Fill(ds);
+                object dataum = ds.Tables[0];
+                return dataum;
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                return null;
+            }
+}
     }
 }
