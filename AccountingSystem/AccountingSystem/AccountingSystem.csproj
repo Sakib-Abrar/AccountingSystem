@@ -84,9 +84,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\Connection.cs" />
+    <Compile Include="Models\CooperativeDevelopment.cs" />
+    <Compile Include="Models\OfficeRent.cs" />
     <Compile Include="Models\ReservedFund.cs" />
     <Compile Include="Models\Salary.cs" />
     <Compile Include="Models\SecurityFund.cs" />
+    <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
+      <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OfficeRentView.xaml.cs">
+      <DependentUpon>OfficeRentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ReservedFundView.xaml.cs">
       <DependentUpon>ReservedFundView.xaml</DependentUpon>
     </Compile>
@@ -108,6 +116,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CooperativeDevelopmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OfficeRentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ReservedFundView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
