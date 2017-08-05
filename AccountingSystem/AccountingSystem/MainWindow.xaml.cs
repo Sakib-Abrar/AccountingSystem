@@ -43,5 +43,9 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new ShareView());
         }
+        private void LoadAdmissionFeeView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AdmissionFeeView());
+        }
     }
     }

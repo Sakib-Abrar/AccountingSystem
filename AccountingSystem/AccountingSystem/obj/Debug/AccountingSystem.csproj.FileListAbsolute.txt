@@ -90,3 +90,5 @@ C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.baml
 >>>>>>> Stashed changes
 >>>>>>> master
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\AdmissionFeeView.g.cs
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\AdmissionFeeView.baml
