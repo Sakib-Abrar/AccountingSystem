@@ -89,6 +89,8 @@
     <Compile Include="Models\ReservedFund.cs" />
     <Compile Include="Models\Salary.cs" />
     <Compile Include="Models\SecurityFund.cs" />
+    <Compile Include="Models\Share.cs" />
+    <Compile Include="Models\ShareableProfit.cs" />
     <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
       <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
     </Compile>
@@ -103,6 +105,12 @@
     </Compile>
     <Compile Include="Views\SecurityFundView.xaml.cs">
       <DependentUpon>SecurityFundView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShareableProfitView.xaml.cs">
+      <DependentUpon>ShareableProfitView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShareView.xaml.cs">
+      <DependentUpon>ShareView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +141,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SecurityFundView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShareableProfitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShareView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

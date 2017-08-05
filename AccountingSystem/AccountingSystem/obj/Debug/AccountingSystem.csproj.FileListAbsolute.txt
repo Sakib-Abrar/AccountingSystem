@@ -80,3 +80,7 @@ D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\V
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\OfficeRentView.baml
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\CooperativeDevelopmentView.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\CooperativeDevelopmentView.baml
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareableProfitView.g.cs
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareableProfitView.baml
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareView.g.cs
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareView.baml

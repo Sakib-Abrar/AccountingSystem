@@ -1,9 +1,11 @@
 ﻿
 
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\MainWindow.xaml;;
-FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\ReservedFundView.xaml;;
-FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\SecurityFundView.xaml;;
-FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\SalaryView.xaml;;
-FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\OfficeRentView.xaml;;
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\CooperativeDevelopmentView.xaml;;
+FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\OfficeRentView.xaml;;
+FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\ReservedFundView.xaml;;
+FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\SalaryView.xaml;;
+FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\SecurityFundView.xaml;;
+FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareableProfitView.xaml;;
+FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareView.xaml;;
 
