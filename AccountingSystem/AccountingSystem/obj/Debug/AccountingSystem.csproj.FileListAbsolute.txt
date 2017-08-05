@@ -86,7 +86,6 @@ D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\V
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareView.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareView.baml
 =======
-=======
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.baml
 >>>>>>> Stashed changes
