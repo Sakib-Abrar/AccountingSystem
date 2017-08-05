@@ -84,3 +84,7 @@ D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\V
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.baml
 >>>>>>> Stashed changes
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\CooperativeDevelopmentView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\OfficeRentView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\CooperativeDevelopmentView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\OfficeRentView.baml
