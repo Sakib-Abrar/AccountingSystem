@@ -48,7 +48,6 @@ C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csproj.GenerateResource.Cache
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe.manifest
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
-C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\bin\Debug\AccountingSystem.exe.config
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.pdb
@@ -76,11 +75,19 @@ D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\A
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.baml
+<<<<<<< Updated upstream
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\OfficeRentView.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\OfficeRentView.baml
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\CooperativeDevelopmentView.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\CooperativeDevelopmentView.baml
+<<<<<<< HEAD
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareableProfitView.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareableProfitView.baml
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareView.g.cs
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\ShareView.baml
+=======
+=======
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\SalaryView.baml
+>>>>>>> Stashed changes
+>>>>>>> master
