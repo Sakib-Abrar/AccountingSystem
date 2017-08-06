@@ -35,5 +35,17 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new CooperativeDevelopmentView());
         }
+        private void LoadShareableProfitView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ShareableProfitView());
+        }
+        private void LoadShareView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ShareView());
+        }
+        private void LoadAdmissionFeeView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AdmissionFeeView());
+        }
     }
     }
