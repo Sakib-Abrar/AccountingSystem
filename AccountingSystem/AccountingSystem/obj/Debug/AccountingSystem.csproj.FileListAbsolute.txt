@@ -74,3 +74,5 @@ F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csproj.GenerateResource.Cache
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe.manifest
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\login.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\login.baml

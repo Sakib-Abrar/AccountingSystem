@@ -42,22 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< Updated upstream
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="392640">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="212928">
->>>>>>> Stashed changes
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
-        <dsig:DigestValue>SoWZ+TfXZNUJhJpk2L8AYNK8Z9nb2cPaQQEXsqGxaFI=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>FHDXQ4fTMFUKCqXfPM4guAihNE6kJzsFQS7/LM1CIKU=</dsig:DigestValue>
->>>>>>> Stashed changes
+        <dsig:DigestValue>Yk51rRuosQnmr8Z/5pf4Mpa+qKj1qZyqT6c73F2rmbw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -76,11 +68,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
       <dsig:DigestValue>LozUosfzpxuC4P5zHmVHRC/744C0Dx3AhuXfeCKcby0=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>t8ZO645AGzsL6yvKMHXUjIkulvwH7mIZsNvD3ruXnJY=</dsig:DigestValue>
->>>>>>> Stashed changes
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -89,11 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
       <dsig:DigestValue>QalG/tFkKUgpkFNvDmIJQ+pk0VwOAwG2wtiM4JOxq00=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>7HUsF0ndL7Aq6mWxndMJrNQzE75FcBlvQpfEZkRvx6s=</dsig:DigestValue>
->>>>>>> Stashed changes
     </hash>
   </file>
 </asmv1:assembly>
