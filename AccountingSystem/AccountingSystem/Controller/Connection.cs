@@ -6,19 +6,34 @@ namespace AccountingSystem.Controller
 {
     class Connection
     {
-        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
-        //public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+        //public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
 
         SqlConnection conn;
 
         public void OpenConection()
         {
-            try {
+            try
+            {
                 conn = new SqlConnection(ConnectionString);
                 conn.Open();
             }
-            catch (SqlException ex) {
-                MessageBox.Show("We have Encountered a Problem.Please Try Again.\nError:" + ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            catch (SqlException ex)
+            {
+                if (MessageBox.Show("We have Encountered a Problem.\nError:" + ex.Message + "\n\nDo you want to retry?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    if (ex.Number == -2)
+                    {
+                        OpenConection();
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                            ;
+                        Application.Current.Shutdown();
+                    }
+                }
+                return;
             }
         }
         public void CloseConnection()
@@ -28,7 +43,20 @@ namespace AccountingSystem.Controller
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                if (MessageBox.Show("We have Encountered a Problem.\nError:" + ex.Message + "\n\nDo you want to retry?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    if (ex.Number == -2)
+                    {
+                        CloseConnection();
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                            ;
+                        Application.Current.Shutdown();
+                    }
+                }
+                return;
             }
         }
         public void ExecuteQueries(string Query_)
@@ -37,10 +65,24 @@ namespace AccountingSystem.Controller
                 SqlCommand cmd = new SqlCommand(Query_, conn);
                 cmd.ExecuteNonQuery();
             }
-            catch (SqlException ex) {
-                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:" + ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            catch (SqlException ex)
+            {
+                if (MessageBox.Show("We have Encountered a Problem.\nError:" + ex.Message + "\n\nDo you want to retry?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    if (ex.Number == -2)
+                    {
+                        ExecuteQueries(Query_);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                            ;
+                        Application.Current.Shutdown();
+                    }
+                }
+                return;
             }
-}
+        }
         public void ExecuteScalar(string Query_)
         {
             try { 
@@ -48,20 +90,46 @@ namespace AccountingSystem.Controller
                 cmd.ExecuteScalar();
             }
             catch (SqlException ex) {
-                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                if (MessageBox.Show("We have Encountered a Problem.\nError:" + ex.Message + "\n\nDo you want to retry?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    if (ex.Number == -2)
+                    {
+                        ExecuteScalar(Query_);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                            ;
+                        Application.Current.Shutdown();
+                    }
+                }
+                return;
             }
 }
 
 
         public SqlDataReader DataReader(string Query_)
         {
+            SqlDataReader dr;
             try {
                 SqlCommand cmd = new SqlCommand(Query_, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
+                dr = cmd.ExecuteReader();
                 return dr;
             }
             catch (SqlException ex) {
-                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                if (MessageBox.Show("We have Encountered a Problem.\nError:" + ex.Message + "\n\nDo you want to retry?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    if (ex.Number == -2)
+                    {
+                        dr = DataReader(Query_);
+                        return dr;
+                    }
+                    else {
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                            ;
+                        Application.Current.Shutdown();
+                    }
+                }
                 return null;
             }
 }
@@ -69,15 +137,29 @@ namespace AccountingSystem.Controller
 
         public object ShowDataInGridView(string Query_)
         {
+            object dataum;
             try {
                 SqlDataAdapter dr = new SqlDataAdapter(Query_, ConnectionString);
                 DataSet ds = new DataSet();
                 dr.Fill(ds);
-                object dataum = ds.Tables[0];
+                dataum = ds.Tables[0];
                 return dataum;
             }
             catch (SqlException ex) {
-                MessageBox.Show("We have Encountered a Problem.Please Try Again.\n\nError:"+ex.Message,"Warning",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                if (MessageBox.Show("We have Encountered a Problem.\nError:" + ex.Message + "\n\nDo you want to retry?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    if (ex.Number == -2)
+                    {
+                        dataum = ShowDataInGridView(Query_);
+                        return dataum;
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                            ;
+                        Application.Current.Shutdown();
+                    }
+                }
                 return null;
             }
 }

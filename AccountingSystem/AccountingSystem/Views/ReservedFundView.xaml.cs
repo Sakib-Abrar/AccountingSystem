@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Data.SqlClient;
 using AccountingSystem.Controller;
 using AccountingSystem.Models;
+using System.Windows.Data;
 
 namespace AccountingSystem.Views
 {
@@ -15,6 +16,7 @@ namespace AccountingSystem.Views
             public ReservedFundView()
             {
                 InitializeComponent();
+                DataContext = new ReservedFund();
                 ReservedFund data = new ReservedFund();
                 reservedFund.ItemsSource = data.GetData();
             }
@@ -22,7 +24,21 @@ namespace AccountingSystem.Views
             {
 
             }
-            private double last_total()
+            private bool CheckForError(TextBox Selected)
+            {
+                BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
+                Trigger.UpdateSource();
+                if (Validation.GetHasError(Selected) == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        private double last_total()
             {
                 Connection conn = new Connection();
                 double total = 0.00;
@@ -38,7 +54,12 @@ namespace AccountingSystem.Views
             }
             protected void Save_Click(object sender, RoutedEventArgs e)
             {
-                double previous = this.last_total();
+                if (CheckForError(Current) || CheckForError(Withdraw))
+                {
+                    MessageBox.Show("Error!Check Input Again");
+                    return;
+                }
+            double previous = this.last_total();
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
 
