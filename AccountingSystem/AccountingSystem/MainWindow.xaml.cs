@@ -12,6 +12,7 @@ namespace AccountingSystem
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
+            MainFrame.Navigate(new login());
         }
 
         private void LoadSecurityFundView(object sender, RoutedEventArgs e)

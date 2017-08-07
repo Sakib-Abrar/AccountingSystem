@@ -86,6 +86,7 @@
     <Compile Include="Controller\Connection.cs" />
     <Compile Include="Models\AdmissionFee.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\OfficeRent.cs" />
     <Compile Include="Models\ReservedFund.cs" />
     <Compile Include="Models\Salary.cs" />
@@ -97,6 +98,9 @@
     </Compile>
     <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
       <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OfficeRentView.xaml.cs">
       <DependentUpon>OfficeRentView.xaml</DependentUpon>
@@ -133,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CooperativeDevelopmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,6 +206,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>AccountingSystemDatabase.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\urgayetottere.jpg" />
     <Resource Include="Images\titleImage.jpg" />
     <Resource Include="Images\account.png" />
     <Resource Include="Images\balance.png" />

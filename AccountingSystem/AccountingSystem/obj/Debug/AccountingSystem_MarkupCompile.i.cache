@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
+F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
 AccountingSystem
 none
 false
 DEBUG;TRACE
-C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-9628013694
+F:\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
+10-1810067273
 2-1114429820
-26-88937713
+28-1651113618
 13738642453
-MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\CooperativeDevelopmentView.xaml;Views\OfficeRentView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
+MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\OfficeRentView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
 
-False
+True
 
