@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[AdmissionFee]
+(
+	[Admission_Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Admission_Date] DATETIME NULL, 
+    [Admission_Collection] FLOAT NULL, 
+    [Admission_Total] FLOAT NULL
+)
