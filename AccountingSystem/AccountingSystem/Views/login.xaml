@@ -21,9 +21,7 @@
                 <DatePicker Name="SelectedDate" HorizontalAlignment="Left" Margin="90,86,0,0" VerticalAlignment="Top" Width="200" SelectedDate="{x:Static sys:DateTime.Now}"/>
             </Grid>
         </GroupBox>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
-        <Label x:Name="label" Content="User Login" HorizontalAlignment="Left" Margin="78,10,0,0" Padding="0px" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
-
+       
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="../Images/urgayetottere.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>

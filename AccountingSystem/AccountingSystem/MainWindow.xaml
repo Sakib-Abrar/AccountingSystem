@@ -225,6 +225,9 @@
                         <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
                         <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Bank Account Information"  Width="199" Padding="6,4" FontSize="16" Click="LoadBankAccountInformationView"/>
+                        <MenuItem Header="_Cash Information"  Width="199" Padding="6,4" FontSize="16" Click="LoadCashInformationView"/>
+
                         <MenuItem Header="_Admission Fee"  Width="199" Padding="6,4" FontSize="16" Click="LoadAdmissionFeeView"/>
                         <MenuItem Header="_Share"  Width="199" Padding="6,4" FontSize="16" Click="LoadShareView"/>
                         <MenuItem Header="_Shareble Profit"  Width="199" Padding="6,4" FontSize="16" Click="LoadShareableProfitView"/>

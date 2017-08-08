@@ -85,6 +85,8 @@
     </ApplicationDefinition>
     <Compile Include="Controller\Connection.cs" />
     <Compile Include="Models\AdmissionFee.cs" />
+    <Compile Include="Models\BankAccountInformation.cs" />
+    <Compile Include="Models\CashInformation.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\OfficeRent.cs" />
@@ -95,6 +97,12 @@
     <Compile Include="Models\ShareableProfit.cs" />
     <Compile Include="Views\AdmissionFeeView.xaml.cs">
       <DependentUpon>AdmissionFeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankAccountInformationView.xaml.cs">
+      <DependentUpon>BankAccountInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CashInformationView.xaml.cs">
+      <DependentUpon>CashInformationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
       <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
@@ -133,6 +141,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AdmissionFeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BankAccountInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CashInformationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

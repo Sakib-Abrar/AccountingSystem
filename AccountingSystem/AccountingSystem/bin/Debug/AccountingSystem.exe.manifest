@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="327616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="618944">
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jffYVv894n/790kexH60WEaM80aCweDj1jAx8P1LWV4=</dsig:DigestValue>
+        <dsig:DigestValue>pdVL4QedyaN8KMdsMCLYFMTnQbTIUc8yL7JSnsPlSus=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,13 +62,13 @@
       <dsig:DigestValue>6N7MliNbVJSIAIPrecIshMbZ7zEoKLr5SQvud4LDUOw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Database\AccountingSystemDatabase.mdf" size="3342336" writeableType="applicationData">
+  <file name="Database\AccountingSystemDatabase.mdf" size="4390912" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>CdX8FPdZ7aXrfjiwOsvrrSzgbegaqPzQhwcPH+B4rsE=</dsig:DigestValue>
+      <dsig:DigestValue>ww8W+ZdKKiVjMAgiY/aMI2Sr5QCE4SzkT6Zu3QYdNOQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>+rFVJIFJuN9p09/mdS5ldke675Gt/ZaAN/sVZVuqMcA=</dsig:DigestValue>
+      <dsig:DigestValue>LG31LbrfgO6yiNCYxBXBmNvIjigIIYBmouvYk/WP+Xo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
