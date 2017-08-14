@@ -76,5 +76,10 @@ namespace AccountingSystem.Views
             SecurityFund data = new SecurityFund();
             securityFund.ItemsSource = data.GetData();
         }
+
+        private void Print_Data(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
