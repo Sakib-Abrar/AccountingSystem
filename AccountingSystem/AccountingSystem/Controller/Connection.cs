@@ -29,8 +29,7 @@ namespace AccountingSystem.Controller
                     }
                     else
                     {
-                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
-                            ;
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK) 
                         Application.Current.Shutdown();
                     }
                 }
@@ -53,7 +52,7 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
-                            ;
+                            
                         Application.Current.Shutdown();
                     }
                 }
@@ -77,7 +76,7 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
-                            ;
+                            
                         Application.Current.Shutdown();
                     }
                 }
@@ -100,7 +99,7 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
-                            ;
+                            
                         Application.Current.Shutdown();
                     }
                 }
@@ -157,7 +156,7 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
-                            ;
+                            
                         Application.Current.Shutdown();
                     }
                 }

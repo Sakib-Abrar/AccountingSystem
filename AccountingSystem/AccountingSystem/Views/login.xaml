@@ -42,11 +42,9 @@
         </GroupBox>
        
         <Grid.Background>
-<<<<<<< Updated upstream
+
             <ImageBrush Stretch="Fill" ImageSource="../Images/urgayetottere.jpg" AlignmentY="Top" AlignmentX="Center"/>
-=======
-            <ImageBrush Stretch="Fill" ImageSource="..\Images\urgayetottere.jpg" AlignmentY="Top" AlignmentX="Center"/>
->>>>>>> Stashed changes
+
         </Grid.Background>
 
     </Grid>

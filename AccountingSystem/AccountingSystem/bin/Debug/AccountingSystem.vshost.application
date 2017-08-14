@@ -17,15 +17,7 @@
 <<<<<<< HEAD
         <dsig:DigestValue>U2XdKLBjz+n4qLTIxpN69Sxb2f48Yt1lNHoqrIcTkZQ=</dsig:DigestValue>
 =======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <dsig:DigestValue>JVsjR7Cse1TB/HVuGUCUJRAMC/cZGvfsVjSDwUukSyg=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>7Q05ugSDqLiMxn4EBGVrd0Oe2tpKpWG1ChbI87ty+Y4=</dsig:DigestValue>
->>>>>>> Stashed changes
-=======
         <dsig:DigestValue>DiaVpfo1po06E7JiphijCCKHLIfLFkeP1SOSYeCZ6HE=</dsig:DigestValue>
->>>>>>> Stashed changes
 >>>>>>> master
       </hash>
     </dependentAssembly>
