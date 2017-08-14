@@ -62,5 +62,15 @@ namespace AccountingSystem.Views
             OfficeRent data = new OfficeRent();
             officeRent.ItemsSource = data.GetData();
         }
+
+        private void Button_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Print_Data(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
