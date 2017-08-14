@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using AccountingSystem.Controller;
 using AccountingSystem.Models;
 using System.Data.SqlClient;
+using System.Windows.Data;
 namespace AccountingSystem.Views
 {
     /// <summary>
@@ -22,10 +23,28 @@ namespace AccountingSystem.Views
         {
 
         }
- 
+        private bool CheckForError(TextBox Selected)
+        {
+            BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
+            Trigger.UpdateSource();
+            if (Validation.GetHasError(Selected) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
-          
+            if (CheckForError(Advance) || CheckForError(Rent))
+            {
+                MessageBox.Show("Error!Check Input Again");
+                return;
+            }
+
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {
 

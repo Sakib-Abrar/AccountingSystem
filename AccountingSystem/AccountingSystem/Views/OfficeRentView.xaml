@@ -73,9 +73,9 @@
                 <Label Content="Month :" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="Month" HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Advance :" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="Advance" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Advance, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <TextBox Name="Advance" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Advance, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Rent :" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="Rent" HorizontalAlignment="Left" Height="23" Margin="90,84,0,0" TextWrapping="Wrap" Text="{Binding Rent, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <TextBox Name="Rent" HorizontalAlignment="Left" Height="23" Margin="90,84,0,0" TextWrapping="Wrap" Text="{Binding Rent, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
                 <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="680,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="598,52,0,0" VerticalAlignment="Top" />

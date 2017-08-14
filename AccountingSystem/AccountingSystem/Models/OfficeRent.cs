@@ -13,7 +13,10 @@ namespace AccountingSystem.Models
         /// UselessParse is used for TryParse method which needs an output parameter but we don't.
         /// </summary>
         private double uselessParse;
-
+        /// <summary>
+        /// _firstLoad is used to prevent auto validation at the startup
+        /// </summary>
+        private bool _firstLoad = true;
         /// <summary>
         /// double? is used to make double nullable.Otherwise we would get zero in textbox initially.But we want it empty.
         /// </summary>
@@ -34,6 +37,7 @@ namespace AccountingSystem.Models
                     m_advance = value;
                 }
                 OnPropertyChanged("Advance");
+                _firstLoad = false;
             }
         }
         public double? Rent
@@ -113,6 +117,8 @@ namespace AccountingSystem.Models
         {
             // Return error message if there is error on else return empty or null string
             string validationMessage = string.Empty;
+            if (_firstLoad)
+                return validationMessage;
             switch (propertyName)
             {
                 
