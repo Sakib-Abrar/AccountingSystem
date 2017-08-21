@@ -69,9 +69,9 @@
         <GroupBox Header="Add Entry" HorizontalAlignment="Center" Margin="78,118,51,0" VerticalAlignment="Top" Height="199" Width="Auto">
             <Grid Width="1016" Margin="0,0,0,-12">
                 <Label Content="Salary :" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="Amount" HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="{Binding Amount, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <TextBox Name="Amount" HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="{Binding Amount, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Bonus :" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="Bonus" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Bonus, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <TextBox Name="Bonus" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Bonus, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
                 <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="680,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="598,52,0,0" VerticalAlignment="Top" />

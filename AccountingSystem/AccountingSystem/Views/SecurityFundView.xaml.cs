@@ -24,18 +24,7 @@ namespace AccountingSystem.Views
         {
 
         }
-        private bool CheckForError(TextBox Selected) {
-            BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
-            Trigger.UpdateSource();
-            if (Validation.GetHasError(Selected) == true)
-            {
-                return true;
-            }
-            else {
-                return false;
-            }
 
-        }
         private double last_remains()
         {
             Connection conn = new Connection();
@@ -49,6 +38,20 @@ namespace AccountingSystem.Views
             }
             conn.CloseConnection();
             return remains;
+        }
+        private bool CheckForError(TextBox Selected)
+        {
+            BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
+            Trigger.UpdateSource();
+            if (Validation.GetHasError(Selected) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -77,6 +80,7 @@ namespace AccountingSystem.Views
             securityFund.ItemsSource = data.GetData();
         }
 
+<<<<<<< HEAD
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
@@ -84,6 +88,11 @@ namespace AccountingSystem.Views
             {
                 new SecurityFund().PublishPDF(getDate.FromDate,getDate.ToDate);
             }
+=======
+        private void Print_Data(object sender, RoutedEventArgs e)
+        {
+
+>>>>>>> master
         }
     }
 }

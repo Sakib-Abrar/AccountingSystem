@@ -9,16 +9,16 @@ using System.Windows.Data;
 namespace AccountingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for CooperativeDevelopmentView.xaml
+    /// Interaction logic for SecurityFundView.xaml
     /// </summary>
-    public partial class CooperativeDevelopmentView : Page
+    public partial class CashInformationView : Page
     {
-        public CooperativeDevelopmentView()
+        public CashInformationView()
         {
             InitializeComponent();
-            DataContext = new CooperativeDevelopment();
-            CooperativeDevelopment data = new CooperativeDevelopment();
-            cooperativeDevelopment.ItemsSource = data.GetData();
+            DataContext = new CashInformation();
+            CashInformation data = new CashInformation();
+            cashInformation.ItemsSource = data.GetData();
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -42,41 +42,43 @@ namespace AccountingSystem.Views
         {
             Connection conn = new Connection();
             double remains = 0.00;
-            string query = "SELECT TOP 1 * FROM CooperativeDevelopment ORDER BY Cooperative_Id DESC";
+            string query = "SELECT TOP 1 * FROM CashInformation ORDER BY Cash_Id DESC";
             conn.OpenConection();
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                remains = (double)reader["Cooperative_Remains"];
+                remains = (double)reader["Cash_Remains"];
             }
             conn.CloseConnection();
             return remains;
         }
-
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckForError(Current) || CheckForError(Paid))
+            if ( CheckForError(Deposit) || CheckForError(Expenses))
             {
                 MessageBox.Show("Error!Check Input Again");
                 return;
             }
+
+            double remains = this.last_remains();
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {
-                double previous = this.last_remains();
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [CooperativeDevelopment] (Cooperative_Date, Cooperative_Current, Cooperative_Paid, Cooperative_Previous, Cooperative_Remains) VALUES (@Date, @Current, @Paid, @Previous, @Remains)", conn);
+
+                SqlCommand CmdSql = new SqlCommand("INSERT INTO [CashInformation] (Cash_Date, Cash_Previous, Cash_Deposit, Cash_Expenses, Cash_Remains,Cash_Total) VALUES (@Date, @Previous, @Deposit, @Expenses, @Remains,@Total)", conn);
                 conn.Open();
                 CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
-                CmdSql.Parameters.AddWithValue("@Current", Current.Text);
-                CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
-                CmdSql.Parameters.AddWithValue("@Previous", previous);
-                CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
+                CmdSql.Parameters.AddWithValue("@Previous", remains);
+                CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                CmdSql.Parameters.AddWithValue("@Total", remains + Convert.ToDouble(Deposit.Text));
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
 
 
             }
-            CooperativeDevelopment data = new CooperativeDevelopment();
-            cooperativeDevelopment.ItemsSource = data.GetData();
+            CashInformation data = new CashInformation();
+            cashInformation.ItemsSource = data.GetData();
         }
     }
 }

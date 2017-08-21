@@ -9,16 +9,16 @@ using System.Windows.Data;
 namespace AccountingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for CooperativeDevelopmentView.xaml
+    /// Interaction logic for BankAccountInformationView.xaml
     /// </summary>
-    public partial class CooperativeDevelopmentView : Page
+    public partial class BankAccountInformationView : Page
     {
-        public CooperativeDevelopmentView()
+        public BankAccountInformationView()
         {
             InitializeComponent();
-            DataContext = new CooperativeDevelopment();
-            CooperativeDevelopment data = new CooperativeDevelopment();
-            cooperativeDevelopment.ItemsSource = data.GetData();
+            DataContext = new BankAccountInformation();
+            BankAccountInformation data = new BankAccountInformation();
+            bankAccountInformation.ItemsSource = data.GetData();
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -42,41 +42,43 @@ namespace AccountingSystem.Views
         {
             Connection conn = new Connection();
             double remains = 0.00;
-            string query = "SELECT TOP 1 * FROM CooperativeDevelopment ORDER BY Cooperative_Id DESC";
+            string query = "SELECT TOP 1 * FROM BankAccountInformation ORDER BY Bank_Id DESC";
             conn.OpenConection();
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                remains = (double)reader["Cooperative_Remains"];
+                remains = (double)reader["Bank_Remains"];
             }
             conn.CloseConnection();
             return remains;
         }
-
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckForError(Current) || CheckForError(Paid))
+            if (CheckForError(Interest) || CheckForError(Deposit) || CheckForError(Withdraw) || CheckForError(ServiceCharge))
             {
                 MessageBox.Show("Error!Check Input Again");
                 return;
             }
+
+            double remains = this.last_remains();
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {
-                double previous = this.last_remains();
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [CooperativeDevelopment] (Cooperative_Date, Cooperative_Current, Cooperative_Paid, Cooperative_Previous, Cooperative_Remains) VALUES (@Date, @Current, @Paid, @Previous, @Remains)", conn);
+
+                SqlCommand CmdSql = new SqlCommand("INSERT INTO [BankAccountInformation] (Bank_Date, Bank_Interest, Bank_Deposit, Bank_Withdraw, Bank_ServiceCharge,Bank_Remains) VALUES (@Date, @Interest, @Deposit, @Withdraw,@ServiceCharge, @Remains)", conn);
                 conn.Open();
                 CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
-                CmdSql.Parameters.AddWithValue("@Current", Current.Text);
-                CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
-                CmdSql.Parameters.AddWithValue("@Previous", previous);
-                CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
+                CmdSql.Parameters.AddWithValue("@Interest", Interest.Text);
+                CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                CmdSql.Parameters.AddWithValue("@Withdraw", ServiceCharge.Text);
+                CmdSql.Parameters.AddWithValue("@ServiceCharge", Withdraw.Text);
+                CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) + Convert.ToDouble(Interest.Text) - Convert.ToDouble(Withdraw.Text) - Convert.ToDouble(ServiceCharge.Text));
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
 
 
             }
-            CooperativeDevelopment data = new CooperativeDevelopment();
-            cooperativeDevelopment.ItemsSource = data.GetData();
+            BankAccountInformation data = new BankAccountInformation();
+            bankAccountInformation.ItemsSource = data.GetData();
         }
     }
 }

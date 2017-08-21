@@ -1,5 +1,6 @@
 ﻿
 
+<<<<<<< HEAD
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\MainWindow.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\AdmissionFeeView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\CooperativeDevelopmentView.xaml;;
@@ -11,4 +12,18 @@ FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Vie
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareableProfitView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\PrintDialogView.xaml;;
+=======
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\MainWindow.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\AdmissionFeeView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\BankAccountInformationView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\CashInformationView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\CooperativeDevelopmentView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\login.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\OfficeRentView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\ReservedFundView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\SalaryView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\SecurityFundView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareableProfitView.xaml;;
+FF:\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareView.xaml;;
+>>>>>>> master
 

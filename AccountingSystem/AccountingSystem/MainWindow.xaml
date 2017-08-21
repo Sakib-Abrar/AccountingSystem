@@ -80,9 +80,9 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
-                        <MenuItem Header="_Member Loan Account" Width="199" Padding="6,4"/>
-                        <MenuItem Header="_Member Ledger"  Width="199" Padding="6,4" />
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
+                        <MenuItem Header="_Member Loan Account" Width="199" Padding="6,4" FontSize="15"/>
+                        <MenuItem Header="_Member Ledger"  Width="199" Padding="6,4" FontSize="15" />
                     </Menu>
 
                 </Expander>
@@ -103,7 +103,7 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
                         <MenuItem Header="_Daily Ledger" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Weekly Ledger"  Width="199" Padding="6,4" FontSize="16" />
                         <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
@@ -132,7 +132,7 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#CCC">
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
                         <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Fixed Deposit Ledger"  Width="199" Padding="6,4" FontSize="16" />
@@ -162,14 +162,7 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
-                        <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16"/>
-                        <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
-                        <MenuItem Header="_Fixed Deposit Ledger"  Width="199" Padding="6,4" FontSize="16" />
-                        <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
-                        <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
-                        <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
-                    </Menu>
+            
 
                 </Expander>
 
@@ -188,7 +181,7 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
                         <MenuItem Header="_Security Fund" Width="200" Padding="6,4" FontSize="16" Click="LoadSecurityFundView"/>
                         <MenuItem Header="_Reserved Fund"  Width="200" Padding="6,4" FontSize="16" Click="LoadReservedFundView" />
                         <MenuItem Header="_Cooperative Development Fund" Padding="6,4" FontSize="16" Click="LoadCooperativeDevelopmentView" />
@@ -218,13 +211,9 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
-                        <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16"/>
-                        <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
-                        <MenuItem Header="_Fixed Deposit Ledger"  Width="199" Padding="6,4" FontSize="16" />
-                        <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
-                        <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
-                        <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
+                        <MenuItem Header="_Bank Account Information"  Width="199" Padding="6,4" FontSize="16" Click="LoadBankAccountInformationView"/>
+                        <MenuItem Header="_Cash Information"  Width="199" Padding="6,4" FontSize="16" Click="LoadCashInformationView"/>
                         <MenuItem Header="_Admission Fee"  Width="199" Padding="6,4" FontSize="16" Click="LoadAdmissionFeeView"/>
                         <MenuItem Header="_Share"  Width="199" Padding="6,4" FontSize="16" Click="LoadShareView"/>
                         <MenuItem Header="_Shareble Profit"  Width="199" Padding="6,4" FontSize="16" Click="LoadShareableProfitView"/>
@@ -250,7 +239,7 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight">
+                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
                         <MenuItem Header="_Salary" Width="199" Padding="6,4" FontSize="16" Click="LoadSalaryView"/>
                         <MenuItem Header="_Stuff" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Office Rent"  Width="199" Padding="6,4" FontSize="16" Click="LoadOfficeRentView"/>

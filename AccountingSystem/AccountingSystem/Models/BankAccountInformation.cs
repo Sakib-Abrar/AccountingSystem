@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace AccountingSystem.Models
 {
-    class Share : INotifyPropertyChanged, IDataErrorInfo
+    class BankAccountInformation : INotifyPropertyChanged, IDataErrorInfo
     {
         /// <summary>
         /// UselessParse is used for TryParse method which needs an output parameter but we don't.
@@ -17,43 +17,39 @@ namespace AccountingSystem.Models
         /// _firstLoad is used to prevent auto validation at the startup
         /// </summary>
         private bool _firstLoad = true;
+     
         /// <summary>
         /// double? is used to make double nullable.Otherwise we would get zero in textbox initially.But we want it empty.
         /// </summary>
-        private double? m_collection;
-        private double? m_profit;
+        private double? m_deposit;
+        private double? m_interest;
         private double? m_withdraw;
+        private double? m_serviceCharge;
         public int SelectedIndex { get; set; }
         public DateTime Date { get; set; }
-        public double? Collection
+      
+        public double? Deposit
         {
             get
             {
-                return m_collection;
+                return m_deposit;
             }
             set
             {
-                if (m_collection != value)
-                {
-                    m_collection = value;
-                }
-                OnPropertyChanged("Collection");
-                _firstLoad = false;
+                m_deposit = value;
+                OnPropertyChanged("Deposit");
             }
         }
-        public double? Profit
+        public double? Interest
         {
             get
             {
-                return m_profit;
+                return m_interest;
             }
             set
             {
-                if (m_profit != value)
-                {
-                    m_profit = value;
-                }
-                OnPropertyChanged("Profit");
+                m_interest = value;
+                OnPropertyChanged("Interest");
             }
         }
         public double? Withdraw
@@ -64,34 +60,44 @@ namespace AccountingSystem.Models
             }
             set
             {
-                if (m_withdraw != value)
-                {
-                    m_withdraw = value;
-                }
+                m_withdraw = value;
                 OnPropertyChanged("Withdraw");
+            }
+        }
+        public double? ServiceCharge
+        {
+            get
+            {
+                return m_serviceCharge;
+            }
+            set
+            {
+                m_serviceCharge = value;
+                OnPropertyChanged("ServiceCharge");
             }
         }
         public double Remains { get; set; }
         public double ID { get; set; }
 
         #region PopulateTable
-        public List<Share> GetData()
+        public List<BankAccountInformation> GetData()
         {
             Connection conn = new Connection();
             conn.OpenConection();
-            List<Share> entries = new List<Share>();
-            string query = "SELECT * From Share";
+            List<BankAccountInformation> entries = new List<BankAccountInformation>();
+            string query = "SELECT * From BankAccountInformation";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                entries.Add(new Share()
+                entries.Add(new BankAccountInformation()
                 {
-                    ID = (int)reader["Share_Id"],
-                    Date = (DateTime)reader["Share_Date"],
-                    Collection = (double)reader["Share_Collection"],
-                    Profit = (double)reader["Share_Profit"],
-                    Withdraw = (double)reader["Share_Withdraw"],
-                    Remains = (double)reader["Share_Remains"],
+                    ID = (int)reader["Bank_Id"],
+                    Date = (DateTime)reader["Bank_Date"],
+                    Deposit = (double)reader["Bank_Deposit"],
+                    Interest = (double)reader["Bank_Interest"],
+                    Withdraw = (double)reader["Bank_Withdraw"],
+                    ServiceCharge = (double)reader["Bank_ServiceCharge"],
+                    Remains = (double)reader["Bank_Remains"],
                 });
             }
             conn.CloseConnection();
@@ -136,20 +142,27 @@ namespace AccountingSystem.Models
                 return validationMessage;
             switch (propertyName)
             {
-                case "Collection": // property name
-                    if (!double.TryParse(Collection.ToString(), out uselessParse))
+              
+                case "Deposit":
+                    if (!double.TryParse(Deposit.ToString(), out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
                     break;
-                case "Profit":
-                    if (!double.TryParse(Profit.ToString(), out uselessParse))
+                case "Interest":
+                    if (!double.TryParse(Interest.ToString(), out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
                     break;
                 case "Withdraw":
                     if (!double.TryParse(Withdraw.ToString(), out uselessParse))
+                    {
+                        validationMessage = "Only Digits Are Allowed";
+                    }
+                    break;
+                case "ServiceCharge":
+                    if (!double.TryParse(ServiceCharge.ToString(), out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }

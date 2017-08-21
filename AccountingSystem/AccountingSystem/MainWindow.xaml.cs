@@ -48,5 +48,13 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new AdmissionFeeView());
         }
+        private void LoadCashInformationView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CashInformationView());
+        }
+        private void LoadBankAccountInformationView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new BankAccountInformationView());
+        }
     }
     }

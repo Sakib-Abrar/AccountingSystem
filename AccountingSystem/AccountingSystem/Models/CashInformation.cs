@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace AccountingSystem.Models
 {
-    class Share : INotifyPropertyChanged, IDataErrorInfo
+    class CashInformation : INotifyPropertyChanged, IDataErrorInfo
     {
         /// <summary>
         /// UselessParse is used for TryParse method which needs an output parameter but we don't.
@@ -17,81 +17,63 @@ namespace AccountingSystem.Models
         /// _firstLoad is used to prevent auto validation at the startup
         /// </summary>
         private bool _firstLoad = true;
+        
         /// <summary>
         /// double? is used to make double nullable.Otherwise we would get zero in textbox initially.But we want it empty.
         /// </summary>
-        private double? m_collection;
-        private double? m_profit;
-        private double? m_withdraw;
+        private double? m_deposit;
+        private double? m_expenses;
         public int SelectedIndex { get; set; }
         public DateTime Date { get; set; }
-        public double? Collection
+    
+        public double? Deposit
         {
             get
             {
-                return m_collection;
+                return m_deposit;
             }
             set
             {
-                if (m_collection != value)
-                {
-                    m_collection = value;
-                }
-                OnPropertyChanged("Collection");
-                _firstLoad = false;
+                m_deposit = value;
+                OnPropertyChanged("Deposit");
             }
         }
-        public double? Profit
+        public double? Expenses
         {
             get
             {
-                return m_profit;
+                return m_expenses;
             }
             set
             {
-                if (m_profit != value)
-                {
-                    m_profit = value;
-                }
-                OnPropertyChanged("Profit");
-            }
-        }
-        public double? Withdraw
-        {
-            get
-            {
-                return m_withdraw;
-            }
-            set
-            {
-                if (m_withdraw != value)
-                {
-                    m_withdraw = value;
-                }
-                OnPropertyChanged("Withdraw");
+                m_expenses = value;
+                OnPropertyChanged("Expenses");
             }
         }
         public double Remains { get; set; }
+        public double Previous { get; set; }
+        public double Total { get; set; }
         public double ID { get; set; }
 
         #region PopulateTable
-        public List<Share> GetData()
+        public List<CashInformation> GetData()
         {
             Connection conn = new Connection();
             conn.OpenConection();
-            List<Share> entries = new List<Share>();
-            string query = "SELECT * From Share";
+            List<CashInformation> entries = new List<CashInformation>();
+            string query = "SELECT * From CashInformation";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                entries.Add(new Share()
+                entries.Add(new CashInformation()
                 {
-                    ID = (int)reader["Share_Id"],
-                    Date = (DateTime)reader["Share_Date"],
-                    Collection = (double)reader["Share_Collection"],
-                    Profit = (double)reader["Share_Profit"],
-                    Withdraw = (double)reader["Share_Withdraw"],
-                    Remains = (double)reader["Share_Remains"],
+                    ID = (int)reader["Cash_Id"],
+                    Date = (DateTime)reader["Cash_Date"],
+                    Previous = (double)reader["Cash_Previous"],
+                    Deposit = (double)reader["Cash_Deposit"],
+                    Expenses = (double)reader["Cash_Expenses"],
+                    Remains = (double)reader["Cash_Remains"],
+                    Total = (double)reader["Cash_Total"],
                 });
             }
             conn.CloseConnection();
@@ -136,20 +118,15 @@ namespace AccountingSystem.Models
                 return validationMessage;
             switch (propertyName)
             {
-                case "Collection": // property name
-                    if (!double.TryParse(Collection.ToString(), out uselessParse))
+             
+                case "Deposit":
+                    if (!double.TryParse(Deposit.ToString(), out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
                     break;
-                case "Profit":
-                    if (!double.TryParse(Profit.ToString(), out uselessParse))
-                    {
-                        validationMessage = "Only Digits Are Allowed";
-                    }
-                    break;
-                case "Withdraw":
-                    if (!double.TryParse(Withdraw.ToString(), out uselessParse))
+                case "Expenses":
+                    if (!double.TryParse(Deposit.ToString(), out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }

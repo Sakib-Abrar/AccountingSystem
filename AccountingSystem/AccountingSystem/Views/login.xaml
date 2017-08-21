@@ -15,16 +15,35 @@
                 <Label Content="Password :" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top" Foreground="#FFF5EFEF" FontWeight="Bold"/>
                 <TextBox Name="Password" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Password, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top" Foreground="#FFF5EFEF" FontWeight="Bold"/>
-                <Button Content="Save" HorizontalAlignment="Left" Background="#0ff" Margin="315,120,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click"/>
+                <Button Content="Save" HorizontalAlignment="Left" Margin="315,120,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                            <GradientStop Color="#0C92FB" Offset="0.75"/>
+                            <GradientStop Color="#0C92FB" Offset="0.25"/>
+                            <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                            <Style.Triggers>
+                                <Trigger Property ="IsMouseOver" Value="True">
+                                    <Setter Property= "Background" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <Label x:Name="ErrorMessage" Content="{Binding Error_msg,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="236,-8,0,0" VerticalAlignment="Top" Padding="2,5,2,0" FontSize="11" FontWeight="Bold"/>
                 <DatePicker Name="SelectedDate" HorizontalAlignment="Left" Margin="90,86,0,0" VerticalAlignment="Top" Width="200" SelectedDate="{Binding SelectedDate}"/>
             </Grid>
         </GroupBox>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
-        <Label x:Name="label" Content="User Login" HorizontalAlignment="Left" Margin="78,10,0,0" Padding="0px" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
-
+       
         <Grid.Background>
+
             <ImageBrush Stretch="Fill" ImageSource="../Images/urgayetottere.jpg" AlignmentY="Top" AlignmentX="Center"/>
+
         </Grid.Background>
 
     </Grid>

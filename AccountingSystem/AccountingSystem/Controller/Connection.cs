@@ -6,9 +6,15 @@ namespace AccountingSystem.Controller
 {
     class Connection
     {
+<<<<<<< HEAD
         //public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
         //public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
         public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+=======
+       // public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+       //public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Database\AccountingSystemDatabase.mdf;Integrated Security=True";
+>>>>>>> master
 
         SqlConnection conn;
 
@@ -29,7 +35,11 @@ namespace AccountingSystem.Controller
                     }
                     else
                     {
+<<<<<<< HEAD
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+=======
+                        if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK) 
+>>>>>>> master
                         Application.Current.Shutdown();
                     }
                 }
@@ -52,6 +62,10 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> master
                         Application.Current.Shutdown();
                     }
                 }
@@ -75,6 +89,10 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> master
                         Application.Current.Shutdown();
                     }
                 }
@@ -97,6 +115,10 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> master
                         Application.Current.Shutdown();
                     }
                 }
@@ -152,6 +174,10 @@ namespace AccountingSystem.Controller
                     else
                     {
                         if (MessageBox.Show("The problem is not recognized.Close and try again.\nError:" + ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> master
                         Application.Current.Shutdown();
                     }
                 }
