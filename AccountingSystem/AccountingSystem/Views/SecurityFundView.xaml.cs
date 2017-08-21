@@ -79,20 +79,13 @@ namespace AccountingSystem.Views
             SecurityFund data = new SecurityFund();
             securityFund.ItemsSource = data.GetData();
         }
-
-<<<<<<< HEAD
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate,getDate.ToDate);
+                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
-=======
-        private void Print_Data(object sender, RoutedEventArgs e)
-        {
-
->>>>>>> master
         }
     }
 }
