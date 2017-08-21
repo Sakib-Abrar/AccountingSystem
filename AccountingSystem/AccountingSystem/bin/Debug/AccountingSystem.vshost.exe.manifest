@@ -54,6 +54,7 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <dsig:DigestValue>QoBYWJQh3kj0GHhaYB7ilwtW69IUdKkGT2WgsnRXs6U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
@@ -142,6 +143,9 @@
 =======
         <dsig:DigestValue>xJmq9pWFp7DmnPSbvHuHdzIDqu8QE9mWEK7ATN2wZQE=</dsig:DigestValue>
 >>>>>>> master
+=======
+        <dsig:DigestValue>p3MAy10uJR1LHpIDFPkl4MXK5WmBOXNJ3szjQRqbheA=</dsig:DigestValue>
+>>>>>>> master
       </hash>
     </dependentAssembly>
   </dependency>
@@ -161,9 +165,13 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <dsig:DigestValue>ZkFjxZRt7iYLFyntthcYSibYlDuH06LyeDB4rSnvtUw=</dsig:DigestValue>
 =======
       <dsig:DigestValue>zPnjsemKmX8cSoPCpaJdf6vreUJB9zla1A5BFKtzlOs=</dsig:DigestValue>
+>>>>>>> master
+=======
+      <dsig:DigestValue>whmsYQmkYDp5oYDvyFUh7WWbmV+a5PjZ4oR+k88Is44=</dsig:DigestValue>
 >>>>>>> master
     </hash>
   </file>
@@ -174,9 +182,13 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <dsig:DigestValue>zitd5wqanVta12B0VbWNmrCc1Q75kehrwWDTP+UxYbM=</dsig:DigestValue>
 =======
       <dsig:DigestValue>3pLOnNEXX8XsagScZHbIMVAo/CgXmwTQOGxUmxygaDY=</dsig:DigestValue>
+>>>>>>> master
+=======
+      <dsig:DigestValue>IXdxeu3+GPrpazmtsgKnGaEh3CtlH47cz9qaND2gjXU=</dsig:DigestValue>
 >>>>>>> master
     </hash>
   </file>
