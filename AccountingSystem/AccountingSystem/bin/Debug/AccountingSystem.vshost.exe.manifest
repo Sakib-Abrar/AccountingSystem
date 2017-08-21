@@ -42,22 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< HEAD
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="619456">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="396736">
->>>>>>> master
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="622016">
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-        <dsig:DigestValue>y4BkMYCLj8LwF4gl9JKoZEeIjdXRibuYdQK+2yPZW6Y=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>ma5UkDLhbiqcaBrO4guulyXHjp5PwiiD8quarArdPRk=</dsig:DigestValue>
->>>>>>> master
+        <dsig:DigestValue>xJmq9pWFp7DmnPSbvHuHdzIDqu8QE9mWEK7ATN2wZQE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -76,11 +68,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-      <dsig:DigestValue>/Ms2/PG6j7T/Qx8i/+SShwAMs6HbWhQ8B3aMgvhS7hA=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>X8Dc0NM/tv4mYfLhG4oPigiG6/EjIID7NVl2GG6TEjU=</dsig:DigestValue>
->>>>>>> master
+      <dsig:DigestValue>zPnjsemKmX8cSoPCpaJdf6vreUJB9zla1A5BFKtzlOs=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -89,11 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-      <dsig:DigestValue>kJ7zbP5wXFAdq/7dS1j2g+6+rehG4Fhkg4b6B0lewEg=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>nrZFvIiY+8IYaopj4cQYoMvR4N/vY387mlTU+ovRMpc=</dsig:DigestValue>
->>>>>>> master
+      <dsig:DigestValue>3pLOnNEXX8XsagScZHbIMVAo/CgXmwTQOGxUmxygaDY=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

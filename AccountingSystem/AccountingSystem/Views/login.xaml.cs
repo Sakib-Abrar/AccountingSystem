@@ -50,13 +50,13 @@ namespace AccountingSystem.Views
 
             if (isLogin==1)
             {
-                //Console.Write("logged_in" + stuff_cell + " " + Cell.Text + " " + stuff_pass + " " + Password.Text);
+                //Console.Write("logged_in" + stuff_cell + " " + Cell.Text + " " + stuff_pass + " " + Password.Text+" "+SelectedDate);
                 ErrorMessage.Content = "Logged in Successfully!!!";
                 ErrorMessage.Foreground = new SolidColorBrush(Colors.Green);
                 ErrorMessage.Background = new SolidColorBrush(Colors.White);
             }
             else
-            {   //Console.Write("logged_out" + stuff_cell + " go" + Cell.Text + " " + stuff_pass + " " + Password.Text);
+            {   //Console.Write("logged_out" + stuff_cell + " go" + Cell.Text + " " + stuff_pass + " " + Password.Text+" "+SelectedDate);
                 ErrorMessage.Content = "Sorry Wrong Password!!!";
                 ErrorMessage.Foreground = new SolidColorBrush(Colors.Red);
                 ErrorMessage.Background = new SolidColorBrush(Colors.WhiteSmoke);
