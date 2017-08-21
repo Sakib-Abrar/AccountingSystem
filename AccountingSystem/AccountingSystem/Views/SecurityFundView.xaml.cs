@@ -63,7 +63,7 @@ namespace AccountingSystem.Views
 
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [SecurityFund] (Security_Date, Security_Details, Security_Deposit, Security_Expenses, Security_Remains) VALUES (@Date, @Details, @Deposit, @Expenses, @Remains)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
+                CmdSql.Parameters.AddWithValue("@Date", Login.GlobalDate);
                 CmdSql.Parameters.AddWithValue("@Details", Details.Text);
                 CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                 CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
@@ -75,6 +75,15 @@ namespace AccountingSystem.Views
             }
             SecurityFund data = new SecurityFund();
             securityFund.ItemsSource = data.GetData();
+        }
+
+        protected void Print_Data(object sender, RoutedEventArgs e)
+        {
+            PrintDialogView getDate = new PrintDialogView();
+            if (getDate.ShowDialog() == true)
+            {
+                new SecurityFund().PublishPDF(getDate.FromDate,getDate.ToDate);
+            }
         }
     }
 }

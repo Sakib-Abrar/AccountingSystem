@@ -23,6 +23,7 @@ namespace AccountingSystem.Models
         /// </summary>
         private double? m_deposit;
         private double? m_expenses ;
+        private DateTime? date = Login.GlobalDate;
         public int SelectedIndex { get; set; }
         public DateTime Date { get; set; }
         public string Details {
@@ -103,6 +104,19 @@ namespace AccountingSystem.Models
             get { return "...."; }
         }
 
+        public DateTime? Date1
+        {
+            get
+            {
+                return date;
+            }
+
+            set
+            {
+                date = value;
+            }
+        }
+
         /// <summary>
         /// Will be called for each and every property when ever its value is changed
         /// </summary>
@@ -145,6 +159,32 @@ namespace AccountingSystem.Models
             }
 
             return validationMessage;
+        }
+        #endregion
+
+        #region PDFCreation
+        public void PublishPDF(DateTime? FromDate,DateTime? ToDate)
+        {
+            string pageTitle = "Security Fund";
+            float[] size=new float[] { 4, 2, 3, 4, 3, 3};
+            string[] tableHeaders = new String[]{ "Entry No.","Date","Details","Deposit","Expenses","Remains"};
+            PDF myPDF=new PDF(pageTitle,size,tableHeaders);
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * From SecurityFund";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                myPDF.AddToTable(reader["Security_Id"].ToString());
+                DateTime OnlyDate = (DateTime)reader["Security_Date"];
+                myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
+                myPDF.AddToTable(reader["Security_Details"].ToString());
+                myPDF.AddToTable(reader["Security_Deposit"].ToString());
+                myPDF.AddToTable(reader["Security_Expenses"].ToString());
+                myPDF.AddToTable(reader["Security_Remains"].ToString());
+            }
+            conn.CloseConnection();
+            myPDF.Done();
         }
         #endregion
     }

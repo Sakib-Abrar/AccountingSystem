@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingSystem.Views"
-      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       Title="Login" Width="1157" Height="717">
 
@@ -18,7 +17,7 @@
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top" Foreground="#FFF5EFEF" FontWeight="Bold"/>
                 <Button Content="Save" HorizontalAlignment="Left" Background="#0ff" Margin="315,120,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click"/>
                 <Label x:Name="ErrorMessage" Content="{Binding Error_msg,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="236,-8,0,0" VerticalAlignment="Top" Padding="2,5,2,0" FontSize="11" FontWeight="Bold"/>
-                <DatePicker Name="SelectedDate" HorizontalAlignment="Left" Margin="90,86,0,0" VerticalAlignment="Top" Width="200" SelectedDate="{x:Static sys:DateTime.Now}"/>
+                <DatePicker Name="SelectedDate" HorizontalAlignment="Left" Margin="90,86,0,0" VerticalAlignment="Top" Width="200" SelectedDate="{Binding SelectedDate}"/>
             </Grid>
         </GroupBox>
         <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>

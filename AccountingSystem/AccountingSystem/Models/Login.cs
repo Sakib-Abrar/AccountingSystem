@@ -7,15 +7,29 @@ using System.Linq;
 
 namespace AccountingSystem.Models
 {
-    class Login
+    class Login: INotifyPropertyChanged
     {
+        public static DateTime? GlobalDate=null;
         private String m_cell = "";
         private String m_password = "";
         private String m_error_msg = " ";
-        public Nullable<DateTime> SelectedDate { get; set; }
+        private DateTime? m_selectedDate=DateTime.Today;
+
+        public DateTime? SelectedDate
+        {
+            get
+            {
+                return m_selectedDate;
+            }
+            set
+            {
+                m_selectedDate =value;
+                GlobalDate = value;
+            }
+        }
 
 
-        public string sCell
+        public string Cell
         {
             get
             {
@@ -67,6 +81,9 @@ namespace AccountingSystem.Models
             }
         }
 
+        #region Validation
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
 
 
     }
