@@ -53,6 +53,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
         <dsig:DigestValue>QoBYWJQh3kj0GHhaYB7ilwtW69IUdKkGT2WgsnRXs6U=</dsig:DigestValue>
@@ -146,6 +147,9 @@
 =======
         <dsig:DigestValue>p3MAy10uJR1LHpIDFPkl4MXK5WmBOXNJ3szjQRqbheA=</dsig:DigestValue>
 >>>>>>> master
+=======
+        <dsig:DigestValue>I9Xz+2lCZaVQAMdar6uu1/e7C/Onmuh8CrFF7mN+TXg=</dsig:DigestValue>
+>>>>>>> Stashed changes
       </hash>
     </dependentAssembly>
   </dependency>
