@@ -19,42 +19,42 @@
                         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
                             <DataGrid x:Name="securityFund" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="150">
+                                    <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="120">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="190">
+                                    <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="150">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableDetails" Header="Details" Binding="{Binding Path=Details}" Width="190">
+                                    <DataGridTextColumn x:Name="tableDetails" Header="Details" Binding="{Binding Path=Details}" Width="150">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableDeposit" Header="Deposit" Binding="{Binding Path=Deposit}" Width="190">
+                                    <DataGridTextColumn x:Name="tableDeposit" Header="Deposit" Binding="{Binding Path=Deposit}" Width="150">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableExpenses" Header="Expenses" Binding="{Binding Path=Expenses}" Width="190">
+                                    <DataGridTextColumn x:Name="tableExpenses" Header="Expenses" Binding="{Binding Path=Expenses}" Width="160">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableRemains" Header="Remains" Binding="{Binding Path=Remains}" Width="190">
+                                    <DataGridTextColumn x:Name="tableRemains" Header="Remains" Binding="{Binding Path=Remains}" Width="160">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>

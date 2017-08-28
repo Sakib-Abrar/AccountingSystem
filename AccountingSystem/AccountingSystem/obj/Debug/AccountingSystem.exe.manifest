@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="628160">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="640448">
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>s+Vv6hwPEx+kAnbvAckwQPR7Zuj+jwKGtIohDco4/j0=</dsig:DigestValue>
+        <dsig:DigestValue>1JHUIq1B06Bh88qEdb97Pvbll/3obt7e9TtRhj7jUgk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -146,13 +146,13 @@
       <dsig:DigestValue>6N7MliNbVJSIAIPrecIshMbZ7zEoKLr5SQvud4LDUOw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Database\AccountingSystemDatabase.mdf" size="3342336" writeableType="applicationData">
+  <file name="Database\AccountingSystemDatabase.mdf" size="4390912" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yT2OjYZuzBJnZLJ5kLBsZVDmLpjk3G3pZlNsPF0vPFc=</dsig:DigestValue>
+      <dsig:DigestValue>jrdHmFo66lZBlwF2TxVTEhtsnjpVtSb1P/NS20qXUaw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -161,7 +161,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>SYXHeexlvzXHGUr2Ym6FKYKW9axKRZWcdjKhyx25FWU=</dsig:DigestValue>
+      <dsig:DigestValue>hptl5G/2Z+hp9qnekkXTyPnDWImb+yjtVsz2lE3vCnA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

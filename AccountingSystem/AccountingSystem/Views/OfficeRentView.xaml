@@ -20,7 +20,7 @@
                         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
                             <DataGrid x:Name="officeRent" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="150">
+                                    <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="80">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -28,7 +28,7 @@
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
 
-                                    <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="170">
+                                    <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="100">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -36,7 +36,7 @@
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
 
-                                    <DataGridTextColumn x:Name="tableMonth" Header="Month" Binding="{Binding Path=Month}" Width="170">
+                                    <DataGridTextColumn x:Name="tableMonth" Header="Month" Binding="{Binding Path=Month}" Width="190">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -44,7 +44,7 @@
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
 
-                                    <DataGridTextColumn x:Name="tableAdvance" Header="Advance" Binding="{Binding Path=Advance}" Width="170">
+                                    <DataGridTextColumn x:Name="tableAdvance" Header="Advance" Binding="{Binding Path=Advance}" Width="190">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -52,7 +52,7 @@
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
 
-                                    <DataGridTextColumn x:Name="tableRent" Header="Rent" Binding="{Binding Path=Rent}" Width="170">
+                                    <DataGridTextColumn x:Name="tableRent" Header="Rent" Binding="{Binding Path=Rent}" Width="190">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>

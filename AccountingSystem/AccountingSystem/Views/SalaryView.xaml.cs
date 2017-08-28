@@ -64,5 +64,13 @@ namespace AccountingSystem.Views
             Salary data = new Salary();
             salary.ItemsSource = data.GetData();
         }
+        protected void Print_Data(object sender, RoutedEventArgs e)
+        {
+            PrintDialogView getDate = new PrintDialogView();
+            if (getDate.ShowDialog() == true)
+            {
+                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+            }
+        }
     }
 }
