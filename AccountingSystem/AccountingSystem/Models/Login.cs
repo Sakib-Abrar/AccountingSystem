@@ -9,7 +9,7 @@ namespace AccountingSystem.Models
 {
     class Login: INotifyPropertyChanged
     {
-        public static DateTime? GlobalDate=null;
+        public static DateTime? GlobalDate= DateTime.Today;
         private String m_cell = "";
         private String m_password = "";
         private String m_error_msg = " ";

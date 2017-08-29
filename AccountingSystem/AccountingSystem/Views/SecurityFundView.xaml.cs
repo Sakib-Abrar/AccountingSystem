@@ -16,9 +16,9 @@ namespace AccountingSystem.Views
         public SecurityFundView()
         {
             InitializeComponent();
-            DataContext = new SecurityFund();
             SecurityFund data = new SecurityFund();
             securityFund.ItemsSource = data.GetData();
+            DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -66,7 +66,7 @@ namespace AccountingSystem.Views
 
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [SecurityFund] (Security_Date, Security_Details, Security_Deposit, Security_Expenses, Security_Remains) VALUES (@Date, @Details, @Deposit, @Expenses, @Remains)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", Login.GlobalDate);
+                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                 CmdSql.Parameters.AddWithValue("@Details", Details.Text);
                 CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                 CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
@@ -78,6 +78,7 @@ namespace AccountingSystem.Views
             }
             SecurityFund data = new SecurityFund();
             securityFund.ItemsSource = data.GetData();
+            DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
