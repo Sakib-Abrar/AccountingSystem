@@ -1,0 +1,13 @@
+1.Page:'Bank account' table: 'date' 'deposit' 'interest' 'service charge' 'withdraw' 'remains'
+Remains=remains+deposit+interest-service charge-withdraw
+
+
+2.Page: 'Cash Account/Cash in hand' table: 'Date' 'Previous' 'Deposit' 'Total' 'Expenses' 'Remains'
+Previous = remains
+Total=deposit+previous
+Remains=total-expenses
+
+
+  string query = "SELECT * FROM SecurityFund WHERE CAST(Security_Date AS date) BETWEEN '" + FromDate + "' and '" + ToDate;
+
+          

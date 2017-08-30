@@ -121,3 +121,6 @@ F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberView
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberEntryView.baml
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberInfoView.baml
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberView.baml
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\bin\Debug\AccountingSystem.exe.config
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.pdb
