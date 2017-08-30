@@ -8,7 +8,7 @@
       Title="Admission_Fee" Width="1157" Height="717">
 
     <Grid>
-        <GroupBox Header="Member Information" HorizontalAlignment="Center" VerticalAlignment="Center" Height="460" Margin="78,152,51,59" Width="1028">
+        <GroupBox Header="Member Information" HorizontalAlignment="Center" VerticalAlignment="Center" Height="509" Margin="78,198,51,10" Width="1028">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -18,7 +18,7 @@
 
             </Grid>
         </GroupBox>
-        <GroupBox Header="Add Entry" HorizontalAlignment="Center" Margin="78,118,51,0" VerticalAlignment="Top" Height="80" Width="Auto">
+        <GroupBox Header="Add Entry" HorizontalAlignment="Center" Margin="78,106,51,0" VerticalAlignment="Top" Height="80" Width="Auto">
             <Grid Width="1016" Margin="0,0,0,-12" >
                 <Label Content="Member ID : " HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="searchid" HorizontalAlignment="Left" Height="23" Margin="100,20,0,0" TextWrapping="Wrap" Text="{Binding MemberID, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
