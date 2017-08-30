@@ -56,5 +56,9 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new BankAccountInformationView());
         }
+        private void MemberInformationView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MemberView());
+        }
     }
     }

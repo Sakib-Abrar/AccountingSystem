@@ -24,7 +24,7 @@ namespace AccountingSystem.Models
         private double? m_bonus;
         public int SelectedIndex { get; set; }
         public DateTime Date { get; set; }
-     
+      
         public double? Amount 
         {
             get

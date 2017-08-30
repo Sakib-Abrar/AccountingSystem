@@ -118,6 +118,7 @@
     <Compile Include="Models\CashInformation.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Members.cs" />
     <Compile Include="Models\OfficeRent.cs" />
     <Compile Include="Models\ReservedFund.cs" />
     <Compile Include="Models\Salary.cs" />
@@ -138,6 +139,15 @@
     </Compile>
     <Compile Include="Views\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberEntryView.xaml.cs">
+      <DependentUpon>MemberEntryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberInfoView.xaml.cs">
+      <DependentUpon>MemberInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberView.xaml.cs">
+      <DependentUpon>MemberView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OfficeRentView.xaml.cs">
       <DependentUpon>OfficeRentView.xaml</DependentUpon>
@@ -189,6 +199,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MemberEntryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MemberInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MemberView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
