@@ -81,6 +81,7 @@
                         </BulletDecorator>
                     </Expander.Header>
                     <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
+                        <MenuItem Header="_Member Details" Width="199" Padding="6,4" FontSize="15"  Click="MemberInformationView"/>
                         <MenuItem Header="_Member Loan Account" Width="199" Padding="6,4" FontSize="15"/>
                         <MenuItem Header="_Member Ledger"  Width="199" Padding="6,4" FontSize="15" />
                     </Menu>

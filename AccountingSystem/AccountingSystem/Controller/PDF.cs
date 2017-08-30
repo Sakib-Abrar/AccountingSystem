@@ -19,7 +19,7 @@ namespace AccountingSystem.Controller
         public PDF(string title,float[] pdfSize,string[] headers)
         {
             string filename=title+" "+DateTime.Now.ToShortDateString();
-            PdfWriter writer = new PdfWriter("/Users/Public/Documents/"+filename+".pdf");
+            PdfWriter writer = new PdfWriter("/down/"+"filename"+".pdf");
             PdfDocument pdf = new PdfDocument(writer);
             doc = new Document(pdf);
             PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA);
