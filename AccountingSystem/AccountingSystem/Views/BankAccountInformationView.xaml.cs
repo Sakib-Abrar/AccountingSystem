@@ -42,12 +42,12 @@ namespace AccountingSystem.Views
         {
             Connection conn = new Connection();
             double remains = 0.00;
-            string query = "SELECT TOP 1 * FROM BankAccountInformation ORDER BY Bank_Id DESC";
+            string query = "SELECT TOP 1 * FROM BankAccount ORDER BY BankAccount_Id DESC";
             conn.OpenConection();
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                remains = (double)reader["Bank_Remains"];
+                remains = (double)reader["BankAccount_Remains"];
             }
             conn.CloseConnection();
             return remains;
@@ -64,7 +64,7 @@ namespace AccountingSystem.Views
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {
 
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [BankAccountInformation] (Bank_Date, Bank_Interest, Bank_Deposit, Bank_Withdraw, Bank_ServiceCharge,Bank_Remains) VALUES (@Date, @Interest, @Deposit, @Withdraw,@ServiceCharge, @Remains)", conn);
+                SqlCommand CmdSql = new SqlCommand("INSERT INTO [BankAccount] (BankAccount_Date, BankAccount_Interest, BankAccount_Deposit, BankAccount_Withdraw, BankAccount_ServiceCharge,BankAccount_Remains) VALUES (@Date, @Interest, @Deposit, @Withdraw,@ServiceCharge, @Remains)", conn);
                 conn.Open();
                 CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
                 CmdSql.Parameters.AddWithValue("@Interest", Interest.Text);
@@ -79,6 +79,14 @@ namespace AccountingSystem.Views
             }
             BankAccountInformation data = new BankAccountInformation();
             bankAccountInformation.ItemsSource = data.GetData();
+        }
+        protected void Print_Data(object sender, RoutedEventArgs e)
+        {
+            PrintDialogView getDate = new PrintDialogView();
+            if (getDate.ShowDialog() == true)
+            {
+                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+            }
         }
     }
 }

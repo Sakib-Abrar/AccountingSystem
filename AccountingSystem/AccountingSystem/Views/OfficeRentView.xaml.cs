@@ -62,15 +62,20 @@ namespace AccountingSystem.Views
             OfficeRent data = new OfficeRent();
             officeRent.ItemsSource = data.GetData();
         }
+        protected void Print_Data(object sender, RoutedEventArgs e)
+        {
+            PrintDialogView getDate = new PrintDialogView();
+            if (getDate.ShowDialog() == true)
+            {
+                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+            }
+        }
 
         private void Button_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
         }
 
-        private void Print_Data(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -85,19 +85,19 @@ namespace AccountingSystem.Models
             Connection conn = new Connection();
             conn.OpenConection();
             List<BankAccountInformation> entries = new List<BankAccountInformation>();
-            string query = "SELECT * From BankAccountInformation";
+            string query = "SELECT * From BankAccount";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
                 entries.Add(new BankAccountInformation()
                 {
-                    ID = (int)reader["Bank_Id"],
-                    Date = (DateTime)reader["Bank_Date"],
-                    Deposit = (double)reader["Bank_Deposit"],
-                    Interest = (double)reader["Bank_Interest"],
-                    Withdraw = (double)reader["Bank_Withdraw"],
-                    ServiceCharge = (double)reader["Bank_ServiceCharge"],
-                    Remains = (double)reader["Bank_Remains"],
+                    ID = (int)reader["BankAccount_Id"],
+                    Date = (DateTime)reader["BankAccount_Date"],
+                    Deposit = (double)reader["BankAccount_Deposit"],
+                    Interest = (double)reader["BankAccount_Interest"],
+                    Withdraw = (double)reader["BankAccount_Withdraw"],
+                    ServiceCharge = (double)reader["BankAccount_ServiceCharge"],
+                    Remains = (double)reader["BankAccount_Remains"],
                 });
             }
             conn.CloseConnection();

@@ -19,42 +19,42 @@
                         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
                             <DataGrid x:Name="securityFund" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="150">
+                                    <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="120">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="190">
+                                    <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="150">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableDetails" Header="Details" Binding="{Binding Path=Details}" Width="190">
+                                    <DataGridTextColumn x:Name="tableDetails" Header="Details" Binding="{Binding Path=Details}" Width="150">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableDeposit" Header="Deposit" Binding="{Binding Path=Deposit}" Width="190">
+                                    <DataGridTextColumn x:Name="tableDeposit" Header="Deposit" Binding="{Binding Path=Deposit}" Width="150">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableExpenses" Header="Expenses" Binding="{Binding Path=Expenses}" Width="190">
+                                    <DataGridTextColumn x:Name="tableExpenses" Header="Expenses" Binding="{Binding Path=Expenses}" Width="160">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableRemains" Header="Remains" Binding="{Binding Path=Remains}" Width="190">
+                                    <DataGridTextColumn x:Name="tableRemains" Header="Remains" Binding="{Binding Path=Remains}" Width="160">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="DataGridColumnHeader">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -69,7 +69,7 @@
                 </ScrollViewer>
 
 
-                <Button Content="Print" HorizontalAlignment="Left" Margin="904,270,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Print_Data" FontWeight="Bold">
+                <Button Content="Print" HorizontalAlignment="Left" Margin="919,274,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Print_Data" FontWeight="Bold">
 
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -101,10 +101,10 @@
                 <Label Content="Expenses :" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="Expenses" HorizontalAlignment="Left" Height="23" Margin="90,84,0,0" TextWrapping="Wrap" Text="{Binding Expenses, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
-                <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="680,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+                <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="680,20,0,0" TextWrapping="Wrap" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="598,52,0,0" VerticalAlignment="Top" />
-                <TextBox Name="Date" HorizontalAlignment="Left" Height="23" Margin="680,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
-                <Button Content="Save" HorizontalAlignment="Left" Margin="904,143,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click" FontWeight="Bold">
+                
+                <Button Content="Save" HorizontalAlignment="Left" Margin="919,143,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click" FontWeight="Bold">
 
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -126,6 +126,7 @@
                     </Button.Resources>
 
                 </Button>
+                <DatePicker Name="Date" HorizontalAlignment="Left" Margin="680,52,0,0" VerticalAlignment="Top" Width="200" Height="23" SelectedDate="{Binding Date}" IsEnabled="False"/>
             </Grid>
         </GroupBox>
         <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>

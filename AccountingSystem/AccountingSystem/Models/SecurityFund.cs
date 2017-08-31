@@ -21,11 +21,22 @@ namespace AccountingSystem.Models
         /// <summary>
         /// double? is used to make double nullable.Otherwise we would get zero in textbox initially.But we want it empty.
         /// </summary>
+        private int m_id=10;
         private double? m_deposit;
         private double? m_expenses ;
-        private DateTime? date = Login.GlobalDate;
+        private DateTime? m_date = Login.GlobalDate;
         public int SelectedIndex { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date {
+            get
+            {
+                return m_date;
+            }
+            set
+            {
+                m_date = value;
+                OnPropertyChanged("Date");
+            }
+        }
         public string Details {
             get {
                 return m_details;
@@ -61,8 +72,20 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("Expenses");
             }
         }
+        public int ID
+        {
+            get
+            {
+                return m_id;
+            }
+            set
+            {
+                m_id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public double Remains { get; set; }
-        public double ID { get; set; }
+        
 
         #region PopulateTable
         public List<SecurityFund> GetData()
@@ -83,6 +106,19 @@ namespace AccountingSystem.Models
                 Remains = (double)reader["Security_Remains"],
                 });
             }
+           
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM SecurityFund ORDER BY Security_Id DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_id = (int)reader["Security_Id"]+1;
+            }
+
             conn.CloseConnection();
             return entries;
         }
@@ -102,19 +138,6 @@ namespace AccountingSystem.Models
         public string Error
         {
             get { return "...."; }
-        }
-
-        public DateTime? Date1
-        {
-            get
-            {
-                return date;
-            }
-
-            set
-            {
-                date = value;
-            }
         }
 
         /// <summary>
@@ -155,6 +178,8 @@ namespace AccountingSystem.Models
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
+                    break;
+                case "ID":
                     break;
             }
 
