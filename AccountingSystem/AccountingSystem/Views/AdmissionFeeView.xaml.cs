@@ -16,9 +16,9 @@ namespace AccountingSystem.Views
         public AdmissionFeeView()
         {
             InitializeComponent();
-            DataContext = new AdmissionFee();
             AdmissionFee data = new AdmissionFee();
             admissionFee.ItemsSource = data.GetData();
+            DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -76,13 +76,14 @@ namespace AccountingSystem.Views
             }
             AdmissionFee data = new AdmissionFee();
             admissionFee.ItemsSource = data.GetData();
+            DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new AdmissionFee().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
     }

@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-﻿AccountingSystem
-
-
-winexe
-C#
-.cs
-D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
-AccountingSystem
-none
-false
-DEBUG;TRACE
-D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-17-1622009656
-2-1114429820
-391484684617
-20-1800278376
-LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
-
-True
-
-=======
 ﻿AccountingSystem
 
 
@@ -32,12 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-161649142224
+17-1622009656
 2-1114429820
-38-1266465257
+39-89539104
 20-252112958
-MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
+LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
 
-True
+False
 
->>>>>>> master

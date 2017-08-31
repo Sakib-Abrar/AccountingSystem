@@ -15,9 +15,9 @@ namespace AccountingSystem.Views
         public OfficeRentView()
         {
             InitializeComponent();
-            DataContext = new OfficeRent();
             OfficeRent data = new OfficeRent();
             officeRent.ItemsSource = data.GetData();
+            DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -61,13 +61,14 @@ namespace AccountingSystem.Views
             }
             OfficeRent data = new OfficeRent();
             officeRent.ItemsSource = data.GetData();
+            DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new OfficeRent().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
 

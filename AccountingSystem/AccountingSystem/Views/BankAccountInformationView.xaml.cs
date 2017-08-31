@@ -16,9 +16,9 @@ namespace AccountingSystem.Views
         public BankAccountInformationView()
         {
             InitializeComponent();
-            DataContext = new BankAccountInformation();
             BankAccountInformation data = new BankAccountInformation();
             bankAccountInformation.ItemsSource = data.GetData();
+            DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -79,13 +79,14 @@ namespace AccountingSystem.Views
             }
             BankAccountInformation data = new BankAccountInformation();
             bankAccountInformation.ItemsSource = data.GetData();
+            DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new BankAccountInformation().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
     }

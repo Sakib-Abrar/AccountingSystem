@@ -26,8 +26,33 @@ namespace AccountingSystem.Models
         private double? m_withdraw;
         private double? m_serviceCharge;
         public int SelectedIndex { get; set; }
-        public DateTime Date { get; set; }
-      
+        private int m_id;
+        private DateTime? m_date = Login.GlobalDate;
+        public DateTime? Date
+        {
+            get
+            {
+                return m_date;
+            }
+            set
+            {
+                m_date = value;
+                OnPropertyChanged("Date");
+            }
+        }
+        public int ID
+        {
+            get
+            {
+                return m_id;
+            }
+            set
+            {
+                m_id = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
         public double? Deposit
         {
             get
@@ -77,7 +102,6 @@ namespace AccountingSystem.Models
             }
         }
         public double Remains { get; set; }
-        public double ID { get; set; }
 
         #region PopulateTable
         public List<BankAccountInformation> GetData()
@@ -99,6 +123,18 @@ namespace AccountingSystem.Models
                     ServiceCharge = (double)reader["BankAccount_ServiceCharge"],
                     Remains = (double)reader["BankAccount_Remains"],
                 });
+            }
+
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM BankAccount ORDER BY BankAccount_Id DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_id = (int)reader["BankAccount_Id"] + 1;
             }
             conn.CloseConnection();
             return entries;
@@ -170,6 +206,37 @@ namespace AccountingSystem.Models
             }
 
             return validationMessage;
+        }
+        #endregion
+
+        #region PDFCreation
+        public void PublishPDF(DateTime? FromDate, DateTime? ToDate)
+        {
+            string pageTitle = "Bank Account Information";
+            float[] size = new float[] { 3, 3, 3, 3, 3, 3, 3 };
+            string[] tableHeaders = new String[] { "Entry No.", "Date", "Deposit", "Interest", "Withdraw", "Service Charge", "Remains" };
+            PDF myPDF = new PDF(pageTitle, size, tableHeaders);
+
+            string FDate = FromDate?.ToString("yyyyMMdd");
+            string TDate = ToDate?.ToString("yyyyMMdd");
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * FROM BankAccount WHERE CAST(BankAccount_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                myPDF.AddToTable(reader["BankAccount_Id"].ToString());
+                DateTime OnlyDate = (DateTime)reader["BankAccount_Date"];
+                myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
+                myPDF.AddToTable(reader["BankAccount_Deposit"].ToString());
+                myPDF.AddToTable(reader["BankAccount_Interest"].ToString());
+                myPDF.AddToTable(reader["BankAccount_Withdraw"].ToString());
+                myPDF.AddToTable(reader["BankAccount_ServiceCharge"].ToString());
+                myPDF.AddToTable(reader["BankAccount_Remains"].ToString());
+
+            }
+            conn.CloseConnection();
+            myPDF.Done();
         }
         #endregion
     }

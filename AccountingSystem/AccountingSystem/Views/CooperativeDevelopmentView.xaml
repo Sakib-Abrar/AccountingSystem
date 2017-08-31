@@ -98,9 +98,9 @@
                 <Label Content="Paid :" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="Paid" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Paid, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
-                <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="680,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+                <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="680,20,0,0" TextWrapping="Wrap" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="598,52,0,0" VerticalAlignment="Top" />
-                <TextBox Name="Date" HorizontalAlignment="Left" Height="23" Margin="680,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+                <DatePicker Name="Date" HorizontalAlignment="Left" Margin="680,52,0,0" VerticalAlignment="Top" Width="200" Height="23" SelectedDate="{Binding Date}" IsEnabled="False"/>
                 <Button Content="Save" HorizontalAlignment="Left" Margin="904,143,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click" FontWeight="Bold">
 
                     <Button.Background>
