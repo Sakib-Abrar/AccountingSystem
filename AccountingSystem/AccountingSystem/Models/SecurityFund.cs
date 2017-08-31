@@ -165,13 +165,15 @@ namespace AccountingSystem.Models
         #region PDFCreation
         public void PublishPDF(DateTime? FromDate,DateTime? ToDate)
         {
+   
+
             string pageTitle = "Security Fund";
             float[] size=new float[] { 4, 2, 3, 4, 3, 3};
             string[] tableHeaders = new String[]{ "Entry No.","Date","Details","Deposit","Expenses","Remains"};
             PDF myPDF=new PDF(pageTitle,size,tableHeaders);
             Connection conn = new Connection();
             conn.OpenConection();
-            string query = "SELECT * From SecurityFund";
+            string query = "SELECT * FROM SecurityFund WHERE CAST(Security_Date AS date) BETWEEN '" + FromDate + "' and '" + ToDate+"'";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {

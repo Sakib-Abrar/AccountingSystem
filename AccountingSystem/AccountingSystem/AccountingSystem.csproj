@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\Dotnet_project\</PublishUrl>
+    <PublishUrl>C:\Users\aoyan\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -113,6 +113,9 @@
     </ApplicationDefinition>
     <Compile Include="Controller\Connection.cs" />
     <Compile Include="Controller\PDF.cs" />
+    <Compile Include="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AdmissionFee.cs" />
     <Compile Include="Models\BankAccountInformation.cs" />
     <Compile Include="Models\CashInformation.cs" />
@@ -170,6 +173,10 @@
     <Compile Include="Views\ShareView.xaml.cs">
       <DependentUpon>ShareView.xaml</DependentUpon>
     </Compile>
+    <Page Include="LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

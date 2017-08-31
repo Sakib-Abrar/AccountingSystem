@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-161649142224
+17-1622009656
 2-1114429820
-38307758464
+391484684617
 20-1800278376
-MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
+LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
 
-False
+True
 
