@@ -55,7 +55,7 @@ namespace AccountingSystem
             {
                 stuff_cell = (String)reader["Stuff_Cell"];
                 stuff_pass = (String)reader["Stuff_Password"];
-                if (stuff_cell.Equals(Cell.Text) && stuff_pass.Equals(Password.Text))
+                if (stuff_cell.Equals(Cell.Text) && stuff_pass.Equals(Passwordbox.Password))
                 {
                     isLogin = 1;
                 }
