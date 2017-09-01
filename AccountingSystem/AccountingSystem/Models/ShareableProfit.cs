@@ -23,8 +23,33 @@ namespace AccountingSystem.Models
         private double? m_deposit;
         private double? m_expenses;
         public int SelectedIndex { get; set; }
-        public DateTime Date { get; set; }
-        
+        private int m_id;
+        private DateTime? m_date = Login.GlobalDate;
+        public DateTime? Date
+        {
+            get
+            {
+                return m_date;
+            }
+            set
+            {
+                m_date = value;
+                OnPropertyChanged("Date");
+            }
+        }
+        public int ID
+        {
+            get
+            {
+                return m_id;
+            }
+            set
+            {
+                m_id = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
         public double? Deposit
         {
             get
@@ -58,7 +83,6 @@ namespace AccountingSystem.Models
         }
         public double Remains { get; set; }
         public double Previous { get; set; }
-        public double ID { get; set; }
 
         #region PopulateTable
         public List<ShareableProfit> GetData()
@@ -79,6 +103,18 @@ namespace AccountingSystem.Models
                     Expenses = (double)reader["Shareable_Expenses"],
                     Remains = (double)reader["Shareable_Remains"],
                 });
+            }
+
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM ShareableProfit ORDER BY Shareable_Id DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_id = (int)reader["Shareable_Id"] + 1;
             }
             conn.CloseConnection();
             return entries;
@@ -138,6 +174,36 @@ namespace AccountingSystem.Models
             }
 
             return validationMessage;
+        }
+        #endregion
+
+        #region PDFCreation
+        public void PublishPDF(DateTime? FromDate, DateTime? ToDate)
+        {
+            string pageTitle = "Shareable Profit";
+            float[] size = new float[] { 4, 4, 3, 3, 3, 4};
+            string[] tableHeaders = new String[] { "Entry No.", "Date", "Previous", "Deposit", "Expenses", "Remains"};
+            PDF myPDF = new PDF(pageTitle, size, tableHeaders);
+
+            string FDate = FromDate?.ToString("yyyyMMdd");
+            string TDate = ToDate?.ToString("yyyyMMdd");
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * FROM ShareableProfit WHERE CAST(Shareable_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                myPDF.AddToTable(reader["Shareable_Id"].ToString());
+                DateTime OnlyDate = (DateTime)reader["Shareable_Date"];
+                myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
+                myPDF.AddToTable(reader["Shareable_Previous"].ToString());
+                myPDF.AddToTable(reader["Shareable_Deposit"].ToString());
+                myPDF.AddToTable(reader["Shareable_Expenses"].ToString());
+                myPDF.AddToTable(reader["Shareable_Remains"].ToString());
+
+            }
+            conn.CloseConnection();
+            myPDF.Done();
         }
         #endregion
     }

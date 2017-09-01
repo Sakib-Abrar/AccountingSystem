@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingSystem"
         mc:Ignorable="d"
-      Title="Login" Width="1157" Height="717">
+      Title="Welcome" Width="1157" Height="717">
 
     <Grid>
-        <GroupBox Header="Login Info" HorizontalAlignment="Center" Margin="300,275,300,0" Padding="110,15,0,0" VerticalAlignment="Top" Height="200" Width="Auto" Foreground="#FFF5EFEF" FontWeight="Bold">
+        <GroupBox Header="Login" HorizontalAlignment="Center" Margin="300,275,300,0" Padding="110,15,0,0" VerticalAlignment="Top" Height="200" Width="Auto" Foreground="#FFF5EFEF" FontWeight="Bold">
             <Grid Width="401" Margin="0,0,0,-12">
                 <Label Content="Cell :" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Foreground="#FFF5EFEF" FontWeight="Bold"/>
                 <TextBox Name="Cell" HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="{Binding Cell, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="200"/>

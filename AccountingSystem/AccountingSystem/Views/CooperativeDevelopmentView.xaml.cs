@@ -16,9 +16,9 @@ namespace AccountingSystem.Views
         public CooperativeDevelopmentView()
         {
             InitializeComponent();
-            DataContext = new CooperativeDevelopment();
             CooperativeDevelopment data = new CooperativeDevelopment();
             cooperativeDevelopment.ItemsSource = data.GetData();
+            DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -77,13 +77,14 @@ namespace AccountingSystem.Views
             }
             CooperativeDevelopment data = new CooperativeDevelopment();
             cooperativeDevelopment.ItemsSource = data.GetData();
+            DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new CooperativeDevelopment().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace AccountingSystem.Models
         /// <summary>
         /// double? is used to make double nullable.Otherwise we would get zero in textbox initially.But we want it empty.
         /// </summary>
-        private int m_id=10;
+        private int m_id;
         private double? m_deposit;
         private double? m_expenses ;
         private DateTime? m_date = Login.GlobalDate;
@@ -190,15 +190,16 @@ namespace AccountingSystem.Models
         #region PDFCreation
         public void PublishPDF(DateTime? FromDate,DateTime? ToDate)
         {
-   
-
             string pageTitle = "Security Fund";
             float[] size=new float[] { 4, 2, 3, 4, 3, 3};
             string[] tableHeaders = new String[]{ "Entry No.","Date","Details","Deposit","Expenses","Remains"};
             PDF myPDF=new PDF(pageTitle,size,tableHeaders);
+
+            string FDate = FromDate?.ToString("yyyyMMdd");
+            string TDate = ToDate?.ToString("yyyyMMdd");
             Connection conn = new Connection();
             conn.OpenConection();
-            string query = "SELECT * FROM SecurityFund WHERE CAST(Security_Date AS date) BETWEEN '" + FromDate + "' and '" + ToDate+"'";
+            string query = "SELECT * FROM SecurityFund WHERE CAST(Security_Date AS date) BETWEEN '" + FDate + "' and '" + TDate+"'";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {

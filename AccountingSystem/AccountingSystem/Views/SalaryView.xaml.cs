@@ -15,9 +15,9 @@ namespace AccountingSystem.Views
         public SalaryView()
         {
             InitializeComponent();
-            DataContext = new Salary();
             Salary data = new Salary();
             salary.ItemsSource = data.GetData();
+            DataContext = data;
 
 
         }
@@ -63,13 +63,14 @@ namespace AccountingSystem.Views
             }
             Salary data = new Salary();
             salary.ItemsSource = data.GetData();
+            DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new Salary().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
     }

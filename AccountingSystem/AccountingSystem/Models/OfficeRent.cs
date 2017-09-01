@@ -23,7 +23,32 @@ namespace AccountingSystem.Models
         private double? m_advance;
         private double? m_rent;
         public int SelectedIndex { get; set; }
-        public DateTime Date { get; set; }
+        private int m_id;
+        private DateTime? m_date = Login.GlobalDate;
+        public DateTime? Date
+        {
+            get
+            {
+                return m_date;
+            }
+            set
+            {
+                m_date = value;
+                OnPropertyChanged("Date");
+            }
+        }
+        public int ID
+        {
+            get
+            {
+                return m_id;
+            }
+            set
+            {
+                m_id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public double? Advance
         {
             get
@@ -57,7 +82,6 @@ namespace AccountingSystem.Models
         }
      
         public string Month { get; set; }
-        public double ID { get; set; }
 
         #region PopulateTable
         public List<OfficeRent> GetData()
@@ -78,6 +102,18 @@ namespace AccountingSystem.Models
                     Rent = (double)reader["Office_Rent"],
                     
                 });
+            }
+
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM OfficeRent ORDER BY Office_Id DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_id = (int)reader["Office_Id"] + 1;
             }
             conn.CloseConnection();
             return entries;
@@ -137,6 +173,35 @@ namespace AccountingSystem.Models
             }
 
             return validationMessage;
+        }
+        #endregion
+
+        #region PDFCreation
+        public void PublishPDF(DateTime? FromDate, DateTime? ToDate)
+        {
+            string pageTitle = "Office Rent";
+            float[] size = new float[] { 4, 4, 4, 4, 4};
+            string[] tableHeaders = new String[] { "Entry No.", "Date", "Month", "Advance", "Rent"};
+            PDF myPDF = new PDF(pageTitle, size, tableHeaders);
+
+            string FDate = FromDate?.ToString("yyyyMMdd");
+            string TDate = ToDate?.ToString("yyyyMMdd");
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * FROM OfficeRent WHERE CAST(Office_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                myPDF.AddToTable(reader["Office_Id"].ToString());
+                DateTime OnlyDate = (DateTime)reader["Office_Date"];
+                myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
+                myPDF.AddToTable(reader["Office_Month"].ToString());
+                myPDF.AddToTable(reader["Office_Advance"].ToString());
+                myPDF.AddToTable(reader["Office_Rent"].ToString());
+
+            }
+            conn.CloseConnection();
+            myPDF.Done();
         }
         #endregion
     }

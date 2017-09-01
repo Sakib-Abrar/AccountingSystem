@@ -15,9 +15,9 @@ namespace AccountingSystem.Views
         public ShareView()
         {
             InitializeComponent();
-            DataContext = new Share();
             Share data = new Share();
             share.ItemsSource = data.GetData();
+            DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -63,13 +63,14 @@ namespace AccountingSystem.Views
             }
             Share data = new Share();
             share.ItemsSource = data.GetData();
+            DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new Share().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
     }

@@ -23,8 +23,33 @@ namespace AccountingSystem.Models
         private double? m_amount;
         private double? m_bonus;
         public int SelectedIndex { get; set; }
-        public DateTime Date { get; set; }
-      
+        private int m_id;
+        private DateTime? m_date = Login.GlobalDate;
+        public DateTime? Date
+        {
+            get
+            {
+                return m_date;
+            }
+            set
+            {
+                m_date = value;
+                OnPropertyChanged("Date");
+            }
+        }
+        public int ID
+        {
+            get
+            {
+                return m_id;
+            }
+            set
+            {
+                m_id = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
         public double? Amount 
         {
             get
@@ -58,7 +83,6 @@ namespace AccountingSystem.Models
         }
 
         public double Total { get; set; }
-        public double ID { get; set; }
         #region PopulateTable
         public List<Salary> GetData()
         {
@@ -78,6 +102,18 @@ namespace AccountingSystem.Models
                     Total = (double)reader["Salary_Total"],
                   
                 });
+            }
+
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM Salary ORDER BY Salary_Id DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_id = (int)reader["Salary_Id"] + 1;
             }
             conn.CloseConnection();
             return entries;
@@ -138,6 +174,35 @@ namespace AccountingSystem.Models
             }
 
             return validationMessage;
+        }
+        #endregion
+
+        #region PDFCreation
+        public void PublishPDF(DateTime? FromDate, DateTime? ToDate)
+        {
+            string pageTitle = "Salary";
+            float[] size = new float[] { 4, 4, 4, 4, 4};
+            string[] tableHeaders = new String[] { "Entry No.", "Date", "Amount", "Bonus", "Total" };
+            PDF myPDF = new PDF(pageTitle, size, tableHeaders);
+
+            string FDate = FromDate?.ToString("yyyyMMdd");
+            string TDate = ToDate?.ToString("yyyyMMdd");
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * FROM Salary WHERE CAST(Salary_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                myPDF.AddToTable(reader["Salary_Id"].ToString());
+                DateTime OnlyDate = (DateTime)reader["Salary_Date"];
+                myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
+                myPDF.AddToTable(reader["Salary_Amount"].ToString());
+                myPDF.AddToTable(reader["Salary_Bonus"].ToString());
+                myPDF.AddToTable(reader["Salary_Total"].ToString());
+
+            }
+            conn.CloseConnection();
+            myPDF.Done();
         }
         #endregion
     }

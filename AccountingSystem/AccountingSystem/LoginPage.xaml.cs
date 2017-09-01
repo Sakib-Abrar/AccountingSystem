@@ -36,6 +36,7 @@ namespace AccountingSystem
         public LoginPage()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             DataContext = new Login();
         }
 

@@ -17,7 +17,12 @@ namespace AccountingSystem.Controller
         Table table;
         Document doc;
         public PDF(string title,float[] pdfSize,string[] headers)
+<<<<<<< HEAD
         {string  filename=title+" "+DateTime.Now.ToString("dd MMM yyyy");
+=======
+        {
+            string filename=title+" "+DateTime.Now.ToString("dd MMM yyyy HH_mm");
+>>>>>>> master
             PdfWriter writer = new PdfWriter("/Users/Public/Documents/" + filename + ".pdf");
             PdfDocument pdf = new PdfDocument(writer);
             doc = new Document(pdf);
