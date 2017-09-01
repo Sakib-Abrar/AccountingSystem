@@ -80,7 +80,7 @@ namespace AccountingSystem
             {
                 MainWindow main = new MainWindow();
                 App.Current.MainWindow = main;
-                this.Hide();
+                this.Close();
                 main.Show();
             }
 

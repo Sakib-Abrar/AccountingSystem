@@ -15,6 +15,11 @@ namespace AccountingSystem
             MainFrame.Navigate(new MemberView());
         }
 
+        private void StuffView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new StuffView());
+        }
+
         private void LoadSecurityFundView(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new SecurityFundView());

@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[ShareableProfit]
+(
+	[Shareable_Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Shareable_Date] DATETIME NULL, 
+    [Shareable_Previous] FLOAT NULL, 
+    [Shareable_Deposit] FLOAT NULL, 
+    [Shareable_Expenses] FLOAT NULL, 
+    [Shareable_Remains] FLOAT NULL
+)

@@ -5,89 +5,89 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="460" d:DesignWidth="300"
+      d:DesignHeight="290" d:DesignWidth="800"
       Title="member_info">
 
     <Grid>
-        <Label Content="Member ID : " HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberID" Text="{Binding MemberID, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-2,0,0" HorizontalAlignment="Left" Margin="125,25,0,0" Width="125" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Member ID : " HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberID" Text="{Binding MemberID, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-2,0,0" HorizontalAlignment="Left" Margin="141,25,0,0" Width="178" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Member Name : " HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberName" Text="{Binding MemberName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="125,45,0,0" Width="125" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Member Name : " HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberName" Text="{Binding MemberName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="141,45,0,0" Width="178" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Voter ID : " HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="VoterId" Text="{Binding MemberVoterId, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="125,65,0,0" Width="125" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Voter ID : " HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="VoterId" Text="{Binding MemberVoterId, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="141,65,0,0" Width="178" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Father's Name : " HorizontalAlignment="Left" Margin="20,80,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberFather" Text="{Binding MemberFather, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="125,85,0,0" Width="125" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Father's Name : " HorizontalAlignment="Left" Margin="20,80,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberFather" Text="{Binding MemberFather, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="141,84,0,0" Width="178" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Mother's Name : " HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberMother" Text="{Binding MemberMother, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="125,105,0,0" Width="125" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Mother's Name : " HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberMother" Text="{Binding MemberMother, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="141,104,0,0" Width="178" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Date of Birth : " HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name="MemberDOB" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="125,124.7,0,0" VerticalAlignment="Top"  Width="125" Height="16.8"  SelectedDate="{Binding MemberDOB}"/>
+        <Label Content="Date of Birth : " HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <DatePicker Name="MemberDOB" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="141,125,0,0" VerticalAlignment="Top"  Width="178" Height="22"  SelectedDate="{Binding MemberDOB}" FontSize="14.667"/>
 
-        <Label Content="Profession : " HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberProfession" Text="{Binding MemberProfession, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="125,145,0,0" Width="125" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Profession : " HorizontalAlignment="Left" Margin="488,20,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberProfession" Text="{Binding MemberProfession, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="593,25,0,0" Width="140" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Nationality : " HorizontalAlignment="Left" Margin="20,160,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberNationality" Text="{Binding MemberNationality, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="125,165,0,0" Width="95" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Nationality : " HorizontalAlignment="Left" Margin="488,40,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberNationality" Text="{Binding MemberNationality, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="593,45,0,0" Width="140" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Religion : " HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberReligion" Text="{Binding MemberReligion, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="125,185,0,0" Width="95" Height="16.2" VerticalAlignment="Top"/>
-
-
-
-        <Label Content="Present Address : " HorizontalAlignment="Left" Margin="20,200,0,0" VerticalAlignment="Top"/>
-
-        <Label Content="C/O:" HorizontalAlignment="Left" Margin="20,220,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPresentCO" Text="{Binding MemberPresentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="55,225,0,0" Width="95" Height="16.2" VerticalAlignment="Top"/>
-
-        <Label Content="Village:" HorizontalAlignment="Left" Margin="20,240,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPresentVillage" Text="{Binding MemberPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="69,245,0,0" Width="79" Height="16.2" VerticalAlignment="Top"/>
-
-        <Label Content="P/O:" HorizontalAlignment="Left" Margin="150,240,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPresentPost" Text="{Binding MemberPresentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="185,245,0,0" Width="55" Height="16.2" VerticalAlignment="Top"/>
-
-        <Label Content="Thana:" HorizontalAlignment="Left" Margin="20,260,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPresentThana" Text="{Binding MemberPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="69,265,0,0" Width="95" Height="16.2" VerticalAlignment="Top"/>
-
-        <Label Content="District:" HorizontalAlignment="Left" Margin="175,260,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPresentDistrict" Text="{Binding MemberPresentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="225,265,0,0" Width="75" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Religion : " HorizontalAlignment="Left" Margin="488,60,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberReligion" Text="{Binding MemberReligion, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="593,65,0,0" Width="140" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
 
 
+        <Label Content="Present Address : " HorizontalAlignment="Left" Margin="20,163,0,0" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Permanent Address : " HorizontalAlignment="Left" Margin="20,281,0,0" VerticalAlignment="Top"/>
+        <Label Content="C/O:" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPresentCO" Text="{Binding MemberPresentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="62,199,0,0" Width="115" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="C/O:" HorizontalAlignment="Left" Margin="20,300,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPermanentCO" Text="{Binding MemberPermanentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="55,305,0,0" Width="95" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Village:" HorizontalAlignment="Left" Margin="20,210,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPresentVillage" Text="{Binding MemberPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="76,219,0,0" Width="101" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Village:" HorizontalAlignment="Left" Margin="20,320,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPermanentVillage" Text="{Binding MemberPermanentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="68,325,0,0" Width="80" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="P/O:" HorizontalAlignment="Left" Margin="186,209,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPresentPost" Text="{Binding MemberPresentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="233,214,0,0" Width="89" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="P/O:" HorizontalAlignment="Left" Margin="150,320,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPermanentPost" Text="{Binding MemberPermanentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="185,325,0,0" Width="45" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="Thana:" HorizontalAlignment="Left" Margin="20,230,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPresentThana" Text="{Binding MemberPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="76,239,0,0" Width="101" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Thana:" HorizontalAlignment="Left" Margin="20,340,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPermanentThana" Text="{Binding MemberPermanentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="69,345,0,0" Width="95" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="District:" HorizontalAlignment="Left" Margin="178,229,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPresentDistrict" Text="{Binding MemberPresentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="233,234,0,0" Width="89" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="District:" HorizontalAlignment="Left" Margin="175,340,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberPermanentDistrict" Text="{Binding MemberPermanentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="225,345,0,0" Width="75" Height="16.2" VerticalAlignment="Top"/>
 
-        <Label Content="Nominee:" HorizontalAlignment="Left" Margin="20,360,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberNominee" Text="{Binding MemberNominee, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="77,365,0,0" Width="95" Height="16.2" VerticalAlignment="Top"/>
 
-        <Label Content="Relation:" HorizontalAlignment="Left" Margin="175,360,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberNomineeRelation" Text="{Binding MemberNomineeRelation, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="227,366,0,0" Width="73" Height="16.2" VerticalAlignment="Top"/>
 
-        <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="20,380,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name="MemberNomineeDOB" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="96,385,0,0" VerticalAlignment="Top"  Width="87" Height="16.8"  SelectedDate="{Binding MemberNomineeDOB}"/>
+        <Label Content="Permanent Address : " HorizontalAlignment="Left" Margin="487,167,0,0" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Label Content="Cell:" HorizontalAlignment="Left" Margin="175,380,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="MemberNomineeCell" Text="{Binding MemberNomineeCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="210,385,0,0" Width="90" Height="16.2" VerticalAlignment="Top"/>
+        <Label Content="C/O:" HorizontalAlignment="Left" Margin="490,188,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPermanentCO" Text="{Binding MemberPermanentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="542,193,0,0" Width="250" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
 
-        <Button Content="Add Member" HorizontalAlignment="Left" Margin="218,412,0,0" VerticalAlignment="Top" Width="85" Height="23" Click="AddMember">
+        <Label Content="Village:" HorizontalAlignment="Left" Margin="488,209,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPermanentVillage" Text="{Binding MemberPermanentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="542,214,0,0" Width="102" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
+
+        <Label Content="P/O:" HorizontalAlignment="Left" Margin="656,209,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPermanentPost" Text="{Binding MemberPermanentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="703,212,0,0" Width="89" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
+
+        <Label Content="Thana:" HorizontalAlignment="Left" Margin="488,229,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberPermanentThana" Text="{Binding MemberPermanentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="542,235,0,0" Width="101" Height="16" VerticalAlignment="Top" FontSize="14.667"/>
+
+        <Label Content="District:" HorizontalAlignment="Left" Margin="648,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.24,0.5" FontSize="14.667"/>
+        <TextBox Name="MemberPermanentDistrict" Text="{Binding MemberPermanentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="703,235,0,0" Width="89" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
+
+        <Label Content="Nominee:" HorizontalAlignment="Left" Margin="488,92,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberNominee" Text="{Binding MemberNominee, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="560,97,0,0" Width="98" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
+
+        <Label Content="Relation with Nominee:" HorizontalAlignment="Left" Margin="488,113,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberNomineeRelation" Text="{Binding MemberNomineeRelation, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="649,120,0,0" Width="143" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
+
+        <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="488,137,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <DatePicker Name="MemberNomineeDOB" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="592,142,0,0" VerticalAlignment="Top"  Width="200" Height="22"  SelectedDate="{Binding MemberNomineeDOB}" FontSize="14.667"/>
+
+        <Label Content="Cell:" HorizontalAlignment="Left" Margin="659,91,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <TextBox Name="MemberNomineeCell" Text="{Binding MemberNomineeCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="694,97,0,0" Width="98" Height="17" VerticalAlignment="Top" FontSize="14.667"/>
+
+        <Button Content="Add Member" HorizontalAlignment="Left" Margin="25,268,0,0" VerticalAlignment="Top" Width="98" Height="23" Click="AddMember" FontSize="13">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>

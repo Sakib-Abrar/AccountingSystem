@@ -1,43 +1,20 @@
-<<<<<<< HEAD
 ﻿AccountingSystem
 
 
 winexe
 C#
 .cs
-D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
+F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
 AccountingSystem
 none
 false
 DEBUG;TRACE
-D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-17-1622009656
+F:\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
+18-1968014802
 2-1114429820
-391484684617
-20-1800278376
-LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
+41143477552
+201664952465
+LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;Views\StuffView.xaml;
 
-True
+False
 
-=======
-﻿AccountingSystem
-
-
-winexe
-C#
-.cs
-C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
-AccountingSystem
-none
-false
-DEBUG;TRACE
-C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-161649142224
-2-1114429820
-38-1266465257
-20-252112958
-MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\login.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;
-
-True
-
->>>>>>> master

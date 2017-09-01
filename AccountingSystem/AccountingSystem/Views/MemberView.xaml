@@ -71,6 +71,6 @@
             </Grid>
         </GroupBox>
         <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
-        <Label x:Name="label" Content="Admission Fee" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
+        <Label x:Name="label" Content="Member Details" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
     </Grid>
 </Page>
