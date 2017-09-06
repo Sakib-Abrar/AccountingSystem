@@ -1,9 +1,0 @@
-CREATE TABLE [dbo].[Share]
-(
-	[Share_Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [Share_Date] DATETIME NULL, 
-    [Share_Collection] FLOAT NULL, 
-    [Share_Profit] FLOAT NULL, 
-    [Share_Withdraw] FLOAT NULL, 
-    [Share_Remains] FLOAT NULL
-)

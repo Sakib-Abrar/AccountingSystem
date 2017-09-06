@@ -15,7 +15,7 @@
                 <Label Content="Password :" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top" Foreground="#FFF5EFEF" FontWeight="Bold"/>
                 <PasswordBox Name="Passwordbox" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top" Foreground="#FFF5EFEF" FontWeight="Bold"/>
-                <Button Content="Save" HorizontalAlignment="Left" Margin="315,120,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click">
+                <Button Content="Login" HorizontalAlignment="Left" Margin="315,120,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                             <GradientStop Color="#FF2Bc0EC" Offset="1"/>

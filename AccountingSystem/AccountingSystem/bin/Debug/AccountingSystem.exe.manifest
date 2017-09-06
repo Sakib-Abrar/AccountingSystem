@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="701376">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="705984">
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>p+KBoko8pGFvTW+aeOYIla25TTLOnm1F9ZIAIP3G3DA=</dsig:DigestValue>
+        <dsig:DigestValue>qBfAL1a6o/2eAg6VEVi71fxchw30YWhS9PKfqAU6Amw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -152,7 +152,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>s71XvWKdCgvMKu2ySWKvieaXFngQ/xNfMiWft4YWTVA=</dsig:DigestValue>
+      <dsig:DigestValue>w5fOIs7/LCy2B4S+NGzC902pA6e90GJzTQk4NiSW6ZM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -161,7 +161,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>+OjLCazVULd7eWy/vR66WbPaCI2lEexufnVdpFHE3AA=</dsig:DigestValue>
+      <dsig:DigestValue>7Fvje/7iaZAnBk/H0cgWjOCtO0lmRPUKXHnJqnZgghQ=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

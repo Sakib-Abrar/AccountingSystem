@@ -1,9 +1,0 @@
-CREATE TABLE [dbo].[OfficeRent] (
-    [Office_Id]      INT        IDENTITY (1, 1) NOT NULL,
-    [Office_Month]   NCHAR (50) NULL,
-    [Office_Advance] FLOAT (53) NULL,
-    [Office_Rent]    FLOAT (53) NULL,
-    [Office_Date] DATETIME NULL, 
-    PRIMARY KEY CLUSTERED ([Office_Id] ASC)
-);
-

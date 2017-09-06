@@ -4,6 +4,8 @@ using AccountingSystem.Controller;
 using System.Data.SqlClient;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AccountingSystem.Models
 {
@@ -35,6 +37,7 @@ namespace AccountingSystem.Models
         private DateTime m_memberNomineeDOB;
         private String m_memberNomineeRelation;
         private String m_memberNomineeCell;
+        private String m_memberPhoto;
 
         /// <summary>
         /// _firstLoad is used to prevent auto validation at the startup
@@ -388,6 +391,21 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberNomineeCell");
             }
         }
+        public String MemberPhoto
+        {
+            get
+            {
+                return m_memberPhoto;
+            }
+            set
+            {
+                if (m_memberPhoto != value)
+                {
+                    m_memberPhoto = value;
+                }
+                OnPropertyChanged("MemberPhoto");
+            }
+        }
 
         public void GetData(string memberID)
         {
@@ -402,7 +420,7 @@ namespace AccountingSystem.Models
                 if ((String)reader["MemberID"]== memberID)
                 {
                     MemberName = (String)reader["MemberName"];
-                    MemberVoterID= (int)reader["MemberVoterId"];
+                  //  MemberVoterID= (int)reader["MemberVoterId"];
                     MemberFather = (String)reader["MemberFather"];
                     MemberMother = (String)reader["MemberMother"];
                     MemberDOB = (DateTime)reader["MemberDOB"];
@@ -423,10 +441,17 @@ namespace AccountingSystem.Models
                     MemberNomineeDOB = (DateTime)reader["MemberNomineeDOB"];
                     MemberNomineeRelation = (String)reader["MemberNomineeRelation"];
                     MemberNomineeCell = (String)reader["MemberNomineeCell"];
+                    //string appStartPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                    //string path = appStartPath.Substring(0, appStartPath.Length - 10);
+                   // String path = "/AccountingSystem;component";
+                    //  MemberPhoto = path + (String)reader["MemberPhoto"];
+                   // var yourImage = new BitmapImage(new Uri(String.Format("Images/MemberPhoto/{0}.jpg", "aaa_1204041"), UriKind.Relative));
+                    MemberPhoto = (String)reader["MemberPhoto"];
                     checkExistence = 1;
                     break;
                 }
-                
+               
+
             }
             if (checkExistence == 0) {
                 MemberID = "WRONG ID ENTRY !!!";

@@ -27,10 +27,12 @@ namespace AccountingSystem.Views
             InitializeComponent();
             Object = new Members();
             DataContext = Object;
+
         }
 
         public void ShowData(string member_ID) {
             Object.GetData(member_ID);
+     
         }
     }
 }

@@ -129,12 +129,14 @@
     <Compile Include="Models\Share.cs" />
     <Compile Include="Models\ShareableProfit.cs" />
     <Compile Include="Models\Stuff.cs" />
+    <Compile Include="System\Windows\Forms.cs" />
     <Compile Include="Views\AdmissionFeeView.xaml.cs">
       <DependentUpon>AdmissionFeeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BankAccountInformationView.xaml.cs">
       <DependentUpon>BankAccountInformationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Bitmap.cs" />
     <Compile Include="Views\CashInformationView.xaml.cs">
       <DependentUpon>CashInformationView.xaml</DependentUpon>
     </Compile>

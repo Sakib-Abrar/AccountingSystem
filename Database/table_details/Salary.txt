@@ -1,8 +1,0 @@
-CREATE TABLE [dbo].[Salary] (
-    [Salary_Id]     INT           IDENTITY (1, 1) NOT NULL,
-    [Salary_Amount] FLOAT (53)    NULL,
-    [Salary_Bonus]  FLOAT (53)    NULL,
-    [Salary_Total]  FLOAT (53)    NULL,
-    [Salary_Date]   DATETIME2 (7) NULL,
-    PRIMARY KEY CLUSTERED ([Salary_Id] ASC)
-);

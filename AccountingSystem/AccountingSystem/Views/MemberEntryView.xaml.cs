@@ -1,17 +1,15 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using AccountingSystem.Controller;
-using AccountingSystem.Models;
 using System.Data.SqlClient;
 using System.Windows.Data;
-
+using Microsoft.Win32;
 namespace AccountingSystem.Views
 {
     /// <summary>
     /// Interaction logic for MemberEntryView.xaml
     /// </summary>
-    public partial class MemberEntryView : Page
+    public partial class MemberEntryView : Page 
     {
         public MemberEntryView()
         {
@@ -32,6 +30,7 @@ namespace AccountingSystem.Views
             }
 
         }
+       
         private void AddMember(object sender, RoutedEventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
@@ -43,8 +42,25 @@ namespace AccountingSystem.Views
                 }
                 else
                 {
-                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [Member] (MemberID, MemberName, MemberVoterId, MemberDOB, MemberFather, MemberMother, MemberNationality, MemberReligion, MemberProfession, MemberPresentCO, MemberPresentVillage, MemberPresentPost, MemberPresentThana, MemberPresentDistrict, MemberPermanentCO, MemberPermanentVillage, MemberPermanentPost, MemberPermanentThana, MemberPermanentDistrict, MemberNominee, MemberNomineeDOB, MemberNomineeCell, MemberNomineeRelation) VALUES (@MemberID, @MemberName, @MemberVoterId, @MemberDOB, @MemberFather, @MemberMother, @MemberNationality, @MemberReligion, @MemberProfession,  @MemberPresentCO, @MemberPresentVillage, @MemberPresentPost, @MemberPresentThana, @MemberPresentDistrict, @MemberPermanentCO, @MemberPermanentVillage, @MemberPermanentPost, @MemberPermanentThana, @MemberPermanentDistrict, @MemberNominee, @MemberNomineeDOB, @MemberNomineeCell, @MemberNomineeRelation)", conn);
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [Member] (MemberID, MemberName, MemberVoterId, MemberDOB, MemberFather, MemberMother, MemberNationality, MemberReligion, MemberProfession, MemberPresentCO, MemberPresentVillage, MemberPresentPost, MemberPresentThana, MemberPresentDistrict, MemberPermanentCO, MemberPermanentVillage, MemberPermanentPost, MemberPermanentThana, MemberPermanentDistrict, MemberNominee, MemberNomineeDOB, MemberNomineeCell, MemberNomineeRelation,MemberPhoto,MemberSignature) VALUES (@MemberID, @MemberName, @MemberVoterId, @MemberDOB, @MemberFather, @MemberMother, @MemberNationality, @MemberReligion, @MemberProfession,  @MemberPresentCO, @MemberPresentVillage, @MemberPresentPost, @MemberPresentThana, @MemberPresentDistrict, @MemberPermanentCO, @MemberPermanentVillage, @MemberPermanentPost, @MemberPermanentThana, @MemberPermanentDistrict, @MemberNominee, @MemberNomineeDOB, @MemberNomineeCell, @MemberNomineeRelation,@MemberPhoto,@MemberSignature)", conn);
                     conn.Open();
+
+                    //photo upload to the directory
+                    string appStartPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                    string path = appStartPath.Substring(0, appStartPath.Length - 10);
+                    //  string filename = System.IO.Path.GetFileName(PhotoNameLabel.Text);
+                    string filename = MemberName.Text + "_" + MemberID.Text + ".jpg";
+                    System.IO.File.Copy(PhotoNameLabel.Text, path + "\\Images\\MemberPhoto\\" + filename);
+                   // string MemberPhoto = "\\Images\\MemberPhoto\\" + filename;
+                    string MemberPhoto = filename;
+
+                    //Signature upload to the directory
+
+                    string filenameSign = "Sign_"+MemberName.Text + "_" + MemberID.Text + ".jpg";
+                    System.IO.File.Copy(SignatureLabel.Text, path + "\\Images\\MemberSign\\" + filenameSign);
+                   // string MemberSignature = "\\Images\\MemberSign\\" + filenameSign;
+                    string MemberSignature = filenameSign;
+
                     CmdSql.Parameters.AddWithValue("@MemberID", MemberID.Text);
                     CmdSql.Parameters.AddWithValue("@MemberName", MemberName.Text);
                     CmdSql.Parameters.AddWithValue("@MemberVoterId", VoterId.Text);
@@ -68,11 +84,53 @@ namespace AccountingSystem.Views
                     CmdSql.Parameters.AddWithValue("@MemberNomineeDOB", MemberNomineeDOB.Text);
                     CmdSql.Parameters.AddWithValue("@MemberNomineeCell", MemberNomineeCell.Text);
                     CmdSql.Parameters.AddWithValue("@MemberNomineeRelation", MemberNomineeRelation.Text);
+                    CmdSql.Parameters.AddWithValue("@MemberPhoto", MemberPhoto);
+                    CmdSql.Parameters.AddWithValue("@MemberSignature", MemberSignature);
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
+                    MessageBox.Show("Succesfully Added New Member");
+             
                 }
                 
 
+            }
+        }
+
+        private void BrowsePhoto(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.InitialDirectory = "C:\\";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *; *.bmp)| *.jpg; *.jpeg; *.gif; *.bmp";
+            open.FilterIndex = 1;
+            open.ShowDialog();
+
+            if (open.CheckFileExists)
+            {
+
+                // image file path  
+                PhotoNameLabel.Text = open.FileName;
+                // display image in picture box 
+                 
+               //PhotoViewer.Image = new Bitmap(open.FileName);
+            }
+        }
+
+        private void BrowsSignature(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.InitialDirectory = "C:\\";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *; *.bmp)| *.jpg; *.jpeg; *.gif; *.bmp";
+            open.FilterIndex = 1;
+            open.ShowDialog();
+
+            if (open.CheckFileExists)
+            {
+
+                // image file path  
+                SignatureLabel.Text = open.FileName;
+                // display image in picture box 
+
+                // PhotoViewer.Image = new Bitmap(open.FileName);
             }
         }
     }
