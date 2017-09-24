@@ -29,7 +29,7 @@
                     <Expander.Header>
                         <BulletDecorator FlowDirection="LeftToRight">
 
-                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,151,0" Foreground="#FFF0E5E5">Entries</TextBlock>
+                            <MenuItem Header="Entry"  Width="199" Padding="6,4" FontSize="16" Click="LoadEntryLogView"/>
 
                             <BulletDecorator.Bullet>
                                 <Image Width="25" Source="/Images/entry.png"/>

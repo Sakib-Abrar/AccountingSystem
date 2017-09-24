@@ -13,6 +13,9 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class SecurityFundView : Page
     {
+        private int Id;
+        private DateTime dateTime;
+
         public SecurityFundView()
         {
             InitializeComponent();
@@ -39,6 +42,7 @@ namespace AccountingSystem.Views
             conn.CloseConnection();
             return remains;
         }
+   
         private bool CheckForError(TextBox Selected)
         {
             BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
@@ -73,6 +77,28 @@ namespace AccountingSystem.Views
                 CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
+
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
+
+                string query = "SELECT TOP 1 * FROM SecurityFund ORDER BY Security_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                     Id = (int)reader["Security_Id"];
+                     dateTime = (DateTime)reader["Security_Date"];
+                }
+                conn2.CloseConnection();
+
+               
+
+                
+                string table = "Security Fund";
+                string type = "Inserted";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime, color);
 
 
             }

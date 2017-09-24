@@ -13,7 +13,11 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class ReservedFundView : Page
     {
-            public ReservedFundView()
+        private DateTime dateTime;
+
+        private int Id;
+
+        public ReservedFundView()
             {
                 InitializeComponent();
                 ReservedFund data = new ReservedFund();
@@ -65,7 +69,7 @@ namespace AccountingSystem.Views
 
                     SqlCommand CmdSql = new SqlCommand("INSERT INTO [ReservedFund] (Reserved_Date, Reserved_Remaining, Reserved_Current, Reserved_Previous, Reserved_Total,Reserved_Withdraw) VALUES (@ReservedFund_date, @ReservedFund_remainig, @ReservedFund_current, @ReservedFund_previous, @ReservedFund_total,@ReservedFund_withdraw)", conn);
                     conn.Open();
-                    CmdSql.Parameters.AddWithValue("@ReservedFund_date", new DateTime(2017, 2, 23));
+                    CmdSql.Parameters.AddWithValue("@ReservedFund_date", Date.SelectedDate);
                     CmdSql.Parameters.AddWithValue("@ReservedFund_remainig", Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
                     CmdSql.Parameters.AddWithValue("@ReservedFund_current", Current.Text);
                     CmdSql.Parameters.AddWithValue("@ReservedFund_previous", previous);
@@ -74,9 +78,32 @@ namespace AccountingSystem.Views
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
 
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
 
+                string query = "SELECT TOP 1 * FROM ReservedFund ORDER BY Reserved_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                    Id = (int)reader["Reserved_Id"];
+                    dateTime = (DateTime)reader["Reserved_Date"];
                 }
-                ReservedFund data = new ReservedFund();
+                conn2.CloseConnection();
+
+
+
+
+                string table = "Reserved Fund";
+                string type = "Inserted";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime, color);
+
+
+
+            }
+            ReservedFund data = new ReservedFund();
                 reservedFund.ItemsSource = data.GetData();
                 DataContext = data;
         }

@@ -13,6 +13,9 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class AdmissionFeeView : Page
     {
+        private int Id;
+        private DateTime dateTime;
+
         public AdmissionFeeView()
         {
             InitializeComponent();
@@ -66,11 +69,34 @@ namespace AccountingSystem.Views
 
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [AdmissionFee] (Admission_Date, Admission_Collection, Admission_Total) VALUES (@Date, @Collection, @Total)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
+                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                 CmdSql.Parameters.AddWithValue("@Collection", Collection.Text);
                 CmdSql.Parameters.AddWithValue("@Total", total + Convert.ToDouble(Collection.Text));
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
+
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
+
+                string query = "SELECT TOP 1 * FROM AdmissionFee ORDER BY Admission_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                    Id = (int)reader["Admission_Id"];
+                    dateTime = (DateTime)reader["Admission_Date"];
+                }
+                conn2.CloseConnection();
+
+
+
+
+                string table = "Admission Fee";
+                string type = "Inserted";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime, color);
+
 
 
             }

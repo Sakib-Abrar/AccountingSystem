@@ -67,3 +67,5 @@ D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\A
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.pdb
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\EntryLogView.g.cs
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\EntryLogView.baml

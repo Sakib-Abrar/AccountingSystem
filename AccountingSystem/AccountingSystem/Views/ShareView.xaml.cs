@@ -12,6 +12,10 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class ShareView : Page
     {
+        private DateTime dateTime;
+
+        private int Id;
+
         public ShareView()
         {
             InitializeComponent();
@@ -51,13 +55,35 @@ namespace AccountingSystem.Views
 
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [Share] (Share_Date, Share_Collection, Share_Profit, Share_Withdraw, Share_Remains) VALUES (@Date, @Collection, @Profit, @Withdraw, @Remains)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
+                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                 CmdSql.Parameters.AddWithValue("@Collection", Collection.Text);
                 CmdSql.Parameters.AddWithValue("@Profit", Profit.Text);
                 CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
                 CmdSql.Parameters.AddWithValue("@Remains", Convert.ToDouble(Collection.Text) + Convert.ToDouble(Profit.Text) - Convert.ToDouble(Withdraw.Text));
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
+
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
+
+                string query = "SELECT TOP 1 * FROM Share ORDER BY Share_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                    Id = (int)reader["Share_Id"];
+                    dateTime = (DateTime)reader["Share_Date"];
+                }
+                conn2.CloseConnection();
+
+
+
+
+                string table = "Share";
+                string type = "Inserted";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime,color);
 
 
             }

@@ -12,6 +12,10 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class ShareableProfitView : Page
     {
+        private DateTime dateTime;
+
+        private int Id;
+
         public ShareableProfitView()
         {
             InitializeComponent();
@@ -65,13 +69,36 @@ namespace AccountingSystem.Views
 
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [ShareableProfit] (Shareable_Date, Shareable_Previous, Shareable_Deposit, Shareable_Expenses, Shareable_Remains) VALUES (@Date, @Previous, @Deposit, @Expenses, @Remains)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
+                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                 CmdSql.Parameters.AddWithValue("@Previous", previous);
                 CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                 CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
                 CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
+
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
+
+                string query = "SELECT TOP 1 * FROM ShareableProfit ORDER BY Shareable_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                    Id = (int)reader["Shareable_Id"];
+                    dateTime = (DateTime)reader["Shareable_Date"];
+                }
+                conn2.CloseConnection();
+
+
+
+
+                string table = "Shareable Profit";
+                string type = "Inserted";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime, color);
+
 
 
             }

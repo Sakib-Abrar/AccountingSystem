@@ -133,6 +133,8 @@ namespace AccountingSystem.Models
             get { return "...."; }
         }
 
+        public string Person { get; internal set; }
+
         /// <summary>
         /// Will be called for each and every property when ever its value is changed
         /// </summary>

@@ -112,6 +112,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\Connection.cs" />
+    <Compile Include="Controller\EntryLog.cs" />
     <Compile Include="Controller\PDF.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -120,6 +121,7 @@
     <Compile Include="Models\BankAccountInformation.cs" />
     <Compile Include="Models\CashInformation.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
+    <Compile Include="Models\EntryModel.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Members.cs" />
     <Compile Include="Models\OfficeRent.cs" />
@@ -142,6 +144,9 @@
     </Compile>
     <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
       <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntryLogView.xaml.cs">
+      <DependentUpon>EntryLogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
@@ -208,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CooperativeDevelopmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EntryLogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

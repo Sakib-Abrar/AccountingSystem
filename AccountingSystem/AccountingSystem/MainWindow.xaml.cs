@@ -65,5 +65,9 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new MemberView());
         }
+        private void LoadEntryLogView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new EntryLogView());
+        }
     }
     }

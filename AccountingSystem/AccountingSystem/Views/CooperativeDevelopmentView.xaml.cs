@@ -13,6 +13,10 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class CooperativeDevelopmentView : Page
     {
+        private DateTime dateTime;
+
+        private int Id;
+
         public CooperativeDevelopmentView()
         {
             InitializeComponent();
@@ -65,13 +69,32 @@ namespace AccountingSystem.Views
                 double previous = this.last_remains();
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [CooperativeDevelopment] (Cooperative_Date, Cooperative_Current, Cooperative_Paid, Cooperative_Previous, Cooperative_Remains) VALUES (@Date, @Current, @Paid, @Previous, @Remains)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
+                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                 CmdSql.Parameters.AddWithValue("@Current", Current.Text);
                 CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
                 CmdSql.Parameters.AddWithValue("@Previous", previous);
                 CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
+
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
+
+                string query = "SELECT TOP 1 * FROM CooperativeDevelopement ORDER BY Cooperative_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                    Id = (int)reader["Cooperative_Id"];
+                    dateTime = (DateTime)reader["Cooperative_Date"];
+                }
+                conn2.CloseConnection();
+
+                string table = "Co-operative developement";
+                string type = "Inserted";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime, color);
 
 
             }

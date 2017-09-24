@@ -12,6 +12,10 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class OfficeRentView : Page
     {
+        private DateTime dateTime;
+
+        private int Id;
+
         public OfficeRentView()
         {
             InitializeComponent();
@@ -50,12 +54,35 @@ namespace AccountingSystem.Views
 
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [OfficeRent] (Office_Date, Office_Month, Office_Advance, Office_Rent) VALUES (@Date, @Month, @Advance, @Rent)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
+                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                 CmdSql.Parameters.AddWithValue("@Month", Month.Text);
                 CmdSql.Parameters.AddWithValue("@Advance", Advance.Text);
                 CmdSql.Parameters.AddWithValue("@Rent", Rent.Text);
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
+
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
+
+                string query = "SELECT TOP 1 * FROM OfficeRent ORDER BY Office_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                    Id = (int)reader["Office_Id"];
+                    dateTime = (DateTime)reader["Office_Date"];
+                }
+                conn2.CloseConnection();
+
+
+
+
+                string table = "Office Rent";
+                string type = "Inserted";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime, color);
+
 
 
             }

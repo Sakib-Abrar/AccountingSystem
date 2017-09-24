@@ -9,10 +9,14 @@ using System.Windows.Data;
 namespace AccountingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for SecurityFundView.xaml
+    /// Interaction logic for CashInformationView.xaml
     /// </summary>
     public partial class CashInformationView : Page
     {
+        private DateTime dateTime;
+
+        private int Id;
+
         public CashInformationView()
         {
             InitializeComponent();
@@ -66,7 +70,7 @@ namespace AccountingSystem.Views
 
                 SqlCommand CmdSql = new SqlCommand("INSERT INTO [CashInformation] (Cash_Date, Cash_Previous, Cash_Deposit, Cash_Expenses, Cash_Remains,Cash_Total) VALUES (@Date, @Previous, @Deposit, @Expenses, @Remains,@Total)", conn);
                 conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", new DateTime(2017, 2, 23));
+                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                 CmdSql.Parameters.AddWithValue("@Previous", remains);
                 CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                 CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
@@ -75,6 +79,27 @@ namespace AccountingSystem.Views
                 CmdSql.ExecuteNonQuery();
                 conn.Close();
 
+                //Inserting value in Entry table
+                Connection conn2 = new Connection();
+
+                string query = "SELECT TOP 1 * FROM CashInformation ORDER BY Cash_Id DESC";
+                conn2.OpenConection();
+                SqlDataReader reader = conn2.DataReader(query);
+                while (reader.Read())
+                {
+                    Id = (int)reader["Cash_Id"];
+                    dateTime = (DateTime)reader["Cash_Date"];
+                }
+                conn2.CloseConnection();
+
+
+
+
+                string table = "Cash Information";
+                string type = "Insert";
+                string color = "Green";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, Id, dateTime, color);
 
             }
             CashInformation data = new CashInformation();

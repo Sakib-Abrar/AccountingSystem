@@ -28,6 +28,7 @@ namespace AccountingSystem
         private String pass { get; set; }
         public string m_error_msg { get; private set; }
         public string Error_msg { get; private set; }
+        
 
         private String stuff_cell;
         private String stuff_pass;
@@ -68,6 +69,7 @@ namespace AccountingSystem
                 ErrorMessage.Content = "Logged in Successfully!!!";
                 ErrorMessage.Foreground = new SolidColorBrush(Colors.Green);
                 ErrorMessage.Background = new SolidColorBrush(Colors.White);
+          
             }
             else
             {   //Console.Write("logged_out" + stuff_cell + " go" + Cell.Text + " " + stuff_pass + " " + Password.Text+" "+SelectedDate);
