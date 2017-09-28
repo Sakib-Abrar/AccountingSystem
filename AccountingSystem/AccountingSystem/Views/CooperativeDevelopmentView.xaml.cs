@@ -80,7 +80,7 @@ namespace AccountingSystem.Views
                 //Inserting value in Entry table
                 Connection conn2 = new Connection();
 
-                string query = "SELECT TOP 1 * FROM CooperativeDevelopement ORDER BY Cooperative_Id DESC";
+                string query = "SELECT TOP 1 * FROM CooperativeDevelopment ORDER BY Cooperative_Id DESC";
                 conn2.OpenConection();
                 SqlDataReader reader = conn2.DataReader(query);
                 while (reader.Read())

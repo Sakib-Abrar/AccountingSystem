@@ -22,8 +22,8 @@ namespace AccountingSystem.Controller
             string filename=title+" "+DateTime.Now.ToString("dd MMM yyyy HH_mm");
 
 
-            PdfWriter writer = new PdfWriter("/Dotnet_project/pdf/" + filename + ".pdf");
-          //  PdfWriter writer = new PdfWriter("/Users/Public/Documents/" + filename + ".pdf");
+            //PdfWriter writer = new PdfWriter("/Dotnet_project/pdf/" + filename + ".pdf");
+            PdfWriter writer = new PdfWriter("/Users/Public/Documents/" + filename + ".pdf");
 
             PdfDocument pdf = new PdfDocument(writer);
             doc = new Document(pdf);

@@ -96,7 +96,7 @@ namespace AccountingSystem.Views
 
 
                 string table = "Cash Information";
-                string type = "Insert";
+                string type = "Inserted";
                 string color = "Green";
                 EntryLog entry = new EntryLog();
                 entry.Add_Entry(table, type, Id, dateTime, color);

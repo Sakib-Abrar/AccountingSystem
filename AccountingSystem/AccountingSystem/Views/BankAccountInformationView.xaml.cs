@@ -81,7 +81,7 @@ namespace AccountingSystem.Views
                 //Inserting value in Entry table
                 Connection conn2 = new Connection();
 
-                string query = "SELECT TOP 1 * FROM BankAccount ORDER BY Admission_Id DESC";
+                string query = "SELECT TOP 1 * FROM BankAccount ORDER BY BankAccount_Id DESC";
                 conn2.OpenConection();
                 SqlDataReader reader = conn2.DataReader(query);
                 while (reader.Read())

@@ -24,6 +24,7 @@ namespace AccountingSystem.Models
         private int m_id;
         private double? m_deposit;
         private double? m_expenses ;
+        private double m_remains;
         private DateTime? m_date = Login.GlobalDate;
         public int SelectedIndex { get; set; }
         public DateTime? Date {
@@ -213,6 +214,15 @@ namespace AccountingSystem.Models
             }
             conn.CloseConnection();
             myPDF.Done();
+        }
+        #endregion
+
+        #region RemoveEntry
+        public void RemoveEntry(string FirstInput, string SecondInput, string Password)
+        {
+            if (FirstInput != SecondInput)
+                return;
+
         }
         #endregion
     }

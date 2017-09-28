@@ -24,14 +24,15 @@ namespace AccountingSystem
     public partial class LoginPage : Window
     {
 
-        private String cell { get; set; }
-        private String pass { get; set; }
+        private string cell { get; set; }
+        private string pass { get; set; }
         public string m_error_msg { get; private set; }
         public string Error_msg { get; private set; }
         
 
-        private String stuff_cell;
-        private String stuff_pass;
+        private string stuff_cell;
+        private string stuff_pass;
+        private string stuff_name;
 
 
         public LoginPage()
@@ -54,33 +55,28 @@ namespace AccountingSystem
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
+                stuff_name = (string)reader["Stuff_Name"];
                 stuff_cell = (String)reader["Stuff_Cell"];
                 stuff_pass = (String)reader["Stuff_Password"];
                 if (stuff_cell.Equals(Cell.Text) && stuff_pass.Equals(Passwordbox.Password))
                 {
                     isLogin = 1;
+                    break;
                 }
             }
 
 
-            if (isLogin == 1)
-            {
-                //Console.Write("logged_in" + stuff_cell + " " + Cell.Text + " " + stuff_pass + " " + Password.Text+" "+SelectedDate);
-                ErrorMessage.Content = "Logged in Successfully!!!";
-                ErrorMessage.Foreground = new SolidColorBrush(Colors.Green);
-                ErrorMessage.Background = new SolidColorBrush(Colors.White);
-          
-            }
-            else
+            if(isLogin!=1)
             {   //Console.Write("logged_out" + stuff_cell + " go" + Cell.Text + " " + stuff_pass + " " + Password.Text+" "+SelectedDate);
                 ErrorMessage.Content = "Sorry Wrong Password!!!";
                 ErrorMessage.Foreground = new SolidColorBrush(Colors.Red);
                 ErrorMessage.Background = new SolidColorBrush(Colors.WhiteSmoke);
             }
-
             conn.CloseConnection();
             if (isLogin == 1)
             {
+                //Console.Write("logged_in" + stuff_cell + " " + Cell.Text + " " + stuff_pass + " " + Password.Text+" "+SelectedDate);
+                new Login().SetStuffName(stuff_name);
                 MainWindow main = new MainWindow();
                 App.Current.MainWindow = main;
                 this.Close();

@@ -10,6 +10,7 @@ namespace AccountingSystem.Models
     class Login: INotifyPropertyChanged
     {
         public static DateTime? GlobalDate= DateTime.Today;
+        public static string GlobalStuffName = "";
         private String m_cell = "";    
         private String m_password = "";
         private String m_error_msg = " ";
@@ -79,6 +80,11 @@ namespace AccountingSystem.Models
                 }
 
             }
+        }
+
+        public void SetStuffName(string m_stuff_name)
+        {
+            GlobalStuffName = m_stuff_name;
         }
 
         #region Validation

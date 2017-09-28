@@ -138,18 +138,17 @@
     <Compile Include="Views\BankAccountInformationView.xaml.cs">
       <DependentUpon>BankAccountInformationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Bitmap.cs" />
     <Compile Include="Views\CashInformationView.xaml.cs">
       <DependentUpon>CashInformationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
       <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditDialogView.xaml.cs">
+      <DependentUpon>EditDialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EntryLogView.xaml.cs">
       <DependentUpon>EntryLogView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\login.xaml.cs">
-      <DependentUpon>login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MemberEntryView.xaml.cs">
       <DependentUpon>MemberEntryView.xaml</DependentUpon>
@@ -165,6 +164,9 @@
     </Compile>
     <Compile Include="Views\PrintDialogView.xaml.cs">
       <DependentUpon>PrintDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RemoveDialogView.xaml.cs">
+      <DependentUpon>RemoveDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReservedFundView.xaml.cs">
       <DependentUpon>ReservedFundView.xaml</DependentUpon>
@@ -216,11 +218,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EntryLogView.xaml">
+    <Page Include="Views\EditDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\login.xaml">
+    <Page Include="Views\EntryLogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +243,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PrintDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RemoveDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
