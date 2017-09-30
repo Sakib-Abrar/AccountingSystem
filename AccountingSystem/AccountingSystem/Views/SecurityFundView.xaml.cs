@@ -86,7 +86,7 @@ namespace AccountingSystem.Views
                     //Inserting value in Entry table
 
                     Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = Date.SelectedDate;
+                    dateTime = DateTime.Today;
 
                     string table = "Security Fund";
                     string type = "Inserted";
@@ -114,7 +114,7 @@ namespace AccountingSystem.Views
                     //Inserting value in Entry table
 
                     Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = Date.SelectedDate;
+                    dateTime = DateTime.Today;
 
                     string table = "Security Fund";
                     string type = "Updated";
@@ -138,13 +138,18 @@ namespace AccountingSystem.Views
             }
         }
 
+        #region editEntry
+
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             EditDialogView handle = new EditDialogView();
             if (handle.ShowDialog() == true)
             {
                 if (handle.FirstInput != handle.SecondInput)
+                {
+                    MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
+                }
                 Connection conn = new Connection();
                 conn.OpenConection();
                 string query = "SELECT * From SecurityFund WHERE Security_Id = " + handle.FirstInput;
@@ -165,6 +170,9 @@ namespace AccountingSystem.Views
             }
         }
 
+        #endregion
+
+        #region removeEntry
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
             RemoveDialogView handle = new RemoveDialogView();
@@ -173,16 +181,19 @@ namespace AccountingSystem.Views
                 using (SqlConnection con = new SqlConnection(@Connection.ConnectionString))
                 {
                     if (handle.FirstInput != handle.SecondInput)
+                    {
+                        MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
+                    }
                     Connection conn = new Connection();
                     conn.OpenConection();
                     int isLogin = 0;
-                    string query = "SELECT * From Stuff ";//WHERE Stuff_Cell = 12345";
+                    string query = "SELECT * From Stuff ";
                     SqlDataReader reader = conn.DataReader(query);
                     while (reader.Read())
                     {
                         stuff_name = (string)reader["Stuff_Name"];
-                        stuff_pass = (String)reader["Stuff_Password"];
+                        stuff_pass = (string)reader["Stuff_Password"];
                         if (stuff_name.Equals(Login.GlobalStuffName) && stuff_pass.Equals(handle.GetPassword))
                         {
                             isLogin = 1;
@@ -190,7 +201,10 @@ namespace AccountingSystem.Views
                         }
                     }
                     if (isLogin != 1)
+                    {
+                        MessageBox.Show("Wrong Password.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
+                    }
 
                     using (SqlCommand command = new SqlCommand("DELETE FROM SecurityFund WHERE Security_Id = " + handle.FirstInput, con))
                     {
@@ -198,10 +212,24 @@ namespace AccountingSystem.Views
                         command.ExecuteNonQuery();
                         con.Close();
                     }
+
+                    Id = Convert.ToInt32(handle.FirstInput);
+                    dateTime = DateTime.Today;
+                    string table = "Security Fund";
+                    string type = "Removed";
+                    string color = "Red";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
                     conn.CloseConnection();
+                    SecurityFund data = new SecurityFund();
+                    securityFund.ItemsSource = data.GetData();
+                    DataContext = data;
                 }
             }
         }
+
+        #endregion
 
     }
 }

@@ -216,14 +216,5 @@ namespace AccountingSystem.Models
             myPDF.Done();
         }
         #endregion
-
-        #region RemoveEntry
-        public void RemoveEntry(string FirstInput, string SecondInput, string Password)
-        {
-            if (FirstInput != SecondInput)
-                return;
-
-        }
-        #endregion
     }
 }
