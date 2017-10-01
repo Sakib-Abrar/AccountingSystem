@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-201609515573
+21-68537001
 2-1114429820
-46-252569946
+47-110256293
 20-252112958
-LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\EditDialogView.xaml;Views\EntryLogView.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\RemoveDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;Views\StuffView.xaml;
+LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\EditDialogView.xaml;Views\EntryLogView.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberList.xaml;Views\MemberView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\RemoveDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;Views\StuffView.xaml;
 images\resoft-1.png
 False
 

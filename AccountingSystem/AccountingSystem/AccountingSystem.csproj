@@ -156,6 +156,9 @@
     <Compile Include="Views\MemberInfoView.xaml.cs">
       <DependentUpon>MemberInfoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MemberList.xaml.cs">
+      <DependentUpon>MemberList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MemberView.xaml.cs">
       <DependentUpon>MemberView.xaml</DependentUpon>
     </Compile>
@@ -233,6 +236,10 @@
     <Page Include="Views\MemberInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MemberList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MemberView.xaml">
       <SubType>Designer</SubType>

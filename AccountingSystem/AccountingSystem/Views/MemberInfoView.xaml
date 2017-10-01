@@ -15,7 +15,7 @@
         <Label Content="Member Name : " HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top" FontSize="12.667"/>
         <Label Content="{Binding MemberName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,40,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Voter ID : " HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="National ID : " HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" FontSize="12.667"/>
         <Label Content="{Binding MemberVoterID, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,60,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
         <Label Content="Father's Name : " HorizontalAlignment="Left" Margin="20,80,0,0" VerticalAlignment="Top" FontSize="12.667"/>
@@ -75,17 +75,17 @@
         <Label Content="District:" HorizontalAlignment="Left" Margin="478,222,0,0" VerticalAlignment="Top" FontSize="12.667"/>
         <Label Content="{Binding District, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="532,222,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Nominee:" HorizontalAlignment="Left" Margin="327,100,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNominee, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="388,100,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Nominee:" HorizontalAlignment="Left" Margin="329,117,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="{Binding MemberNominee, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="390,117,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Relation:" HorizontalAlignment="Left" Margin="503,100,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNomineeRelation, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="561,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.267" FontSize="12.667"/>
+        <Label Content="Relation:" HorizontalAlignment="Left" Margin="505,117,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="{Binding MemberNomineeRelation, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="563,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.267" FontSize="12.667"/>
 
-        <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="327,120,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNomineeDOB, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="402,120,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="329,137,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="{Binding MemberNomineeDOB, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="404,137,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Cell:" HorizontalAlignment="Left" Margin="503,120,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNomineeCell, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="539,120,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Cell:" HorizontalAlignment="Left" Margin="327,80,0,0" VerticalAlignment="Top" FontSize="12.667" RenderTransformOrigin="-5.081,-1.136"/>
+        <Label Content="{Binding MemberCell, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="363,80,0,0" VerticalAlignment="Top" FontSize="12.667" Width="14"/>
         <TextBlock x:Name="StringToImage"  Visibility ="hidden" Text="{Binding MemberPhoto, StringFormat=/AccountingSystem;component/Images/MemberPhoto/{0}.jpg}" />
 
         <Image x:Name="MemberPhoto" Source="{Binding Text, ElementName=StringToImage}" HorizontalAlignment="Left" Height="75" Margin="250,10,0,0" VerticalAlignment="Top" Width="75"/>

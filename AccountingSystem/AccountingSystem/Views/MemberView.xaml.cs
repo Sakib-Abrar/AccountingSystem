@@ -23,17 +23,20 @@ namespace AccountingSystem.Views
     {
         MemberInfoView MemInfoObj;
         MemberEntryView MemEntryObj;
+        MemberList MemListObj;
         public MemberView()
         {
             InitializeComponent();
-            MemInfoObj = new MemberInfoView();
-            memberData.Navigate(MemInfoObj);
+            MemListObj = new MemberList();
+            memberData.Navigate(MemListObj);
             DataContext = new Members();
         }
 
         private void Search(object sender, RoutedEventArgs e)
         {
-            MemInfoObj.ShowData(searchid.Text);
+            MemInfoObj = new MemberInfoView();
+            MemInfoObj.SearchWithUnknown(searchid.Text);
+            memberData.Navigate(MemInfoObj);
         }
 
         private void AddNew(object sender, RoutedEventArgs e)

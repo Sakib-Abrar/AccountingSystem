@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Collections;
+using System.Windows;
 
 namespace AccountingSystem.Models
 {
@@ -14,12 +16,15 @@ namespace AccountingSystem.Models
     class Members : INotifyPropertyChanged
     {
 
-        private String m_memberID;
+        private int m_memberID;
         private String m_memberName;
-        private int m_memberVoterID;
+        private String m_memberVoterID;
         private String m_memberFather;
         private String m_memberMother;
         private DateTime m_memberDOB;
+        private String t_id;
+
+
         private String m_memberProfession;
         private String m_memberNationality;
         private String m_memberReligion;
@@ -44,7 +49,7 @@ namespace AccountingSystem.Models
         /// </summary>
         private bool _firstLoad = true;
 
-        public String MemberID
+        public int MemberID
         {
             get
             {
@@ -76,7 +81,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberName");
             }
         }
-        public int MemberVoterID
+        public String MemberVoterID
         {
             get
             {
@@ -376,7 +381,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberNomineeRelation");
             }
         }
-        public String MemberNomineeCell
+        public String MemberCell
         {
             get
             {
@@ -406,10 +411,111 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPhoto");
             }
         }
+        #region PopulateTable
+        public List<Members> GetDatas()
+        {
+            
+            Connection conn = new Connection();
+            conn.OpenConection();
+            List<Members> entries = new List<Members>();
+            string query = "SELECT * From Member";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                entries.Add(new Members()
+                {
+                    MemberID = (int)reader["MemberId"],
+                    MemberName = (String)reader["MemberName"],
+                    MemberVoterID = (String)reader["MemberVoterId"],
+                    MemberCell = (String)reader["MemberCell"],
+                });
+            }
 
-        public void GetData(string memberID)
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM Member ORDER BY MemberId DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_memberID = (int)reader["MemberId"] + 1;
+            }
+            conn.CloseConnection();
+            return entries;
+        }
+        #endregion
+
+
+        public void GetData(int memberID)
         {
             MemberID = memberID;
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * From Member WHERE MemberID = "+memberID;
+            SqlDataReader reader = conn.DataReader(query);
+            int checkExistence = 0;
+            while (reader.Read())
+            {
+                MemberName = (String)reader["MemberName"];
+                MemberVoterID= (String)reader["MemberVoterId"];
+                MemberFather = (String)reader["MemberFather"];
+                MemberMother = (String)reader["MemberMother"];
+                MemberDOB = (DateTime)reader["MemberDOB"];
+                MemberProfession = (String)reader["MemberProfession"];
+                MemberReligion = (String)reader["MemberReligion"];
+                MemberNationality = (String)reader["MemberNationality"];
+                MemberPresentCO = (String)reader["MemberPresentCO"];
+                MemberPresentVillage = (String)reader["MemberPresentVillage"];
+                MemberPresentPost = (String)reader["MemberPresentPost"];
+                MemberPresentThana = (String)reader["MemberPresentThana"];
+                MemberPresentDistrict = (String)reader["MemberPresentDistrict"];
+                MemberPermanentCO = (String)reader["MemberPresentCO"];
+                MemberPermanentVillage = (String)reader["MemberPermanentVillage"];
+                MemberPermanentPost = (String)reader["MemberPermanentPost"];
+                MemberPermanentThana = (String)reader["MemberPermanentThana"];
+                MemberPermanentDistrict = (String)reader["MemberPermanentDistrict"];
+                MemberNominee = (String)reader["MemberNominee"];
+                MemberNomineeDOB = (DateTime)reader["MemberNomineeDOB"];
+                MemberNomineeRelation = (String)reader["MemberNomineeRelation"];
+                MemberCell = (String)reader["MemberCell"];
+                //string appStartPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                //string path = appStartPath.Substring(0, appStartPath.Length - 10);
+                // String path = "/AccountingSystem;component";
+                //  MemberPhoto = path + (String)reader["MemberPhoto"];
+                // var yourImage = new BitmapImage(new Uri(String.Format("Images/MemberPhoto/{0}.jpg", "aaa_1204041"), UriKind.Relative));
+                MemberPhoto = (String)reader["MemberPhoto"];
+                checkExistence = 1;
+
+            }
+            if (checkExistence == 0) {
+                MessageBox.Show("System can not find member.Check Input again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
+            conn.CloseConnection();
+        }
+
+        public void GetDataUnknown(string memberUnknown)
+        {
+            string searchTerm;
+            try
+            {
+                if (memberUnknown[0] == '0')
+                    searchTerm = "MemberCell";
+                else
+                {
+                    long cellorvoter = Int64.Parse(memberUnknown);
+                    if (cellorvoter % 100000000000 == 88)
+                        searchTerm = "MemberCell";
+                    else
+                        searchTerm = "MemberVoterID";
+                }
+            }
+            catch (Exception ex)
+            {
+                searchTerm = "MemberName";
+            }
             Connection conn = new Connection();
             conn.OpenConection();
             string query = "SELECT * From Member";
@@ -417,10 +523,12 @@ namespace AccountingSystem.Models
             int checkExistence = 0;
             while (reader.Read())
             {
-                if ((String)reader["MemberID"]== memberID)
+                
+                if ((string)reader[searchTerm] == memberUnknown)
                 {
+                    MemberID = (int)reader["MemberID"];
                     MemberName = (String)reader["MemberName"];
-                  //  MemberVoterID= (int)reader["MemberVoterId"];
+                    MemberVoterID = (String)reader["MemberVoterId"];
                     MemberFather = (String)reader["MemberFather"];
                     MemberMother = (String)reader["MemberMother"];
                     MemberDOB = (DateTime)reader["MemberDOB"];
@@ -440,21 +548,20 @@ namespace AccountingSystem.Models
                     MemberNominee = (String)reader["MemberNominee"];
                     MemberNomineeDOB = (DateTime)reader["MemberNomineeDOB"];
                     MemberNomineeRelation = (String)reader["MemberNomineeRelation"];
-                    MemberNomineeCell = (String)reader["MemberNomineeCell"];
+                    MemberCell = (String)reader["MemberCell"];
                     //string appStartPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                     //string path = appStartPath.Substring(0, appStartPath.Length - 10);
-                   // String path = "/AccountingSystem;component";
+                    // String path = "/AccountingSystem;component";
                     //  MemberPhoto = path + (String)reader["MemberPhoto"];
-                   // var yourImage = new BitmapImage(new Uri(String.Format("Images/MemberPhoto/{0}.jpg", "aaa_1204041"), UriKind.Relative));
+                    // var yourImage = new BitmapImage(new Uri(String.Format("Images/MemberPhoto/{0}.jpg", "aaa_1204041"), UriKind.Relative));
                     MemberPhoto = (String)reader["MemberPhoto"];
                     checkExistence = 1;
                     break;
                 }
-               
-
             }
-            if (checkExistence == 0) {
-                MemberID = "WRONG ID ENTRY !!!";
+            if (checkExistence == 0)
+            {
+                MessageBox.Show("System can not find member.Check Input again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
 
             conn.CloseConnection();

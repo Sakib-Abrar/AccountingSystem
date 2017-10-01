@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AccountingSystem.Models;
+using System.Diagnostics;
 
 namespace AccountingSystem.Views
 {
@@ -30,9 +31,26 @@ namespace AccountingSystem.Views
 
         }
 
-        public void ShowData(string member_ID) {
-            Object.GetData(member_ID);
-     
+        public void SearchWithID(int member_id)
+        {
+            Object.GetData(member_id);
+        }
+        public void SearchWithUnknown(string member_unknown)
+        {
+            try
+            {
+                if (member_unknown[0] == '0')
+                    Object.GetDataUnknown(member_unknown);
+                else
+                {
+                    int member_ID = Int32.Parse(member_unknown);
+                    Object.GetData(member_ID);
+                }
+            }
+            catch (Exception ex)
+            {
+                Object.GetDataUnknown(member_unknown);
+            }
         }
     }
 }
