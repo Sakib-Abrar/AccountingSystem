@@ -113,14 +113,50 @@
         </Button>
 
         <Label Margin="0,185,695,230" x:Name="Label1" Content="Photo: " FontSize="14.667" Grid.Column="1"/>
-        <TextBox Margin="132,190,595,233" Height="22" Name="PhotoNameLabel" Text="{Binding PhotoNameLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
-        <Button Margin="195,190,515,233" Height="22" Name="PhotoBrowse" Width="75" Click="BrowsePhoto" Grid.Column="1">
-            Browse
+        <TextBox Margin="130,190,473,233" Height="22" Name="PhotoNameLabel" Text="{Binding PhotoNameLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
+        <Button Margin="317,190,393,233" Height="22" Name="PhotoBrowse" Width="75" Content="Browse" Click="BrowsePhoto" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
         </Button>
         <Image x:Name="PhotoViewer" HorizontalAlignment="Left" Height="120" Margin="335,58,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.2,-0.3" Grid.Column="1"/>
         <Label Margin="0,210,700,205" x:Name="signature" Content="Signature: " FontSize="14.667" Grid.Column="1"/>
-        <TextBox Margin="130,218,595,205" Height="22" x:Name="SignatureLabel" Text="{Binding SignatureLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
-        <Button Margin="195,220,515,203" Height="22" x:Name="SignatureBrowse" Width="75" Click="BrowsSignature" Content="Browse" Grid.Column="1" RenderTransformOrigin="-0.2,0.909"/>
+        <TextBox Margin="130,218,473,205" Height="22" x:Name="SignatureLabel" Text="{Binding SignatureLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
+        <Button Margin="317,218,393,205" Height="22" x:Name="SignatureBrowse" Width="75" Click="BrowsSignature" Content="Browse" Grid.Column="1" RenderTransformOrigin="-0.2,0.909">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Page>

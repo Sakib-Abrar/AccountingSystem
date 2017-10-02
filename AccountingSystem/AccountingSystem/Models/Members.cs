@@ -15,15 +15,14 @@ namespace AccountingSystem.Models
 
     class Members : INotifyPropertyChanged
     {
-
+        private int uselessIntParse;
+        private long uselessParse;
         private int m_memberID;
         private String m_memberName;
         private String m_memberVoterID;
         private String m_memberFather;
         private String m_memberMother;
         private DateTime m_memberDOB;
-        private String t_id;
-
 
         private String m_memberProfession;
         private String m_memberNationality;
@@ -412,7 +411,7 @@ namespace AccountingSystem.Models
             }
         }
         #region PopulateTable
-        public List<Members> GetDatas()
+        public List<Members> GetDataList()
         {
             
             Connection conn = new Connection();
@@ -485,7 +484,7 @@ namespace AccountingSystem.Models
                 // String path = "/AccountingSystem;component";
                 //  MemberPhoto = path + (String)reader["MemberPhoto"];
                 // var yourImage = new BitmapImage(new Uri(String.Format("Images/MemberPhoto/{0}.jpg", "aaa_1204041"), UriKind.Relative));
-                MemberPhoto = (String)reader["MemberPhoto"];
+                MemberPhoto = (string)reader["MemberPhoto"];
                 checkExistence = 1;
 
             }
@@ -606,11 +605,36 @@ namespace AccountingSystem.Models
 
 
                 case "MemberID":
-                    
+                    if (!int.TryParse(MemberID.ToString(), out uselessIntParse))
+                    {
+                        validationMessage = "Only Digits Are Allowed";
+                    }
                     break;
-                case "MemberName":
+                case "MemberName": // property name
+                    if (string.IsNullOrWhiteSpace(MemberName))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberCell":
+                    if (!long.TryParse(MemberID.ToString(), out uselessParse))
+                    {
+                        validationMessage = "Only Digits Are Allowed";
+                    }
+                    break;
+                case "MemberVoterId":
+                    if (!long.TryParse(MemberID.ToString(), out uselessParse))
+                    {
+                        validationMessage = "Only Digits Are Allowed";
+                    }
+                    break;
+                default:
+                    if (string.IsNullOrWhiteSpace(MemberName))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
 
-                    break;
             }
 
             return validationMessage;

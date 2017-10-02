@@ -21,7 +21,7 @@ namespace AccountingSystem.Views
         {
             InitializeComponent();
             Members data = new Members();
-            memberslist.ItemsSource = data.GetDatas();
+            memberslist.ItemsSource = data.GetDataList();
             DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)

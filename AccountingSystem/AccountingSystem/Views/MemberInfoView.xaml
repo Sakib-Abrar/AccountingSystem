@@ -86,9 +86,7 @@
 
         <Label Content="Cell:" HorizontalAlignment="Left" Margin="327,80,0,0" VerticalAlignment="Top" FontSize="12.667" RenderTransformOrigin="-5.081,-1.136"/>
         <Label Content="{Binding MemberCell, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="363,80,0,0" VerticalAlignment="Top" FontSize="12.667" Width="14"/>
-        <TextBlock x:Name="StringToImage"  Visibility ="hidden" Text="{Binding MemberPhoto, StringFormat=/AccountingSystem;component/Images/MemberPhoto/{0}.jpg}" />
-
-        <Image x:Name="MemberPhoto" Source="{Binding Text, ElementName=StringToImage}" HorizontalAlignment="Left" Height="75" Margin="250,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image x:Name="MemberPhoto" Source="{Binding MemberPhoto}" HorizontalAlignment="Left" Height="75" Margin="585,10,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.029,-0.023"/>
 
 
 
