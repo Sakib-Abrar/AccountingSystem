@@ -5,88 +5,90 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="260" d:DesignWidth="660"
+      d:DesignHeight="300" d:DesignWidth="1000"
       Title="member_info">
 
     <Grid>
-        <Label Content="Member ID : " HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberID, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,20,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Member ID : " HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberID, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,20,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="Member Name : " HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,40,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Member Name : " HorizontalAlignment="Left" Margin="20,44,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,44,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="National ID : " HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberVoterID, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,60,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="National ID : " HorizontalAlignment="Left" Margin="20,68,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberVoterID, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,68,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="Father's Name : " HorizontalAlignment="Left" Margin="20,80,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberFather, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,80,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Father's Name : " HorizontalAlignment="Left" Margin="20,93,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberFather, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,93,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="Mother's Name : " HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberMother, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,100,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Mother's Name : " HorizontalAlignment="Left" Margin="20,117,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberMother, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,117,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="Date of Birth : " HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberDOB, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,120,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Date of Birth : " HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberDOB, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,141,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="Profession : " HorizontalAlignment="Left" Margin="327,21,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberProfession, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="432,21,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Profession : " HorizontalAlignment="Left" Margin="402,21,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberProfession, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="507,21,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="Nationality : " HorizontalAlignment="Left" Margin="327,41,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNationality, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="432,41,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Nationality : " HorizontalAlignment="Left" Margin="402,45,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberNationality, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="507,45,0,0" VerticalAlignment="Top" FontSize="13"/>
 
-        <Label Content="Religion : " HorizontalAlignment="Left" Margin="327,61,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberReligion, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="432,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="23.9,-9.933" FontSize="12.667"/>
-
-
-
-        <Label Content="Present Address : " HorizontalAlignment="Left" Margin="20,163,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-
-        <Label Content="C/O:" HorizontalAlignment="Left" Margin="20,183,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPresentCO, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="50,183,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-
-        <Label Content="Village:" HorizontalAlignment="Left" Margin="20,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPresentVillage, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="65,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-
-        <Label Content="P/O:" HorizontalAlignment="Left" Margin="174,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPresentPost, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="210,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-
-        <Label Content="Thana:" HorizontalAlignment="Left" Margin="20,223,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPresentThana, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="65,223,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-
-        <Label Content="District:" HorizontalAlignment="Left" Margin="173,223,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPresentDistrict, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="225,223,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Religion : " HorizontalAlignment="Left" Margin="402,69,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberReligion, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="507,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="23.9,-9.933" FontSize="13"/>
 
 
 
+        <Label Content="Present Address " HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" FontSize="13.2"/>
 
-        <Label Content="Permanent Address : " HorizontalAlignment="Left" Margin="327,164,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="C/O:" HorizontalAlignment="Left" Margin="20,210,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPresentCO, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="50,210,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="C/O:" HorizontalAlignment="Left" Margin="327,183,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPermanentCO, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="357,183,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Village:" HorizontalAlignment="Left" Margin="20,233,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPresentVillage, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="65,233,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Village:" HorizontalAlignment="Left" Margin="327,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPermanentVillage, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="372,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="P/O:" HorizontalAlignment="Left" Margin="174,233,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPresentPost, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="210,233,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="P/O:" HorizontalAlignment="Left" Margin="478,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPermanentPost, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="517,203,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Thana:" HorizontalAlignment="Left" Margin="20,256,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPresentThana, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="65,256,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Thana:" HorizontalAlignment="Left" Margin="327,223,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberPermanentThana, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="372,223,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="District:" HorizontalAlignment="Left" Margin="173,256,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPresentDistrict, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="225,256,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="District:" HorizontalAlignment="Left" Margin="478,222,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding District, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="532,222,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Nominee:" HorizontalAlignment="Left" Margin="329,117,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNominee, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="390,117,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
-        <Label Content="Relation:" HorizontalAlignment="Left" Margin="505,117,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNomineeRelation, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="563,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.267" FontSize="12.667"/>
 
-        <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="329,137,0,0" VerticalAlignment="Top" FontSize="12.667"/>
-        <Label Content="{Binding MemberNomineeDOB, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="404,137,0,0" VerticalAlignment="Top" FontSize="12.667"/>
+        <Label Content="Permanent Address " HorizontalAlignment="Left" Margin="403,186,0,0" VerticalAlignment="Top" FontSize="13.2"/>
 
-        <Label Content="Cell:" HorizontalAlignment="Left" Margin="327,80,0,0" VerticalAlignment="Top" FontSize="12.667" RenderTransformOrigin="-5.081,-1.136"/>
-        <Label Content="{Binding MemberCell, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="363,80,0,0" VerticalAlignment="Top" FontSize="12.667" Width="14"/>
-        <Image x:Name="MemberPhoto" Source="{Binding MemberPhoto}" HorizontalAlignment="Left" Height="75" Margin="585,10,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.029,-0.023"/>
+        <Label Content="C/O:" HorizontalAlignment="Left" Margin="403,211,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPermanentCO, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="433,211,0,0" VerticalAlignment="Top" FontSize="13"/>
+
+        <Label Content="Village:" HorizontalAlignment="Left" Margin="403,234,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPermanentVillage, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="448,234,0,0" VerticalAlignment="Top" FontSize="13"/>
+
+        <Label Content="P/O:" HorizontalAlignment="Left" Margin="554,234,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPermanentPost, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,234,0,0" VerticalAlignment="Top" FontSize="13"/>
+
+        <Label Content="Thana:" HorizontalAlignment="Left" Margin="403,258,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPermanentThana, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="448,258,0,0" VerticalAlignment="Top" FontSize="13"/>
+
+        <Label Content="District:" HorizontalAlignment="Left" Margin="554,258,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberPermanentDistrict, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="608,258,0,0" VerticalAlignment="Top" FontSize="13" Height="26" Width="112"/>
+
+        <Label Content="Nominee:" HorizontalAlignment="Left" Margin="404,128,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberNominee, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top" FontSize="13"/>
+
+        <Label Content="Relation:" HorizontalAlignment="Left" Margin="580,128,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberNomineeRelation, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="638,128,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.267" FontSize="13"/>
+
+        <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="404,154,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding MemberNomineeDOB, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="493,153,0,0" VerticalAlignment="Top" FontSize="13"/>
+
+        <Label Content="Cell:" HorizontalAlignment="Left" Margin="402,91,0,0" VerticalAlignment="Top" FontSize="13" RenderTransformOrigin="-5.081,-1.136"/>
+        <Label Content="{Binding MemberCell, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="438,91,0,0" VerticalAlignment="Top" FontSize="13" Width="149" Height="27"/>
+        <Image x:Name="MemberPhoto" Source="{Binding MemberPhoto}" HorizontalAlignment="Left" Height="238" Margin="819,21,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.029,-0.023">
+
+        </Image>
 
 
 

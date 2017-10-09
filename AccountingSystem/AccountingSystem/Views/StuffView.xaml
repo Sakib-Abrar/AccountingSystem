@@ -99,7 +99,7 @@
                 <Label Content="Type :" HorizontalAlignment="Left" Margin="598,85,0,0" VerticalAlignment="Top"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="598,52,0,0" VerticalAlignment="Top" />
 
-                <Button Content="Save" HorizontalAlignment="Left" Margin="919,143,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click" FontWeight="Bold">
+                <Button Name="Save" Content="Save" HorizontalAlignment="Left" Margin="919,143,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click" FontWeight="Bold">
 
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -126,6 +126,49 @@
                 <RadioButton x:Name="Type_Admin" GroupName="StuffType" Content="Admin" HorizontalAlignment="Left" Margin="825,95,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
+
+        <Button Name="Remove" Content="Remove" HorizontalAlignment="Left" Margin="178,663,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Remove_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="Edit" Content="Edit" HorizontalAlignment="Left" Margin="78,663,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Edit_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
         <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
         <Label x:Name="label" Content="Stuff Details" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
     </Grid>

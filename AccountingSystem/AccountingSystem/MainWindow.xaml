@@ -9,8 +9,6 @@
     <Grid>
 
 
-
-
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="202" >
                 <StackPanel.Background>
@@ -25,11 +23,11 @@
                 <TextBlock Margin="0,-10,0,0" Padding="0,0,20,0" FontWeight="Bold" FontFamily="Segoe UI Semibold" Foreground="#ddd" FontSize="24.8" TextDecorations="{x:Null}">_____________________</TextBlock>
 
 
-                <Expander  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                <Expander Name="entryExpander" Height="auto" FontSize="20" Width="240" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
                     <Expander.Header>
-                        <BulletDecorator FlowDirection="LeftToRight">
+                        <BulletDecorator  Margin="40,0,0,0" FlowDirection="LeftToRight">
 
-                            <MenuItem Header="Entry"  Width="199" Padding="6,4" FontSize="16" Click="LoadEntryLogView"/>
+                            <TextBlock Text="Entry" Margin="15,3,0,0"  Background="#2a2a2a" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,60,0" Foreground="#FFF0E5E5" PreviewMouseDown="LoadEntryLogView" Width="150"/>
 
                             <BulletDecorator.Bullet>
                                 <Image Width="25" Source="/Images/entry.png"/>

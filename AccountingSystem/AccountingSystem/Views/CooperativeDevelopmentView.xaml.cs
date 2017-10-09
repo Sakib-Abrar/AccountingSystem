@@ -14,6 +14,8 @@ namespace AccountingSystem.Views
     public partial class CooperativeDevelopmentView : Page
     {
         private DateTime dateTime;
+        private string stuff_pass;
+        private string stuff_name;
 
         private int Id;
 
@@ -110,5 +112,99 @@ namespace AccountingSystem.Views
                 new CooperativeDevelopment().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
+        #region editEntry
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditDialogView handle = new EditDialogView();
+            if (handle.ShowDialog() == true)
+            {
+                if (handle.FirstInput != handle.SecondInput)
+                {
+                    MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+                Connection conn = new Connection();
+                conn.OpenConection();
+                string query = "SELECT * From CooperativeDevelopment WHERE Cooperative_Id = " + handle.FirstInput;
+                SqlDataReader reader = conn.DataReader(query);
+                if (reader == null)
+                    return;
+                while (reader.Read())
+                {
+                    EntryNo.Text = reader["Cooperative_Id"].ToString();
+                    Date.SelectedDate = (DateTime)reader["Cooperative_Date"];
+                    Current.Text = (string)reader["Cooperative_Current"];
+                    Paid.Text = reader["Cooperative_Paid"].ToString();
+                }
+
+                conn.CloseConnection();
+                Save.Content = "Update";
+            }
+        }
+
+        #endregion
+
+        #region removeEntry
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveDialogView handle = new RemoveDialogView();
+            if (handle.ShowDialog() == true)
+            {
+                using (SqlConnection con = new SqlConnection(@Connection.ConnectionString))
+                {
+                    if (handle.FirstInput != handle.SecondInput)
+                    {
+                        MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                    Connection conn = new Connection();
+                    conn.OpenConection();
+                    int isLogin = 0;
+                    string query = "SELECT * From Stuff ";
+                    SqlDataReader reader = conn.DataReader(query);
+                    while (reader.Read())
+                    {
+                        stuff_name = (string)reader["Stuff_Name"];
+                        stuff_pass = (string)reader["Stuff_Password"];
+                        if (stuff_name.Equals(Login.GlobalStuffName) && stuff_pass.Equals(handle.GetPassword))
+                        {
+                            isLogin = 1;
+                            break;
+                        }
+                    }
+                    if (isLogin != 1)
+                    {
+                        MessageBox.Show("Wrong Password.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+
+                    using (SqlCommand command = new SqlCommand("DELETE FROM CooperativeDevelopment WHERE Cooperative_Id = " + handle.FirstInput, con))
+                    {
+                        con.Open();
+                        command.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                    Id = Convert.ToInt32(handle.FirstInput);
+                    dateTime = DateTime.Today;
+                    string table = "CooperativeDevelopment";
+                    string type = "Removed";
+                    string color = "Red";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+                    conn.CloseConnection();
+                    CooperativeDevelopment data = new CooperativeDevelopment();
+                    cooperativeDevelopment.ItemsSource = data.GetData();
+                    DataContext = data;
+                }
+            }
+        }
+
+        #endregion
+
     }
 }
+
+    

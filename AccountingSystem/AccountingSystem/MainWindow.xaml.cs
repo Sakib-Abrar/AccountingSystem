@@ -69,5 +69,7 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new EntryLogView());
         }
+     
+
     }
     }

@@ -14,6 +14,8 @@ namespace AccountingSystem.Views
     public partial class CashInformationView : Page
     {
         private DateTime dateTime;
+        private string stuff_pass;
+        private string stuff_name;
 
         private int Id;
 
@@ -114,5 +116,97 @@ namespace AccountingSystem.Views
                 new CashInformation().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
+        #region editEntry
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditDialogView handle = new EditDialogView();
+            if (handle.ShowDialog() == true)
+            {
+                if (handle.FirstInput != handle.SecondInput)
+                {
+                    MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+                Connection conn = new Connection();
+                conn.OpenConection();
+                string query = "SELECT * From CashInformation WHERE Cash_Id = " + handle.FirstInput;
+                SqlDataReader reader = conn.DataReader(query);
+                if (reader == null)
+                    return;
+                while (reader.Read())
+                {
+                    EntryNo.Text = reader["Cash_Id"].ToString();
+                    Date.SelectedDate = (DateTime)reader["Cash_Date"];
+                    Deposit.Text = reader["Cash_Deposit"].ToString();
+                    Expenses.Text = reader["Cash_Expenses"].ToString();
+                }
+
+                conn.CloseConnection();
+                Save.Content = "Update";
+            }
+        }
+
+        #endregion
+
+        #region removeEntry
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveDialogView handle = new RemoveDialogView();
+            if (handle.ShowDialog() == true)
+            {
+                using (SqlConnection con = new SqlConnection(@Connection.ConnectionString))
+                {
+                    if (handle.FirstInput != handle.SecondInput)
+                    {
+                        MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                    Connection conn = new Connection();
+                    conn.OpenConection();
+                    int isLogin = 0;
+                    string query = "SELECT * From Stuff ";
+                    SqlDataReader reader = conn.DataReader(query);
+                    while (reader.Read())
+                    {
+                        stuff_name = (string)reader["Stuff_Name"];
+                        stuff_pass = (string)reader["Stuff_Password"];
+                        if (stuff_name.Equals(Login.GlobalStuffName) && stuff_pass.Equals(handle.GetPassword))
+                        {
+                            isLogin = 1;
+                            break;
+                        }
+                    }
+                    if (isLogin != 1)
+                    {
+                        MessageBox.Show("Wrong Password.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+
+                    using (SqlCommand command = new SqlCommand("DELETE FROM CashInformation WHERE Cash_Id = " + handle.FirstInput, con))
+                    {
+                        con.Open();
+                        command.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                    Id = Convert.ToInt32(handle.FirstInput);
+                    dateTime = DateTime.Today;
+                    string table = "CashInformation";
+                    string type = "Removed";
+                    string color = "Red";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+                    conn.CloseConnection();
+                    CashInformation data = new CashInformation();
+                    cashInformation.ItemsSource = data.GetData();
+                    DataContext = data;
+                }
+            }
+        }
+
+        #endregion
+
     }
 }

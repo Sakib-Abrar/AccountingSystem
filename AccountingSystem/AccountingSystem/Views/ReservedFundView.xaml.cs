@@ -14,6 +14,8 @@ namespace AccountingSystem.Views
     public partial class ReservedFundView : Page
     {
         private DateTime dateTime;
+        private string stuff_pass;
+        private string stuff_name;
 
         private int Id;
 
@@ -64,6 +66,8 @@ namespace AccountingSystem.Views
                     return;
                 }
             double previous = this.last_total();
+            if ((string)Save.Content == "Insert")
+            {
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
 
@@ -78,30 +82,54 @@ namespace AccountingSystem.Views
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
 
-                //Inserting value in Entry table
-                Connection conn2 = new Connection();
+                    //Inserting value in Entry table
+                    Connection conn2 = new Connection();
 
-                string query = "SELECT TOP 1 * FROM ReservedFund ORDER BY Reserved_Id DESC";
-                conn2.OpenConection();
-                SqlDataReader reader = conn2.DataReader(query);
-                while (reader.Read())
-                {
-                    Id = (int)reader["Reserved_Id"];
-                    dateTime = (DateTime)reader["Reserved_Date"];
+                    string query = "SELECT TOP 1 * FROM ReservedFund ORDER BY Reserved_Id DESC";
+                    conn2.OpenConection();
+                    SqlDataReader reader = conn2.DataReader(query);
+                    while (reader.Read())
+                    {
+                        Id = (int)reader["Reserved_Id"];
+                        dateTime = (DateTime)reader["Reserved_Date"];
+                    }
+                    conn2.CloseConnection();
+
+                    string table = "Reserved Fund";
+                    string type = "Inserted";
+                    string color = "Green";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
                 }
-                conn2.CloseConnection();
+            }
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                {
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [ReservedFund] SET Reserved_Date = @Date , Reserved_Current = @Current, Reserved_Withdraw = @Withdraw, Reserved_Previous = @Previous, Reserved_Remaining = @Remaining WHERE Security_Id=" + EntryNo.Text, conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Current", Current.Text);
+                    CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
+                    CmdSql.Parameters.AddWithValue("@Previous", previous);
+                    CmdSql.Parameters.AddWithValue("@Total", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
+                    CmdSql.Parameters.AddWithValue("@Remainig", Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
 
+                    //Inserting value in Entry table
 
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    dateTime = DateTime.Today;
 
+                    string table = "Reserved Fund";
+                    string type = "Updated";
+                    string color = "Blue";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
 
-                string table = "Reserved Fund";
-                string type = "Inserted";
-                string color = "Green";
-                EntryLog entry = new EntryLog();
-                entry.Add_Entry(table, type, Id, dateTime, color);
-
-
-
+                }
+                Save.Content = "Insert";
             }
             ReservedFund data = new ReservedFund();
                 reservedFund.ItemsSource = data.GetData();
@@ -116,5 +144,97 @@ namespace AccountingSystem.Views
             }
         }
 
+        #region editEntry
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            EditDialogView handle = new EditDialogView();
+            if (handle.ShowDialog() == true)
+            {
+                if (handle.FirstInput != handle.SecondInput)
+                {
+                    MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+                Connection conn = new Connection();
+                conn.OpenConection();
+                string query = "SELECT * From ReservedFund WHERE Reserved_Id = " + handle.FirstInput;
+                SqlDataReader reader = conn.DataReader(query);
+                if (reader == null)
+                    return;
+                while (reader.Read())
+                {
+                    EntryNo.Text = reader["Reserved_Id"].ToString();
+                    Date.SelectedDate = (DateTime)reader["Reserved_Date"];
+                    Current.Text = reader["Reserved_Current"].ToString();
+                    Withdraw.Text = reader["Reserved_Withdraw"].ToString();
+                }
+
+                conn.CloseConnection();
+                Save.Content = "Update";
+            }
+        }
+
+        #endregion
+
+        #region removeEntry
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveDialogView handle = new RemoveDialogView();
+            if (handle.ShowDialog() == true)
+            {
+                using (SqlConnection con = new SqlConnection(@Connection.ConnectionString))
+                {
+                    if (handle.FirstInput != handle.SecondInput)
+                    {
+                        MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                    Connection conn = new Connection();
+                    conn.OpenConection();
+                    int isLogin = 0;
+                    string query = "SELECT * From Stuff ";
+                    SqlDataReader reader = conn.DataReader(query);
+                    while (reader.Read())
+                    {
+                        stuff_name = (string)reader["Stuff_Name"];
+                        stuff_pass = (string)reader["Stuff_Password"];
+                        if (stuff_name.Equals(Login.GlobalStuffName) && stuff_pass.Equals(handle.GetPassword))
+                        {
+                            isLogin = 1;
+                            break;
+                        }
+                    }
+                    if (isLogin != 1)
+                    {
+                        MessageBox.Show("Wrong Password.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+
+                    using (SqlCommand command = new SqlCommand("DELETE FROM ReservedFund WHERE Reserved_Id = " + handle.FirstInput, con))
+                    {
+                        con.Open();
+                        command.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                    Id = Convert.ToInt32(handle.FirstInput);
+                    dateTime = DateTime.Today;
+                    string table = "ReservedFund";
+                    string type = "Removed";
+                    string color = "Red";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+                    conn.CloseConnection();
+                    ReservedFund data = new ReservedFund();
+                    reservedFund.ItemsSource = data.GetData();
+                    DataContext = data;
+                }
+            }
+        }
+
+        #endregion
+
     }
-    }
+}
