@@ -68,9 +68,9 @@ namespace AccountingSystem
 
             if(isLogin!=1)
             {   //Console.Write("logged_out" + stuff_cell + " go" + Cell.Text + " " + stuff_pass + " " + Password.Text+" "+SelectedDate);
-                ErrorMessage.Content = "Sorry Wrong Password!!!";
-                ErrorMessage.Foreground = new SolidColorBrush(Colors.Red);
-                ErrorMessage.Background = new SolidColorBrush(Colors.WhiteSmoke);
+                
+                MessageBox.Show("Sorry! Wrong Password!!!");
+                
             }
             conn.CloseConnection();
             if (isLogin == 1)

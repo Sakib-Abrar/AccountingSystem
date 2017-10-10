@@ -101,7 +101,7 @@ namespace AccountingSystem.Views
                     string color = "Green";
                     EntryLog entry = new EntryLog();
                     entry.Add_Entry(table, type, Id, dateTime, color);
-
+                    MessageBox.Show("Successfully Inserted");
                 }
 
 
@@ -128,9 +128,10 @@ namespace AccountingSystem.Views
                         string color = "Blue";
                         EntryLog entry = new EntryLog();
                         entry.Add_Entry(table, type, Id, dateTime, color);
-
+                        Save.Content = "Insert";
+                        MessageBox.Show("Successfully Updated");
                     }
-                    Save.Content = "Insert";
+                    
                 }
 
                 AdmissionFee data = new AdmissionFee();

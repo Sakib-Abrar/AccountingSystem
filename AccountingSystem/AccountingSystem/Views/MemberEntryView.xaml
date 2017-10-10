@@ -14,16 +14,16 @@
             <ColumnDefinition Width="157*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Member ID : " HorizontalAlignment="Left" Margin="13,14,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberID" Text="{Binding MemberID, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0" HorizontalAlignment="Left" Margin="130,20,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
+        <TextBox Name="MemberID" Text="{Binding MemberID, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="130,20,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
 
         <Label Content="Member Name : " HorizontalAlignment="Left" Margin="13,41,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberName" Text="{Binding MemberName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="130,48,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
+        <TextBox Name="MemberName" Text="{Binding MemberName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="130,48,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
 
         <Label Content="National ID : " HorizontalAlignment="Left" Margin="13,69,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="VoterId" Text="{Binding MemberVoterId, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="130,75,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
+        <TextBox Name="VoterId" Text="{Binding MemberVoterId, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="130,75,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
 
         <Label Content="Father's Name : " HorizontalAlignment="Left" Margin="13,95,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberFather" Text="{Binding MemberFather, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="130,103,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberFather" Text="{Binding MemberFather, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="130,103,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Mother's Name : " HorizontalAlignment="Left" Margin="13,125,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
         <TextBox Name="MemberMother" Text="{Binding MemberMother, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="130,133,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
@@ -32,32 +32,32 @@
         <DatePicker Name="MemberDOB" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="130,160,0,0" VerticalAlignment="Top"  Width="183" Height="22"  SelectedDate="{Binding MemberDOB}" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Profession : " HorizontalAlignment="Left" Margin="604,23,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberProfession" Text="{Binding MemberProfession, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="712,26,0,0" Width="140" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberProfession" Text="{Binding MemberProfession, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="712,26,0,0" Width="140" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Nationality : " HorizontalAlignment="Left" Margin="605,48,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberNationality" Text="{Binding MemberNationality, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="712,58,0,0" Width="140" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberNationality" Text="{Binding MemberNationality, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="712,58,0,0" Width="140" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Religion : " HorizontalAlignment="Left" Margin="605,78,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberReligion" Text="{Binding MemberReligion, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="712,88,0,0" Width="140" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberReligion" Text="{Binding MemberReligion, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="712,88,0,0" Width="140" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
 
 
         <Label Content="Present Address : " HorizontalAlignment="Left" Margin="13,276,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
 
         <Label Content="C / O:" HorizontalAlignment="Left" Margin="14,303,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberPresentCO" Text="{Binding MemberPresentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="61,308,0,0" Width="251" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPresentCO" Text="{Binding MemberPresentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="61,308,0,0" Width="251" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Village:" HorizontalAlignment="Left" Margin="13,328,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberPresentVillage" Text="{Binding MemberPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="62,369,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPresentVillage" Text="{Binding MemberPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="62,369,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="P/O:" HorizontalAlignment="Left" Margin="162,335,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberPresentPost" Text="{Binding MemberPresentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="223,340,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPresentPost" Text="{Binding MemberPresentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="223,340,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Thana:" HorizontalAlignment="Left" Margin="13,358,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberPresentThana" Text="{Binding MemberPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="62,340,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPresentThana" Text="{Binding MemberPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="62,340,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="District:" HorizontalAlignment="Left" Margin="162,360,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberPresentDistrict" Text="{Binding MemberPresentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="222,368,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPresentDistrict" Text="{Binding MemberPresentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="222,368,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
 
 
@@ -65,31 +65,31 @@
         <Label Content="Permanent Address : " HorizontalAlignment="Left" Margin="603,280,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="C / O:" HorizontalAlignment="Left" Margin="604,311,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberPermanentCO" Text="{Binding MemberPermanentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="656,315,0,0" Width="250" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPermanentCO" Text="{Binding MemberPermanentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="656,315,0,0" Width="250" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Village:" HorizontalAlignment="Left" Margin="604,338,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberPermanentVillage" Text="{Binding MemberPermanentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="661,345,0,0" Width="102" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPermanentVillage" Text="{Binding MemberPermanentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="661,345,0,0" Width="102" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="P/O:" HorizontalAlignment="Left" Margin="773,340,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberPermanentPost" Text="{Binding MemberPermanentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="827,343,0,0" Width="79" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPermanentPost" Text="{Binding MemberPermanentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="827,343,0,0" Width="79" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Thana:" HorizontalAlignment="Left" Margin="603,370,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberPermanentThana" Text="{Binding MemberPermanentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="658,375,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPermanentThana" Text="{Binding MemberPermanentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="658,375,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="District:" HorizontalAlignment="Left" Margin="761,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.24,0.5" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="MemberPermanentDistrict" Text="{Binding MemberPermanentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="826,375,0,0" Width="80" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPermanentDistrict" Text="{Binding MemberPermanentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="826,375,0,0" Width="80" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Nominee:" HorizontalAlignment="Left" Margin="604,166,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="72"/>
         <TextBox Name="MemberNominee" Text="{Binding MemberNominee, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="683,175,0,0" Width="223" Height="23" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Relation with Nominee:" HorizontalAlignment="Left" Margin="603,198,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="160"/>
-        <TextBox Name="MemberNomineeRelation" Text="{Binding MemberNomineeRelation, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="768,204,0,0" Width="138" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberNomineeRelation" Text="{Binding MemberNomineeRelation, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="768,204,0,0" Width="138" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="604,227,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="94"/>
         <DatePicker Name="MemberNomineeDOB" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="713,234,0,0" VerticalAlignment="Top"  Width="198" Height="21"  SelectedDate="{Binding MemberNomineeDOB}" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Cell no:" HorizontalAlignment="Left" Margin="605,123,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="69"/>
-        <TextBox Name="MemberNomineeCell" Text="{Binding MemberNomineeCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="687,125,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberNomineeCell" Text="{Binding MemberNomineeCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="687,125,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Button Content="Add Member" HorizontalAlignment="Left" Margin="808,419,0,0" VerticalAlignment="Top" Width="98" Height="23" Click="AddMember" FontSize="13" Grid.Column="1">
             <Button.Background>

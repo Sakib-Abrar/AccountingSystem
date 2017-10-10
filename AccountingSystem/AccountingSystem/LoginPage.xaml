@@ -35,7 +35,6 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Label x:Name="ErrorMessage" Content="{Binding Error_msg,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="236,-8,0,0" VerticalAlignment="Top" Padding="2,5,2,0" FontSize="11" FontWeight="Bold"/>
                 <DatePicker Name="SelectedDate" HorizontalAlignment="Left" Margin="90,86,0,0" VerticalAlignment="Top" Width="200" SelectedDate="{Binding SelectedDate}"/>
             </Grid>
         </GroupBox>

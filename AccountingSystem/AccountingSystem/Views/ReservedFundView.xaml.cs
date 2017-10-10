@@ -100,20 +100,21 @@ namespace AccountingSystem.Views
                     string color = "Green";
                     EntryLog entry = new EntryLog();
                     entry.Add_Entry(table, type, Id, dateTime, color);
+                    MessageBox.Show("Successfully Inserted");
                 }
             }
             else
             {
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [ReservedFund] SET Reserved_Date = @Date , Reserved_Current = @Current, Reserved_Withdraw = @Withdraw, Reserved_Previous = @Previous, Reserved_Remaining = @Remaining WHERE Security_Id=" + EntryNo.Text, conn);
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [ReservedFund] SET Reserved_Date = @Date , Reserved_Current = @Current, Reserved_Withdraw = @Withdraw, Reserved_Previous = @Previous, Reserved_Remaining = @Remaining WHERE Reserved_Id=" + EntryNo.Text, conn);
                     conn.Open();
                     CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                     CmdSql.Parameters.AddWithValue("@Current", Current.Text);
                     CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
                     CmdSql.Parameters.AddWithValue("@Previous", previous);
                     CmdSql.Parameters.AddWithValue("@Total", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
-                    CmdSql.Parameters.AddWithValue("@Remainig", Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
+                    CmdSql.Parameters.AddWithValue("@Remaining", Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
 
@@ -127,9 +128,10 @@ namespace AccountingSystem.Views
                     string color = "Blue";
                     EntryLog entry = new EntryLog();
                     entry.Add_Entry(table, type, Id, dateTime, color);
-
+                    Save.Content = "Insert";
+                    MessageBox.Show("Successfully Updated");
                 }
-                Save.Content = "Insert";
+                
             }
             ReservedFund data = new ReservedFund();
                 reservedFund.ItemsSource = data.GetData();
@@ -168,6 +170,7 @@ namespace AccountingSystem.Views
                     Date.SelectedDate = (DateTime)reader["Reserved_Date"];
                     Current.Text = reader["Reserved_Current"].ToString();
                     Withdraw.Text = reader["Reserved_Withdraw"].ToString();
+                    
                 }
 
                 conn.CloseConnection();
