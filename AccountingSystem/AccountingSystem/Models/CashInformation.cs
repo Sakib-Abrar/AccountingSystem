@@ -164,7 +164,7 @@ namespace AccountingSystem.Models
                     }
                     break;
                 case "Expenses":
-                    if (!double.TryParse(Deposit.ToString(), out uselessParse))
+                    if (!double.TryParse(Expenses.ToString(), out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }

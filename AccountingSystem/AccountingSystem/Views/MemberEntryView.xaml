@@ -20,7 +20,8 @@
         <TextBox Name="MemberName" Text="{Binding MemberName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="130,48,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
 
         <Label Content="National ID : " HorizontalAlignment="Left" Margin="13,69,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="VoterId" Text="{Binding MemberVoterId, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="130,75,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
+        <TextBox Name="MemberVoterId" Text="{Binding MemberVoterID, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="130,75,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.6" Grid.Column="1"/>
+
 
         <Label Content="Father's Name : " HorizontalAlignment="Left" Margin="13,95,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
         <TextBox Name="MemberFather" Text="{Binding MemberFather, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="130,103,0,0" Width="183" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
@@ -48,13 +49,13 @@
         <TextBox Name="MemberPresentCO" Text="{Binding MemberPresentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="61,308,0,0" Width="251" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Village:" HorizontalAlignment="Left" Margin="13,328,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberPresentVillage" Text="{Binding MemberPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="62,369,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPresentThana" Text="{Binding MemberPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="62,369,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="P/O:" HorizontalAlignment="Left" Margin="162,335,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
         <TextBox Name="MemberPresentPost" Text="{Binding MemberPresentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="223,340,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Thana:" HorizontalAlignment="Left" Margin="13,358,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="MemberPresentThana" Text="{Binding MemberPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="62,340,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="MemberPresentVillage" Text="{Binding MemberPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="62,340,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="District:" HorizontalAlignment="Left" Margin="162,360,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
         <TextBox Name="MemberPresentDistrict" Text="{Binding MemberPresentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="222,368,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
@@ -89,8 +90,7 @@
         <DatePicker Name="MemberNomineeDOB" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="713,234,0,0" VerticalAlignment="Top"  Width="198" Height="21"  SelectedDate="{Binding MemberNomineeDOB}" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Cell no:" HorizontalAlignment="Left" Margin="605,123,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="69"/>
-        <TextBox Name="MemberNomineeCell" Text="{Binding MemberNomineeCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="687,125,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-
+        <TextBox Name="MemberCell" Text="{Binding MemberCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="687,125,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
         <Button Content="Add Member" HorizontalAlignment="Left" Margin="808,419,0,0" VerticalAlignment="Top" Width="98" Height="23" Click="AddMember" FontSize="13" Grid.Column="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -157,6 +157,7 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <CheckBox x:Name="AddressCheckBox" Content="Same as Present" Grid.Column="1" HorizontalAlignment="Left" Margin="773,287,0,0" VerticalAlignment="Top" FontSize="13.333" BorderThickness="1.5" Checked="ImportPresentAddress" Unchecked="ImportNullAddress"/>
 
     </Grid>
 </Page>

@@ -4,6 +4,10 @@ using AccountingSystem.Controller;
 using System.Data.SqlClient;
 using System.Windows.Data;
 using Microsoft.Win32;
+using System;
+using System.IO;
+using AccountingSystem.Models;
+
 namespace AccountingSystem.Views
 {
     /// <summary>
@@ -11,12 +15,16 @@ namespace AccountingSystem.Views
     /// </summary>
     public partial class MemberEntryView : Page 
     {
+        Members data;
         public MemberEntryView()
         {
             InitializeComponent();
+            data = new Members();
+            data.SetMemberID();
+            DataContext = data;
         }
 
-        private bool CheckForError(TextBox Selected)
+        public bool CheckForError(TextBox Selected)
         {
             BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
             Trigger.UpdateSource();
@@ -30,41 +38,59 @@ namespace AccountingSystem.Views
             }
 
         }
-       
+
         private void AddMember(object sender, RoutedEventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {
-                if (CheckForError(MemberID) || CheckForError(MemberName) || CheckForError(VoterId))
+                if (CheckForError(MemberID) || CheckForError(MemberName) || CheckForError(MemberVoterId)|| CheckForError(MemberFather) || CheckForError(MemberMother) || CheckForError(MemberCell))
                 {
                     MessageBox.Show("Error!Check Input Again");
                     return;
                 }
                 else
                 {
-                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [Member] (MemberID, MemberName, MemberVoterId, MemberDOB, MemberFather, MemberMother, MemberNationality, MemberReligion, MemberProfession, MemberPresentCO, MemberPresentVillage, MemberPresentPost, MemberPresentThana, MemberPresentDistrict, MemberPermanentCO, MemberPermanentVillage, MemberPermanentPost, MemberPermanentThana, MemberPermanentDistrict, MemberNominee, MemberNomineeDOB, MemberNomineeCell, MemberNomineeRelation,MemberPhoto,MemberSignature) VALUES (@MemberID, @MemberName, @MemberVoterId, @MemberDOB, @MemberFather, @MemberMother, @MemberNationality, @MemberReligion, @MemberProfession,  @MemberPresentCO, @MemberPresentVillage, @MemberPresentPost, @MemberPresentThana, @MemberPresentDistrict, @MemberPermanentCO, @MemberPermanentVillage, @MemberPermanentPost, @MemberPermanentThana, @MemberPermanentDistrict, @MemberNominee, @MemberNomineeDOB, @MemberNomineeCell, @MemberNomineeRelation,@MemberPhoto,@MemberSignature)", conn);
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [Member] (MemberID, MemberName, MemberVoterId, MemberDOB, MemberFather, MemberMother, MemberNationality, MemberReligion, MemberProfession, MemberPresentCO, MemberPresentVillage, MemberPresentPost, MemberPresentThana, MemberPresentDistrict, MemberPermanentCO, MemberPermanentVillage, MemberPermanentPost, MemberPermanentThana, MemberPermanentDistrict, MemberNominee, MemberNomineeDOB, MemberCell, MemberNomineeRelation,MemberPhoto,MemberSignature) VALUES (@MemberID, @MemberName, @MemberVoterId, @MemberDOB, @MemberFather, @MemberMother, @MemberNationality, @MemberReligion, @MemberProfession,  @MemberPresentCO, @MemberPresentVillage, @MemberPresentPost, @MemberPresentThana, @MemberPresentDistrict, @MemberPermanentCO, @MemberPermanentVillage, @MemberPermanentPost, @MemberPermanentThana, @MemberPermanentDistrict, @MemberNominee, @MemberNomineeDOB, @MemberCell, @MemberNomineeRelation,@MemberPhoto,@MemberSignature)", conn);
                     conn.Open();
 
                     //photo upload to the directory
-                    string appStartPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-                    string path = appStartPath.Substring(0, appStartPath.Length - 10);
-                    //  string filename = System.IO.Path.GetFileName(PhotoNameLabel.Text);
-                    string filename = MemberName.Text + "_" + MemberID.Text + ".jpg";
-                    System.IO.File.Copy(PhotoNameLabel.Text, path + "\\Images\\MemberPhoto\\" + filename);
-                   // string MemberPhoto = "\\Images\\MemberPhoto\\" + filename;
-                    string MemberPhoto = filename;
-
-                    //Signature upload to the directory
-
-                    string filenameSign = "Sign_"+MemberName.Text + "_" + MemberID.Text + ".jpg";
-                    System.IO.File.Copy(SignatureLabel.Text, path + "\\Images\\MemberSign\\" + filenameSign);
-                   // string MemberSignature = "\\Images\\MemberSign\\" + filenameSign;
-                    string MemberSignature = filenameSign;
+                    //string appStartPath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                    //string path = appStartPath.Substring(0, appStartPath.Length - 10);
+                    
+                    string MemberPhoto="";
+                    string MemberSignature="";
+                    if (PhotoNameLabel.Text != "")
+                    {
+                        string filename = "Photo_" + MemberName.Text + "_" + MemberID.Text + ".jpg";
+                        try
+                        {
+                            File.Copy(PhotoNameLabel.Text, Path.GetFullPath("Images/" + filename));
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show("Error\n" + exc, "warning");
+                        }
+                        MemberPhoto = filename;
+                    }
+                    ////Signature upload to the directory
+                    if (SignatureLabel.Text != "")
+                    {
+                        string filenameSign = "Sign_" + MemberName.Text + "_" + MemberID.Text + ".jpg";
+                        try
+                        {
+                            File.Copy(SignatureLabel.Text, Path.GetFullPath("Images/" + filenameSign));
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show("Error\n" + exc, "warning");
+                        }
+                    MemberSignature = filenameSign;
+                    }
 
                     CmdSql.Parameters.AddWithValue("@MemberID", MemberID.Text);
                     CmdSql.Parameters.AddWithValue("@MemberName", MemberName.Text);
-                    CmdSql.Parameters.AddWithValue("@MemberVoterId", VoterId.Text);
-                    CmdSql.Parameters.AddWithValue("@MemberDOB", MemberDOB.Text);
+                    CmdSql.Parameters.AddWithValue("@MemberVoterId", MemberVoterId.Text);
+                    CmdSql.Parameters.AddWithValue("@MemberDOB", MemberDOB.SelectedDate);
                     CmdSql.Parameters.AddWithValue("@MemberFather", MemberFather.Text);
                     CmdSql.Parameters.AddWithValue("@MemberMother", MemberMother.Text);
                     CmdSql.Parameters.AddWithValue("@MemberProfession", MemberProfession.Text);
@@ -81,13 +107,25 @@ namespace AccountingSystem.Views
                     CmdSql.Parameters.AddWithValue("@MemberPermanentThana", MemberPermanentThana.Text);
                     CmdSql.Parameters.AddWithValue("@MemberPermanentDistrict", MemberPermanentDistrict.Text);
                     CmdSql.Parameters.AddWithValue("@MemberNominee", MemberNominee.Text);
-                    CmdSql.Parameters.AddWithValue("@MemberNomineeDOB", MemberNomineeDOB.Text);
-                    CmdSql.Parameters.AddWithValue("@MemberNomineeCell", MemberNomineeCell.Text);
+                    CmdSql.Parameters.AddWithValue("@MemberNomineeDOB", MemberNomineeDOB.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@MemberCell", MemberCell.Text);
                     CmdSql.Parameters.AddWithValue("@MemberNomineeRelation", MemberNomineeRelation.Text);
                     CmdSql.Parameters.AddWithValue("@MemberPhoto", MemberPhoto);
                     CmdSql.Parameters.AddWithValue("@MemberSignature", MemberSignature);
-                    CmdSql.ExecuteNonQuery();
+                    try
+                    {
+                        CmdSql.ExecuteNonQuery();
+                    }
+                    catch (SqlException exception)
+                    {
+                        if (exception.ErrorCode == 2627)
+                            MessageBox.Show("Error.Id already exists.", "warning");
+                        else
+                            MessageBox.Show("Error\n" + exception, "warning");
+                        return;
+                    }
                     conn.Close();
+                    data.SetMemberID();
                     MessageBox.Show("Succesfully Added New Member");
              
                 }
@@ -132,6 +170,24 @@ namespace AccountingSystem.Views
 
                 // PhotoViewer.Image = new Bitmap(open.FileName);
             }
+        }
+
+        private void ImportPresentAddress(object sender, RoutedEventArgs e)
+        {
+            MemberPermanentCO.Text=MemberPresentCO.Text;
+            MemberPermanentVillage.Text=MemberPresentVillage.Text;
+            MemberPermanentPost.Text= MemberPresentPost.Text;
+            MemberPermanentThana.Text=MemberPresentThana.Text;
+            MemberPermanentDistrict.Text=MemberPresentDistrict.Text;
+        }
+
+        private void ImportNullAddress(object sender, RoutedEventArgs e)
+        {
+            MemberPermanentCO.Text = "";
+            MemberPermanentVillage.Text = "";
+            MemberPermanentPost.Text = "";
+            MemberPermanentThana.Text = "";
+            MemberPermanentDistrict.Text = "";
         }
     }
 }

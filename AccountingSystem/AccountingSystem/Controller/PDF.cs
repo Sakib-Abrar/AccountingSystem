@@ -9,6 +9,7 @@ using iText.IO.Font;
 using iText.Kernel.Font;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using System.IO;
 
 namespace AccountingSystem.Controller
 {
@@ -21,9 +22,7 @@ namespace AccountingSystem.Controller
         {
             string filename=title+" "+DateTime.Now.ToString("dd MMM yyyy HH_mm");
 
-
-            //PdfWriter writer = new PdfWriter("/Dotnet_project/pdf/" + filename + ".pdf");
-            PdfWriter writer = new PdfWriter("/Users/Public/Documents/" + filename + ".pdf");
+            PdfWriter writer = new PdfWriter(Path.GetFullPath("PDF/" + filename + ".pdf"));
 
             PdfDocument pdf = new PdfDocument(writer);
             doc = new Document(pdf);

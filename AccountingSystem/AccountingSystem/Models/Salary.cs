@@ -156,9 +156,7 @@ namespace AccountingSystem.Models
             if (_firstLoad)
                 return validationMessage;
             switch (propertyName)
-            {
-              
-                
+            {   
                 case "Amount":
                     if (!double.TryParse(Amount.ToString(), out uselessParse))
                     {

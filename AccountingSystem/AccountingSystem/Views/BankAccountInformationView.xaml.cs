@@ -119,7 +119,6 @@ namespace AccountingSystem.Views
                     CmdSql.Parameters.AddWithValue("@Interest", Interest.Text);
                     CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                     CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
-
                     CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                     CmdSql.Parameters.AddWithValue("@ServiceCharge", ServiceCharge.Text);
                     CmdSql.Parameters.AddWithValue("@Remains", CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) + Convert.ToDouble(Interest.Text) - Convert.ToDouble(Withdraw.Text) - Convert.ToDouble(ServiceCharge.Text)));

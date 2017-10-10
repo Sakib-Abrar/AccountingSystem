@@ -3,46 +3,42 @@ using System.Collections.Generic;
 using AccountingSystem.Controller;
 using System.Data.SqlClient;
 using System.ComponentModel;
-using System.Linq;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Collections;
 using System.Windows;
+using System.IO;
 
 namespace AccountingSystem.Models
 {
 
 
-    class Members : INotifyPropertyChanged
+    class Members : INotifyPropertyChanged, IDataErrorInfo
     {
         private int uselessIntParse;
         private long uselessParse;
         private int m_memberID;
-        private String m_memberName;
-        private String m_memberVoterID;
-        private String m_memberFather;
-        private String m_memberMother;
-        private DateTime m_memberDOB;
+        private string m_memberName;
+        private string m_memberVoterID;
+        private string m_memberFather;
+        private string m_memberMother;
+        private DateTime m_memberDOB=new DateTime(1985,03,01);
 
-        private String m_memberProfession;
-        private String m_memberNationality;
-        private String m_memberReligion;
-        private String m_memberPresentCO;
-        private String m_memberPresentVillage;
-        private String m_memberPresentPost;
-        private String m_memberPresentThana;
-        private String m_memberPresentDistrict;
-        private String m_memberPermanentCO;
-        private String m_memberPermanentVillage;
-        private String m_memberPermanentPost;
-        private String m_memberPermanentThana;
-        private String m_memberPermanentDistrict;
-        private String m_memberNominee;
-        private DateTime m_memberNomineeDOB;
-        private String m_memberNomineeRelation;
-        private String m_memberNomineeCell;
-        private String m_memberPhoto;
-
+        private string m_memberProfession;
+        private string m_memberNationality;
+        private string m_memberReligion;
+        private string m_memberPresentCO;
+        private string m_memberPresentVillage;
+        private string m_memberPresentPost;
+        private string m_memberPresentThana;
+        private string m_memberPresentDistrict;
+        private string m_memberPermanentCO;
+        private string m_memberPermanentVillage;
+        private string m_memberPermanentPost;
+        private string m_memberPermanentThana;
+        private string m_memberPermanentDistrict;
+        private string m_memberNominee;
+        private DateTime m_memberNomineeDOB= new DateTime(1985, 03, 01);
+        private string m_memberNomineeRelation;
+        private string m_memberNomineeCell;
+        private string m_memberPhoto;
         /// <summary>
         /// _firstLoad is used to prevent auto validation at the startup
         /// </summary>
@@ -56,16 +52,12 @@ namespace AccountingSystem.Models
             }
             set
             {
-                if (m_memberID != value)
-                {
-                    m_memberID = value;
-                }
+                m_memberID = value;
                 OnPropertyChanged("MemberID");
-                _firstLoad = false;
             }
         }
 
-        public String MemberName
+        public string MemberName
         {
             get
             {
@@ -73,14 +65,12 @@ namespace AccountingSystem.Models
             }
             set
             {
-                if (m_memberName != value)
-                {
-                    m_memberName = value;
-                }
+                m_memberName = value;
                 OnPropertyChanged("MemberName");
+                _firstLoad = false;
             }
         }
-        public String MemberVoterID
+        public string MemberVoterID
         {
             get
             {
@@ -88,14 +78,11 @@ namespace AccountingSystem.Models
             }
             set
             {
-                if (m_memberVoterID != value)
-                {
-                    m_memberVoterID = value;
-                }
+                m_memberVoterID = value;
                 OnPropertyChanged("MemberVoterID");
             }
         }
-        public String MemberFather
+        public string MemberFather
         {
             get
             {
@@ -103,14 +90,11 @@ namespace AccountingSystem.Models
             }
             set
             {
-                if (m_memberFather != value)
-                {
-                    m_memberFather = value;
-                }
+                m_memberFather = value;
                 OnPropertyChanged("MemberFather");
             }
         }
-        public String MemberMother
+        public string MemberMother
         {
             get
             {
@@ -140,7 +124,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberDOB");
             }
         }
-        public String MemberProfession
+        public string MemberProfession
         {
             get
             {
@@ -155,7 +139,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberProfession");
             }
         }
-        public String MemberNationality
+        public string MemberNationality
         {
             get
             {
@@ -170,7 +154,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberNationality");
             }
         }
-        public String MemberReligion
+        public string MemberReligion
         {
             get
             {
@@ -185,7 +169,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberReligion");
             }
         }
-        public String MemberPresentCO
+        public string MemberPresentCO
         {
             get
             {
@@ -200,7 +184,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPresentCO");
             }
         }
-        public String MemberPresentVillage
+        public string MemberPresentVillage
         {
             get
             {
@@ -215,7 +199,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPresentVillage");
             }
         }
-        public String MemberPresentPost
+        public string MemberPresentPost
         {
             get
             {
@@ -230,7 +214,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPresentPost");
             }
         }
-        public String MemberPresentThana
+        public string MemberPresentThana
         {
             get
             {
@@ -245,7 +229,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPresentThana");
             }
         }
-        public String MemberPresentDistrict
+        public string MemberPresentDistrict
         {
             get
             {
@@ -260,7 +244,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPresentDistrict");
             }
         }
-        public String MemberPermanentCO
+        public string MemberPermanentCO
         {
             get
             {
@@ -275,7 +259,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPermanentCO");
             }
         }
-        public String MemberPermanentVillage
+        public string MemberPermanentVillage
         {
             get
             {
@@ -290,7 +274,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPermanentVillage");
             }
         }
-        public String MemberPermanentPost
+        public string MemberPermanentPost
         {
             get
             {
@@ -305,7 +289,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPermanentPost");
             }
         }
-        public String MemberPermanentThana
+        public string MemberPermanentThana
         {
             get
             {
@@ -320,7 +304,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPermanentThana");
             }
         }
-        public String MemberPermanentDistrict
+        public string MemberPermanentDistrict
         {
             get
             {
@@ -335,7 +319,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPermanentDistrict");
             }
         }
-        public String MemberNominee
+        public string MemberNominee
         {
             get
             {
@@ -365,7 +349,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberNomineeDOB");
             }
         }
-        public String MemberNomineeRelation
+        public string MemberNomineeRelation
         {
             get
             {
@@ -380,7 +364,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberNomineeRelation");
             }
         }
-        public String MemberCell
+        public string MemberCell
         {
             get
             {
@@ -395,7 +379,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberNomineeCell");
             }
         }
-        public String MemberPhoto
+        public string MemberPhoto
         {
             get
             {
@@ -429,18 +413,6 @@ namespace AccountingSystem.Models
                     MemberCell = (String)reader["MemberCell"],
                 });
             }
-
-            /// <summary>
-            ///Select Last Entry No
-            /// <summary/>
-
-            query = "SELECT TOP 1 * FROM Member ORDER BY MemberId DESC";
-            conn.OpenConection();
-            reader = conn.DataReader(query);
-            while (reader.Read())
-            {
-                m_memberID = (int)reader["MemberId"] + 1;
-            }
             conn.CloseConnection();
             return entries;
         }
@@ -452,39 +424,34 @@ namespace AccountingSystem.Models
             MemberID = memberID;
             Connection conn = new Connection();
             conn.OpenConection();
-            string query = "SELECT * From Member WHERE MemberID = "+memberID;
+            string query = "SELECT * From Member WHERE MemberId = "+memberID;
             SqlDataReader reader = conn.DataReader(query);
             int checkExistence = 0;
             while (reader.Read())
             {
-                MemberName = (String)reader["MemberName"];
-                MemberVoterID= (String)reader["MemberVoterId"];
-                MemberFather = (String)reader["MemberFather"];
-                MemberMother = (String)reader["MemberMother"];
+                MemberName = (string)reader["MemberName"];
+                MemberVoterID= (string)reader["MemberVoterId"];
+                MemberFather = (string)reader["MemberFather"];
+                MemberMother = (string)reader["MemberMother"];
                 MemberDOB = (DateTime)reader["MemberDOB"];
-                MemberProfession = (String)reader["MemberProfession"];
-                MemberReligion = (String)reader["MemberReligion"];
-                MemberNationality = (String)reader["MemberNationality"];
-                MemberPresentCO = (String)reader["MemberPresentCO"];
-                MemberPresentVillage = (String)reader["MemberPresentVillage"];
-                MemberPresentPost = (String)reader["MemberPresentPost"];
-                MemberPresentThana = (String)reader["MemberPresentThana"];
-                MemberPresentDistrict = (String)reader["MemberPresentDistrict"];
-                MemberPermanentCO = (String)reader["MemberPresentCO"];
-                MemberPermanentVillage = (String)reader["MemberPermanentVillage"];
-                MemberPermanentPost = (String)reader["MemberPermanentPost"];
-                MemberPermanentThana = (String)reader["MemberPermanentThana"];
-                MemberPermanentDistrict = (String)reader["MemberPermanentDistrict"];
-                MemberNominee = (String)reader["MemberNominee"];
+                MemberProfession = (string)reader["MemberProfession"];
+                MemberReligion = (string)reader["MemberReligion"];
+                MemberNationality = (string)reader["MemberNationality"];
+                MemberPresentCO = (string)reader["MemberPresentCO"];
+                MemberPresentVillage = (string)reader["MemberPresentVillage"];
+                MemberPresentPost = (string)reader["MemberPresentPost"];
+                MemberPresentThana = (string)reader["MemberPresentThana"];
+                MemberPresentDistrict = (string)reader["MemberPresentDistrict"];
+                MemberPermanentCO = (string)reader["MemberPresentCO"];
+                MemberPermanentVillage = (string)reader["MemberPermanentVillage"];
+                MemberPermanentPost = (string)reader["MemberPermanentPost"];
+                MemberPermanentThana = (string)reader["MemberPermanentThana"];
+                MemberPermanentDistrict = (string)reader["MemberPermanentDistrict"];
+                MemberNominee = (string)reader["MemberNominee"];
                 MemberNomineeDOB = (DateTime)reader["MemberNomineeDOB"];
-                MemberNomineeRelation = (String)reader["MemberNomineeRelation"];
-                MemberCell = (String)reader["MemberCell"];
-                //string appStartPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-                //string path = appStartPath.Substring(0, appStartPath.Length - 10);
-                // String path = "/AccountingSystem;component";
-                //  MemberPhoto = path + (String)reader["MemberPhoto"];
-                // var yourImage = new BitmapImage(new Uri(String.Format("Images/MemberPhoto/{0}.jpg", "aaa_1204041"), UriKind.Relative));
-                MemberPhoto = (string)reader["MemberPhoto"];
+                MemberNomineeRelation = (string)reader["MemberNomineeRelation"];
+                MemberCell = (string)reader["MemberCell"];
+                MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberPhoto"]);
                 checkExistence = 1;
 
             }
@@ -511,7 +478,7 @@ namespace AccountingSystem.Models
                         searchTerm = "MemberVoterID";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 searchTerm = "MemberName";
             }
@@ -525,35 +492,30 @@ namespace AccountingSystem.Models
                 
                 if ((string)reader[searchTerm] == memberUnknown)
                 {
-                    MemberID = (int)reader["MemberID"];
-                    MemberName = (String)reader["MemberName"];
-                    MemberVoterID = (String)reader["MemberVoterId"];
-                    MemberFather = (String)reader["MemberFather"];
-                    MemberMother = (String)reader["MemberMother"];
+                    MemberID = (int)reader["MemberId"];
+                    MemberName = (string)reader["MemberName"];
+                    MemberVoterID = (string)reader["MemberVoterId"];
+                    MemberFather = (string)reader["MemberFather"];
+                    MemberMother = (string)reader["MemberMother"];
                     MemberDOB = (DateTime)reader["MemberDOB"];
-                    MemberProfession = (String)reader["MemberProfession"];
-                    MemberReligion = (String)reader["MemberReligion"];
-                    MemberNationality = (String)reader["MemberNationality"];
-                    MemberPresentCO = (String)reader["MemberPresentCO"];
-                    MemberPresentVillage = (String)reader["MemberPresentVillage"];
-                    MemberPresentPost = (String)reader["MemberPresentPost"];
-                    MemberPresentThana = (String)reader["MemberPresentThana"];
-                    MemberPresentDistrict = (String)reader["MemberPresentDistrict"];
-                    MemberPermanentCO = (String)reader["MemberPresentCO"];
-                    MemberPermanentVillage = (String)reader["MemberPermanentVillage"];
-                    MemberPermanentPost = (String)reader["MemberPermanentPost"];
-                    MemberPermanentThana = (String)reader["MemberPermanentThana"];
-                    MemberPermanentDistrict = (String)reader["MemberPermanentDistrict"];
-                    MemberNominee = (String)reader["MemberNominee"];
+                    MemberProfession = (string)reader["MemberProfession"];
+                    MemberReligion = (string)reader["MemberReligion"];
+                    MemberNationality = (string)reader["MemberNationality"];
+                    MemberPresentCO = (string)reader["MemberPresentCO"];
+                    MemberPresentVillage = (string)reader["MemberPresentVillage"];
+                    MemberPresentPost = (string)reader["MemberPresentPost"];
+                    MemberPresentThana = (string)reader["MemberPresentThana"];
+                    MemberPresentDistrict = (string)reader["MemberPresentDistrict"];
+                    MemberPermanentCO = (string)reader["MemberPresentCO"];
+                    MemberPermanentVillage = (string)reader["MemberPermanentVillage"];
+                    MemberPermanentPost = (string)reader["MemberPermanentPost"];
+                    MemberPermanentThana = (string)reader["MemberPermanentThana"];
+                    MemberPermanentDistrict = (string)reader["MemberPermanentDistrict"];
+                    MemberNominee = (string)reader["MemberNominee"];
                     MemberNomineeDOB = (DateTime)reader["MemberNomineeDOB"];
-                    MemberNomineeRelation = (String)reader["MemberNomineeRelation"];
-                    MemberCell = (String)reader["MemberCell"];
-                    //string appStartPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-                    //string path = appStartPath.Substring(0, appStartPath.Length - 10);
-                    // String path = "/AccountingSystem;component";
-                    //  MemberPhoto = path + (String)reader["MemberPhoto"];
-                    // var yourImage = new BitmapImage(new Uri(String.Format("Images/MemberPhoto/{0}.jpg", "aaa_1204041"), UriKind.Relative));
-                    MemberPhoto = (String)reader["MemberPhoto"];
+                    MemberNomineeRelation = (string)reader["MemberNomineeRelation"];
+                    MemberCell = (string)reader["MemberCell"];
+                    MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberPhoto"]);
                     checkExistence = 1;
                     break;
                 }
@@ -565,9 +527,27 @@ namespace AccountingSystem.Models
 
             conn.CloseConnection();
         }
+        public void SetMemberID()
+        {
+            Connection conn = new Connection();
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            string query = "SELECT TOP 1 * FROM Member ORDER BY MemberId DESC";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_memberID = (int)reader["MemberId"] + 1;
+            }
+
+            conn.CloseConnection();
+        }
 
         #region validation
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -602,38 +582,145 @@ namespace AccountingSystem.Models
                 return validationMessage;
             switch (propertyName)
             {
-
-
-                case "MemberID":
+                case "MemberID": // property name
                     if (!int.TryParse(MemberID.ToString(), out uselessIntParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
                     break;
-                case "MemberName": // property name
+                case "MemberName":
                     if (string.IsNullOrWhiteSpace(MemberName))
                     {
                         validationMessage = "No Details Available";
                     }
                     break;
                 case "MemberCell":
-                    if (!long.TryParse(MemberID.ToString(), out uselessParse))
+                    if (!long.TryParse(MemberCell, out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
                     break;
-                case "MemberVoterId":
-                    if (!long.TryParse(MemberID.ToString(), out uselessParse))
+                case "MemberVoterID":
+                    if (!long.TryParse(MemberVoterID, out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
                     break;
-                default:
-                    if (string.IsNullOrWhiteSpace(MemberName))
+                case "MemberFather":
+                    if (string.IsNullOrWhiteSpace(MemberFather))
                     {
                         validationMessage = "No Details Available";
                     }
                     break;
+                case "MemberMother":
+                    if (string.IsNullOrWhiteSpace(MemberMother))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberProfession":
+                    if (string.IsNullOrWhiteSpace(MemberProfession))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberReligion":
+                    if (string.IsNullOrWhiteSpace(MemberReligion))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberNationality":
+                    if (string.IsNullOrWhiteSpace(MemberNationality))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPresentCO":
+                    if (string.IsNullOrWhiteSpace(MemberPresentCO))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPresentVillage":
+                    if (string.IsNullOrWhiteSpace(MemberPresentVillage))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPresentPost":
+                    if (string.IsNullOrWhiteSpace(MemberPresentPost))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPresentThana":
+                    if (string.IsNullOrWhiteSpace(MemberPresentThana))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPresentDistrict":
+                    if (string.IsNullOrWhiteSpace(MemberPresentDistrict))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPermanentCO":
+                    if (string.IsNullOrWhiteSpace(MemberPermanentCO))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPermanentVillage":
+                    if (string.IsNullOrWhiteSpace(MemberPermanentVillage))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPermanentPost":
+                    if (string.IsNullOrWhiteSpace(MemberPermanentPost))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPermanentThana":
+                    if (string.IsNullOrWhiteSpace(MemberPermanentThana))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPermanentDistrict":
+                    if (string.IsNullOrWhiteSpace(MemberPermanentDistrict))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberNominee":
+                    if (string.IsNullOrWhiteSpace(MemberNominee))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberNomineeRelation":
+                    if (string.IsNullOrWhiteSpace(MemberNomineeRelation))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberPhoto":
+                    if (string.IsNullOrWhiteSpace(MemberPhoto))
+                    {
+                        validationMessage = "No Picture Available";
+                    }
+                    break;
+                case "MemberSignature":
+                    if (string.IsNullOrWhiteSpace(MemberPhoto))
+                    {
+                        validationMessage = "No Picture Available";
+                    }
+                    break;
+
 
             }
 

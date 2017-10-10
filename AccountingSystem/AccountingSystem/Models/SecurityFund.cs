@@ -24,7 +24,6 @@ namespace AccountingSystem.Models
         private int m_id;
         private double? m_deposit;
         private double? m_expenses ;
-        private double m_remains;
         private DateTime? m_date = Login.GlobalDate;
         public int SelectedIndex { get; set; }
         public DateTime? Date {
@@ -175,7 +174,7 @@ namespace AccountingSystem.Models
                     }
                     break;
                 case "Expenses":
-                    if (!double.TryParse(Deposit.ToString(), out uselessParse))
+                    if (!double.TryParse(Expenses.ToString(), out uselessParse))
                     {
                         validationMessage = "Only Digits Are Allowed";
                     }
