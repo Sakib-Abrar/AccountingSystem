@@ -152,7 +152,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>jnvw5kxudcO40plzO5KYY4ZzSgXeaCzqOAQN/ZRIQu0=</dsig:DigestValue>
+      <dsig:DigestValue>PHauoLFnypwxTtEYihMcOZy7ni/VMJYJqx4ZpoEcvPY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -161,7 +161,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>cticotHYbok+TPo135plqHn4a0WTNmwnd+NRGpNY0T8=</dsig:DigestValue>
+      <dsig:DigestValue>pyI5iouTOGv2mqsYQvX1eQCipxnT1GXtKq+Wwdrgl44=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
