@@ -58,7 +58,27 @@ namespace AccountingSystem.Views
                 conn.CloseConnection();
                 return total;
             }
-            protected void Save_Click(object sender, RoutedEventArgs e)
+        private double edited_total()
+        {
+            Connection conn = new Connection();
+            double total = 0.00;
+            string query = "SELECT * FROM ReservedFund Order by Reserved_Id";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                {   string rid= reader["Reserved_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    if (Id > r_id)
+                    total = (double)reader["Reserved_Total"];
+                }
+            }
+            conn.CloseConnection();
+            return total;
+        }
+
+
+        protected void Save_Click(object sender, RoutedEventArgs e)
             {
                 if (CheckForError(Current) || CheckForError(Withdraw))
                 {
@@ -90,7 +110,6 @@ namespace AccountingSystem.Views
                     SqlDataReader reader = conn2.DataReader(query);
                     while (reader.Read())
                     {
-                        Id = (int)reader["Reserved_Id"];
                         dateTime = (DateTime)reader["Reserved_Date"];
                     }
                     conn2.CloseConnection();
@@ -105,6 +124,7 @@ namespace AccountingSystem.Views
             }
             else
             {
+                double previous_edit = this.edited_total();
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
                     SqlCommand CmdSql = new SqlCommand("UPDATE [ReservedFund] SET Reserved_Date = @Date , Reserved_Current = @Current, Reserved_Withdraw = @Withdraw, Reserved_Previous = @Previous, Reserved_Remaining = @Remaining WHERE Reserved_Id=" + EntryNo.Text, conn);
@@ -112,8 +132,8 @@ namespace AccountingSystem.Views
                     CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                     CmdSql.Parameters.AddWithValue("@Current", Current.Text);
                     CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
-                    CmdSql.Parameters.AddWithValue("@Previous", previous);
-                    CmdSql.Parameters.AddWithValue("@Total", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
+                    CmdSql.Parameters.AddWithValue("@Previous", previous_edit);
+                    CmdSql.Parameters.AddWithValue("@Total", previous_edit + Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
                     CmdSql.Parameters.AddWithValue("@Remaining", Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
@@ -166,7 +186,10 @@ namespace AccountingSystem.Views
                     return;
                 while (reader.Read())
                 {
+                    
                     EntryNo.Text = reader["Reserved_Id"].ToString();
+                    Id = Convert.ToInt32(reader["Reserved_Id"]);
+                    Console.Write(Id + " - ");
                     Date.SelectedDate = (DateTime)reader["Reserved_Date"];
                     Current.Text = reader["Reserved_Current"].ToString();
                     Withdraw.Text = reader["Reserved_Withdraw"].ToString();

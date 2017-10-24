@@ -43,6 +43,31 @@ namespace AccountingSystem.Views
             conn.CloseConnection();
             return remains;
         }
+
+        private double edited_total()
+        {
+            double remains = 0.00;
+            Connection conn = new Connection();
+            string query = "SELECT * FROM ShareableProfit Order by Shareable_Id";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                {
+                    string rid = reader["Shareable_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+
+                    if (Id > r_id)
+                    {
+                        remains = (double)reader["Shareable_Remains"];
+                        Console.Write(Id + " " + r_id);
+                    }
+                }
+            }
+            conn.CloseConnection();
+            return remains;
+        }
+
         private bool CheckForError(TextBox Selected)
         {
             BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
@@ -66,44 +91,79 @@ namespace AccountingSystem.Views
             }
 
             double previous = this.last_remains();
-            using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+            if ((string)Save.Content == "Save")
             {
-
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [ShareableProfit] (Shareable_Date, Shareable_Previous, Shareable_Deposit, Shareable_Expenses, Shareable_Remains) VALUES (@Date, @Previous, @Deposit, @Expenses, @Remains)", conn);
-                conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                CmdSql.Parameters.AddWithValue("@Previous", previous);
-                CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
-                CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
-                CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
-                CmdSql.ExecuteNonQuery();
-                conn.Close();
-
-                //Inserting value in Entry table
-                Connection conn2 = new Connection();
-
-                string query = "SELECT TOP 1 * FROM ShareableProfit ORDER BY Shareable_Id DESC";
-                conn2.OpenConection();
-                SqlDataReader reader = conn2.DataReader(query);
-                while (reader.Read())
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    Id = (int)reader["Shareable_Id"];
-                    dateTime = (DateTime)reader["Shareable_Date"];
+
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [ShareableProfit] (Shareable_Date, Shareable_Previous, Shareable_Deposit, Shareable_Expenses, Shareable_Remains) VALUES (@Date, @Previous, @Deposit, @Expenses, @Remains)", conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Previous", previous);
+                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                    CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                    CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+                    Connection conn2 = new Connection();
+
+                    string query = "SELECT TOP 1 * FROM ShareableProfit ORDER BY Shareable_Id DESC";
+                    conn2.OpenConection();
+                    SqlDataReader reader = conn2.DataReader(query);
+                    while (reader.Read())
+                    {
+                        Id = (int)reader["Shareable_Id"];
+                        dateTime = (DateTime)reader["Shareable_Date"];
+                    }
+                    conn2.CloseConnection();
+
+
+
+
+                    string table = "Shareable Profit";
+                    string type = "Inserted";
+                    string color = "Green";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+
+
                 }
-                conn2.CloseConnection();
-
-
-
-
-                string table = "Shareable Profit";
-                string type = "Inserted";
-                string color = "Green";
-                EntryLog entry = new EntryLog();
-                entry.Add_Entry(table, type, Id, dateTime, color);
-
-
-
             }
+
+            else
+            {
+                double prev = this.edited_total();
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                {
+
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [ShareableProfit] SET Shareable_Date = @Date , Shareable_Previous = @Previous, Shareable_Expenses = @Expenses, Shareable_Deposit = @Deposit, Shareable_Remains = @Remains WHERE Shareable_Id=" + EntryNo.Text, conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Previous", prev);
+                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                    CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                    CmdSql.Parameters.AddWithValue("@Remains", prev + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    dateTime = DateTime.Today;
+
+                    string table = "Shareable Profit";
+                    string type = "Updated";
+                    string color = "Blue";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+                }
+                Save.Content = "Save";
+            }
+
             ShareableProfit data = new ShareableProfit();
             shareableProfit.ItemsSource = data.GetData();
             DataContext = data;
@@ -138,6 +198,7 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["Shareable_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
                     Date.SelectedDate = (DateTime)reader["Shareable_Date"];
                     Deposit.Text = reader["Shareable_Deposit"].ToString();
                     Expenses.Text = reader["Shareable_Expenses"].ToString();

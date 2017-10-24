@@ -48,7 +48,7 @@ namespace AccountingSystem.Views
         {
             Connection conn = new Connection();
             double remains = 0.00;
-            string query = "SELECT TOP 1 * FROM BankAccount ORDER BY BankAccount_Id DESC";
+            string query = "SELECT TOP 1 * FROM BankAccount ORDER BY BankAccount_Id";
             conn.OpenConection();
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
@@ -58,6 +58,29 @@ namespace AccountingSystem.Views
             conn.CloseConnection();
             return remains;
         }
+        private double edited_total()
+        {
+            double remains = 0.00;
+            Connection conn = new Connection();
+            string query = "SELECT * FROM BankAccount Order by BankAccount_Id";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                {
+                    string rid = reader["BankAccount_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+
+                    if (Id > r_id)
+                    { remains = (double)reader["BankAccount_Remains"];
+                          Console.Write(Id + " " + r_id);
+                         }
+                }
+            }
+            conn.CloseConnection();
+            return remains;
+        }
+
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
             if (CheckForError(Interest) || CheckForError(Deposit) || CheckForError(Withdraw) || CheckForError(ServiceCharge))
@@ -67,7 +90,7 @@ namespace AccountingSystem.Views
             }
 
             double remains = this.last_remains();
-            if ((string)Save.Content == "Insert")
+            if ((string)Save.Content == "Save")
             {
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
@@ -110,18 +133,18 @@ namespace AccountingSystem.Views
 
             else
             {
+                double remain = this.edited_total();
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
 
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [SecurityFund] SET Security_Date = @Date , Security_Details = @Details, Security_Deposit = @Deposit, Security_Expenses = @Expenses, Security_Remains = @Remains WHERE Security_Id=" + EntryNo.Text, conn);
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [BankAccount] SET BankAccount_Date = @Date , BankAccount_ServiceCharge = @ServiceCharge, BankAccount_Interest = @Interest, BankAccount_Deposit = @Deposit, BankAccount_Withdraw = @Withdraw, BankAccount_Remains = @Remains WHERE BankAccount_Id=" + EntryNo.Text, conn);
                     conn.Open();
                     CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
                     CmdSql.Parameters.AddWithValue("@Interest", Interest.Text);
                     CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                     CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
-                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                     CmdSql.Parameters.AddWithValue("@ServiceCharge", ServiceCharge.Text);
-                    CmdSql.Parameters.AddWithValue("@Remains", CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) + Convert.ToDouble(Interest.Text) - Convert.ToDouble(Withdraw.Text) - Convert.ToDouble(ServiceCharge.Text)));
+                    CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) + Convert.ToDouble(Interest.Text) - Convert.ToDouble(Withdraw.Text) - Convert.ToDouble(ServiceCharge.Text));
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
 
@@ -130,14 +153,14 @@ namespace AccountingSystem.Views
                     Id = Convert.ToInt32(EntryNo.Text);
                     dateTime = DateTime.Today;
 
-                    string table = "Security Fund";
+                    string table = "Bank Account";
                     string type = "Updated";
                     string color = "Blue";
                     EntryLog entry = new EntryLog();
                     entry.Add_Entry(table, type, Id, dateTime, color);
 
                 }
-                Save.Content = "Insert";
+                Save.Content = "Save";
             }
 
             BankAccountInformation data = new BankAccountInformation();
@@ -174,6 +197,7 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["BankAccount_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
                     Date.SelectedDate = (DateTime)reader["BankAccount_Date"];
                     Interest.Text = reader["BankAccount_Interest"].ToString();
                     Deposit.Text = reader["BankAccount_Deposit"].ToString();
@@ -222,11 +246,12 @@ namespace AccountingSystem.Views
                         return;
                     }
 
-                    using (SqlCommand command = new SqlCommand("DELETE FROM SecurityFund WHERE Security_Id = " + handle.FirstInput, con))
+                    using (SqlCommand command = new SqlCommand("DELETE FROM BankAccount WHERE BankAccount_Id = " + handle.FirstInput, con))
                     {
                         con.Open();
                         command.ExecuteNonQuery();
                         con.Close();
+                        MessageBox.Show("Successfully Deleted");
                     }
 
                     Id = Convert.ToInt32(handle.FirstInput);

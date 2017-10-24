@@ -59,6 +59,30 @@ namespace AccountingSystem.Views
             return remains;
         }
 
+        private double edited_total()
+        {
+            double remains = 0.00;
+            Connection conn = new Connection();
+            string query = "SELECT * FROM CooperativeDevelopment Order by Cooperative_Id";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                {
+                    string rid = reader["Cooperative_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+
+                    if (Id > r_id)
+                    {
+                        remains = (double)reader["Cooperative_Remains"];
+                        Console.Write(Id + " " + r_id);
+                    }
+                }
+            }
+            conn.CloseConnection();
+            return remains;
+        }
+
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
             if (CheckForError(Current) || CheckForError(Paid))
@@ -66,40 +90,76 @@ namespace AccountingSystem.Views
                 MessageBox.Show("Error!Check Input Again");
                 return;
             }
-            using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+            if ((string)Save.Content == "Save")
             {
-                double previous = this.last_remains();
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [CooperativeDevelopment] (Cooperative_Date, Cooperative_Current, Cooperative_Paid, Cooperative_Previous, Cooperative_Remains) VALUES (@Date, @Current, @Paid, @Previous, @Remains)", conn);
-                conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                CmdSql.Parameters.AddWithValue("@Current", Current.Text);
-                CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
-                CmdSql.Parameters.AddWithValue("@Previous", previous);
-                CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
-                CmdSql.ExecuteNonQuery();
-                conn.Close();
-
-                //Inserting value in Entry table
-                Connection conn2 = new Connection();
-
-                string query = "SELECT TOP 1 * FROM CooperativeDevelopment ORDER BY Cooperative_Id DESC";
-                conn2.OpenConection();
-                SqlDataReader reader = conn2.DataReader(query);
-                while (reader.Read())
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    Id = (int)reader["Cooperative_Id"];
-                    dateTime = (DateTime)reader["Cooperative_Date"];
+                    double previous = this.last_remains();
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [CooperativeDevelopment] (Cooperative_Date, Cooperative_Current, Cooperative_Paid, Cooperative_Previous, Cooperative_Remains) VALUES (@Date, @Current, @Paid, @Previous, @Remains)", conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Current", Current.Text);
+                    CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
+                    CmdSql.Parameters.AddWithValue("@Previous", previous);
+                    CmdSql.Parameters.AddWithValue("@Remains", previous + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+                    Connection conn2 = new Connection();
+
+                    string query = "SELECT TOP 1 * FROM CooperativeDevelopment ORDER BY Cooperative_Id DESC";
+                    conn2.OpenConection();
+                    SqlDataReader reader = conn2.DataReader(query);
+                    while (reader.Read())
+                    {
+                        Id = (int)reader["Cooperative_Id"];
+                        dateTime = (DateTime)reader["Cooperative_Date"];
+                    }
+                    conn2.CloseConnection();
+
+                    string table = "Co-operative developement";
+                    string type = "Inserted";
+                    string color = "Green";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+                    MessageBox.Show("Successfully Inserted!");
+
                 }
-                conn2.CloseConnection();
-
-                string table = "Co-operative developement";
-                string type = "Inserted";
-                string color = "Green";
-                EntryLog entry = new EntryLog();
-                entry.Add_Entry(table, type, Id, dateTime, color);
-
-
             }
+
+            else
+            {
+                double prev = this.edited_total();
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                {
+
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [CooperativeDevelopment] SET Cooperative_Date = @Date , Cooperative_Current = @Current, Cooperative_Paid = @Paid, Cooperative_Previous = @Previous, Cooperative_Remains = @Remains WHERE Cooperative_Id=" + EntryNo.Text, conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Current", Current.Text);
+                    CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
+                    CmdSql.Parameters.AddWithValue("@Previous", prev);
+                    CmdSql.Parameters.AddWithValue("@Remains", prev + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    dateTime = DateTime.Today;
+
+                    string table = "Cooperative Development";
+                    string type = "Updated";
+                    string color = "Blue";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+                }
+                Save.Content = "Save";
+                MessageBox.Show("Successfully Updated!");
+            }
+
             CooperativeDevelopment data = new CooperativeDevelopment();
             cooperativeDevelopment.ItemsSource = data.GetData();
             DataContext = data;
@@ -133,8 +193,9 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["Cooperative_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
                     Date.SelectedDate = (DateTime)reader["Cooperative_Date"];
-                    Current.Text = (string)reader["Cooperative_Current"];
+                    Current.Text = reader["Cooperative_Current"].ToString();
                     Paid.Text = reader["Cooperative_Paid"].ToString();
                 }
 
@@ -193,6 +254,7 @@ namespace AccountingSystem.Views
                     string color = "Red";
                     EntryLog entry = new EntryLog();
                     entry.Add_Entry(table, type, Id, dateTime, color);
+                    MessageBox.Show("Successfully Deleted!");
 
                     conn.CloseConnection();
                     CooperativeDevelopment data = new CooperativeDevelopment();

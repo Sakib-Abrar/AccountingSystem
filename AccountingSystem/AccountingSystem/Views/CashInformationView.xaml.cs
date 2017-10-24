@@ -58,6 +58,29 @@ namespace AccountingSystem.Views
             conn.CloseConnection();
             return remains;
         }
+        private double edited_total()
+        {
+            double remain = 0.00;
+            Connection conn = new Connection();
+            string query = "SELECT * FROM CashInformation Order by Cash_Id";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                {
+                    string rid = reader["Cash_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+
+                    if (Id > r_id)
+                    {
+                        remain = (double)reader["Cash_Remains"];
+                        Console.Write(Id + " " + r_id);
+                    }
+                }
+            }
+            conn.CloseConnection();
+            return remain;
+        }
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
             if ( CheckForError(Deposit) || CheckForError(Expenses))
@@ -67,43 +90,81 @@ namespace AccountingSystem.Views
             }
 
             double remains = this.last_remains();
-            using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+            if ((string)Save.Content == "Save")
             {
-
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [CashInformation] (Cash_Date, Cash_Previous, Cash_Deposit, Cash_Expenses, Cash_Remains,Cash_Total) VALUES (@Date, @Previous, @Deposit, @Expenses, @Remains,@Total)", conn);
-                conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                CmdSql.Parameters.AddWithValue("@Previous", remains);
-                CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
-                CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
-                CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
-                CmdSql.Parameters.AddWithValue("@Total", remains + Convert.ToDouble(Deposit.Text));
-                CmdSql.ExecuteNonQuery();
-                conn.Close();
-
-                //Inserting value in Entry table
-                Connection conn2 = new Connection();
-
-                string query = "SELECT TOP 1 * FROM CashInformation ORDER BY Cash_Id DESC";
-                conn2.OpenConection();
-                SqlDataReader reader = conn2.DataReader(query);
-                while (reader.Read())
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    Id = (int)reader["Cash_Id"];
-                    dateTime = (DateTime)reader["Cash_Date"];
+
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [CashInformation] (Cash_Date, Cash_Previous, Cash_Deposit, Cash_Expenses, Cash_Remains,Cash_Total) VALUES (@Date, @Previous, @Deposit, @Expenses, @Remains,@Total)", conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Previous", remains);
+                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                    CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                    CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                    CmdSql.Parameters.AddWithValue("@Total", remains + Convert.ToDouble(Deposit.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+                    Connection conn2 = new Connection();
+
+                    string query = "SELECT TOP 1 * FROM CashInformation ORDER BY Cash_Id DESC";
+                    conn2.OpenConection();
+                    SqlDataReader reader = conn2.DataReader(query);
+                    while (reader.Read())
+                    {
+                        Id = (int)reader["Cash_Id"];
+                        dateTime = (DateTime)reader["Cash_Date"];
+                    }
+                    conn2.CloseConnection();
+
+                    MessageBox.Show("Successfully Inserted!");
+
+
+                    string table = "Cash Information";
+                    string type = "Inserted";
+                    string color = "Green";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
                 }
-                conn2.CloseConnection();
-
-
-
-
-                string table = "Cash Information";
-                string type = "Inserted";
-                string color = "Green";
-                EntryLog entry = new EntryLog();
-                entry.Add_Entry(table, type, Id, dateTime, color);
-
             }
+
+            else
+            {
+                double remain = this.edited_total();
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                {
+
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [CashInformation] SET Cash_Date = @Date , Cash_Previous = @Previous, Cash_Deposit = @Deposit, Cash_Expenses = @Expenses, Cash_Total = @Total, Cash_Remains = @Remains WHERE Cash_Id=" + EntryNo.Text, conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Previous", remain);
+                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                    CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                    CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                    CmdSql.Parameters.AddWithValue("@Total", remain + Convert.ToDouble(Deposit.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    dateTime = DateTime.Today;
+
+                    string table = "Cash Information";
+                    string type = "Updated";
+                    string color = "Blue";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+                }
+                Save.Content = "Save";
+                MessageBox.Show("Successfully Updated");
+            }
+
+
             CashInformation data = new CashInformation();
             cashInformation.ItemsSource = data.GetData();
             DataContext = data;
@@ -137,6 +198,7 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["Cash_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
                     Date.SelectedDate = (DateTime)reader["Cash_Date"];
                     Deposit.Text = reader["Cash_Deposit"].ToString();
                     Expenses.Text = reader["Cash_Expenses"].ToString();
@@ -197,6 +259,7 @@ namespace AccountingSystem.Views
                     string color = "Red";
                     EntryLog entry = new EntryLog();
                     entry.Add_Entry(table, type, Id, dateTime, color);
+                    MessageBox.Show("Successfully Deleted!");
 
                     conn.CloseConnection();
                     CashInformation data = new CashInformation();

@@ -45,7 +45,30 @@ namespace AccountingSystem.Views
             conn.CloseConnection();
             return remains;
         }
-   
+
+        private double edited_total()
+        {
+            Connection conn = new Connection();
+            double total = 0.00;
+            string query = "SELECT * FROM SecurityFund Order by Security_Id";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                {
+                    string rid = reader["Security_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    if (Id > r_id)
+                    {
+                        total = (double)reader["Security_Remains"];
+                        Console.Write(Id + " > "+r_id);
+                    }
+                }
+            }
+            conn.CloseConnection();
+            return total;
+        }
+
         public bool CheckForError(TextBox Selected)
         {
             BindingExpression Trigger = Selected.GetBindingExpression(TextBox.TextProperty);
@@ -93,11 +116,12 @@ namespace AccountingSystem.Views
                     string color = "Green";
                     EntryLog entry = new EntryLog();
                     entry.Add_Entry(table, type, Id, dateTime, color);
-
+                    MessageBox.Show("Successfully Inserted");
                 }
             }
             else
             {
+                double remain = this.edited_total();
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
 
@@ -107,7 +131,7 @@ namespace AccountingSystem.Views
                     CmdSql.Parameters.AddWithValue("@Details", Details.Text);
                     CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
                     CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
-                    CmdSql.Parameters.AddWithValue("@Remains", remains + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                    CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
 
@@ -124,7 +148,9 @@ namespace AccountingSystem.Views
 
                 }
                 Save.Content = "Insert";
+                MessageBox.Show("Successfully Updated");
             }
+
             SecurityFund data = new SecurityFund();
             securityFund.ItemsSource = data.GetData();
             DataContext = data;
@@ -159,6 +185,7 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["Security_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
                     Date.SelectedDate = (DateTime)reader["Security_Date"];
                     Details.Text = (string)reader["Security_Details"];
                     Deposit.Text = reader["Security_Deposit"].ToString();

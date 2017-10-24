@@ -54,39 +54,69 @@ namespace AccountingSystem.Views
             //double remains = this.last_remains();
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {
-
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [Salary] (Salary_Date, Salary_Amount, Salary_Bonus, Salary_Total) VALUES (@Date, @Amount, @Bonus, @Total)", conn);
-                conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                CmdSql.Parameters.AddWithValue("@Amount", Amount.Text);
-                CmdSql.Parameters.AddWithValue("@Bonus", Bonus.Text);
-                CmdSql.Parameters.AddWithValue("@Total", Convert.ToDouble(Amount.Text) + Convert.ToDouble(Bonus.Text));
-                 CmdSql.ExecuteNonQuery();
-                conn.Close();
-
-                //Inserting value in Entry table
-                Connection conn2 = new Connection();
-
-                string query = "SELECT TOP 1 * FROM Salary ORDER BY Salary_Id DESC";
-                conn2.OpenConection();
-                SqlDataReader reader = conn2.DataReader(query);
-                while (reader.Read())
+                if ((string)Save.Content == "Insert")
                 {
-                    Id = (int)reader["Salary_Id"];
-                    dateTime = (DateTime)reader["Salary_Date"];
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [Salary] (Salary_Date, Salary_Amount, Salary_Bonus, Salary_Total) VALUES (@Date, @Amount, @Bonus, @Total)", conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Amount", Amount.Text);
+                    CmdSql.Parameters.AddWithValue("@Bonus", Bonus.Text);
+                    CmdSql.Parameters.AddWithValue("@Total", Convert.ToDouble(Amount.Text) + Convert.ToDouble(Bonus.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+                    Connection conn2 = new Connection();
+
+                    string query = "SELECT TOP 1 * FROM Salary ORDER BY Salary_Id DESC";
+                    conn2.OpenConection();
+                    SqlDataReader reader = conn2.DataReader(query);
+                    while (reader.Read())
+                    {
+                        Id = (int)reader["Salary_Id"];
+                        dateTime = (DateTime)reader["Salary_Date"];
+                    }
+                    conn2.CloseConnection();
+
+
+
+
+                    string table = "Salary";
+                    string type = "Inserted";
+                    string color = "Green";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
                 }
-                conn2.CloseConnection();
+                else
+                {
+                    
+                    using (SqlConnection con = new SqlConnection(@Connection.ConnectionString))
+                    {
+                        SqlCommand CmdSql = new SqlCommand("UPDATE [Salary] SET Salary_Date = @Date , Salary_Amount = @Amount, Salary_Bonus = @Bonus, Salary_Total = @Total WHERE Salary_Id=" + EntryNo.Text, conn);
+                        conn.Open();
+                        CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                        CmdSql.Parameters.AddWithValue("@Amount", Amount.Text);
+                        CmdSql.Parameters.AddWithValue("@Bonus", Bonus.Text);
+                        CmdSql.Parameters.AddWithValue("@Total", Convert.ToDouble(Amount.Text) + Convert.ToDouble(Bonus.Text));
+                        CmdSql.ExecuteNonQuery();
+                        conn.Close();
 
+                        //Inserting value in Entry table
 
+                        Id = Convert.ToInt32(EntryNo.Text);
+                        dateTime = DateTime.Today;
 
+                        string table = "Reserved Fund";
+                        string type = "Updated";
+                        string color = "Blue";
+                        EntryLog entry = new EntryLog();
+                        entry.Add_Entry(table, type, Id, dateTime, color);
+                        Save.Content = "Insert";
+                        MessageBox.Show("Successfully Updated");
+                    }
 
-                string table = "Salary";
-                string type = "Inserted";
-                string color = "Green";
-                EntryLog entry = new EntryLog();
-                entry.Add_Entry(table, type, Id, dateTime, color);
-
-            }
+                }
+        }
             Salary data = new Salary();
             salary.ItemsSource = data.GetData();
             DataContext = data;
@@ -121,9 +151,10 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["Salary_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
                     Date.SelectedDate = (DateTime)reader["Salary_Date"];
-                    Bonus.Text = (string)reader["Salary_Bonus"];
-                    Amount.Text = reader["Salary_Ammount"].ToString();
+                    Bonus.Text = reader["Salary_Bonus"].ToString();
+                    Amount.Text = reader["Salary_Amount"].ToString();
                 }
 
                 conn.CloseConnection();

@@ -44,5 +44,37 @@ namespace AccountingSystem.Views
             MemEntryObj = new MemberEntryView();
             memberData.Navigate(MemEntryObj);
         }
+
+        private void Print_Data(object sender, RoutedEventArgs e)
+        {
+            // print data codes here
+            MessageBox.Show("pd");
+        }
+        
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            // data remove codes here
+            MessageBox.Show("rc");
+        }
+        
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            // data remove codes here
+            MessageBox.Show("ec");
+        }
+
+        private void Previous_Click(object sender, RoutedEventArgs e)
+        {
+            // Previous Data codes here
+            MessageBox.Show("pc");
+        }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            // Naxt Data codes here
+            MessageBox.Show("nc");
+        }
+
     }
 }

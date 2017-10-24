@@ -50,44 +50,79 @@ namespace AccountingSystem.Views
                 MessageBox.Show("Error!Check Input Again");
                 return;
             }
-
-            using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+            if ((string)Save.Content == "Save")
             {
-
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO [OfficeRent] (Office_Date, Office_Month, Office_Advance, Office_Rent) VALUES (@Date, @Month, @Advance, @Rent)", conn);
-                conn.Open();
-                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                CmdSql.Parameters.AddWithValue("@Month", Month.Text);
-                CmdSql.Parameters.AddWithValue("@Advance", Advance.Text);
-                CmdSql.Parameters.AddWithValue("@Rent", Rent.Text);
-                CmdSql.ExecuteNonQuery();
-                conn.Close();
-
-                //Inserting value in Entry table
-                Connection conn2 = new Connection();
-
-                string query = "SELECT TOP 1 * FROM OfficeRent ORDER BY Office_Id DESC";
-                conn2.OpenConection();
-                SqlDataReader reader = conn2.DataReader(query);
-                while (reader.Read())
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    Id = (int)reader["Office_Id"];
-                    dateTime = (DateTime)reader["Office_Date"];
+
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [OfficeRent] (Office_Date, Office_Month, Office_Advance, Office_Rent) VALUES (@Date, @Month, @Advance, @Rent)", conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Month", Month.Text);
+                    CmdSql.Parameters.AddWithValue("@Advance", Advance.Text);
+                    CmdSql.Parameters.AddWithValue("@Rent", Rent.Text);
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+                    Connection conn2 = new Connection();
+
+                    string query = "SELECT TOP 1 * FROM OfficeRent ORDER BY Office_Id DESC";
+                    conn2.OpenConection();
+                    SqlDataReader reader = conn2.DataReader(query);
+                    while (reader.Read())
+                    {
+                        Id = (int)reader["Office_Id"];
+                        dateTime = (DateTime)reader["Office_Date"];
+                    }
+                    conn2.CloseConnection();
+
+
+
+
+                    string table = "Office Rent";
+                    string type = "Inserted";
+                    string color = "Green";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+                    MessageBox.Show("Successfully Saved");
+
                 }
-                conn2.CloseConnection();
 
-
-
-
-                string table = "Office Rent";
-                string type = "Inserted";
-                string color = "Green";
-                EntryLog entry = new EntryLog();
-                entry.Add_Entry(table, type, Id, dateTime, color);
-
-
+           
 
             }
+
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                {
+
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [OfficeRent] SET Office_Date = @Date , Office_Month = @Month, Office_Advance = @Advance, Office_Rent = @Rent WHERE Office_Id=" + EntryNo.Text, conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                    CmdSql.Parameters.AddWithValue("@Month", Month.Text);
+                    CmdSql.Parameters.AddWithValue("@Advance", Advance.Text);
+                    CmdSql.Parameters.AddWithValue("@Rent", Rent.Text);
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Inserting value in Entry table
+
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    dateTime = DateTime.Today;
+
+                    string table = "Security Fund";
+                    string type = "Updated";
+                    string color = "Blue";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+
+                }
+                Save.Content = "Save";
+                MessageBox.Show("Successfully Updated");
+            }
+
             OfficeRent data = new OfficeRent();
             officeRent.ItemsSource = data.GetData();
             DataContext = data;
@@ -127,7 +162,7 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["Office_Id"].ToString();
-                    Date.SelectedDate = (DateTime)reader["Security_Date"];
+                    Date.SelectedDate = (DateTime)reader["Office_Date"];
                     Month.Text = (string)reader["Office_Month"];
                     Advance.Text = reader["Office_Advance"].ToString();
                     Rent.Text = reader["Office_Rent"].ToString();
