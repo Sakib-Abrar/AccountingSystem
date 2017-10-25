@@ -8,7 +8,7 @@
       Title="MemberList">
 
     <Grid>
-        <DataGrid x:Name="memberslist" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" MouseDoubleClick="searchMember" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged" IsReadOnly="true"
+        <DataGrid x:Name="memberslist" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" MouseDoubleClick="searchMember" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged" IsReadOnly="true"
               ItemsSource="{Binding }">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="tableID" Header="Member ID" Binding="{Binding Path=MemberID}" Width="220">

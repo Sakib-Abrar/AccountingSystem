@@ -37,5 +37,10 @@ namespace AccountingSystem.Views
         {
             get { return textBox2.Text; }
         }
+        public void ChangeLabelForMember()
+        {
+            Label1.Content = "Input Member ID";
+            Label2.Content = "Confirm Member ID";
+        }
     }
 }

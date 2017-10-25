@@ -189,5 +189,12 @@ namespace AccountingSystem.Views
             MemberPermanentThana.Text = "";
             MemberPermanentDistrict.Text = "";
         }
+
+        public void SetForEdit(string m_id) {
+            int id = Convert.ToInt32(m_id);
+            data = new Members();
+            data.GetData(id);
+            DataContext = data;
+        }
     }
 }

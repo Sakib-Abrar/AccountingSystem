@@ -5,6 +5,12 @@ using System.Data.SqlClient;
 using System.ComponentModel;
 using System.Windows;
 using System.IO;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Layout.Element;
+using iText.IO.Image;
 
 namespace AccountingSystem.Models
 {
@@ -728,6 +734,92 @@ namespace AccountingSystem.Models
         }
         #endregion
 
+        #region PDFCreation
+        public void PublishPDF()
+        {
+            string pageTitle = "Member Information";
+            string filename = pageTitle + MemberID;
+            PdfWriter writer = new PdfWriter(Path.GetFullPath("PDF/" + filename + ".pdf"));
+
+            PdfDocument pdf = new PdfDocument(writer);
+            Document doc = new Document(pdf);
+            PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA);
+            PdfFont bold = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD);
+            PdfFont italic = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+            Paragraph p1 = new Paragraph("Rasulganj Multipurpose Co-operative Society Ltd").SetFont(bold).SetFontSize(15).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+            Paragraph p2 = new Paragraph(pageTitle).SetFont(bold).SetFontSize(14).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+            doc.Add(p1);
+            doc.Add(p2);
+
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * From Member WHERE MemberId = " + MemberID;
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                MemberName = (string)reader["MemberName"];
+                MemberVoterID = (string)reader["MemberVoterId"];
+                MemberFather = (string)reader["MemberFather"];
+                MemberMother = (string)reader["MemberMother"];
+                MemberDOB = (DateTime)reader["MemberDOB"];
+                MemberProfession = (string)reader["MemberProfession"];
+                MemberReligion = (string)reader["MemberReligion"];
+                MemberNationality = (string)reader["MemberNationality"];
+                MemberPresentCO = (string)reader["MemberPresentCO"];
+                MemberPresentVillage = (string)reader["MemberPresentVillage"];
+                MemberPresentPost = (string)reader["MemberPresentPost"];
+                MemberPresentThana = (string)reader["MemberPresentThana"];
+                MemberPresentDistrict = (string)reader["MemberPresentDistrict"];
+                MemberPermanentCO = (string)reader["MemberPresentCO"];
+                MemberPermanentVillage = (string)reader["MemberPermanentVillage"];
+                MemberPermanentPost = (string)reader["MemberPermanentPost"];
+                MemberPermanentThana = (string)reader["MemberPermanentThana"];
+                MemberPermanentDistrict = (string)reader["MemberPermanentDistrict"];
+                MemberNominee = (string)reader["MemberNominee"];
+                MemberNomineeDOB = (DateTime)reader["MemberNomineeDOB"];
+                MemberNomineeRelation = (string)reader["MemberNomineeRelation"];
+                MemberCell = (string)reader["MemberCell"];
+                MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberPhoto"]);
+            }
+
+            Image Photo = new Image(ImageDataFactory.Create(MemberPhoto)).SetWidth(40).SetHeight(52);
+            Paragraph imageP = new Paragraph("Member No : "+MemberID+"                                                                                                ").Add(Photo);
+            doc.Add(imageP);
+            Paragraph line0 = new Paragraph("Name : " + MemberName);
+            doc.Add(line0);
+            Paragraph line1 = new Paragraph("National ID : " + MemberVoterID);
+            doc.Add(line1);
+            Paragraph line2 = new Paragraph("Father/Husband : " + MemberFather);
+            doc.Add(line2);
+            Paragraph line3 = new Paragraph("Mother : " + MemberMother);
+            doc.Add(line3);
+            Paragraph line4 = new Paragraph("Profession : " + MemberProfession);
+            doc.Add(line4);
+            Paragraph line5 = new Paragraph("Nationality : " + MemberNationality);
+            doc.Add(line5);
+            Paragraph line6 = new Paragraph("Religion : " + MemberReligion);
+            doc.Add(line6);
+            Paragraph line7 = new Paragraph("Present Address : " + "C/O :"+MemberPresentCO);
+            doc.Add(line7);
+            Paragraph line8 = new Paragraph("|                           Village : " + MemberPresentVillage + "     Post : " + MemberPresentPost);
+            doc.Add(line8);
+            Paragraph line9 = new Paragraph("|                           Thana : " + MemberPresentThana + "      District : " + MemberPresentDistrict);
+            doc.Add(line9);
+            Paragraph line10 = new Paragraph("Permanent Address : " + "C/O : " + MemberPermanentCO);
+            doc.Add(line10);
+            Paragraph line11 = new Paragraph("|                          Village : " + MemberPermanentVillage + "     Post : " + MemberPermanentPost);
+            doc.Add(line11);
+            Paragraph line12 = new Paragraph("|                          Thana : " + MemberPermanentThana + "     District : " + MemberPermanentDistrict);
+            doc.Add(line12);
+            Paragraph line13 = new Paragraph("Nominee : " + MemberNominee + "             Relation :"+MemberNomineeRelation);
+            doc.Add(line13);
+            Paragraph line14 = new Paragraph("Cell No : " + MemberCell);
+            doc.Add(line14);
+            conn.CloseConnection();
+            doc.Close();
+        }
+        #endregion
+
     }
-   
+
 }
