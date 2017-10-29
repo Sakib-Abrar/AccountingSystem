@@ -133,36 +133,76 @@ namespace AccountingSystem.Views
 
             else
             {
-                double remain = this.edited_total();
-                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                int temp_id = Id;
+                Connection con = new Connection();
+                string query = "SELECT * FROM CashInformation Order by Cash_Id Asc";
+                con.OpenConection();
+                SqlDataReader reader = con.DataReader(query);
+                while (reader.Read())
                 {
+                    string rid = reader["Cash_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    string dep = reader["Cash_Deposit"].ToString();
+                    double depint = Convert.ToDouble(dep);
+                    string exp = reader["Cash_Expenses"].ToString();
+                    double expint = Convert.ToDouble(exp);
 
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [CashInformation] SET Cash_Date = @Date , Cash_Previous = @Previous, Cash_Deposit = @Deposit, Cash_Expenses = @Expenses, Cash_Total = @Total, Cash_Remains = @Remains WHERE Cash_Id=" + EntryNo.Text, conn);
-                    conn.Open();
-                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@Previous", remain);
-                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
-                    CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
-                    CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
-                    CmdSql.Parameters.AddWithValue("@Total", remain + Convert.ToDouble(Deposit.Text));
-                    CmdSql.ExecuteNonQuery();
-                    conn.Close();
+                    //code (if block) for updating rest of the table
+                    if (temp_id < r_id)
+                    {
+                        Id = r_id;
+                        double remain = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [CashInformation] SET Cash_Date = @Date , Cash_Deposit = @Deposit, Cash_Expenses = @Expenses, Cash_Remains = @Remains, Cash_Total = @Total WHERE Cash_Id=" + r_id, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Deposit", dep);
+                            CmdSql.Parameters.AddWithValue("@Expenses", exp);
+                            CmdSql.Parameters.AddWithValue("@Remains", remain + depint - expint);
+                            CmdSql.Parameters.AddWithValue("@Total", remain + depint);
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
 
-                    //Inserting value in Entry table
+                    //Code (else if block) for updating expected row
+                    else if (temp_id == r_id)
+                    {
 
-                    Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = DateTime.Today;
+                        double remain = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
 
-                    string table = "Cash Information";
-                    string type = "Updated";
-                    string color = "Blue";
-                    EntryLog entry = new EntryLog();
-                    entry.Add_Entry(table, type, Id, dateTime, color);
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [CashInformation] SET Cash_Date = @Date , Cash_Previous = @Previous, Cash_Deposit = @Deposit, Cash_Expenses = @Expenses, Cash_Total = @Total, Cash_Remains = @Remains WHERE Cash_Id=" + EntryNo.Text, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Previous", remain);
+                            CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                            CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                            CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                            CmdSql.Parameters.AddWithValue("@Total", remain + Convert.ToDouble(Deposit.Text));
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
 
+                            //Inserting value in Entry table
+
+                            Id = Convert.ToInt32(EntryNo.Text);
+                            dateTime = DateTime.Today;
+
+                            string table = "Cash Information";
+                            string type = "Updated";
+                            string color = "Blue";
+                            EntryLog entry = new EntryLog();
+                            entry.Add_Entry(table, type, Id, dateTime, color);
+
+                        }
+                        Save.Content = "Save";
+                        MessageBox.Show("Successfully Updated");
+                    }
                 }
-                Save.Content = "Save";
-                MessageBox.Show("Successfully Updated");
-            }
+
+             }
 
 
             CashInformation data = new CashInformation();

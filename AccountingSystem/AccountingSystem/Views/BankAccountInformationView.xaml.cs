@@ -133,34 +133,79 @@ namespace AccountingSystem.Views
 
             else
             {
-                double remain = this.edited_total();
-                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                int temp_id = Id;
+                Connection con = new Connection();
+                string query = "SELECT * FROM BankAccount Order by BankAccount_Id Asc";
+                con.OpenConection();
+                SqlDataReader reader = con.DataReader(query);
+                while (reader.Read())
                 {
+                    string rid = reader["BankAccount_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    string dep = reader["BankAccount_Deposit"].ToString();
+                    double depint = Convert.ToDouble(dep);
+                    string with = reader["BankAccount_Withdraw"].ToString();
+                    double withint = Convert.ToDouble(with);
+                    string intr = reader["BankAccount_Deposit"].ToString();
+                    double intint = Convert.ToDouble(intr);
+                    string sc = reader["BankAccount_ServiceCharge"].ToString();
+                    double scint = Convert.ToDouble(sc);
 
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [BankAccount] SET BankAccount_Date = @Date , BankAccount_ServiceCharge = @ServiceCharge, BankAccount_Interest = @Interest, BankAccount_Deposit = @Deposit, BankAccount_Withdraw = @Withdraw, BankAccount_Remains = @Remains WHERE BankAccount_Id=" + EntryNo.Text, conn);
-                    conn.Open();
-                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@Interest", Interest.Text);
-                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
-                    CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
-                    CmdSql.Parameters.AddWithValue("@ServiceCharge", ServiceCharge.Text);
-                    CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) + Convert.ToDouble(Interest.Text) - Convert.ToDouble(Withdraw.Text) - Convert.ToDouble(ServiceCharge.Text));
-                    CmdSql.ExecuteNonQuery();
-                    conn.Close();
+                    //code (if block) for updating rest of the table
+                    if (temp_id < r_id)
+                    {
+                        Id = r_id;
+                        double remain = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [BankAccount] SET BankAccount_Date = @Date , BankAccount_Deposit = @Deposit, BankAccount_Withdraw = @Withdraw, BankAccount_Interest = @Interest, BankAccount_Remains = @Remains WHERE BankAccount_Id=" + r_id, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Interest", intr);
+                            CmdSql.Parameters.AddWithValue("@Deposit", dep);
+                            CmdSql.Parameters.AddWithValue("@Withdraw", with);
+                            CmdSql.Parameters.AddWithValue("@ServiceCharge", sc);
+                            CmdSql.Parameters.AddWithValue("@Remains", remain + depint + intint - withint - scint);
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
 
-                    //Inserting value in Entry table
+                    //Code (else if block) for updating expected row
+                    else if (temp_id == r_id)
+                    {
+                        double remain = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
 
-                    Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = DateTime.Today;
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [BankAccount] SET BankAccount_Date = @Date , BankAccount_ServiceCharge = @ServiceCharge, BankAccount_Interest = @Interest, BankAccount_Deposit = @Deposit, BankAccount_Withdraw = @Withdraw, BankAccount_Remains = @Remains WHERE BankAccount_Id=" + EntryNo.Text, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Interest", Interest.Text);
+                            CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                            CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
+                            CmdSql.Parameters.AddWithValue("@ServiceCharge", ServiceCharge.Text);
+                            CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) + Convert.ToDouble(Interest.Text) - Convert.ToDouble(Withdraw.Text) - Convert.ToDouble(ServiceCharge.Text));
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
 
-                    string table = "Bank Account";
-                    string type = "Updated";
-                    string color = "Blue";
-                    EntryLog entry = new EntryLog();
-                    entry.Add_Entry(table, type, Id, dateTime, color);
+                            //Inserting value in Entry table
 
+                            Id = Convert.ToInt32(EntryNo.Text);
+                            dateTime = DateTime.Today;
+
+                            string table = "Bank Account";
+                            string type = "Updated";
+                            string color = "Blue";
+                            EntryLog entry = new EntryLog();
+                            entry.Add_Entry(table, type, Id, dateTime, color);
+
+                        }
+                        Save.Content = "Save";
+                    }
+                    
                 }
-                Save.Content = "Save";
+                con.CloseConnection();
             }
 
             BankAccountInformation data = new BankAccountInformation();

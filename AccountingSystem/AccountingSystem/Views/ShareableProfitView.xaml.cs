@@ -135,33 +135,72 @@ namespace AccountingSystem.Views
 
             else
             {
-                double prev = this.edited_total();
-                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                int temp_id = Id;
+                Connection con = new Connection();
+                string query = "SELECT * FROM ShareableProfit Order by Shareable_Id Asc";
+                con.OpenConection();
+                SqlDataReader reader = con.DataReader(query);
+                while (reader.Read())
                 {
+                    string rid = reader["Shareable_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    string dep = reader["Shareable_Deposit"].ToString();
+                    double depint = Convert.ToDouble(dep);
+                    string exp = reader["Shareable_Expenses"].ToString();
+                    double expint = Convert.ToDouble(exp);
 
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [ShareableProfit] SET Shareable_Date = @Date , Shareable_Previous = @Previous, Shareable_Expenses = @Expenses, Shareable_Deposit = @Deposit, Shareable_Remains = @Remains WHERE Shareable_Id=" + EntryNo.Text, conn);
-                    conn.Open();
-                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@Previous", prev);
-                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
-                    CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
-                    CmdSql.Parameters.AddWithValue("@Remains", prev + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
-                    CmdSql.ExecuteNonQuery();
-                    conn.Close();
+                    //code (if block) for updating rest of the table
+                    if (temp_id < r_id)
+                    {
+                        Id = r_id;
+                        double prev = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [ShareableProfit] SET Shareable_Date = @Date , Shareable_Previous = @Previous, Shareable_Expenses = @Expenses, Shareable_Deposit = @Deposit, Shareable_Remains = @Remains WHERE Shareable_Id=" + r_id, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Previous", prev);
+                            CmdSql.Parameters.AddWithValue("@Deposit", dep);
+                            CmdSql.Parameters.AddWithValue("@Expenses", exp);
+                            CmdSql.Parameters.AddWithValue("@Remains", prev + depint - expint);
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
 
-                    //Inserting value in Entry table
+                    //Code (else if block) for updating expected row
+                    else if (temp_id == r_id)
+                    {
+                        double prev = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
 
-                    Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = DateTime.Today;
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [ShareableProfit] SET Shareable_Date = @Date , Shareable_Previous = @Previous, Shareable_Expenses = @Expenses, Shareable_Deposit = @Deposit, Shareable_Remains = @Remains WHERE Shareable_Id=" + EntryNo.Text, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Previous", prev);
+                            CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                            CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                            CmdSql.Parameters.AddWithValue("@Remains", prev + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
 
-                    string table = "Shareable Profit";
-                    string type = "Updated";
-                    string color = "Blue";
-                    EntryLog entry = new EntryLog();
-                    entry.Add_Entry(table, type, Id, dateTime, color);
+                            //Inserting value in Entry table
 
+                            Id = Convert.ToInt32(EntryNo.Text);
+                            dateTime = DateTime.Today;
+
+                            string table = "Shareable Profit";
+                            string type = "Updated";
+                            string color = "Blue";
+                            EntryLog entry = new EntryLog();
+                            entry.Add_Entry(table, type, Id, dateTime, color);
+
+                        }
+                        Save.Content = "Save";
+                    }
                 }
-                Save.Content = "Save";
+                con.CloseConnection();
             }
 
             ShareableProfit data = new ShareableProfit();

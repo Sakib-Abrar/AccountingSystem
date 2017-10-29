@@ -132,11 +132,11 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     string rid = reader["Security_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
                     string dep = reader["Security_Deposit"].ToString();
                     double depint = Convert.ToDouble(dep);
                     string exp = reader["Security_Expenses"].ToString();
                     double expint = Convert.ToDouble(exp);
-                    int r_id = Convert.ToInt32(rid);
 
                     //code (if block) for updating rest of the table
                     if (temp_id < r_id)
@@ -153,9 +153,8 @@ namespace AccountingSystem.Views
                             CmdSql.Parameters.AddWithValue("@Remains", remain + depint - expint);
                             CmdSql.ExecuteNonQuery();
                             conn.Close();
-                            Console.Write( remain + " " + depint + " ___ ");
                         }
-                        }
+                     }
 
                     //Code (else if block) for updating expected row
                     else if (temp_id == r_id)

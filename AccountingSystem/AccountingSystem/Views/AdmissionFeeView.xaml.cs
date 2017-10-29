@@ -15,8 +15,7 @@ namespace AccountingSystem.Views
     {
         private int Id;
         //This TotalForEdit variable was declared coz, if you try to edit "Collection" value, you have to edit "Total" value too. Therefore, We need this variable as a temporary storage of previous "Total" Value
-        private Double TotalForEdit;
-        private DateTime? dateTime;
+       private DateTime? dateTime;
         private string stuff_pass;
         private string stuff_name;
 
@@ -59,6 +58,29 @@ namespace AccountingSystem.Views
             conn.CloseConnection();
             return total;
         }
+
+        private double edited_total()
+        {
+            Connection conn = new Connection();
+            double total = 0.00;
+            string query = "SELECT * FROM AdmissionFee Order by Admission_Id";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                {
+                    string rid = reader["Admission_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    if (Id > r_id)
+                    {
+                        total = (double)reader["Admission_Total"];
+                        //Console.Write(Id + " > "+r_id);
+                    }
+                }
+            }
+            conn.CloseConnection();
+            return total;
+        }
         protected void Save_Click(object sender, RoutedEventArgs e)
         {
             if (CheckForError(Collection))
@@ -67,31 +89,38 @@ namespace AccountingSystem.Views
                 return;
             }
 
-            double total = this.last_total();
-            using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
-            {
-                if ((string)Save.Content == "Insert")
+
+            
+                double total = this.last_total();
+                if ((string)Save.Content == "Save")
                 {
-                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [AdmissionFee] (Admission_Date, Admission_Collection, Admission_Total) VALUES (@Date, @Collection, @Total)", conn);
-                    conn.Open();
-                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@Collection", Collection.Text);
-                    CmdSql.Parameters.AddWithValue("@Total", total + Convert.ToDouble(Collection.Text));
-                    CmdSql.ExecuteNonQuery();
-                    conn.Close();
-
-                    //Inserting value in Entry table
-                    Connection conn2 = new Connection();
-
-                    string query = "SELECT TOP 1 * FROM AdmissionFee ORDER BY Admission_Id DESC";
-                    conn2.OpenConection();
-                    SqlDataReader reader = conn2.DataReader(query);
-                    while (reader.Read())
+                    using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                     {
-                        Id = (int)reader["Admission_Id"];
-                        dateTime = (DateTime)reader["Admission_Date"];
-                    }
-                    conn2.CloseConnection();
+                        SqlCommand CmdSql = new SqlCommand("INSERT INTO [AdmissionFee] (Admission_Date, Admission_Collection, Admission_Total) VALUES (@Date, @Collection, @Total)", conn);
+                        conn.Open();
+                        CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                        CmdSql.Parameters.AddWithValue("@Collection", Collection.Text);
+                        CmdSql.Parameters.AddWithValue("@Total", total + Convert.ToDouble(Collection.Text));
+                        CmdSql.ExecuteNonQuery();
+                        conn.Close();
+
+                        //Inserting value in Entry table
+                        Connection conn2 = new Connection();
+
+                        string query = "SELECT TOP 1 * FROM AdmissionFee ORDER BY Admission_Id DESC";
+                        conn2.OpenConection();
+                        SqlDataReader reader = conn2.DataReader(query);
+                        while (reader.Read())
+                        {
+                            Id = (int)reader["Admission_Id"];
+                            dateTime = (DateTime)reader["Admission_Date"];
+                        }
+
+                        conn2.CloseConnection();
+                        AdmissionFee data = new AdmissionFee();
+                        admissionFee.ItemsSource = data.GetData();
+                        DataContext = data;
+                }
 
 
 
@@ -107,38 +136,74 @@ namespace AccountingSystem.Views
 
                 else
                 {
-                    using (SqlConnection con = new SqlConnection(@Connection.ConnectionString))
+                    int temp_id = Id;
+                    Connection conc = new Connection();
+                    string query = "SELECT * FROM AdmissionFee Order by Admission_Id Asc";
+                    conc.OpenConection();
+                    SqlDataReader reader = conc.DataReader(query);
+                    while (reader.Read())
                     {
+                        string rid = reader["Admission_Id"].ToString();
+                        int r_id = Convert.ToInt32(rid);
+                        string col = reader["Admission_Collection"].ToString();
+                        int colint = Convert.ToInt32(col);
 
-                        SqlCommand CmdSql = new SqlCommand("UPDATE [AdmissionFee] SET Admission_Date = @Date , Admission_Total = @Total , Admission_Collection = @Collection WHERE Admission_Id=" + EntryNo.Text, conn);
-                        conn.Open();
-                        CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                        CmdSql.Parameters.AddWithValue("@Collection", Collection.Text);
-                        CmdSql.Parameters.AddWithValue("@Total", TotalForEdit + Convert.ToDouble(Collection.Text));
-                        CmdSql.ExecuteNonQuery();
-                        conn.Close();
+                        if (temp_id < r_id)
+                        {
+                        Id = r_id;
+                        double tot = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                            {
+                                SqlCommand CmdSql = new SqlCommand("UPDATE [AdmissionFee] SET Admission_Date = @Date , Admission_Collection = @Collection, Admission_Total = @Total WHERE Admission_Id=" + r_id, conn);
+                                conn.Open();
+                                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                                CmdSql.Parameters.AddWithValue("@Collection", col);
+                                CmdSql.Parameters.AddWithValue("@Total", (tot + colint));
+                                CmdSql.ExecuteNonQuery();
+                                conn.Close();
+                            }
+                        Console.Write(r_id + " " + col + " " + tot+"...");
+                        
+                        }
 
-                        //Inserting value in Entry table
+                        else if (temp_id == r_id)
+                        {
+                        double tot = this.edited_total();
+                        using (SqlConnection con = new SqlConnection(@Connection.ConnectionString))
+                            {
+                                Console.Write(r_id + " " + col + " " + tot + "---");
+                                SqlCommand CmdSql = new SqlCommand("UPDATE [AdmissionFee] SET Admission_Date = @Date , Admission_Total = @Total , Admission_Collection = @Collection WHERE Admission_Id=" + EntryNo.Text, con);
+                                con.Open();
+                                CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                                CmdSql.Parameters.AddWithValue("@Collection", Collection.Text);
+                                CmdSql.Parameters.AddWithValue("@Total", tot + Convert.ToDouble(Collection.Text));
+                                CmdSql.ExecuteNonQuery();
+                                con.Close();
 
-                        Id = Convert.ToInt32(EntryNo.Text);
-                        dateTime = DateTime.Today;
+                                //Inserting value in Entry table
 
-                        string table = "AdmissionFee";
-                        string type = "Updated";
-                        string color = "Blue";
-                        EntryLog entry = new EntryLog();
-                        entry.Add_Entry(table, type, Id, dateTime, color);
-                        Save.Content = "Insert";
-                        MessageBox.Show("Successfully Updated");
+                                Id = Convert.ToInt32(EntryNo.Text);
+                                dateTime = DateTime.Today;
+
+                                string table = "AdmissionFee";
+                                string type = "Updated";
+                                string color = "Blue";
+                                EntryLog entry = new EntryLog();
+                                entry.Add_Entry(table, type, Id, dateTime, color);
+                                Save.Content = "Save";
+                                MessageBox.Show("Successfully Updated");
+                            }
+                        }
+                        
+
                     }
-                    
-                }
+                    conc.CloseConnection();
 
-                AdmissionFee data = new AdmissionFee();
-                admissionFee.ItemsSource = data.GetData();
-                DataContext = data;
+                    AdmissionFee data = new AdmissionFee();
+                    admissionFee.ItemsSource = data.GetData();
+                    DataContext = data;
+                }
             }
-        }
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
@@ -169,9 +234,9 @@ namespace AccountingSystem.Views
                 while (reader.Read())
                 {
                     EntryNo.Text = reader["Admission_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
                     Date.SelectedDate = (DateTime)reader["Admission_Date"];
                     Collection.Text = reader["Admission_Collection"].ToString();
-                    TotalForEdit = Convert.ToDouble(reader["Admission_Total"]) - Convert.ToDouble(Collection.Text);
                 }
 
                 conn.CloseConnection();

@@ -50,7 +50,7 @@ namespace AccountingSystem.Views
                 MessageBox.Show("Error!Check Input Again");
                 return;
             }
-            if ((string)Save.Content == "Insert")
+            if ((string)Save.Content == "Save")
             {
 
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
@@ -119,7 +119,7 @@ namespace AccountingSystem.Views
                     entry.Add_Entry(table, type, Id, dateTime, color);
 
                 }
-                Save.Content = "Insert";
+                Save.Content = "Save";
                 MessageBox.Show("Successfully Updated");
             }
 

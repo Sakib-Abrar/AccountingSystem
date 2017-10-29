@@ -47,7 +47,7 @@
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                       </DataGrid.Columns>
+                                </DataGrid.Columns>
                             </DataGrid>
                             <ItemsControl VerticalAlignment="Top" Margin="5,5,5,5"/>
                         </StackPanel>
@@ -80,11 +80,11 @@
             <Grid Width="1016" Margin="0,0,0,-12" >
                 <Label Content="Collection :" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="Collection" HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="{Binding Collection, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" TextChanged="Collection_TextChanged"/>
-                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
+                <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
                 <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="680,20,0,0" TextWrapping="Wrap" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
                 <Label Content="Date :" HorizontalAlignment="Left" Margin="598,52,0,0" VerticalAlignment="Top" />
                 <DatePicker Name="Date" HorizontalAlignment="Left" Margin="680,52,0,0" VerticalAlignment="Top" Width="200" Height="23" SelectedDate="{Binding Date}" IsEnabled="False"/>
-                <Button Name="Save" Content="Save" HorizontalAlignment="Left" Margin="904,143,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click" FontWeight="Bold">
+                <Button Name="Save" Content="Save" HorizontalAlignment="Left" Margin="904,143,0,21" Width="78" Click="Save_Click" FontWeight="Bold">
 
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
