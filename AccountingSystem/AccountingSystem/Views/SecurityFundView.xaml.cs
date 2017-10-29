@@ -61,7 +61,7 @@ namespace AccountingSystem.Views
                     if (Id > r_id)
                     {
                         total = (double)reader["Security_Remains"];
-                        Console.Write(Id + " > "+r_id);
+                        //Console.Write(Id + " > "+r_id);
                     }
                 }
             }
@@ -91,6 +91,7 @@ namespace AccountingSystem.Views
             }
 
             double remains = this.last_remains();
+            //code for inserting record
             if ((string)Save.Content == "Insert")
             {
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
@@ -119,34 +120,76 @@ namespace AccountingSystem.Views
                     MessageBox.Show("Successfully Inserted");
                 }
             }
+
+            // code for updating record
             else
             {
-                double remain = this.edited_total();
-                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                int temp_id = Id;
+                Connection con = new Connection();
+                string query = "SELECT * FROM SecurityFund Order by Security_Id Asc";
+                con.OpenConection();
+                SqlDataReader reader = con.DataReader(query);
+                while (reader.Read())
                 {
+                    string rid = reader["Security_Id"].ToString();
+                    string dep = reader["Security_Deposit"].ToString();
+                    double depint = Convert.ToDouble(dep);
+                    string exp = reader["Security_Expenses"].ToString();
+                    double expint = Convert.ToDouble(exp);
+                    int r_id = Convert.ToInt32(rid);
 
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [SecurityFund] SET Security_Date = @Date , Security_Details = @Details, Security_Deposit = @Deposit, Security_Expenses = @Expenses, Security_Remains = @Remains WHERE Security_Id="+ EntryNo.Text, conn);
-                    conn.Open();
-                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@Details", Details.Text);
-                    CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
-                    CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
-                    CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
-                    CmdSql.ExecuteNonQuery();
-                    conn.Close();
+                    //code (if block) for updating rest of the table
+                    if (temp_id < r_id)
+                    {
+                        Id = r_id;
+                        double remain = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [SecurityFund] SET Security_Date = @Date , Security_Deposit = @Deposit, Security_Expenses = @Expenses, Security_Remains = @Remains WHERE Security_Id=" + r_id, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Deposit", dep);
+                            CmdSql.Parameters.AddWithValue("@Expenses", exp);
+                            CmdSql.Parameters.AddWithValue("@Remains", remain + depint - expint);
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
+                            Console.Write( remain + " " + depint + " ___ ");
+                        }
+                        }
 
-                    //Inserting value in Entry table
+                    //Code (else if block) for updating expected row
+                    else if (temp_id == r_id)
+                    {
+                        double remain = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
 
-                    Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = DateTime.Today;
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [SecurityFund] SET Security_Date = @Date , Security_Details = @Details, Security_Deposit = @Deposit, Security_Expenses = @Expenses, Security_Remains = @Remains WHERE Security_Id=" + Id, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Details", Details.Text);
+                            CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
+                            CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
+                            CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
 
-                    string table = "Security Fund";
-                    string type = "Updated";
-                    string color = "Blue";
-                    EntryLog entry = new EntryLog();
-                    entry.Add_Entry(table, type, Id, dateTime, color);
+                            //Inserting value in Entry table
+
+                            Id = Convert.ToInt32(EntryNo.Text);
+                            dateTime = DateTime.Today;
+
+                            string table = "Security Fund";
+                            string type = "Updated";
+                            string color = "Blue";
+                            EntryLog entry = new EntryLog();
+                            entry.Add_Entry(table, type, Id, dateTime, color);
+                        }
+                        
+                    }
 
                 }
+                con.CloseConnection();
                 Save.Content = "Insert";
                 MessageBox.Show("Successfully Updated");
             }
@@ -155,6 +198,8 @@ namespace AccountingSystem.Views
             securityFund.ItemsSource = data.GetData();
             DataContext = data;
         }
+
+
         protected void Print_Data(object sender, RoutedEventArgs e)
         {
             PrintDialogView getDate = new PrintDialogView();
