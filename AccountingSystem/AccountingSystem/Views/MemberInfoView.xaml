@@ -200,6 +200,26 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <Button Name="Documents" Content="Documents" HorizontalAlignment="Left" Margin="327,363,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Documents_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
     </Grid>

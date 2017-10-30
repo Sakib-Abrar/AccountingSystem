@@ -148,3 +148,7 @@ C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.pdb
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\DocumentDisplayDialog.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\DocumentListDialog.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\DocumentDisplayDialog.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\DocumentListDialog.baml
