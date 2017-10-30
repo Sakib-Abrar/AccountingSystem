@@ -42,22 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< Updated upstream
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="814528">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="828864">
->>>>>>> Stashed changes
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="834496">
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
-        <dsig:DigestValue>3r04h7a9YuQcyPcgrenpYsGujelH2ohXAXUOEgsovXI=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>4y2AQxJTVHCViv7dmPt4NFhaUFpsvg1HlOfmSGJ3ggY=</dsig:DigestValue>
->>>>>>> Stashed changes
+        <dsig:DigestValue>/L26I0uPsy+KQV3hHJJiJkptPEos+XoU8MHVMH7LZtY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -160,11 +152,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
-      <dsig:DigestValue>rusZ4Pe9rYI4wODQSxwIWe8VCg41x/4wsucAGxkJlj8=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>YqP5waiHSm5Na7Ilk/QsMeylBd0pr79EtoRD8p8MxQ8=</dsig:DigestValue>
->>>>>>> Stashed changes
+      <dsig:DigestValue>qthcVWKpfcllS4y680uWJPw3yBkxRlN39ur8IUg0anM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -173,11 +161,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
-      <dsig:DigestValue>neNMit/LLOatdDnmkOXePtypETGlZpecjrUZSk1/9hQ=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>dy9K65D27aYsDQ8s+09uK1B6VOSfxiyxACBW8pOcgWA=</dsig:DigestValue>
->>>>>>> Stashed changes
+      <dsig:DigestValue>i+a/ZzAnK3w9wDQT4rwjrZKLHSFLXADmyr7njBsFVMU=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
