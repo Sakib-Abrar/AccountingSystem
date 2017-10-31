@@ -1,0 +1,207 @@
+﻿<Page x:Class="AccountingSystem.Views.LoanDetailsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingSystem.Views"
+      mc:Ignorable="d" 
+      Title="Loan_Details" Width="1157" Height="717">
+
+    <Grid>
+        <GroupBox Header="Loanee List" HorizontalAlignment="Center" VerticalAlignment="Center" Height="336" Margin="78,322,51,59" Width="1028">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,5,5,5">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                            <DataGrid x:Name="LoanDetails" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="tableID" Header="Loan No" Binding="{Binding ID}" Width="60">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableName" Header="Name" Binding="{Binding Name}" Width="300">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableAccount" Header="Account Id" Binding="{Binding Account}" Width="100">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn x:Name="tableAmount" Header="Amount" Binding="{Binding Amount}" Width="80">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableBalance" Header="Balance" Binding="{Binding Balance}" Width="80">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+
+                                    <DataGridTextColumn x:Name="tableCollection" Header="Collection Methode" Binding="{Binding Collection}" Width="120">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+
+                                    <DataGridTextColumn x:Name="tableIPaid" Header="Last Paid" Binding="{Binding LastPaid}" Width="100">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableTotal" Header="Total" Binding="{Binding Total}" Width="80">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <ItemsControl VerticalAlignment="Top" Margin="5,5,5,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+
+                <Button Content="Print" HorizontalAlignment="Left" Margin="919,274,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Print_Data" FontWeight="Bold">
+
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                            <GradientStop Color="#0C92FB" Offset="0.75"/>
+                            <GradientStop Color="#0C92FB" Offset="0.25"/>
+                            <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                            <Style.Triggers>
+                                <Trigger Property ="IsMouseOver" Value="True">
+                                    <Setter Property= "Background" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+
+        </GroupBox>
+        <GroupBox Header="Add Entry" HorizontalAlignment="Center" Margin="78,118,51,0" VerticalAlignment="Top" Height="199" Width="Auto">
+            <Grid Width="1016" Margin="0,0,0,-12" >
+                <Label Content="Account Id" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="AccountId" HorizontalAlignment="Left" Height="23" Margin="111,21,0,0" TextWrapping="Wrap" Text="{Binding AccountId, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <Label Content="Sector:" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="Sector" HorizontalAlignment="Left" Height="23" Margin="111,51,0,0" TextWrapping="Wrap" Text="{Binding Sector, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <Label Content="Amount" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="Amount" HorizontalAlignment="Left" Height="23" Margin="111,81,0,0" TextWrapping="Wrap" Text="{Binding Amount, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <Label Content="Sanction Date" HorizontalAlignment="Left" Margin="592,43,0,0" VerticalAlignment="Top" />
+
+                <Button Name="Save"  Content="Insert" HorizontalAlignment="Left" Margin="919,143,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Save_Click" FontWeight="Bold">
+
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                            <GradientStop Color="#0C92FB" Offset="0.75"/>
+                            <GradientStop Color="#0C92FB" Offset="0.25"/>
+                            <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                            <Style.Triggers>
+                                <Trigger Property ="IsMouseOver" Value="True">
+                                    <Setter Property= "Background" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+                <DatePicker Name="SanctionDate" HorizontalAlignment="Left" Margin="684,44,0,0" VerticalAlignment="Top" Width="200" Height="23" SelectedDate="{Binding SanctionDate}" IsEnabled="True"/>
+                <Label Content="Service Charge(%)" HorizontalAlignment="Left" Margin="6,115,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="ServiceCharge" HorizontalAlignment="Left" Height="23" Margin="111,118,0,0" TextWrapping="Wrap" Text="{Binding ServiceCharge, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <Label Content="Life Time:" HorizontalAlignment="Left" Margin="590,77,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="LifeTime" HorizontalAlignment="Left" Height="23" Margin="684,76,0,0" TextWrapping="Wrap" Text="{Binding LifeTime, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <Label Content="Collection Method" HorizontalAlignment="Left" Margin="8,146,0,0" VerticalAlignment="Top"/>
+                <Label Content="No. of installment" HorizontalAlignment="Left" Margin="577,115,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="Installment" HorizontalAlignment="Left" Height="23" Margin="686,115,0,0" TextWrapping="Wrap" Text="{Binding Installment, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <TextBox Name="EntryNo" HorizontalAlignment="Left" Height="23" Margin="683,11,0,0" TextWrapping="Wrap" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}" VerticalAlignment="Top" Width="200" IsHitTestVisible="false"/>
+                <Label Content="Entry No:" HorizontalAlignment="Left" Margin="601,11,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="Daily" Content="Daily" HorizontalAlignment="Left" Margin="191,156,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="Weekly" Content="Weekly" HorizontalAlignment="Left" Margin="316,156,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="Monthly" Content="Monthly" HorizontalAlignment="Left" Margin="446,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.111,0.333"/>
+
+            </Grid>
+        </GroupBox>
+        <Button Name="Remove" Content="Remove" HorizontalAlignment="Left" Margin="178,663,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Remove_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="Edit" Content="Edit" HorizontalAlignment="Left" Margin="78,663,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Edit_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
+        <Label x:Name="label" Content="Loan Details" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
+    </Grid>
+</Page>

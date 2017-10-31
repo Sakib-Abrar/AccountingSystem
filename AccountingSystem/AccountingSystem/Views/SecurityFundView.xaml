@@ -17,7 +17,7 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,5,5,5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                            <DataGrid x:Name="securityFund" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
+                            <DataGrid x:Name="SecurityFund" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="120">
                                         <DataGridTextColumn.HeaderStyle>

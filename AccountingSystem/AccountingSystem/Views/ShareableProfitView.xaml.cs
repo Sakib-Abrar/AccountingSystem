@@ -8,7 +8,7 @@ using System.Windows.Data;
 namespace AccountingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for SecurityFundView.xaml
+    /// Interaction logic for LoanDetailsView.xaml
     /// </summary>
     public partial class ShareableProfitView : Page
     {

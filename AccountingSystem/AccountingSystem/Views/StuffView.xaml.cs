@@ -142,7 +142,7 @@ namespace AccountingSystem.Views
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new LoanDetails().PublishPDF(getDate.FromDate, getDate.ToDate);
             }
         }
 

@@ -1,0 +1,103 @@
+﻿<Page x:Class="AccountingSystem.Views.DailyDueView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingSystem.Views"
+      mc:Ignorable="d" 
+      Title="Loan_Details" Width="1157" Height="717">
+
+    <Grid>
+        <GroupBox Header="Loanee List" HorizontalAlignment="Center" VerticalAlignment="Center" Height="600" Margin="50,95,79,22" Width="1028">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,5,5,5">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                            <DataGrid x:Name="dueDetails" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="tableID" Header="Loan No" Binding="{Binding ID}" Width="60">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableName" Header="Name" Binding="{Binding Name}" Width="265">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableAccount" Header="Account Id" Binding="{Binding Account}" Width="100">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn x:Name="tableAmount" Header="Amount" Binding="{Binding Amount}" Width="80">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableBalance" Header="Balance" Binding="{Binding Balance}" Width="80">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+
+                                    <DataGridTextColumn x:Name="tableFine" Header="Fine " Binding="{Binding Fine}" Width="80">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+
+                                    <DataGridTextColumn x:Name="tableIPaid" Header="Last Paid" Binding="{Binding LastPaid}" Width="100">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableNextDate" Header="Installment Date" Binding="{Binding NextDate}" Width="100">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn x:Name="tableTotal" Header="Total" Binding="{Binding Total}" Width="100">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <ItemsControl VerticalAlignment="Top" Margin="5,5,5,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+        </GroupBox>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
+        <Label x:Name="label" Content="Due List (Daily)" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
+    </Grid>
+</Page>

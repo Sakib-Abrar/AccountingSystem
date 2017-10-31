@@ -121,7 +121,10 @@
     <Compile Include="Models\BankAccountInformation.cs" />
     <Compile Include="Models\CashInformation.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
+    <Compile Include="Models\DueModel.cs" />
     <Compile Include="Models\EntryModel.cs" />
+    <Compile Include="Models\LoanDetails.cs" />
+    <Compile Include="Models\LoanLedger.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Members.cs" />
     <Compile Include="Models\OfficeRent.cs" />
@@ -144,11 +147,20 @@
     <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
       <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DailyLedgerView.xaml.cs">
+      <DependentUpon>DailyLedgerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DailyDueView.xaml.cs">
+      <DependentUpon>DailyDueView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditDialogView.xaml.cs">
       <DependentUpon>EditDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EntryLogView.xaml.cs">
       <DependentUpon>EntryLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoanDetailsView.xaml.cs">
+      <DependentUpon>LoanDetailsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MemberEntryView.xaml.cs">
       <DependentUpon>MemberEntryView.xaml</DependentUpon>
@@ -161,6 +173,12 @@
     </Compile>
     <Compile Include="Views\MemberView.xaml.cs">
       <DependentUpon>MemberView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonthlyDueView.xaml.cs">
+      <DependentUpon>MonthlyDueView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonthlyLedgerView.xaml.cs">
+      <DependentUpon>MonthlyLedgerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OfficeRentView.xaml.cs">
       <DependentUpon>OfficeRentView.xaml</DependentUpon>
@@ -188,6 +206,12 @@
     </Compile>
     <Compile Include="Views\StuffView.xaml.cs">
       <DependentUpon>StuffView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WeeklyDueView.xaml.cs">
+      <DependentUpon>WeeklyDueView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WeeklyLedgerView.xaml.cs">
+      <DependentUpon>WeeklyLedgerView.xaml</DependentUpon>
     </Compile>
     <Page Include="LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -221,11 +245,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DailyLedgerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DailyDueView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EntryLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoanDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,6 +278,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MemberView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonthlyDueView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonthlyLedgerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +322,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StuffView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WeeklyDueView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WeeklyLedgerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

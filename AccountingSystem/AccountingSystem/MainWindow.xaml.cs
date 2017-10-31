@@ -20,9 +20,9 @@ namespace AccountingSystem
             MainFrame.Navigate(new StuffView());
         }
 
-        private void LoadSecurityFundView(object sender, RoutedEventArgs e)
+        private void LoadLoanDetailsView(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new SecurityFundView());
+            MainFrame.Navigate(new LoanDetailsView());
         }
 
         private void LoadReservedFundView(object sender, RoutedEventArgs e)
@@ -69,7 +69,31 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new EntryLogView());
         }
-     
+        private void LoadDailyLedgerView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new DailyLedgerView());
+        }
+        private void LoadWeeklyLedgerView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new WeeklyLedgerView());
+        }
+        private void LoadMonthlyLedgerView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MonthlyLedgerView());
+        }
+        private void LoadDailyDueLView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new DailyDueView());
+        }
 
+        private void LoadWeeklyDueLView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new WeeklyDueView());
+        }
+
+        private void LoadMonthlyDueLView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MonthlyDueView());
+        }
     }
     }

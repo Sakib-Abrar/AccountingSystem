@@ -23,7 +23,7 @@ namespace AccountingSystem.Views
         {
             InitializeComponent();
             SecurityFund data = new SecurityFund();
-            securityFund.ItemsSource = data.GetData();
+            SecurityFund.ItemsSource = data.GetData();
             DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -152,7 +152,7 @@ namespace AccountingSystem.Views
             }
 
             SecurityFund data = new SecurityFund();
-            securityFund.ItemsSource = data.GetData();
+            SecurityFund.ItemsSource = data.GetData();
             DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
@@ -250,7 +250,7 @@ namespace AccountingSystem.Views
 
                     conn.CloseConnection();
                     SecurityFund data = new SecurityFund();
-                    securityFund.ItemsSource = data.GetData();
+                    SecurityFund.ItemsSource = data.GetData();
                     DataContext = data;
                 }
             }

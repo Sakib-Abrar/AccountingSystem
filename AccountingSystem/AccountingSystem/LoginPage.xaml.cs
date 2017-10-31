@@ -81,6 +81,8 @@ namespace AccountingSystem
                 App.Current.MainWindow = main;
                 this.Close();
                 main.Show();
+                LoanLedger Due = new LoanLedger();
+                Due.DueChecker();
             }
 
         }
