@@ -14,8 +14,7 @@ namespace AccountingSystem.Views
     public partial class AdmissionFeeView : Page
     {
         private int Id;
-        //This TotalForEdit variable was declared coz, if you try to edit "Collection" value, you have to edit "Total" value too. Therefore, We need this variable as a temporary storage of previous "Total" Value
-       private DateTime? dateTime;
+        private DateTime? dateTime;
         private string stuff_pass;
         private string stuff_name;
 
@@ -74,7 +73,6 @@ namespace AccountingSystem.Views
                     if (Id > r_id)
                     {
                         total = (double)reader["Admission_Total"];
-                        //Console.Write(Id + " > "+r_id);
                     }
                 }
             }
@@ -304,11 +302,6 @@ namespace AccountingSystem.Views
         }
 
         #endregion
-
-        private void Collection_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
 
