@@ -42,14 +42,22 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< HEAD
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="911808">
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="834496">
+>>>>>>> master
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>bN+sOupjgQ2otawOOFirW2iO2BsZ37is6AGvZMvZpPQ=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>/L26I0uPsy+KQV3hHJJiJkptPEos+XoU8MHVMH7LZtY=</dsig:DigestValue>
+>>>>>>> master
       </hash>
     </dependentAssembly>
   </dependency>
@@ -152,7 +160,11 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
       <dsig:DigestValue>cOCBoZGt9uChdIbdYKYcPCiRbx7CfSw84ZqF25mwOys=</dsig:DigestValue>
+=======
+      <dsig:DigestValue>qthcVWKpfcllS4y680uWJPw3yBkxRlN39ur8IUg0anM=</dsig:DigestValue>
+>>>>>>> master
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -161,7 +173,11 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
       <dsig:DigestValue>Z9oFHYZJIktHfjZqsrrpF1m/qmP1jyOq2ogWfc5I4VQ=</dsig:DigestValue>
+=======
+      <dsig:DigestValue>i+a/ZzAnK3w9wDQT4rwjrZKLHSFLXADmyr7njBsFVMU=</dsig:DigestValue>
+>>>>>>> master
     </hash>
   </file>
 </asmv1:assembly>

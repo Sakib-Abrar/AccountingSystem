@@ -86,7 +86,7 @@ namespace AccountingSystem.Views
                     return;
                 }
             double previous = this.last_total();
-            if ((string)Save.Content == "Insert")
+            if ((string)Save.Content == "Save")
             {
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
@@ -124,34 +124,79 @@ namespace AccountingSystem.Views
             }
             else
             {
-                double previous_edit = this.edited_total();
-                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                int temp_id = Id;
+                Connection con = new Connection();
+                string query = "SELECT * FROM ReservedFund Order by Reserved_Id Asc";
+                con.OpenConection();
+                SqlDataReader reader = con.DataReader(query);
+                while (reader.Read())
                 {
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [ReservedFund] SET Reserved_Date = @Date , Reserved_Current = @Current, Reserved_Withdraw = @Withdraw, Reserved_Previous = @Previous, Reserved_Remaining = @Remaining WHERE Reserved_Id=" + EntryNo.Text, conn);
-                    conn.Open();
-                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@Current", Current.Text);
-                    CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
-                    CmdSql.Parameters.AddWithValue("@Previous", previous_edit);
-                    CmdSql.Parameters.AddWithValue("@Total", previous_edit + Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
-                    CmdSql.Parameters.AddWithValue("@Remaining", Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
-                    CmdSql.ExecuteNonQuery();
-                    conn.Close();
+                    string rid = reader["Reserved_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    string cur = reader["Reserved_Current"].ToString();
+                    double curint = Convert.ToDouble(cur);
+                    string with = reader["Reserved_Withdraw"].ToString();
+                    double withint = Convert.ToDouble(with);
 
-                    //Inserting value in Entry table
+                    //code (if block) for updating rest of the table
+                    if (temp_id < r_id)
+                    {
+                        Id = r_id;
+                        double previous_edit = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [ReservedFund] SET Reserved_Date = @Date , Reserved_Current = @Current, Reserved_Withdraw = @Withdraw, Reserved_Total = @Total, Reserved_Previous = @Previous, Reserved_Remaining = @Remaining WHERE Reserved_Id=" + r_id, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Current", cur);
+                            CmdSql.Parameters.AddWithValue("@Withdraw", with);
+                            CmdSql.Parameters.AddWithValue("@Previous", previous_edit);
+                            CmdSql.Parameters.AddWithValue("@Total", previous_edit + curint - withint);
+                            CmdSql.Parameters.AddWithValue("@Remaining", curint - withint);
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                        Console.Write(Id + " " + r_id + " " + temp_id + "...");
+                    }
 
-                    Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = DateTime.Today;
+                    //Code (else if block) for updating expected row
+                    else if (temp_id == r_id)
+                    {
 
-                    string table = "Reserved Fund";
-                    string type = "Updated";
-                    string color = "Blue";
-                    EntryLog entry = new EntryLog();
-                    entry.Add_Entry(table, type, Id, dateTime, color);
-                    Save.Content = "Insert";
-                    MessageBox.Show("Successfully Updated");
+                        double previous_edit = this.edited_total();
+
+                        Console.Write(Id + " " + r_id + " " + temp_id + "---");
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [ReservedFund] SET Reserved_Date = @Date , Reserved_Current = @Current, Reserved_Withdraw = @Withdraw, Reserved_Total = @Total, Reserved_Previous = @Previous, Reserved_Remaining = @Remaining WHERE Reserved_Id=" + EntryNo.Text, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Current", Current.Text);
+                            CmdSql.Parameters.AddWithValue("@Withdraw", Withdraw.Text);
+                            CmdSql.Parameters.AddWithValue("@Previous", previous_edit);
+                            CmdSql.Parameters.AddWithValue("@Total", previous_edit + Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
+                            CmdSql.Parameters.AddWithValue("@Remaining", Convert.ToDouble(Current.Text) - Convert.ToDouble(Withdraw.Text));
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
+
+                            //Inserting value in Entry table
+
+                            Id = Convert.ToInt32(EntryNo.Text);
+                            dateTime = DateTime.Today;
+
+                            string table = "Reserved Fund";
+                            string type = "Updated";
+                            string color = "Blue";
+                            EntryLog entry = new EntryLog();
+                            entry.Add_Entry(table, type, Id, dateTime, color);
+                            Save.Content = "Save";
+                            MessageBox.Show("Successfully Updated");
+                        }
+                        
+                    }
                 }
-                
+                con.CloseConnection();
+
             }
             ReservedFund data = new ReservedFund();
                 reservedFund.ItemsSource = data.GetData();

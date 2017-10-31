@@ -54,7 +54,7 @@ namespace AccountingSystem.Views
             //double remains = this.last_remains();
             using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
             {
-                if ((string)Save.Content == "Insert")
+                if ((string)Save.Content == "Save")
                 {
                     SqlCommand CmdSql = new SqlCommand("INSERT INTO [Salary] (Salary_Date, Salary_Amount, Salary_Bonus, Salary_Total) VALUES (@Date, @Amount, @Bonus, @Total)", conn);
                     conn.Open();
@@ -111,7 +111,7 @@ namespace AccountingSystem.Views
                         string color = "Blue";
                         EntryLog entry = new EntryLog();
                         entry.Add_Entry(table, type, Id, dateTime, color);
-                        Save.Content = "Insert";
+                        Save.Content = "Save";
                         MessageBox.Show("Successfully Updated");
                     }
 

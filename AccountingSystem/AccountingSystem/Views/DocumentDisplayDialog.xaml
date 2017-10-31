@@ -1,0 +1,18 @@
+﻿<Window x:Class="AccountingSystem.Views.DocumentDisplayDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingSystem.Views"
+        mc:Ignorable="d"
+        Title="Show Document" 
+        MinHeight="10"
+        SizeToContent="WidthAndHeight"
+        MinWidth="100"
+        ResizeMode="CanResizeWithGrip"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner" >
+    <Grid>
+        <Image x:Name="DocumentPhoto" Source="{Binding DocumentPhoto}" HorizontalAlignment="Left" Width="Auto" Height="Auto" Margin="2,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.029,-0.023"/>
+    </Grid>
+</Window>

@@ -121,7 +121,11 @@
     <Compile Include="Models\BankAccountInformation.cs" />
     <Compile Include="Models\CashInformation.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\DueModel.cs" />
+=======
+    <Compile Include="Models\Documents.cs" />
+>>>>>>> master
     <Compile Include="Models\EntryModel.cs" />
     <Compile Include="Models\LoanDetails.cs" />
     <Compile Include="Models\LoanLedger.cs" />
@@ -147,11 +151,19 @@
     <Compile Include="Views\CooperativeDevelopmentView.xaml.cs">
       <DependentUpon>CooperativeDevelopmentView.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Views\DailyLedgerView.xaml.cs">
       <DependentUpon>DailyLedgerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DailyDueView.xaml.cs">
       <DependentUpon>DailyDueView.xaml</DependentUpon>
+=======
+    <Compile Include="Views\DocumentDisplayDialog.xaml.cs">
+      <DependentUpon>DocumentDisplayDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DocumentListDialog.xaml.cs">
+      <DependentUpon>DocumentListDialog.xaml</DependentUpon>
+>>>>>>> master
     </Compile>
     <Compile Include="Views\EditDialogView.xaml.cs">
       <DependentUpon>EditDialogView.xaml</DependentUpon>
@@ -245,11 +257,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="Views\DailyLedgerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DailyDueView.xaml">
+=======
+    <Page Include="Views\DocumentDisplayDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DocumentListDialog.xaml">
+>>>>>>> master
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

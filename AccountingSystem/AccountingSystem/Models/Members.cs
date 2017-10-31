@@ -45,6 +45,8 @@ namespace AccountingSystem.Models
         private string m_memberNomineeRelation;
         private string m_memberNomineeCell;
         private string m_memberPhoto;
+        private string m_memberSignature;
+        private string m_documentName;
         /// <summary>
         /// _firstLoad is used to prevent auto validation at the startup
         /// </summary>
@@ -73,6 +75,20 @@ namespace AccountingSystem.Models
             {
                 m_memberName = value;
                 OnPropertyChanged("MemberName");
+                _firstLoad = false;
+            }
+        }
+
+        public string DocumentName
+        {
+            get
+            {
+                return m_documentName;
+            }
+            set
+            {
+                m_documentName = value;
+                OnPropertyChanged("DocumentName");
                 _firstLoad = false;
             }
         }
@@ -400,6 +416,22 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("MemberPhoto");
             }
         }
+
+        public string MemberSignature
+        {
+            get
+            {
+                return m_memberSignature;
+            }
+            set
+            {
+                if (m_memberSignature != value)
+                {
+                    m_memberSignature = value;
+                }
+            }
+        }
+
         #region PopulateTable
         public List<Members> GetDataList()
         {
@@ -458,6 +490,8 @@ namespace AccountingSystem.Models
                 MemberNomineeRelation = (string)reader["MemberNomineeRelation"];
                 MemberCell = (string)reader["MemberCell"];
                 MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberPhoto"]);
+                MemberSignature = Path.GetFullPath("Images/" + (string)reader["MemberSignature"]);
+
                 checkExistence = 1;
 
             }
@@ -522,6 +556,7 @@ namespace AccountingSystem.Models
                     MemberNomineeRelation = (string)reader["MemberNomineeRelation"];
                     MemberCell = (string)reader["MemberCell"];
                     MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberPhoto"]);
+                    MemberSignature = Path.GetFullPath("Images/" + (string)reader["MemberSignature"]);
                     checkExistence = 1;
                     break;
                 }
@@ -726,6 +761,12 @@ namespace AccountingSystem.Models
                         validationMessage = "No Picture Available";
                     }
                     break;
+                case "DocumentName":
+                    if (string.IsNullOrWhiteSpace(MemberPhoto))
+                    {
+                        validationMessage = "No Picture Available";
+                    }
+                    break;
 
 
             }
@@ -780,6 +821,7 @@ namespace AccountingSystem.Models
                 MemberNomineeRelation = (string)reader["MemberNomineeRelation"];
                 MemberCell = (string)reader["MemberCell"];
                 MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberPhoto"]);
+                MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberSignature"]);
             }
 
             Image Photo = new Image(ImageDataFactory.Create(MemberPhoto)).SetWidth(40).SetHeight(52);

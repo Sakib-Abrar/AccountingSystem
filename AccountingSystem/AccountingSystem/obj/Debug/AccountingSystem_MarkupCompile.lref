@@ -1,5 +1,6 @@
 ﻿
 
+<<<<<<< HEAD
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\LoginPage.xaml;;
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\MainWindow.xaml;;
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\AdmissionFeeView.xaml;;
@@ -28,4 +29,29 @@ FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\Mont
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyLedgerView.xaml;;
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\WeeklyDueView.xaml;;
 FD:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\Views\WeeklyLedgerView.xaml;;
+=======
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\LoginPage.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\MainWindow.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\AdmissionFeeView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\BankAccountInformationView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\CashInformationView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\CooperativeDevelopmentView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\DocumentDisplayDialog.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\DocumentListDialog.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\EditDialogView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\EntryLogView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MemberEntryView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MemberInfoView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MemberList.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MemberView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\OfficeRentView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\PrintDialogView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\RemoveDialogView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\ReservedFundView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\SalaryView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\SecurityFundView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareableProfitView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\ShareView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\StuffView.xaml;;
+>>>>>>> master
 

@@ -129,35 +129,79 @@ namespace AccountingSystem.Views
             }
 
             else
-            {
-                double prev = this.edited_total();
-                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+               {
+
+                int temp_id = Id;
+                Connection con = new Connection();
+                string query = "SELECT * FROM CooperativeDevelopment Order by Cooperative_Id Asc";
+                con.OpenConection();
+                SqlDataReader reader = con.DataReader(query);
+                while (reader.Read())
                 {
+                    string rid = reader["Cooperative_Id"].ToString();
+                    int r_id = Convert.ToInt32(rid);
+                    string cur = reader["Cooperative_Current"].ToString();
+                    double curint = Convert.ToDouble(cur);
+                    string paid = reader["Cooperative_Paid"].ToString();
+                    double paidint = Convert.ToDouble(paid);
+                    string prev = reader["Cooperative_Previous"].ToString();
+                    double prevint = Convert.ToDouble(paid);
 
-                    SqlCommand CmdSql = new SqlCommand("UPDATE [CooperativeDevelopment] SET Cooperative_Date = @Date , Cooperative_Current = @Current, Cooperative_Paid = @Paid, Cooperative_Previous = @Previous, Cooperative_Remains = @Remains WHERE Cooperative_Id=" + EntryNo.Text, conn);
-                    conn.Open();
-                    CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@Current", Current.Text);
-                    CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
-                    CmdSql.Parameters.AddWithValue("@Previous", prev);
-                    CmdSql.Parameters.AddWithValue("@Remains", prev + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
-                    CmdSql.ExecuteNonQuery();
-                    conn.Close();
+                    //code (if block) for updating rest of the table
+                    if (temp_id < r_id)
+                    {
+                        Id = r_id;
+                        double prevs = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [CooperativeDevelopment] SET Cooperative_Date = @Date , Cooperative_Paid = @Paid, Cooperative_Current = @Current, Cooperative_Remains = @Remain, Cooperative_Previous = @Previous WHERE Cooperative_Id=" + r_id, conn);
+                            conn.Open();
 
-                    //Inserting value in Entry table
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Current", cur);
+                            CmdSql.Parameters.AddWithValue("@Paid", paid);
+                            CmdSql.Parameters.AddWithValue("@Previous", prevs);
+                            CmdSql.Parameters.AddWithValue("@Remain", prevs + curint - paidint);
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
 
-                    Id = Convert.ToInt32(EntryNo.Text);
-                    dateTime = DateTime.Today;
+                    //Code (else if block) for updating expected row
+                    else if (temp_id == r_id)
+                    {
+                        double prevs = this.edited_total();
+                        using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                        {
 
-                    string table = "Cooperative Development";
-                    string type = "Updated";
-                    string color = "Blue";
-                    EntryLog entry = new EntryLog();
-                    entry.Add_Entry(table, type, Id, dateTime, color);
+                            SqlCommand CmdSql = new SqlCommand("UPDATE [CooperativeDevelopment] SET Cooperative_Date = @Date , Cooperative_Current = @Current, Cooperative_Paid = @Paid, Cooperative_Previous = @Previous, Cooperative_Remains = @Remains WHERE Cooperative_Id=" + EntryNo.Text, conn);
+                            conn.Open();
+                            CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
+                            CmdSql.Parameters.AddWithValue("@Current", Current.Text);
+                            CmdSql.Parameters.AddWithValue("@Paid", Paid.Text);
+                            CmdSql.Parameters.AddWithValue("@Previous", prevs);
+                            CmdSql.Parameters.AddWithValue("@Remains", prevs + Convert.ToDouble(Current.Text) - Convert.ToDouble(Paid.Text));
+                            CmdSql.ExecuteNonQuery();
+                            conn.Close();
 
+                            //Inserting value in Entry table
+
+                            Id = Convert.ToInt32(EntryNo.Text);
+                            dateTime = DateTime.Today;
+
+                            string table = "Cooperative Development";
+                            string type = "Updated";
+                            string color = "Blue";
+                            EntryLog entry = new EntryLog();
+                            entry.Add_Entry(table, type, Id, dateTime, color);
+
+                        }
+                        
+                        Save.Content = "Save";
+                        MessageBox.Show("Successfully Updated!");
+                    }
                 }
-                Save.Content = "Save";
-                MessageBox.Show("Successfully Updated!");
+                con.CloseConnection();
             }
 
             CooperativeDevelopment data = new CooperativeDevelopment();

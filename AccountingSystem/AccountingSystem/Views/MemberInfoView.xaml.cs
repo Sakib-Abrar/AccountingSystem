@@ -134,6 +134,7 @@ namespace AccountingSystem.Views
                 }
                 MemberEntryView MemEntryObj = new MemberEntryView();
                 MemEntryObj.SetForEdit(handle.FirstInput);
+                MemEntryObj.SaveMember.Content = "Update Member";
                 this.NavigationService.Navigate(MemEntryObj);
 
             }
@@ -167,6 +168,15 @@ namespace AccountingSystem.Views
             }
             conn.CloseConnection();
             this.SearchWithID(id);
+        }
+
+        private void Documents_Click(object sender, RoutedEventArgs e)
+        {
+            DocumentListDialog ShowList = new DocumentListDialog((int)label_MemberID.Content);
+            if (ShowList.ShowDialog() == true)
+            {
+                
+            }
         }
     }
 }
