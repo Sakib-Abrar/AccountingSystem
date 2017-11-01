@@ -103,13 +103,13 @@ namespace AccountingSystem.Views
             }
             conn2.CloseConnection();
 
-            int inc = 0;
-            if (method == "Daily") { inc = 1; }
-            else if (method == "Weekly") { inc = 7; }
-            else { inc = 30; }
             DateTime dtd = Convert.ToDateTime(SanctionDate.Text);
-            DateTime  nextDate = dtd;
-            nextDate = nextDate.AddDays(inc);
+            DateTime nextDate = dtd;
+           
+            if (method == "Daily") { nextDate = nextDate.AddDays(1); }
+            else if (method == "Weekly") { nextDate = nextDate.AddDays(7); }
+            else if(method == "Monthly") { nextDate = nextDate.AddMonths(1); }
+         
 
             if ((string)Save.Content == "Insert")
                 {

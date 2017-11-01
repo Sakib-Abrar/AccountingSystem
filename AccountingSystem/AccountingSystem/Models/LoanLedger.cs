@@ -120,15 +120,12 @@ namespace AccountingSystem.Models
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
                 //Updating LoanDetails Table         
-                    int inc = 0;
-                    if (method == "Daily") { inc = 1; }  
-                    else if (method == "Weekly") { inc = 7; }
-                    else { inc = 30; }
-
                     double fine = 0.00;
                     double newBalance = balance - Convert.ToDouble(collection);
                     DateTime dtd = nextDate;
-                    dtd = dtd.AddDays(inc);
+                    if (method == "Daily") { dtd = dtd.AddDays(1); }
+                    else if (method == "Weekly") { dtd = dtd.AddDays(7); }
+                    else if (method == "Monthly") { dtd = dtd.AddMonths(1); }
 
                     SqlCommand CmdSql2 = new SqlCommand("UPDATE [LoanDetails] SET LoanDetails_LastPaid = @Date , LoanDetails_NextDate = @NextDate, LoanDetails_Fine = @Fine, LoanDetails_Due = @Due, LoanDetails_Balance = @Balance WHERE LoanDetails_Id=" + loan, conn);
                     conn.Open();
