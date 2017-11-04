@@ -95,7 +95,6 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new MonthlyDueView());
         }
-<<<<<<< Updated upstream
 
         private void LoadGeneralDepositLedgerView(object sender, RoutedEventArgs e)
         {
@@ -105,11 +104,13 @@ namespace AccountingSystem
         private void LoadGeneralDepositView(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new GeneralDepositView());
-=======
+        }
+
         private void LoadBalanceSheetView(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new BalanceSheetView());
->>>>>>> Stashed changes
+
         }
+
     }
-    }
+}

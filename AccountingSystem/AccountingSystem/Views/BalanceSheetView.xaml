@@ -26,7 +26,7 @@
                                             </Style>
                                         </DataGridTextColumn.HeaderStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn x:Name="tableName" Header="Name" Binding="{Binding Name}" Width="265">
+                                    <DataGridTextColumn x:Name="tableName" Header="Name" Binding="{Binding Name}" Width="255">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -94,8 +94,8 @@
         </GroupBox>
         <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
         <Label x:Name="label" Content="Balance Sheet" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White"/>
-        <Label x:Name="label1" Content="Select Month:" HorizontalAlignment="Left" Margin="178,124,0,0" VerticalAlignment="Top" Width="90"/>
-        <ComboBox x:Name="Month" HorizontalAlignment="Left" Margin="318,125,0,0" VerticalAlignment="Top" Width="197">
+        <Label x:Name="label1" Content="Select Month:" HorizontalAlignment="Left" Margin="117,123,0,0" VerticalAlignment="Top" Width="90"/>
+        <ComboBox x:Name="Month" HorizontalAlignment="Left" Margin="257,124,0,0" VerticalAlignment="Top" Width="197">
             <ComboBoxItem Content="January" HorizontalAlignment="Left" Width="199"/>
             <ComboBoxItem Content="February" HorizontalAlignment="Left" Width="199"/>
             <ComboBoxItem Content="March" HorizontalAlignment="Left" Width="199"/>
@@ -109,7 +109,30 @@
             <ComboBoxItem Content="November" HorizontalAlignment="Left" Width="199"/>
             <ComboBoxItem Content="December" HorizontalAlignment="Left" Width="199"/>
         </ComboBox>
-        <Label x:Name="label2" Content="Enter Year:" HorizontalAlignment="Left" Margin="601,125,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="721,130,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
+        <Label x:Name="label2" Content="Enter Year:" HorizontalAlignment="Left" Margin="540,124,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.033,0.577"/>
+        <TextBox x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="660,129,0,0" TextWrapping="Wrap" Text="{Binding Year, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  VerticalAlignment="Top" Width="180"/>
+        <Button x:Name="Save"  Content="Go" HorizontalAlignment="Left" Margin="905,130,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="BalanceSheet_Click" FontWeight="Bold">
+
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
     </Grid>
 </Page>

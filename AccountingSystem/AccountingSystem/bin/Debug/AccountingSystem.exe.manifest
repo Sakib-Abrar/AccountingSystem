@@ -42,26 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< Updated upstream
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="997312">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="945088">
->>>>>>> Stashed changes
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="1012672">
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <dsig:DigestValue>24NurMODjVaqnVW2rCQ68pTThg2TOHCaC6gfguIfdNw=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>slSRC7UMZ7Vum5rFZ/65u9JjqKGPM4fWZv6+qkrWNmM=</dsig:DigestValue>
->>>>>>> Stashed changes
-=======
-        <dsig:DigestValue>pic/lLGHMhpFhYIjdszXIimtlDrFIWDFJ4Mwa/yvS9s=</dsig:DigestValue>
->>>>>>> Stashed changes
+        <dsig:DigestValue>M45HHQ2+Ra7jkw2Z3HygLUhYIbi2vKR9WWxZ48gC5ow=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -164,32 +152,16 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      <dsig:DigestValue>oUV+kP8Tu10q5bl5Vkm7jmR3kMWIIToZ2zhqQuz/mD0=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>endVyzMMJzUBozr/dNck9rC5SgkqqYRQsnyazt4xaDU=</dsig:DigestValue>
->>>>>>> Stashed changes
-=======
-      <dsig:DigestValue>r7jAgQoPPAgap5JQwiUy/Sixk92HY+oidCv+Z5wAP3I=</dsig:DigestValue>
->>>>>>> Stashed changes
+      <dsig:DigestValue>ttE+r55Zr+EY7Dcyx9tcWD4k+CW1bf/d/VarGQG9u3M=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
+  <file name="Database\AccountingSystemDatabase_log.ldf" size="573440" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      <dsig:DigestValue>pcLBvIVyduZfEUQF0qK72b/GJzKDJ6kbD6NMM7KehaI=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>D0Jc3gMgAxfc1VxT+EPZAqCa177ByBDZrsahCSDqLik=</dsig:DigestValue>
->>>>>>> Stashed changes
-=======
-      <dsig:DigestValue>nzL7SkSN6LjFE0I3d5IXDJsGRXL8pqdjvj1Iuy3xURI=</dsig:DigestValue>
->>>>>>> Stashed changes
+      <dsig:DigestValue>XSInTjukpx/kO/plBfy3sKiRee/Hp6IvyYku5MwYkDA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

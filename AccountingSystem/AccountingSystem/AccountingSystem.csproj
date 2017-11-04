@@ -118,6 +118,7 @@
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\AdmissionFee.cs" />
+    <Compile Include="Models\BalanceSheet.cs" />
     <Compile Include="Models\BankAccountInformation.cs" />
     <Compile Include="Models\CashInformation.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
