@@ -155,7 +155,7 @@
                     <Expander.Header>
                         <BulletDecorator FlowDirection="LeftToRight">
 
-                            <TextBlock Margin="15,3,0,0" FontWeight="Bold" FontFamily="Prestige Elite Std"  Padding="0,0,151,0" FontSize="17" Foreground="#FFF0E5E5">Balance Sheet</TextBlock>
+                            <TextBlock Margin="15,3,0,0" FontWeight="Bold" FontFamily="Prestige Elite Std"  Padding="0,0,151,0" FontSize="17" PreviewMouseDown="LoadBalanceSheetView" Foreground="#FFF0E5E5">Balance Sheet</TextBlock>
 
                             <BulletDecorator.Bullet>
                                 <Image Width="25" Source="/Images/balance.png"/>

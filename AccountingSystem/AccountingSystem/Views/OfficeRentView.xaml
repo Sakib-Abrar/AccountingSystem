@@ -109,9 +109,8 @@
         <GroupBox Header="Add Entry" HorizontalAlignment="Center" Margin="78,118,51,0" VerticalAlignment="Top" Height="210" Width="Auto">
             <Grid Width="1016" Margin="0,0,0,-12">
                 <Label Content="Month :" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="Month" HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Advance :" HorizontalAlignment="Left" Margin="20,52,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="Advance" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Advance, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
+                <TextBox Name="Advance" HorizontalAlignment="Left" Height="23" Margin="91,51,0,0" TextWrapping="Wrap" Text="{Binding Advance, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Rent :" HorizontalAlignment="Left" Margin="20,84,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="Rent" HorizontalAlignment="Left" Height="23" Margin="90,84,0,0" TextWrapping="Wrap" Text="{Binding Rent, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200"/>
                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="598,20,0,0" VerticalAlignment="Top" />
@@ -140,6 +139,20 @@
                     </Button.Resources>
 
                 </Button>
+                <ComboBox x:Name="Month" HorizontalAlignment="Left" Margin="91,21,0,0" VerticalAlignment="Top" Width="201">
+                    <ComboBoxItem Content="January" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="February" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="March" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="April" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="May" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="June" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="July" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="August" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="September" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="October" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="November" HorizontalAlignment="Left" Width="199"/>
+                    <ComboBoxItem Content="December" HorizontalAlignment="Left" Width="199"/>
+                </ComboBox>
 
 
 

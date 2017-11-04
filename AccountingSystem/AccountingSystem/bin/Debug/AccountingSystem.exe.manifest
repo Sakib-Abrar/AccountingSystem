@@ -42,7 +42,11 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< Updated upstream
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="997312">
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="945088">
+>>>>>>> Stashed changes
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
@@ -50,9 +54,13 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <dsig:DigestValue>24NurMODjVaqnVW2rCQ68pTThg2TOHCaC6gfguIfdNw=</dsig:DigestValue>
 =======
         <dsig:DigestValue>slSRC7UMZ7Vum5rFZ/65u9JjqKGPM4fWZv6+qkrWNmM=</dsig:DigestValue>
+>>>>>>> Stashed changes
+=======
+        <dsig:DigestValue>pic/lLGHMhpFhYIjdszXIimtlDrFIWDFJ4Mwa/yvS9s=</dsig:DigestValue>
 >>>>>>> Stashed changes
       </hash>
     </dependentAssembly>
@@ -157,9 +165,13 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <dsig:DigestValue>oUV+kP8Tu10q5bl5Vkm7jmR3kMWIIToZ2zhqQuz/mD0=</dsig:DigestValue>
 =======
       <dsig:DigestValue>endVyzMMJzUBozr/dNck9rC5SgkqqYRQsnyazt4xaDU=</dsig:DigestValue>
+>>>>>>> Stashed changes
+=======
+      <dsig:DigestValue>r7jAgQoPPAgap5JQwiUy/Sixk92HY+oidCv+Z5wAP3I=</dsig:DigestValue>
 >>>>>>> Stashed changes
     </hash>
   </file>
@@ -170,9 +182,13 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <dsig:DigestValue>pcLBvIVyduZfEUQF0qK72b/GJzKDJ6kbD6NMM7KehaI=</dsig:DigestValue>
 =======
       <dsig:DigestValue>D0Jc3gMgAxfc1VxT+EPZAqCa177ByBDZrsahCSDqLik=</dsig:DigestValue>
+>>>>>>> Stashed changes
+=======
+      <dsig:DigestValue>nzL7SkSN6LjFE0I3d5IXDJsGRXL8pqdjvj1Iuy3xURI=</dsig:DigestValue>
 >>>>>>> Stashed changes
     </hash>
   </file>

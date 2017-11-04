@@ -194,6 +194,11 @@ D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\A
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csproj.GenerateResource.Cache
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe.manifest
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
+<<<<<<< Updated upstream
 =======
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csprojResolveAssemblyReference.cache
+>>>>>>> Stashed changes
+=======
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\BalanceSheetView.g.cs
+D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\BalanceSheetView.baml
 >>>>>>> Stashed changes

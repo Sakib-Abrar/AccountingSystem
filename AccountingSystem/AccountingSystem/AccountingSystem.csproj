@@ -140,6 +140,9 @@
     <Compile Include="Views\AdmissionFeeView.xaml.cs">
       <DependentUpon>AdmissionFeeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BalanceSheetView.xaml.cs">
+      <DependentUpon>BalanceSheetView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BankAccountInformationView.xaml.cs">
       <DependentUpon>BankAccountInformationView.xaml</DependentUpon>
     </Compile>
@@ -253,6 +256,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AdmissionFeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BalanceSheetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

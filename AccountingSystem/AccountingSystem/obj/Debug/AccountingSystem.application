@@ -15,9 +15,13 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <dsig:DigestValue>CC7GB8BRxO0lZuBAAqc1Prv6Mr94CI6M8oZtcWQFOaM=</dsig:DigestValue>
 =======
         <dsig:DigestValue>6xN4ShMIZz7v56OBzvzNiY+gCQVtzwnStEOpJd07gIk=</dsig:DigestValue>
+>>>>>>> Stashed changes
+=======
+        <dsig:DigestValue>9hds9bBHYctpXO/YlQFz/6Oflmw9hEzHAHHcN27QdRc=</dsig:DigestValue>
 >>>>>>> Stashed changes
       </hash>
     </dependentAssembly>
