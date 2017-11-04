@@ -821,7 +821,7 @@ namespace AccountingSystem.Models
                 MemberNomineeRelation = (string)reader["MemberNomineeRelation"];
                 MemberCell = (string)reader["MemberCell"];
                 MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberPhoto"]);
-                MemberPhoto = Path.GetFullPath("Images/" + (string)reader["MemberSignature"]);
+                MemberSignature = Path.GetFullPath("Images/" + (string)reader["MemberSignature"]);
             }
 
             Image Photo = new Image(ImageDataFactory.Create(MemberPhoto)).SetWidth(40).SetHeight(52);

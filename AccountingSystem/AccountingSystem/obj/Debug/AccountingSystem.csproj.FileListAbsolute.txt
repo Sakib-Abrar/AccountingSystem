@@ -19,7 +19,6 @@ C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\bin\
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\bin\Debug\itext.layout.xml
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\bin\Debug\itext.pdfa.xml
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\bin\Debug\itext.sign.xml
-C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csprojResolveAssemblyReference.cache
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\LoginPage.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\MainWindow.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\AdmissionFeeView.g.cs
@@ -32,6 +31,11 @@ C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\DocumentListDialog.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\EditDialogView.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\EntryLogView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositDetailsView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositEntryView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositLedgerView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositListView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositView.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\LoanDetailsView.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberEntryView.g.cs
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberInfoView.g.cs
@@ -66,6 +70,11 @@ C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\DocumentListDialog.baml
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\EditDialogView.baml
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\EntryLogView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositDetailsView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositEntryView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositLedgerView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositListView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\GeneralDepositView.baml
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\LoanDetailsView.baml
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberEntryView.baml
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\MemberInfoView.baml
@@ -91,6 +100,7 @@ C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.pdb
+<<<<<<< Updated upstream
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\bin\Debug\AccountingSystem.exe.config
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.pdb
@@ -184,3 +194,6 @@ D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\A
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csproj.GenerateResource.Cache
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe.manifest
 D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
+=======
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csprojResolveAssemblyReference.cache
+>>>>>>> Stashed changes

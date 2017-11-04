@@ -1,0 +1,50 @@
+﻿<Page x:Class="AccountingSystem.Views.GeneralDepositListView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingSystem.Views"
+      mc:Ignorable="d" 
+      Title="MemberList">
+
+    <Grid>
+        <DataGrid x:Name="generalDepositlist" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" MouseDoubleClick="generalDepositlist_MouseDoubleClick" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="generalDepositlist_SelectionChanged" IsReadOnly="true"
+              ItemsSource="{Binding }">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="tableID" Header="Member ID" Binding="{Binding Path=MemberId}" Width="220">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn x:Name="tableName" Header="Member Name" Binding="{Binding Path=Name}" Width="250">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn x:Name="tablenid" Header="General Deposit No" Binding="{Binding Path=AccountNo}" Width="262">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn x:Name="tablecell" Header="General Deposit Balance" Binding="{Binding Path=Balance}" Width="250">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>
+

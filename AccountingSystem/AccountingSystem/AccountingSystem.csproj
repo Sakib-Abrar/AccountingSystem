@@ -124,6 +124,7 @@
     <Compile Include="Models\DueModel.cs" />
     <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\EntryModel.cs" />
+    <Compile Include="Models\GeneralLedger.cs" />
     <Compile Include="Models\LoanDetails.cs" />
     <Compile Include="Models\LoanLedger.cs" />
     <Compile Include="Models\Login.cs" />
@@ -153,7 +154,7 @@
     </Compile>
     <Compile Include="Views\DailyDueView.xaml.cs">
       <DependentUpon>DailyDueView.xaml</DependentUpon>
-     </Compile>
+    </Compile>
     <Compile Include="Views\DocumentDisplayDialog.xaml.cs">
       <DependentUpon>DocumentDisplayDialog.xaml</DependentUpon>
     </Compile>
@@ -165,6 +166,21 @@
     </Compile>
     <Compile Include="Views\EntryLogView.xaml.cs">
       <DependentUpon>EntryLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralDepositDetailsView.xaml.cs">
+      <DependentUpon>GeneralDepositDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralDepositEntryView.xaml.cs">
+      <DependentUpon>GeneralDepositEntryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralDepositLedgerView.xaml.cs">
+      <DependentUpon>GeneralDepositLedgerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralDepositListView.xaml.cs">
+      <DependentUpon>GeneralDepositListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralDepositView.xaml.cs">
+      <DependentUpon>GeneralDepositView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoanDetailsView.xaml.cs">
       <DependentUpon>LoanDetailsView.xaml</DependentUpon>
@@ -273,6 +289,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EntryLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneralDepositDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneralDepositEntryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneralDepositLedgerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GeneralDepositListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneralDepositView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

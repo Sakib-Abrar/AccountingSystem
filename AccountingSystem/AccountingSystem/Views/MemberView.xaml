@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingSystem.Views"
       mc:Ignorable="d" 
-      Title="Admission_Fee" Width="1157" Height="717">
+      Title="MemberView" Width="1157" Height="717">
 
     <Grid>
         <GroupBox Header="Member Information" HorizontalAlignment="Center" VerticalAlignment="Center" Height="509" Margin="76,198,53,10" Width="1028">

@@ -1,5 +1,15 @@
-﻿using System;
+﻿using AccountingSystem.Controller;
+using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
+using System.IO;
+using System.Windows;
 
 namespace AccountingSystem.Models
 {
@@ -24,7 +34,137 @@ namespace AccountingSystem.Models
         private int m_accountno;
         private DateTime? m_date = Login.GlobalDate;
         private string m_name;
+        private int m_id;
+        private int m_mid;
 
+        private string m_memberVoterID;
+        private string m_memberFather;
+        private string m_memberMother;
+        private DateTime m_memberDOB = new DateTime(1985, 03, 01);
+
+        private string m_memberProfession;
+        private string m_memberNationality;
+        private string m_memberReligion;
+        private string m_fnominee;
+        private float m_fnage;
+        private string m_fnrelation;
+        private string m_fnshare;
+        private string m_fnaddress;
+        private string m_snominee;
+        private float m_snage;
+        private string m_snrelation;
+        private string m_snshare;
+        private string m_snaddress;
+        private string m_tnominee;
+        private float m_tnage;
+        private string m_tnrelation;
+        private string m_tnshare;
+        private string m_tnaddress;
+        private string m_memberCell;
+        private double m_duration;
+        private int m_refererid;
+        private string m_referercell;
+        private string m_referername;
+
+        public string MemberVoterID
+        {
+            get
+            {
+                return m_memberVoterID;
+            }
+            set
+            {
+                m_memberVoterID = value;
+                OnPropertyChanged("MemberVoterID");
+            }
+        }
+        public string MemberFather
+        {
+            get
+            {
+                return m_memberFather;
+            }
+            set
+            {
+                m_memberFather = value;
+                OnPropertyChanged("MemberFather");
+            }
+        }
+        public string MemberMother
+        {
+            get
+            {
+                return m_memberMother;
+            }
+            set
+            {
+                if (m_memberMother != value)
+                {
+                    m_memberMother = value;
+                }
+                OnPropertyChanged("MemberMother");
+            }
+        }
+        public DateTime MemberDOB
+        {
+            get
+            {
+                return m_memberDOB;
+            }
+            set
+            {
+                if (m_memberDOB != value)
+                {
+                    m_memberDOB = value;
+                }
+                OnPropertyChanged("MemberDOB");
+            }
+        }
+        public string MemberProfession
+        {
+            get
+            {
+                return m_memberProfession;
+            }
+            set
+            {
+                if (m_memberProfession != value)
+                {
+                    m_memberProfession = value;
+                }
+                OnPropertyChanged("MemberProfession");
+            }
+        }
+        public string MemberNationality
+        {
+            get
+            {
+                return m_memberNationality;
+            }
+            set
+            {
+                if (m_memberNationality != value)
+                {
+                    m_memberNationality = value;
+                }
+                OnPropertyChanged("MemberNationality");
+            }
+        }
+        public string MemberReligion
+        {
+            get
+            {
+                return m_memberReligion;
+            }
+            set
+            {
+                if (m_memberReligion != value)
+                {
+                    m_memberReligion = value;
+                }
+                OnPropertyChanged("MemberReligion");
+            }
+        }
         public DateTime? Date
         {
             get
@@ -41,15 +181,28 @@ namespace AccountingSystem.Models
         {
             get
             {
-                return m_accountno;
+                return m_id;
             }
             set
             {
-                m_accountno = value;
+                m_id = value;
                 OnPropertyChanged("ID");
             }
         }
 
+        public int MemberId
+        {
+            get
+            {
+                return m_mid;
+            }
+            set
+            {
+                m_mid = value;
+                OnPropertyChanged("MemberID");
+                _firstLoad = false;
+            }
+        }
         public int AccountNo
         {
             get
@@ -60,6 +213,31 @@ namespace AccountingSystem.Models
             {
                 m_accountno = value;
                 OnPropertyChanged("AccountNo");
+            }
+        }
+
+        public int RefererId
+        {
+            get
+            {
+                return m_refererid;
+            }
+            set
+            {
+                m_refererid = value;
+                OnPropertyChanged("RefererId");
+            }
+        }
+        public double Duration
+        {
+            get
+            {
+                return m_duration;
+            }
+            set
+            {
+                m_duration = value;
+                OnPropertyChanged("Duration");
             }
         }
         public string Details
@@ -73,6 +251,283 @@ namespace AccountingSystem.Models
                 m_details = value;
                 OnPropertyChanged("Details");
                 _firstLoad = false;
+            }
+        }
+
+        public string FNominee
+        {
+            get
+            {
+                return m_fnominee;
+            }
+            set
+            {
+                if (m_fnominee != value)
+                {
+                    m_fnominee = value;
+                }
+                OnPropertyChanged("FNominee");
+            }
+        }
+        public float FNAge
+        {
+            get
+            {
+                return m_fnage;
+            }
+            set
+            {
+                if (m_fnage != value)
+                {
+                    m_fnage = value;
+                }
+                OnPropertyChanged("FNAge");
+            }
+        }
+        public string FNRelation
+        {
+            get
+            {
+                return m_fnrelation;
+            }
+            set
+            {
+                if (m_fnrelation != value)
+                {
+                    m_fnrelation = value;
+                }
+                OnPropertyChanged("FNRelation");
+            }
+        }
+        public string FNShare
+        {
+            get
+            {
+                return m_fnshare;
+            }
+            set
+            {
+                if (m_fnshare != value)
+                {
+                    m_fnshare = value;
+                }
+                OnPropertyChanged("FNShare");
+            }
+        }
+
+        public string FNAddress
+        {
+            get
+            {
+                return m_fnaddress;
+            }
+            set
+            {
+                if (m_fnaddress != value)
+                {
+                    m_fnaddress = value;
+                }
+                OnPropertyChanged("FNAddress");
+            }
+        }
+
+        public string SNominee
+        {
+            get
+            {
+                return m_snominee;
+            }
+            set
+            {
+                if (m_snominee != value)
+                {
+                    m_snominee = value;
+                }
+                OnPropertyChanged("SNominee");
+            }
+        }
+        public float SNAge
+        {
+            get
+            {
+                return m_snage;
+            }
+            set
+            {
+                if (m_snage != value)
+                {
+                    m_snage = value;
+                }
+                OnPropertyChanged("SNAge");
+            }
+        }
+        public string SNRelation
+        {
+            get
+            {
+                return m_snrelation;
+            }
+            set
+            {
+                if (m_snrelation != value)
+                {
+                    m_snrelation = value;
+                }
+                OnPropertyChanged("SNRelation");
+            }
+        }
+        public string SNShare
+        {
+            get
+            {
+                return m_snshare;
+            }
+            set
+            {
+                if (m_snshare != value)
+                {
+                    m_snshare = value;
+                }
+                OnPropertyChanged("SNShare");
+            }
+        }
+
+        public string SNAddress
+        {
+            get
+            {
+                return m_snaddress;
+            }
+            set
+            {
+                if (m_snaddress != value)
+                {
+                    m_snaddress = value;
+                }
+                OnPropertyChanged("SNAddress");
+            }
+        }
+
+        public string TNominee
+        {
+            get
+            {
+                return m_tnominee;
+            }
+            set
+            {
+                if (m_tnominee != value)
+                {
+                    m_tnominee = value;
+                }
+                OnPropertyChanged("TNominee");
+            }
+        }
+        public float TNAge
+        {
+            get
+            {
+                return m_tnage;
+            }
+            set
+            {
+                if (m_tnage != value)
+                {
+                    m_tnage = value;
+                }
+                OnPropertyChanged("TNAge");
+            }
+        }
+        public string TNRelation
+        {
+            get
+            {
+                return m_tnrelation;
+            }
+            set
+            {
+                if (m_tnrelation != value)
+                {
+                    m_tnrelation = value;
+                }
+                OnPropertyChanged("TNRelation");
+            }
+        }
+        public string TNShare
+        {
+            get
+            {
+                return m_tnshare;
+            }
+            set
+            {
+                if (m_tnshare != value)
+                {
+                    m_tnshare = value;
+                }
+                OnPropertyChanged("TNShare");
+            }
+        }
+
+        public string TNAddress
+        {
+            get
+            {
+                return m_tnaddress;
+            }
+            set
+            {
+                if (m_tnaddress != value)
+                {
+                    m_tnaddress = value;
+                }
+                OnPropertyChanged("TNAddress");
+            }
+        }
+        public string MemberCell
+        {
+            get
+            {
+                return m_memberCell;
+            }
+            set
+            {
+                if (m_memberCell != value)
+                {
+                    m_memberCell = value;
+                }
+                OnPropertyChanged("MemberCell");
+            }
+        }
+
+        public string RefererCell
+        {
+            get
+            {
+                return m_referercell;
+            }
+            set
+            {
+                if (m_referercell != value)
+                {
+                    m_referercell = value;
+                }
+                OnPropertyChanged("MemberCell");
+            }
+        }
+        public string RefererName
+        {
+            get
+            {
+                return m_referername;
+            }
+            set
+            {
+                if (m_referername != value)
+                {
+                    m_referername = value;
+                }
+                OnPropertyChanged("MemberCell");
             }
         }
         public string Name
@@ -112,6 +567,201 @@ namespace AccountingSystem.Models
             }
         }
         public double Balance { get; set; }
+
+        #region PopulateTable
+
+        public List<GeneralLedger> GetDataList()
+        {
+
+            Connection conn = new Connection();
+            conn.OpenConection();
+            List<GeneralLedger> entries = new List<GeneralLedger>();
+            string query = "SELECT m.*, g.* FROM Member m INNER JOIN GeneralDepositLedger g  ON m.MemberId = g.MemberId INNER JOIN ( SELECT q.GeneralId, MAX(GeneralDate) MaxDate FROM GeneralDepositLedger q GROUP BY q.GeneralId) d ON g.GeneralId=d.GeneralId AND g.GeneralDate=d.MaxDate ORDER BY d.maxdate DESC";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                entries.Add(new GeneralLedger()
+                {
+                    MemberId = (int)reader["MemberId"],
+                    Name = (string)reader["MemberName"],
+                    AccountNo = (int)reader["GeneralId"],
+                    Balance = (double)reader["GeneralBalance"],
+                });
+            }
+            conn.CloseConnection();
+            return entries;
+        }
+        public List<GeneralLedger> GetData(int id)
+        {
+            Connection conn = new Connection();
+            conn.OpenConection();
+            List<GeneralLedger> entries = new List<GeneralLedger>();
+            string query = "SELECT * From GeneralDepositLedger where GeneralId = "+id;
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                entries.Add(new GeneralLedger()
+                {
+                    ID = (int)reader["GeneralEntryId"],
+                    MemberId = (int)reader ["MemberId"],
+                    AccountNo = (int)reader["GeneralId"],
+                    Date = (DateTime)reader["GeneralDate"],
+                    Details = (string)reader["GenralDetails"],
+                    Deposit = (double)reader["GeneralDeposit"],
+                    Withdraw = (double)reader["GeneralWithdraw"],
+                    Balance = (double)reader["GeneralBalance"],
+
+                });
+            }
+
+            conn.CloseConnection();
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM GeneralDepositLedger ORDER BY GeneralEntryId DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_id = (int)reader["GeneralEntryId"] + 1;
+            }
+
+            conn.CloseConnection();
+
+            /// <summary>
+            ///Select MemberName
+            /// <summary/>
+
+            query = "SELECT * FROM Member WHERE MemberId = "+ MemberId;
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_name = (string)reader["MemberName"];
+            }
+
+            conn.CloseConnection();
+
+            return entries;
+        }
+
+        public void GetDataDetails(int id)
+        {
+            Connection conn = new Connection();
+            conn.OpenConection();
+            int nominee = 1;
+            string query = "SELECT m.*, g.* From Member m LEFT JOIN GeneralDepositDetails g ON m.MemberId=g.MemberId where g.MemberId = " + id;
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                if (nominee == 1)
+                {
+                    ID = (int)reader["GDId"];
+                    MemberId = (int)reader["MemberId"];
+                    Name = (string)reader["MemberName"];
+                    MemberVoterID = (string)reader["MemberVoterId"];
+                    MemberFather = (string)reader["MemberFather"];
+                    MemberMother = (string)reader["MemberMother"];
+                    MemberDOB = (DateTime)reader["MemberDOB"];
+                    MemberProfession = (string)reader["MemberProfession"];
+                    MemberReligion = (string)reader["MemberReligion"];
+                    MemberNationality = (string)reader["MemberNationality"];
+                    MemberCell = (string)reader["MemberCell"];
+                    FNominee = (string)reader["GDNomineeName"];
+                    FNAge = (int)reader["GDNomineeAge"];
+                    FNRelation = (string)reader["GDNomineeRelation"];
+                    FNShare = (string)reader["GDNomineeShare"];
+                    FNAddress = (string)reader["GDNomineeAddress"];
+                    Duration = (double) reader["GDDuration"];
+                    RefererId = (int)reader["GDRefererMemberId"];
+                }
+                else if (nominee == 2)
+                {
+                    SNominee = (string)reader["GDNomineeName"];
+                    SNAge = (int)reader["GDNomineeAge"];
+                    SNRelation = (string)reader["GDNomineeRelation"];
+                    SNShare = (string)reader["GDNomineeShare"];
+                    SNAddress = (string)reader["GDNomineeAddress"];
+                }
+                else if (nominee == 3)
+                {
+                    TNominee = (string)reader["GDNomineeName"];
+                    TNAge = (int)reader["GDNomineeAge"];
+                    TNRelation = (string)reader["GDNomineeRelation"];
+                    TNShare = (string)reader["GDNomineeShare"];
+                    TNAddress = (string)reader["GDNomineeAddress"];
+                }
+                nominee++;
+            }
+            conn.CloseConnection();
+            if (RefererId != 0)
+            {
+                conn.OpenConection();
+                query = "SELECT * From Member WHERE MemberId = " + RefererId;
+                reader = conn.DataReader(query);
+                while (reader.Read())
+                {
+                    RefererName = (string)reader["MemberName"];
+                    RefererCell = (string)reader["MemberCell"];
+
+                }
+                conn.CloseConnection();
+            }
+        }
+
+        public void GetDataDetailsUnknown(string memberUnknown)
+        {
+            string searchTerm;
+            try
+            {
+                if (memberUnknown[0] == '0')
+                    searchTerm = "MemberCell";
+                else
+                {
+                    long cellorvoter = Int64.Parse(memberUnknown);
+                    if (cellorvoter % 100000000000 == 88)
+                        searchTerm = "MemberCell";
+                    else
+                        searchTerm = "MemberVoterID";
+                }
+            }
+            catch (Exception)
+            {
+                searchTerm = "MemberName";
+            }
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * From Member";
+            SqlDataReader reader = conn.DataReader(query);
+            int checkExistence = 0;
+            while (reader.Read())
+            {
+
+                if ((string)reader[searchTerm] == memberUnknown)
+                {
+                    MemberId = (int)reader["MemberId"];
+                    Name = (string)reader["MemberName"];
+                    MemberVoterID = (string)reader["MemberVoterId"];
+                    MemberFather = (string)reader["MemberFather"];
+                    MemberMother = (string)reader["MemberMother"];
+                    MemberDOB = (DateTime)reader["MemberDOB"];
+                    MemberProfession = (string)reader["MemberProfession"];
+                    MemberReligion = (string)reader["MemberReligion"];
+                    MemberNationality = (string)reader["MemberNationality"];
+                    MemberCell = (string)reader["MemberCell"];
+                    checkExistence = 1;
+                    break;
+                }
+            }
+            if (checkExistence == 0)
+            {
+                MessageBox.Show("System can not find member.Check Input again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
+            conn.CloseConnection();
+        }
+        #endregion
 
         #region Validation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -162,6 +812,18 @@ namespace AccountingSystem.Models
                         validationMessage = "No Details Available";
                     }
                     break;
+                case "MemberFather": // property name
+                    if (string.IsNullOrWhiteSpace(Name))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
+                case "MemberMother": // property name
+                    if (string.IsNullOrWhiteSpace(Name))
+                    {
+                        validationMessage = "No Details Available";
+                    }
+                    break;
                 case "AccountNo":
                     if (!int.TryParse(AccountNo.ToString(), out uselessParseInt))
                     {
@@ -183,6 +845,61 @@ namespace AccountingSystem.Models
             }
 
             return validationMessage;
+        }
+        #endregion
+
+        #region PDFCreation
+        public void PublishPDFDetails()
+        {
+            string pageTitle = "Member Information";
+            string filename = pageTitle + MemberId;
+            PdfWriter writer = new PdfWriter(Path.GetFullPath("PDF/" + filename + ".pdf"));
+
+            PdfDocument pdf = new PdfDocument(writer);
+            Document doc = new Document(pdf);
+            PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA);
+            PdfFont bold = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD);
+            PdfFont italic = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+            Paragraph p1 = new Paragraph("Rasulganj Multipurpose Co-operative Society Ltd").SetFont(bold).SetFontSize(15).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+            Paragraph p2 = new Paragraph(pageTitle).SetFont(bold).SetFontSize(14).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+            doc.Add(p1);
+            doc.Add(p2);
+
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * From Member WHERE MemberId = " + MemberId;
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                Name = (string)reader["MemberName"];
+                MemberVoterID = (string)reader["MemberVoterId"];
+                MemberFather = (string)reader["MemberFather"];
+                MemberMother = (string)reader["MemberMother"];
+                MemberDOB = (DateTime)reader["MemberDOB"];
+                MemberProfession = (string)reader["MemberProfession"];
+                MemberReligion = (string)reader["MemberReligion"];
+                MemberNationality = (string)reader["MemberNationality"];
+                MemberCell = (string)reader["MemberCell"];
+            }
+
+            Paragraph line0 = new Paragraph("Name : " + Name);
+            doc.Add(line0);
+            Paragraph line1 = new Paragraph("National ID : " + MemberVoterID);
+            doc.Add(line1);
+            Paragraph line2 = new Paragraph("Father/Husband : " + MemberFather);
+            doc.Add(line2);
+            Paragraph line3 = new Paragraph("Mother : " + MemberMother);
+            doc.Add(line3);
+            Paragraph line4 = new Paragraph("Profession : " + MemberProfession);
+            doc.Add(line4);
+            Paragraph line5 = new Paragraph("Nationality : " + MemberNationality);
+            doc.Add(line5);
+            Paragraph line6 = new Paragraph("Religion : " + MemberReligion);
+            doc.Add(line6);
+            Paragraph line7 = new Paragraph("Cell No : " + MemberCell);
+            doc.Add(line7);
+            conn.CloseConnection();
+            doc.Close();
         }
         #endregion
     }

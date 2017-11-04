@@ -95,5 +95,15 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new MonthlyDueView());
         }
+
+        private void LoadGeneralDepositLedgerView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new GeneralDepositLedgerView());
+        }
+
+        private void LoadGeneralDepositView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new GeneralDepositView());
+        }
     }
     }

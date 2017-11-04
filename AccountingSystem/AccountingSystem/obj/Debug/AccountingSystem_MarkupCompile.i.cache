@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿AccountingSystem
 
 
@@ -18,3 +19,25 @@ LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInfo
 images\resoft-1.png
 False
 
+=======
+﻿AccountingSystem
+
+
+winexe
+C#
+.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
+AccountingSystem
+none
+false
+DEBUG;TRACE
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
+35510366316
+2-1114429820
+66-1209733434
+20-252112958
+LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\DailyLedgerView.xaml;Views\DailyDueView.xaml;Views\DocumentDisplayDialog.xaml;Views\DocumentListDialog.xaml;Views\EditDialogView.xaml;Views\EntryLogView.xaml;Views\GeneralDepositDetailsView.xaml;Views\GeneralDepositEntryView.xaml;Views\GeneralDepositLedgerView.xaml;Views\GeneralDepositListView.xaml;Views\GeneralDepositView.xaml;Views\LoanDetailsView.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberList.xaml;Views\MemberView.xaml;Views\MonthlyDueView.xaml;Views\MonthlyLedgerView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\RemoveDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;Views\StuffView.xaml;Views\WeeklyDueView.xaml;Views\WeeklyLedgerView.xaml;
+images\resoft-1.png
+False
+
+>>>>>>> Stashed changes

@@ -135,10 +135,10 @@
                         </BulletDecorator>
                     </Expander.Header>
                     <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
-                        <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16"/>
+                        <MenuItem Header="_General Ledger" Width="199" Padding="6,4" FontSize="16" Click="LoadGeneralDepositLedgerView"/>
                         <MenuItem Header="_Monthly Ledger" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Fixed Deposit Ledger"  Width="199" Padding="6,4" FontSize="16" />
-                        <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_General Details"  Width="199" Padding="6,4" FontSize="16" Click="LoadGeneralDepositView"/>
                         <MenuItem Header="_Monthly Details" Width="199" Padding="6,4" FontSize="16"/>
                         <MenuItem Header="_Fixed Deposit Details"  Width="199" Padding="6,4" FontSize="16" />
                     </Menu>
