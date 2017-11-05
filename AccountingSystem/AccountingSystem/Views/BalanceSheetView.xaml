@@ -8,7 +8,7 @@
       Title="Loan_Details" Width="1157" Height="717">
 
     <Grid>
-        <GroupBox Header="Loanee List" HorizontalAlignment="Center" VerticalAlignment="Center" Height="600" Margin="75,170,54,-53" Width="1028">
+        <GroupBox Header="Balance Sheet" HorizontalAlignment="Center" VerticalAlignment="Center" Height="570" Margin="75,200,54,-53" Width="1028">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -89,6 +89,7 @@
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
+
             </Grid>
 
         </GroupBox>
@@ -134,5 +135,12 @@
             </Button.Background>
 
         </Button>
+        <TextBlock Text="Balance Sheet up to " Margin="265,168,-265,-298" FontSize="25" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Month, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Margin="543,168,-543,-196" FontSize="25" FontWeight="Bold" Grid.RowSpan="2" Grid.Row="1"/>
+        <TextBlock Text=", " Margin="665,168,-665,-193" FontSize="25" FontWeight="Bold" Grid.RowSpan="2" Grid.Row="1"/>
+        <TextBlock Text="{Binding Year, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Margin="698,168,-698,-432" FontSize="25" FontWeight="Bold" Grid.Row="2"/>
+
+
+
     </Grid>
 </Page>
