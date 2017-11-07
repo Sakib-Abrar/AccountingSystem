@@ -105,5 +105,12 @@ namespace AccountingSystem
         {
             MainFrame.Navigate(new GeneralDepositView());
         }
+
+        private void LoadBalanceSheetView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new BalanceSheetView());
+
+        }
+
     }
-    }
+}

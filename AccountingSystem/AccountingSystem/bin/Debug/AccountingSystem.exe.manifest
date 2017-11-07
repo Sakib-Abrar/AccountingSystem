@@ -42,14 +42,22 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< HEAD
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="1142208">
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="1013184">
+>>>>>>> master
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>q7btzsIjWJ6a+QUiDUqRvqEvBOzbLiO6pcQdSjtmD50=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>OrngDQ3BHZX521P/BeuZAbrbiP8Gq5eA8wgABickQmg=</dsig:DigestValue>
+>>>>>>> master
       </hash>
     </dependentAssembly>
   </dependency>
@@ -152,16 +160,24 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
       <dsig:DigestValue>GfHR8JRyozi5ZHQpvZvgDFMM72FLm1Y9+G4/ETjsO+I=</dsig:DigestValue>
+=======
+      <dsig:DigestValue>2XUHccYtEWYbzgJ00aTbr5Ee1cQMfvsdlecTrHShes8=</dsig:DigestValue>
+>>>>>>> master
     </hash>
   </file>
-  <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
+  <file name="Database\AccountingSystemDatabase_log.ldf" size="573440" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
       <dsig:DigestValue>qsUS+zRr7PCiN+fN1f5JsitKP+lvUZFeiua9tdI2CDc=</dsig:DigestValue>
+=======
+      <dsig:DigestValue>iX7BP5vGcXMa8IV7e9bCjT4I3ut2I1sZaRecxKBn5jM=</dsig:DigestValue>
+>>>>>>> master
     </hash>
   </file>
 </asmv1:assembly>
