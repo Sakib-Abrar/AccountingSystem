@@ -124,11 +124,13 @@
     <Compile Include="Models\DueModel.cs" />
     <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\EntryModel.cs" />
+    <Compile Include="Models\FixedDeposit.cs" />
     <Compile Include="Models\GeneralLedger.cs" />
     <Compile Include="Models\LoanDetails.cs" />
     <Compile Include="Models\LoanLedger.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Members.cs" />
+    <Compile Include="Models\MonthlyDeposit.cs" />
     <Compile Include="Models\OfficeRent.cs" />
     <Compile Include="Models\ReservedFund.cs" />
     <Compile Include="Models\Salary.cs" />
@@ -167,6 +169,21 @@
     <Compile Include="Views\EntryLogView.xaml.cs">
       <DependentUpon>EntryLogView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FixedDepositDetailsView.xaml.cs">
+      <DependentUpon>FixedDepositDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FixedDepositEntryView.xaml.cs">
+      <DependentUpon>FixedDepositEntryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FixedDepositLedgerView.xaml.cs">
+      <DependentUpon>FixedDepositLedgerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FixedDepositListView.xaml.cs">
+      <DependentUpon>FixedDepositListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FixedDepositView.xaml.cs">
+      <DependentUpon>FixedDepositView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GeneralDepositDetailsView.xaml.cs">
       <DependentUpon>GeneralDepositDetailsView.xaml</DependentUpon>
     </Compile>
@@ -196,6 +213,21 @@
     </Compile>
     <Compile Include="Views\MemberView.xaml.cs">
       <DependentUpon>MemberView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonthlyDepositDetailsView.xaml.cs">
+      <DependentUpon>MonthlyDepositDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonthlyDepositEntryView.xaml.cs">
+      <DependentUpon>MonthlyDepositEntryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonthlyDepositLedgerView.xaml.cs">
+      <DependentUpon>MonthlyDepositLedgerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonthlyDepositListView.xaml.cs">
+      <DependentUpon>MonthlyDepositListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonthlyDepositView.xaml.cs">
+      <DependentUpon>MonthlyDepositView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MonthlyDueView.xaml.cs">
       <DependentUpon>MonthlyDueView.xaml</DependentUpon>
@@ -292,6 +324,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\FixedDepositDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FixedDepositEntryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FixedDepositLedgerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FixedDepositListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FixedDepositView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GeneralDepositDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -329,6 +381,26 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MemberView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonthlyDepositDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonthlyDepositEntryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonthlyDepositLedgerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonthlyDepositListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonthlyDepositView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

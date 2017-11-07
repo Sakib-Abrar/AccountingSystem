@@ -38,24 +38,19 @@ namespace AccountingSystem.Views
         public void SearchWithID(int member_id)
         {
             Object.GetDataDetails(member_id);
-            System.Diagnostics.Debug.WriteLine("Member ID :"+member_id);
         }
 
         public void SearchWithUnknown(string member_unknown)
         {
-            try
-            {
-                if (member_unknown[0] == '0')
-                    Object.GetDataDetailsUnknown(member_unknown);
-                else
-                {
-                    int member_ID = Int32.Parse(member_unknown);
-                    Object.GetDataDetails(member_ID);
-                }
-            }
-            catch (Exception ex)
+            int uselessParseInt;
+            if (!int.TryParse(member_unknown, out uselessParseInt))
             {
                 Object.GetDataDetailsUnknown(member_unknown);
+            }
+            else
+            {
+                int member_ID = Int32.Parse(member_unknown);
+                Object.GetDataDetails(member_ID);
             }
         }
 
@@ -133,7 +128,7 @@ namespace AccountingSystem.Views
                 }
                 GeneralDepositEntryView GDEntryObj = new GeneralDepositEntryView();
                 GDEntryObj.SetForEdit(handle.FirstInput);
-                GDEntryObj.SaveMember.Content = "Update Member";
+                GDEntryObj.SaveMember.Content = "Update Account";
                 this.NavigationService.Navigate(GDEntryObj);
 
             }

@@ -4,26 +4,17 @@
 winexe
 C#
 .cs
-D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\
 AccountingSystem
 none
 false
 DEBUG;TRACE
-<<<<<<< Updated upstream
-D:\Dotnet_project\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-30102065932
-2-1114429820
-56-1039230369
-20-1800278376
-LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\DailyLedgerView.xaml;Views\DailyDueView.xaml;Views\DocumentDisplayDialog.xaml;Views\DocumentListDialog.xaml;Views\EditDialogView.xaml;Views\EntryLogView.xaml;Views\LoanDetailsView.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberList.xaml;Views\MemberView.xaml;Views\MonthlyDueView.xaml;Views\MonthlyLedgerView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\RemoveDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;Views\StuffView.xaml;Views\WeeklyDueView.xaml;Views\WeeklyLedgerView.xaml;
-=======
 C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\App.xaml
-35510366316
+451547311862
 2-1114429820
-62271650772
+742098338267
 20-252112958
-LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\DailyLedgerView.xaml;Views\DailyDueView.xaml;Views\DocumentDisplayDialog.xaml;Views\DocumentListDialog.xaml;Views\EditDialogView.xaml;Views\EntryLogView.xaml;Views\GeneralDepositDetailsView.xaml;Views\GeneralDepositEntryView.xaml;Views\GeneralDepositLedgerView.xaml;Views\GeneralDepositListView.xaml;Views\GeneralDepositView.xaml;Views\LoanDetailsView.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberList.xaml;Views\MemberView.xaml;Views\MonthlyDueView.xaml;Views\MonthlyLedgerView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\RemoveDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;Views\StuffView.xaml;Views\WeeklyDueView.xaml;Views\WeeklyLedgerView.xaml;
->>>>>>> Stashed changes
+LoginPage.xaml;MainWindow.xaml;Views\AdmissionFeeView.xaml;Views\BankAccountInformationView.xaml;Views\CashInformationView.xaml;Views\CooperativeDevelopmentView.xaml;Views\DailyLedgerView.xaml;Views\DailyDueView.xaml;Views\DocumentDisplayDialog.xaml;Views\DocumentListDialog.xaml;Views\EditDialogView.xaml;Views\EntryLogView.xaml;Views\FixedDepositDetailsView.xaml;Views\FixedDepositEntryView.xaml;Views\FixedDepositLedgerView.xaml;Views\FixedDepositListView.xaml;Views\FixedDepositView.xaml;Views\GeneralDepositDetailsView.xaml;Views\GeneralDepositEntryView.xaml;Views\GeneralDepositLedgerView.xaml;Views\GeneralDepositListView.xaml;Views\GeneralDepositView.xaml;Views\LoanDetailsView.xaml;Views\MemberEntryView.xaml;Views\MemberInfoView.xaml;Views\MemberList.xaml;Views\MemberView.xaml;Views\MonthlyDepositDetailsView.xaml;Views\MonthlyDepositEntryView.xaml;Views\MonthlyDepositLedgerView.xaml;Views\MonthlyDepositListView.xaml;Views\MonthlyDepositView.xaml;Views\MonthlyDueView.xaml;Views\MonthlyLedgerView.xaml;Views\OfficeRentView.xaml;Views\PrintDialogView.xaml;Views\RemoveDialogView.xaml;Views\ReservedFundView.xaml;Views\SalaryView.xaml;Views\SecurityFundView.xaml;Views\ShareableProfitView.xaml;Views\ShareView.xaml;Views\StuffView.xaml;Views\WeeklyDueView.xaml;Views\WeeklyLedgerView.xaml;
 images\resoft-1.png
 False
 

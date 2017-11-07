@@ -27,7 +27,7 @@
                             <Style.Resources>
                                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                     <VisualBrush.Visual>
-                                        <Label Content="General Deposit No or Member ID or Name" Foreground="LightSlateGray" />
+                                        <Label Content="Enter Member ID or Name" Foreground="LightSlateGray" />
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </Style.Resources>

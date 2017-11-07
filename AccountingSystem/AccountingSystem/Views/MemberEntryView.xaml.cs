@@ -262,10 +262,7 @@ namespace AccountingSystem.Views
                         }
                         catch (SqlException exception)
                         {
-                            if (exception.ErrorCode == 2627)
-                                MessageBox.Show("Error.Id already exists.", "warning");
-                            else
-                                MessageBox.Show("Error\n" + exception, "warning");
+                            MessageBox.Show("Error\n" + exception, "warning");
                             return;
                         }
 

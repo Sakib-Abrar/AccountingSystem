@@ -137,7 +137,7 @@
                 </Button>
                 <Label Content="Collector :" HorizontalAlignment="Left" Margin="397,206,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBox x:Name="Collector" HorizontalAlignment="Left" Height="23" Margin="498,210,0,0" TextWrapping="Wrap" Text="{Binding Collector, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
-                <Button x:Name="LoanID" Content="Insert Loan ID" HorizontalAlignment="Left" Margin="69,16,0,0" VerticalAlignment="Top" Width="330" Height="25" Click="Loan_Click" FontWeight="Bold" Grid.ColumnSpan="2">
+                <Button x:Name="LoanID" Content="Insert Loan ID" HorizontalAlignment="Left" Margin="69,16,0,0" VerticalAlignment="Top" Width="330" Height="25" Click="Loan_Click"  FontWeight="Bold" Grid.ColumnSpan="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"/>

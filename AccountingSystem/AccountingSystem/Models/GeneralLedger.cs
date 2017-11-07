@@ -200,7 +200,7 @@ namespace AccountingSystem.Models
             {
                 m_mid = value;
                 OnPropertyChanged("MemberID");
-                _firstLoad = false;
+                SetMemberDetails();
             }
         }
         public int AccountNo
@@ -213,6 +213,7 @@ namespace AccountingSystem.Models
             {
                 m_accountno = value;
                 OnPropertyChanged("AccountNo");
+                _firstLoad = false;
             }
         }
 
@@ -250,7 +251,6 @@ namespace AccountingSystem.Models
             {
                 m_details = value;
                 OnPropertyChanged("Details");
-                _firstLoad = false;
             }
         }
 
@@ -576,7 +576,7 @@ namespace AccountingSystem.Models
             Connection conn = new Connection();
             conn.OpenConection();
             List<GeneralLedger> entries = new List<GeneralLedger>();
-            string query = "SELECT m.*, g.* FROM Member m INNER JOIN GeneralDepositLedger g  ON m.MemberId = g.MemberId INNER JOIN ( SELECT q.GeneralId, MAX(GeneralDate) MaxDate FROM GeneralDepositLedger q GROUP BY q.GeneralId) d ON g.GeneralId=d.GeneralId AND g.GeneralDate=d.MaxDate ORDER BY d.maxdate DESC";
+            string query = "SELECT m.*, g.* FROM Member m INNER JOIN GeneralDepositLedger g  ON m.MemberId = g.MemberId INNER JOIN ( SELECT q.GeneralId, MAX(GeneralEntryId) MaxId FROM GeneralDepositLedger q GROUP BY q.GeneralId) d ON g.GeneralId=d.GeneralId AND g.GeneralEntryId=d.MaxId ORDER BY d.maxid DESC";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
@@ -591,8 +591,36 @@ namespace AccountingSystem.Models
             conn.CloseConnection();
             return entries;
         }
-        public List<GeneralLedger> GetData(int id)
+        public List<GeneralLedger> GetDataLedger(int id,int front)
         {
+
+            Connection conn1 = new Connection();
+            string query1;
+            if (id == 0)
+            {
+                query1 = "SELECT TOP 1 * FROM GeneralDepositLedger ORDER BY GeneralId ASC";
+            }
+            else if (front == 1)
+            {
+                query1 = "SELECT TOP 1 * FROM GeneralDepositLedger WHERE GeneralId > " + id + " ORDER BY GeneralId ASC";
+            }
+            else if (front == 0)
+            {
+                query1 = "SELECT TOP 1 * FROM GeneralDepositLedger WHERE GeneralId < " + id + " ORDER BY GeneralId DESC";
+            }
+            else
+            {
+                query1 = "SELECT TOP 1 * FROM GeneralDepositLedger WHERE GeneralId = " + id;
+            }
+            conn1.OpenConection();
+            SqlDataReader reader1 = conn1.DataReader(query1);
+            while (reader1.Read())
+            {
+                AccountNo = (int)reader1["GeneralId"];
+                id = AccountNo;
+            }
+            conn1.CloseConnection();
+
             Connection conn = new Connection();
             conn.OpenConection();
             List<GeneralLedger> entries = new List<GeneralLedger>();
@@ -603,10 +631,10 @@ namespace AccountingSystem.Models
                 entries.Add(new GeneralLedger()
                 {
                     ID = (int)reader["GeneralEntryId"],
-                    MemberId = (int)reader ["MemberId"],
                     AccountNo = (int)reader["GeneralId"],
+                    MemberId = (int)reader["MemberId"],
                     Date = (DateTime)reader["GeneralDate"],
-                    Details = (string)reader["GenralDetails"],
+                    Details = (string)reader["GeneralDetails"],
                     Deposit = (double)reader["GeneralDeposit"],
                     Withdraw = (double)reader["GeneralWithdraw"],
                     Balance = (double)reader["GeneralBalance"],
@@ -629,9 +657,18 @@ namespace AccountingSystem.Models
 
             conn.CloseConnection();
 
-            /// <summary>
-            ///Select MemberName
-            /// <summary/>
+            conn = new Connection();
+            conn.OpenConection();
+            query = "SELECT Top 1 * From GeneralDepositLedger where GeneralId = " + id+ " ORDER BY GeneralEntryId DESC";
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                AccountNo = (int)reader["GeneralId"];
+                MemberId = (int)reader["MemberId"];
+                Balance = (double)reader["GeneralBalance"];
+            }
+
+            conn.CloseConnection();
 
             query = "SELECT * FROM Member WHERE MemberId = "+ MemberId;
             conn.OpenConection();
@@ -650,49 +687,38 @@ namespace AccountingSystem.Models
         {
             Connection conn = new Connection();
             conn.OpenConection();
-            int nominee = 1;
             string query = "SELECT m.*, g.* From Member m LEFT JOIN GeneralDepositDetails g ON m.MemberId=g.MemberId where g.MemberId = " + id;
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                if (nominee == 1)
-                {
-                    ID = (int)reader["GDId"];
-                    MemberId = (int)reader["MemberId"];
-                    Name = (string)reader["MemberName"];
-                    MemberVoterID = (string)reader["MemberVoterId"];
-                    MemberFather = (string)reader["MemberFather"];
-                    MemberMother = (string)reader["MemberMother"];
-                    MemberDOB = (DateTime)reader["MemberDOB"];
-                    MemberProfession = (string)reader["MemberProfession"];
-                    MemberReligion = (string)reader["MemberReligion"];
-                    MemberNationality = (string)reader["MemberNationality"];
-                    MemberCell = (string)reader["MemberCell"];
-                    FNominee = (string)reader["GDNomineeName"];
-                    FNAge = (int)reader["GDNomineeAge"];
-                    FNRelation = (string)reader["GDNomineeRelation"];
-                    FNShare = (string)reader["GDNomineeShare"];
-                    FNAddress = (string)reader["GDNomineeAddress"];
-                    Duration = (double) reader["GDDuration"];
-                    RefererId = (int)reader["GDRefererMemberId"];
-                }
-                else if (nominee == 2)
-                {
-                    SNominee = (string)reader["GDNomineeName"];
-                    SNAge = (int)reader["GDNomineeAge"];
-                    SNRelation = (string)reader["GDNomineeRelation"];
-                    SNShare = (string)reader["GDNomineeShare"];
-                    SNAddress = (string)reader["GDNomineeAddress"];
-                }
-                else if (nominee == 3)
-                {
-                    TNominee = (string)reader["GDNomineeName"];
-                    TNAge = (int)reader["GDNomineeAge"];
-                    TNRelation = (string)reader["GDNomineeRelation"];
-                    TNShare = (string)reader["GDNomineeShare"];
-                    TNAddress = (string)reader["GDNomineeAddress"];
-                }
-                nominee++;
+                ID = (int)reader["GDId"];
+                MemberId = (int)reader["MemberId"];
+                Name = (string)reader["MemberName"];
+                MemberVoterID = (string)reader["MemberVoterId"];
+                MemberFather = (string)reader["MemberFather"];
+                MemberMother = (string)reader["MemberMother"];
+                MemberDOB = (DateTime)reader["MemberDOB"];
+                MemberProfession = (string)reader["MemberProfession"];
+                MemberReligion = (string)reader["MemberReligion"];
+                MemberNationality = (string)reader["MemberNationality"];
+                MemberCell = (string)reader["MemberCell"];
+                Duration = (double)reader["GDDuration"];
+                RefererId = (int)reader["GDRefererMemberId"];
+                FNominee = (string)reader["GDFNomineeName"];
+                FNAge = (int)reader["GDFNomineeAge"];
+                FNRelation = (string)reader["GDFNomineeRelation"];
+                FNShare = (string)reader["GDFNomineeShare"];
+                FNAddress = (string)reader["GDFNomineeAddress"];
+                SNominee = (string)reader["GDNomineeName"];
+                SNAge = (int)reader["GDSNomineeAge"];
+                SNRelation = (string)reader["GDSNomineeRelation"];
+                SNShare = (string)reader["GDSNomineeShare"];
+                SNAddress = (string)reader["GDSNomineeAddress"];
+                TNominee = (string)reader["GDTNomineeName"];
+                TNAge = (int)reader["GDTNomineeAge"];
+                TNRelation = (string)reader["GDTNomineeRelation"];
+                TNShare = (string)reader["GDTNomineeShare"];
+                TNAddress = (string)reader["GDTNomineeAddress"];
             }
             conn.CloseConnection();
             if (RefererId != 0)
@@ -712,34 +738,18 @@ namespace AccountingSystem.Models
 
         public void GetDataDetailsUnknown(string memberUnknown)
         {
-            string searchTerm;
-            try
-            {
-                if (memberUnknown[0] == '0')
-                    searchTerm = "MemberCell";
-                else
-                {
-                    long cellorvoter = Int64.Parse(memberUnknown);
-                    if (cellorvoter % 100000000000 == 88)
-                        searchTerm = "MemberCell";
-                    else
-                        searchTerm = "MemberVoterID";
-                }
-            }
-            catch (Exception)
-            {
-                searchTerm = "MemberName";
-            }
             Connection conn = new Connection();
             conn.OpenConection();
-            string query = "SELECT * From Member";
+            string query = "SELECT m.*, g.* From Member m LEFT JOIN GeneralDepositDetails g ON m.MemberId=g.MemberId";
             SqlDataReader reader = conn.DataReader(query);
             int checkExistence = 0;
             while (reader.Read())
             {
-
-                if ((string)reader[searchTerm] == memberUnknown)
+                if ((string)reader["MemberName"] == memberUnknown)
                 {
+                    if (reader.IsDBNull(reader.GetOrdinal("GDId")))
+                        break;
+                    ID = (int)reader["GDId"];
                     MemberId = (int)reader["MemberId"];
                     Name = (string)reader["MemberName"];
                     MemberVoterID = (string)reader["MemberVoterId"];
@@ -750,15 +760,53 @@ namespace AccountingSystem.Models
                     MemberReligion = (string)reader["MemberReligion"];
                     MemberNationality = (string)reader["MemberNationality"];
                     MemberCell = (string)reader["MemberCell"];
+                    Duration = (double)reader["GDDuration"];
+                    RefererId = (int)reader["GDRefererMemberId"];
+                    FNominee = (string)reader["GDFNomineeName"];
+                    FNAge = (int)reader["GDFNomineeAge"];
+                    FNRelation = (string)reader["GDFNomineeRelation"];
+                    FNShare = (string)reader["GDFNomineeShare"];
+                    FNAddress = (string)reader["GDFNomineeAddress"];
+                    SNominee = (string)reader["GDNomineeName"];
+                    SNAge = (int)reader["GDSNomineeAge"];
+                    SNRelation = (string)reader["GDSNomineeRelation"];
+                    SNShare = (string)reader["GDSNomineeShare"];
+                    SNAddress = (string)reader["GDSNomineeAddress"];
+                    TNominee = (string)reader["GDTNomineeName"];
+                    TNAge = (int)reader["GDTNomineeAge"];
+                    TNRelation = (string)reader["GDTNomineeRelation"];
+                    TNShare = (string)reader["GDTNomineeShare"];
+                    TNAddress = (string)reader["GDTNomineeAddress"];
                     checkExistence = 1;
                     break;
                 }
             }
             if (checkExistence == 0)
             {
-                MessageBox.Show("System can not find member.Check Input again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("Member may not have a general deposit account.Check Input again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
 
+            conn.CloseConnection();
+        }
+
+        public void SetMemberDetails()
+        {
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * From Member WHERE MemberId = " + MemberId;
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                Name = (string)reader["MemberName"];
+                MemberVoterID = (string)reader["MemberVoterId"];
+                MemberFather = (string)reader["MemberFather"];
+                MemberMother = (string)reader["MemberMother"];
+                MemberDOB = (DateTime)reader["MemberDOB"];
+                MemberProfession = (string)reader["MemberProfession"];
+                MemberReligion = (string)reader["MemberReligion"];
+                MemberNationality = (string)reader["MemberNationality"];
+                MemberCell = (string)reader["MemberCell"];
+            }
             conn.CloseConnection();
         }
         #endregion
