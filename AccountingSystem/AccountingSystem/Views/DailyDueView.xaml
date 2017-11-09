@@ -8,7 +8,7 @@
       Title="Loan_Details" Width="1157" Height="717">
 
     <Grid>
-        <GroupBox Header="Loanee List" HorizontalAlignment="Center" VerticalAlignment="Center" Height="600" Margin="50,95,79,22" Width="1028">
+        <GroupBox Header="Loanee List" HorizontalAlignment="Center" VerticalAlignment="Center" Height="275" Margin="50,102,79,340" Width="1028">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -94,6 +94,93 @@
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox Header="Daily Ledger" HorizontalAlignment="Center" VerticalAlignment="Center" Height="280" Margin="50,382,79,55" Width="1028">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,5,5,5">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                            <DataGrid x:Name="DailyLedger" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="tabID" Header="Entry No" Binding="{Binding Path=ID}" Width="120">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn x:Name="tableLoan" Header="Loan Id" Binding="{Binding Path=Loan}" Width="150">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableDate" Header="Date" Binding="{Binding Path=Date,StringFormat=d}" Width="150">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableCollection" Header="Collection" Binding="{Binding Path=Collection}" Width="150">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tabBalance" Header="Balance" Binding="{Binding Path=Balance}" Width="160">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn x:Name="tableInstallment" Header="Installment No." Binding="{Binding Path=Installment}" Width="160">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <ItemsControl VerticalAlignment="Top" Margin="5,5,5,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+
+                <Button Content="Print" HorizontalAlignment="Left" Margin="911,197,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Print_Data" FontWeight="Bold">
+
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                            <GradientStop Color="#0C92FB" Offset="0.75"/>
+                            <GradientStop Color="#0C92FB" Offset="0.25"/>
+                            <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                            <Style.Triggers>
+                                <Trigger Property ="IsMouseOver" Value="True">
+                                    <Setter Property= "Background" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Grid>
 
         </GroupBox>

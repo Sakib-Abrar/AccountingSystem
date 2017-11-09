@@ -106,11 +106,30 @@ namespace AccountingSystem
             MainFrame.Navigate(new GeneralDepositView());
         }
 
+        private void LoadMonthlyDepositLedgerView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MonthlyDepositLedgerView());
+        }
+
+        private void LoadMonthlyDepositView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MonthlyDepositView());
+        }
+
+        private void LoadFixedDepositLedgerView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new FixedDepositLedgerView());
+        }
+
+        private void LoadFixedDepositView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new FixedDepositView());
+        }
+
         private void LoadBalanceSheetView(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new BalanceSheetView());
 
         }
-
     }
 }

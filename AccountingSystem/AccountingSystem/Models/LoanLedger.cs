@@ -28,7 +28,178 @@ namespace AccountingSystem.Models
         private double? m_balance;
         private int m_installment;
         private DateTime? m_date = Login.GlobalDate;
+
+        private string m_sector = "";
+        private string m_name = "";
+        private string m_account = "";
+        private double? m_amount;
+        private double? m_service;
+        private double? m_lifetime;
+        private double? m_inst_amnt;
+        private double? m_total;
+        private DateTime? m_paid;
+        private DateTime? m_nextdate;
+        private double? m_fine;
+
         public int SelectedIndex { get; set; }
+        public DateTime? SanctionDate
+        {
+            get
+            {
+                return m_date;
+            }
+            set
+            {
+                m_date = value;
+                OnPropertyChanged("SanctionDate");
+            }
+        }
+        public DateTime? LastPaid
+        {
+            get
+            {
+                return m_paid;
+            }
+            set
+            {
+                m_paid = value;
+                OnPropertyChanged("LastPaid");
+            }
+        }
+        public DateTime? NextDate
+        {
+            get
+            {
+                return m_nextdate;
+            }
+            set
+            {
+                m_nextdate = value;
+                OnPropertyChanged("NextDate");
+            }
+        }
+        public string Sector
+        {
+            get
+            {
+                return m_sector;
+            }
+            set
+            {
+                m_sector = value;
+                OnPropertyChanged("Sector");
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return m_name;
+            }
+            set
+            {
+                m_name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+        public double? Collection
+        {
+            get
+            {
+                return m_collection;
+            }
+            set
+            {
+                m_collection = value;
+                OnPropertyChanged("Collection");
+            }
+        }
+
+        public double? Fine
+        {
+            get
+            {
+                return m_fine;
+            }
+            set
+            {
+                m_fine = value;
+                OnPropertyChanged("Fine");
+            }
+        }
+        public string Account
+        {
+            get
+            {
+                return m_account;
+            }
+            set
+            {
+                m_account = value;
+                OnPropertyChanged("Account");
+            }
+        }
+        public double? Amount
+        {
+            get
+            {
+                return m_amount;
+            }
+            set
+            {
+                m_amount = value;
+                OnPropertyChanged("Amount");
+            }
+        }
+        public double? ServiceCharge
+        {
+            get
+            {
+                return m_service;
+            }
+            set
+            {
+                m_service = value;
+                OnPropertyChanged("ServiceCharge");
+            }
+        }
+        public double? Lifetime
+        {
+            get
+            {
+                return m_lifetime;
+            }
+            set
+            {
+                m_lifetime = value;
+                OnPropertyChanged("Lifetime");
+            }
+        }
+        public double? InstallmentAmount
+        {
+            get
+            {
+                return m_inst_amnt;
+            }
+            set
+            {
+                m_inst_amnt = value;
+                OnPropertyChanged("InstallmentAmmount");
+            }
+        }
+        public double? Total
+        {
+            get
+            {
+                return m_total;
+            }
+            set
+            {
+                m_total = value;
+                OnPropertyChanged("Total");
+            }
+        }
+
         public DateTime? Date
         {
             get
@@ -52,18 +223,6 @@ namespace AccountingSystem.Models
                 m_loan = value;
                 OnPropertyChanged("Loan");
                 _firstLoad = false;
-            }
-        }
-        public double? Collection
-        {
-            get
-            {
-                return m_collection;
-            }
-            set
-            {
-                m_collection = value;
-                OnPropertyChanged("Collection");
             }
         }
         public double? Balance
@@ -151,7 +310,8 @@ namespace AccountingSystem.Models
 
 
         #endregion
-        #region
+
+        #region Due List
         public void DueChecker()
         {
             float fineRate = 1;
@@ -186,7 +346,7 @@ namespace AccountingSystem.Models
         }
         #endregion
 
-            #region PopulateTable
+        #region PopulateTable
         public List<LoanLedger> GetData(string method)
         {
             Connection conn = new Connection();
@@ -228,6 +388,153 @@ namespace AccountingSystem.Models
             {
                 m_id = (int)reader["LoanCollection_Id"] + 1;
             }
+
+            conn.CloseConnection();
+            return entries;
+        }
+
+        public List<LoanLedger> GetDataIndividual(string method,int id, int direction)
+        {
+            List<LoanLedger> entries = new List<LoanLedger>();
+            string query;
+            if (id == 0)
+            {
+                Connection conn5 = new Connection();
+                conn5.OpenConection();
+                query = "SELECT TOP 1 * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' ORDER BY LoanCollection_Loan ASC";
+                SqlDataReader reader5 = conn5.DataReader(query);
+                while (reader5.Read())
+                {
+                    id = (int)reader5["LoanCollection_Loan"];
+                }
+
+                conn5.CloseConnection();
+                query = "SELECT * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND LoanCollection_Loan = " + id + " ORDER BY LoanCollection_Loan ASC";
+            }
+            else if (direction == 1)
+            {
+                Connection conn5 = new Connection();
+                conn5.OpenConection();
+                query = "SELECT TOP 1 * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND LoanCollection_Loan > " + id + " ORDER BY LoanCollection_Loan ASC";
+                SqlDataReader reader5 = conn5.DataReader(query);
+                while (reader5.Read())
+                {
+                    id = (int)reader5["LoanCollection_Loan"];
+                }
+
+                conn5.CloseConnection();
+                query = "SELECT * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND LoanCollection_Loan = " + id; ;
+            }
+            else if (direction == 0)
+            {
+                Connection conn5 = new Connection();
+                conn5.OpenConection();
+                query = "SELECT TOP 1 * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND LoanCollection_Loan < " + id + " ORDER BY LoanCollection_Loan DESC";
+                SqlDataReader reader5 = conn5.DataReader(query);
+                while (reader5.Read())
+                {
+                    id = (int)reader5["LoanCollection_Loan"];
+                }
+                conn5.CloseConnection();
+                query = "SELECT * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND LoanCollection_Loan = " + id; ;
+            }
+            else
+            {
+                query = "SELECT * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND LoanCollection_Loan = " + id;
+            }
+            Connection conn = new Connection();
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                double balance = 0.00;
+                Connection conn2 = new Connection();
+                string query2 = "SELECT * From [LoanDetails] where LoanDetails_Id =" + reader["LoanCollection_Loan"] + " ";
+                conn2.OpenConection();
+                SqlDataReader reader2 = conn2.DataReader(query2);
+                while (reader2.Read())
+                {
+                    balance = (double)reader2["LoanDetails_Balance"];
+                }
+                conn2.CloseConnection();
+                entries.Add(new LoanLedger()
+                {
+                    ID = (int)reader["LoanCollection_Id"],
+                    Date = (DateTime)reader["LoanCollection_Date"],
+                    Loan = (int)reader["LoanCollection_Loan"],
+                    Collection = (double)reader["LoanCollection_Collection"],
+                    Installment = (int)reader["LoanCollection_Installment"],
+                    Balance = balance,
+                });
+                direction = 5;
+            }
+            if (direction != 5)
+            {
+                MessageBox.Show("Id not found");
+                return null;
+            }
+            conn.CloseConnection();
+            /// <summary>
+            ///Fill the text boxes
+            /// <summary/>
+
+            conn = new Connection();
+            conn.OpenConection();
+            query = "SELECT * From LoanDetails WHERE LoanDetails_Id = " + id;
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                Connection conn2 = new Connection();
+                conn2.OpenConection();
+                string query2 = "SELECT * From [Member] WHERE MemberId =" + reader["LoanDetails_Account"] + " ";
+                SqlDataReader reader2 = conn2.DataReader(query2);
+                if (reader2 == null)
+                    return null;
+                while (reader2.Read())
+                {
+                    Name = (string)reader2["MemberName"];
+                }
+                conn2.CloseConnection();
+                Loan= (int)reader["LoanDetails_Id"];
+                double total = Convert.ToDouble(reader["LoanDetails_InstallmentAmount"]) + Convert.ToDouble(reader["LoanDetails_Fine"]);
+                Account = (string)reader["LoanDetails_Account"];
+                LastPaid= (DateTime)reader["LoanDetails_LastPaid"];
+                Total= (double)reader["LoanDetails_Total"];
+                Installment = (int)reader["LoanDetails_Installment"];
+                InstallmentAmount = (double)reader["LoanDetails_InstallmentAmount"];
+                Sector= (string)reader["LoanDetails_Sector"];
+                Amount= (double)reader["LoanDetails_Amount"];
+                SanctionDate= (DateTime)reader["LoanDetails_Sanction"];
+                if ((double)reader["LoanDetails_Balance"] != 0)
+                {
+                    NextDate = (DateTime)reader["LoanDetails_NextDate"];
+                    Balance = (double)reader["LoanDetails_Balance"];
+                    Fine = (double)reader["LoanDetails_Fine"];
+                    Total = total;
+                }
+                else
+                {
+                    NextDate= null;
+                    Balance= null;
+                    Fine= null;
+                    Total= null;
+                }
+            }
+            conn.CloseConnection();
+
+            /// <summary>
+            ///Select Last Entry No
+            /// <summary/>
+
+            query = "SELECT TOP 1 * FROM LoanCollection ORDER BY LoanCollection_Id DESC";
+            conn.OpenConection();
+            reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                m_id = (int)reader["LoanCollection_Id"] + 1;
+            }
+
+            Loan = id;
 
             conn.CloseConnection();
             return entries;

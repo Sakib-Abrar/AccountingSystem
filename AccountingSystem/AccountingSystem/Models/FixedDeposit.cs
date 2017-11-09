@@ -618,6 +618,12 @@ namespace AccountingSystem.Models
             {
                 AccountNo = (int)reader1["FixedId"];
                 id = AccountNo;
+                front = 5;
+            }
+            if (front != 5)
+            {
+                MessageBox.Show("Id not found");
+                return null;
             }
             conn1.CloseConnection();
 

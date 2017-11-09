@@ -618,8 +618,14 @@ namespace AccountingSystem.Models
             {
                 AccountNo = (int)reader1["MonthlyId"];
                 id = AccountNo;
+                front = 5;
             }
-            conn1.CloseConnection();
+            if (front != 5)
+            {
+                MessageBox.Show("Id not found");
+                return null;
+            }
+                conn1.CloseConnection();
 
             Connection conn = new Connection();
             conn.OpenConection();
@@ -659,7 +665,7 @@ namespace AccountingSystem.Models
 
             conn = new Connection();
             conn.OpenConection();
-            query = "SELECT Top 1 * From MonthlyDepositLedger where GeneralId = " + id + " ORDER BY MonthlyEntryId DESC";
+            query = "SELECT Top 1 * From MonthlyDepositLedger where MonthlyId = " + id + " ORDER BY MonthlyEntryId DESC";
             reader = conn.DataReader(query);
             while (reader.Read())
             {

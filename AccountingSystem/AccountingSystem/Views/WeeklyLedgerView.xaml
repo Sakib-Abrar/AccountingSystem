@@ -12,7 +12,7 @@
             <RowDefinition Height="370*"/>
             <RowDefinition Height="347*"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Daily Ledger" HorizontalAlignment="Center" VerticalAlignment="Center" Height="331" Margin="115,340,42,46" Width="1000" Grid.RowSpan="2">
+        <GroupBox Header="Weekly Ledger" HorizontalAlignment="Center" VerticalAlignment="Center" Height="331" Margin="115,345,42,46" Width="1000" Grid.RowSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -21,7 +21,7 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,5,5,5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                            <DataGrid x:Name="DailyLedger" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
+                            <DataGrid x:Name="WeeklyLedger" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedIndex}" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="5,5,5,5" SelectionChanged="dg1_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn x:Name="tableID" Header="Entry No" Binding="{Binding Path=ID}" Width="120">
                                         <DataGridTextColumn.HeaderStyle>
@@ -107,7 +107,7 @@
                 <Label Content="Loan Id:" HorizontalAlignment="Left" Margin="394,113,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBox Name="Loan" HorizontalAlignment="Left" Height="23" Margin="498,115,0,0" TextWrapping="Wrap" Text="{Binding Loan, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
                 <Label Content="Installment No.:" HorizontalAlignment="Left" Margin="397,143,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                <TextBox Name="Installment" HorizontalAlignment="Left" Height="23" Margin="498,147,0,0" TextWrapping="Wrap" Text="{Binding Installment, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
+                <TextBox Name="Installment" HorizontalAlignment="Left" Height="23" Margin="498,147,0,0" TextWrapping="Wrap" Text="{Binding InstallmentNo, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
                 <Label Content="Collection:" HorizontalAlignment="Left" Margin="397,175,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBox Name="Collection" HorizontalAlignment="Left" Height="23" Margin="498,179,0,0" TextWrapping="Wrap" Text="{Binding Collection, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
                 <Label Content="Entry No :" HorizontalAlignment="Left" Margin="402,20,0,0" VerticalAlignment="Top" Grid.Column="1" />
@@ -133,30 +133,10 @@
                             </Style.Triggers>
                         </Style>
                     </Button.Resources>
-
                 </Button>
+                
                 <Label Content="Collector :" HorizontalAlignment="Left" Margin="397,206,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBox x:Name="Collector" HorizontalAlignment="Left" Height="23" Margin="498,210,0,0" TextWrapping="Wrap" Text="{Binding Collector, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
-                <Button x:Name="LoanID" Content="Insert Loan ID" HorizontalAlignment="Left" Margin="69,16,0,0" VerticalAlignment="Top" Width="330" Height="25" Click="Loan_Click" FontWeight="Bold" Grid.ColumnSpan="2">
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="3"/>
-                            <Style.Triggers>
-                                <Trigger Property ="IsMouseOver" Value="True">
-                                    <Setter Property= "Background" Value="Black"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Resources>
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                            <GradientStop Color="#FF2Bc0EC" Offset="1"/>
-                            <GradientStop Color="#0C92FB" Offset="0.75"/>
-                            <GradientStop Color="#0C92FB" Offset="0.25"/>
-                            <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
                 <Label Content="Installment Amount:" Margin="29,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117" />
                 <TextBox x:Name="Amount" HorizontalAlignment="Left" Height="23" Margin="156,115,0,0" TextWrapping="Wrap" Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.ColumnSpan="2"/>
                 <Label Content="Fine:" HorizontalAlignment="Left" Margin="35,178,0,0" VerticalAlignment="Top" />
@@ -172,20 +152,20 @@
                 <Label Content="Next Date:" HorizontalAlignment="Left" Margin="62,208,0,0" VerticalAlignment="Top" Grid.Column="1" />
                 <TextBox x:Name="NextDate" HorizontalAlignment="Left" Height="23" Margin="149,209,0,0" TextWrapping="Wrap" Text="{Binding NextDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.Column="1"/>
                 <Label Content="No. of Instmnt:" Margin="52,141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117" Grid.Column="1" />
-                <TextBox x:Name="InstallmentNo" HorizontalAlignment="Left" Height="23" Margin="148,143,0,0" TextWrapping="Wrap" Text="{Binding InstallmentNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.Column="1"/>
+                <TextBox x:Name="InstallmentNo" HorizontalAlignment="Left" Height="23" Margin="148,143,0,0" TextWrapping="Wrap" Text="{Binding Installment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.Column="1"/>
                 <Label Content="Account:" HorizontalAlignment="Left" Margin="393,51,0,0" VerticalAlignment="Top" Grid.Column="1" Width="89" />
                 <TextBox x:Name="Account" HorizontalAlignment="Left" Height="23" Margin="498,52,0,0" TextWrapping="Wrap" Text="{Binding Account, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" IsEnabled="False" Grid.Column="1"/>
                 <Label Content="Loan Amount:" Margin="52,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117" Grid.Column="1" />
-                <TextBox x:Name="LoanAmount" HorizontalAlignment="Left" Height="23" Margin="148,112,0,0" TextWrapping="Wrap" Text="{Binding LoanAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.Column="1"/>
+                <TextBox x:Name="LoanAmount" HorizontalAlignment="Left" Height="23" Margin="148,112,0,0" TextWrapping="Wrap" Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.Column="1"/>
                 <Label Content="Sector:" Margin="29,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117" />
                 <TextBox x:Name="Sector" HorizontalAlignment="Left" Height="23" Margin="156,83,0,0" TextWrapping="Wrap" Text="{Binding Sector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.ColumnSpan="2"/>
                 <Label Content="Sanction Date:" Margin="52,78,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117" Grid.Column="1" />
-                <TextBox x:Name="Sanction" HorizontalAlignment="Left" Height="23" Margin="148,80,0,0" TextWrapping="Wrap" Text="{Binding LoanAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.Column="1"/>
+                <TextBox x:Name="Sanction" HorizontalAlignment="Left" Height="23" Margin="148,80,0,0" TextWrapping="Wrap" Text="{Binding SanctionDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="90" IsEnabled="False" Grid.Column="1"/>
                 <Label Content="Total Collectable Loan:" HorizontalAlignment="Left" Margin="352,83,0,0" VerticalAlignment="Top" Grid.Column="1" Width="143" />
                 <TextBox x:Name="TotalLoan" HorizontalAlignment="Left" Height="23" Margin="497,84,0,0" TextWrapping="Wrap" Text="{Binding TotalLoan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="200" IsEnabled="False" Grid.Column="1"/>
             </Grid>
         </GroupBox>
-        <Button Name="Remove" Content="Remove" HorizontalAlignment="Left" Margin="230,310,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Remove_Click" FontWeight="Bold" Grid.Row="1">
+        <Button Name="Remove" Content="Remove" HorizontalAlignment="Left" Margin="230,312,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Remove_Click" FontWeight="Bold" Grid.Row="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -206,7 +186,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Name="Edit" Content="Edit" HorizontalAlignment="Left" Margin="112,310,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Edit_Click" FontWeight="Bold" Grid.Row="1">
+        <Button Name="Edit" Content="Edit" HorizontalAlignment="Left" Margin="112,312,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Edit_Click" FontWeight="Bold" Grid.Row="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -226,6 +206,49 @@
                 </Style>
             </Button.Resources>
         </Button>
+
+        <Button Name="Previous" Content="Previous" HorizontalAlignment="Left" Margin="10,312,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Previous_Click" FontWeight="Bold" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="Next" Content="Next" HorizontalAlignment="Left" Margin="1069,312,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Next_Click" FontWeight="Bold" Grid.Row="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
         <Image x:Name="image" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="1157" Source="/AccountingSystem;component/Images/titleImage.jpg" Stretch="Fill"/>
         <Label x:Name="label" Content="Weekly Ledger" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White" Height="53" Width="247"/>
     </Grid>

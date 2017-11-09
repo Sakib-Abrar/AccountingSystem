@@ -24,7 +24,7 @@ namespace AccountingSystem.Views
 
             InitializeComponent();
             LoanLedger data = new LoanLedger();
-            DailyLedger.ItemsSource = data.GetData(method);
+            MonthlyLedger.ItemsSource = data.GetDataIndividual(method, 0, 0);
             DataContext = data;
         }
         private void dg1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -128,7 +128,7 @@ namespace AccountingSystem.Views
             }
 
             LoanLedger data = new LoanLedger();
-            DailyLedger.ItemsSource = data.GetData(method);
+            MonthlyLedger.ItemsSource = data.GetData(method);
             DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
@@ -171,73 +171,6 @@ namespace AccountingSystem.Views
                 Save.Content = "Update";
             }
         }
-        #endregion
-        #region LoanEntry
-
-        private void Loan_Click(object sender, RoutedEventArgs e)
-        {
-            EditDialogView handle = new EditDialogView();
-            if (handle.ShowDialog() == true)
-            {
-                if (handle.FirstInput != handle.SecondInput)
-                {
-                    MessageBox.Show("Entry No. did not match.Try again.\n", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    return;
-                }
-                Connection conn = new Connection();
-                conn.OpenConection();
-                string query = "SELECT * From LoanDetails WHERE LoanDetails_Id = " + handle.FirstInput + "And CONVERT(VARCHAR, LoanDetails_Collection) = '" + method + "'";
-                SqlDataReader reader = conn.DataReader(query);
-                if (reader == null)
-                {
-                    MessageBox.Show("This Loan Id is not Valid.Collection type is not " + method);
-                    return;
-                }
-                while (reader.Read())
-                {
-                    Connection conn2 = new Connection();
-                    conn2.OpenConection();
-                    string query2 = "SELECT * From [Member] WHERE MemberId =" + reader["LoanDetails_Account"] + " ";
-                    SqlDataReader reader2 = conn2.DataReader(query2);
-                    if (reader2 == null)
-                        return;
-                    while (reader2.Read())
-                    {
-                        Name.Text = reader2["MemberName"].ToString();
-                    }
-                    conn2.CloseConnection();
-                    Loan.Text = reader["LoanDetails_Id"].ToString();
-                    Id = Convert.ToInt32(EntryNo.Text);
-                    double total = Convert.ToDouble(reader["LoanDetails_InstallmentAmount"]) + Convert.ToDouble(reader["LoanDetails_Fine"]);
-                    Account.Text = reader["LoanDetails_Account"].ToString();
-                    LastPaid.Text = reader["LoanDetails_LastPaid"].ToString();
-                    TotalLoan.Text = reader["LoanDetails_Total"].ToString();
-                    Amount.Text = reader["LoanDetails_InstallmentAmount"].ToString();
-                    Sector.Text = reader["LoanDetails_Sector"].ToString();
-                    LoanAmount.Text = reader["LoanDetails_Amount"].ToString();
-                    Sanction.Text = reader["LoanDetails_Sanction"].ToString();
-                    InstallmentNo.Text = reader["LoanDetails_Installment"].ToString();
-                    if ((double)reader["LoanDetails_Balance"] != 0)
-                    {
-                        NextDate.Text = reader["LoanDetails_NextDate"].ToString();
-                        Balance.Text = reader["LoanDetails_Balance"].ToString();
-                        Fine.Text = reader["LoanDetails_Fine"].ToString();
-                        Total.Text = total.ToString();
-                    }
-                    else
-                    {
-                        NextDate.Text = "N/A";
-                        Balance.Text = "N/A";
-                        Fine.Text = "N/A";
-                        Total.Text = "Closed";
-                    }
-
-                }
-                conn.CloseConnection();
-                //Save.Content = "Update";
-            }
-        }
-
         #endregion
 
         #region removeEntry
@@ -297,8 +230,31 @@ namespace AccountingSystem.Views
             }
         }
 
+
         #endregion
 
+        private void Previous_Click(object sender, RoutedEventArgs e)
+        {
+            LoanLedger data = new LoanLedger();
+            int tempId = Convert.ToInt32(Loan.Text);
+            MonthlyLedger.ItemsSource = data.GetDataIndividual(method, tempId, 0);
+            DataContext = data;
+        }
 
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            LoanLedger data = new LoanLedger();
+            int tempId = Convert.ToInt32(Loan.Text);
+            MonthlyLedger.ItemsSource = data.GetDataIndividual(method, tempId, 1);
+            DataContext = data;
+        }
+
+        private void Loan_LostFocus(object sender, RoutedEventArgs e)
+        {
+            LoanLedger data = new LoanLedger();
+            int tempId = Convert.ToInt32(Loan.Text);
+            MonthlyLedger.ItemsSource = data.GetDataIndividual(method, tempId, 2);
+            DataContext = data;
+        }
     }
 }

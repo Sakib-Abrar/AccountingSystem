@@ -3,6 +3,7 @@
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\LoginPage.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\MainWindow.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\AdmissionFeeView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\BalanceSheetView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\BankAccountInformationView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\CashInformationView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\CooperativeDevelopmentView.xaml;;
@@ -12,6 +13,11 @@ FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Vie
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\DocumentListDialog.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\EditDialogView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\EntryLogView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositDetailsView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositEntryView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositLedgerView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositListView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\GeneralDepositDetailsView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\GeneralDepositEntryView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\GeneralDepositLedgerView.xaml;;
@@ -22,6 +28,11 @@ FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Vie
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MemberInfoView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MemberList.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MemberView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositDetailsView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositEntryView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositLedgerView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositListView.xaml;;
+FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDueView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyLedgerView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\OfficeRentView.xaml;;
@@ -35,14 +46,4 @@ FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Vie
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\StuffView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\WeeklyDueView.xaml;;
 FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\WeeklyLedgerView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositDetailsView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositEntryView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositLedgerView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositListView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\FixedDepositView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositDetailsView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositEntryView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositLedgerView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositListView.xaml;;
-FC:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\Views\MonthlyDepositView.xaml;;
 
