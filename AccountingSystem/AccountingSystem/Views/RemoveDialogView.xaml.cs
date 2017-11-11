@@ -47,5 +47,11 @@ namespace AccountingSystem.Views
             Label1.Content = "Input Member ID";
             Label2.Content = "Confirm Member ID";
         }
+
+        public void ChangeLabelForStuff()
+        {
+            Label1.Content = "Input Stuff ID";
+            Label2.Content = "Confirm Stuff ID";
+        }
     }
 }
