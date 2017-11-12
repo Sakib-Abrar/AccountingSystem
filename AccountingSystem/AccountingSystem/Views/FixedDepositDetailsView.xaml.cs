@@ -49,7 +49,7 @@ namespace AccountingSystem.Views
 
         private void Print_Data(object sender, RoutedEventArgs e)
         {
-            Object.PublishPDFDetails();
+            Object.PublishPDFDetails(Convert.ToInt32(label_MemberID.Content));
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)

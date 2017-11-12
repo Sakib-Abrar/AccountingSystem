@@ -600,29 +600,45 @@ namespace AccountingSystem.Models
         #endregion
 
         #region PDFCreation
-        public void PublishPDF(DateTime? FromDate, DateTime? ToDate)
+        public void PublishPDFIndividualLedger(DateTime? FromDate, DateTime? ToDate, int id, string method)
         {
-            string pageTitle = "Security Fund";
-            float[] size = new float[] { 4, 2, 3, 4, 3, 3 };
-            string[] tableHeaders = new String[] { "Entry No.", "Date", "Details", "Deposit", "Expenses", "Remains" };
+            Connection conn1 = new Connection();
+            conn1.OpenConection();
+            string firstquery = "Select m.MemberName From LoanDetails l Left Join Member m ON l.LoanDetails_Account=CONVERT(text ,m.MemberId) where l.LoanDetails_Id = " + id;
+            SqlDataReader reader1 = conn1.DataReader(firstquery);
+            string name="";
+            while (reader1.Read())
+            {
+                name="Name : " + reader1["MemberName"].ToString();
+            }
+
+            conn1.CloseConnection();
+
+            string pageTitle = "Loan Ledger\n"+name;
+            float[] size = new float[] { 3, 2, 3, 3, 3, 3};
+            string[] tableHeaders = new String[] { "Entry No.", "Date", "Loan ID", "Collection", "Installment", "Balance" };
             PDF myPDF = new PDF(pageTitle, size, tableHeaders);
+
+
 
             string FDate = FromDate?.ToString("yyyyMMdd");
             string TDate = ToDate?.ToString("yyyyMMdd");
+
             Connection conn = new Connection();
             conn.OpenConection();
-            string query = "SELECT * FROM SecurityFund WHERE CAST(Security_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            string query = "SELECT * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND LoanCollection_Loan = " + id +" AND CAST(LoanCollection_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                myPDF.AddToTable(reader["Security_Id"].ToString());
-                DateTime OnlyDate = (DateTime)reader["Security_Date"];
+                myPDF.AddToTable(reader["LoanCollection_Id"].ToString());
+                DateTime OnlyDate = (DateTime)reader["LoanCollection_Date"];
                 myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
-                myPDF.AddToTable(reader["Security_Details"].ToString());
-                myPDF.AddToTable(reader["Security_Deposit"].ToString());
-                myPDF.AddToTable(reader["Security_Expenses"].ToString());
-                myPDF.AddToTable(reader["Security_Remains"].ToString());
+                myPDF.AddToTable(reader["LoanCollection_Loan"].ToString());
+                myPDF.AddToTable(reader["LoanCollection_Collection"].ToString());
+                myPDF.AddToTable(reader["LoanCollection_Installment"].ToString());
+                myPDF.AddToTable(reader["LoanCollection_Balance"].ToString());
             }
+
             conn.CloseConnection();
             myPDF.Done();
         }

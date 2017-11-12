@@ -133,7 +133,11 @@ namespace AccountingSystem.Views
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-
+            PrintDialogView getDate = new PrintDialogView();
+            if (getDate.ShowDialog() == true)
+            {
+                data.PublishPDFLedger(getDate.FromDate, getDate.ToDate, Convert.ToInt32(AccountNo.Text));
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)

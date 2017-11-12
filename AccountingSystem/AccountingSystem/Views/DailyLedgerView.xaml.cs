@@ -129,7 +129,8 @@ namespace AccountingSystem.Views
             }
 
             LoanLedger data = new LoanLedger();
-            DailyLedger.ItemsSource = data.GetData(method);
+            int tempId = Convert.ToInt32(Loan.Text);
+            DailyLedger.ItemsSource = data.GetDataIndividual(method, tempId, 2);
             DataContext = data;
         }
         protected void Print_Data(object sender, RoutedEventArgs e)
@@ -137,7 +138,7 @@ namespace AccountingSystem.Views
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new LoanLedger().PublishPDFIndividualLedger(getDate.FromDate, getDate.ToDate, Convert.ToInt32(Loan.Text),method);
             }
         }
 

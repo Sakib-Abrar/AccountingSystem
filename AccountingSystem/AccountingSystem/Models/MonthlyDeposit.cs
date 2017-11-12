@@ -903,9 +903,9 @@ namespace AccountingSystem.Models
         #endregion
 
         #region PDFCreation
-        public void PublishPDFDetails()
+        public void PublishPDFDetails(int id)
         {
-            string pageTitle = "Member Information";
+            string pageTitle = "Monthly Deposit Information";
             string filename = pageTitle + MemberId;
             PdfWriter writer = new PdfWriter(Path.GetFullPath("PDF/" + filename + ".pdf"));
 
@@ -921,10 +921,12 @@ namespace AccountingSystem.Models
 
             Connection conn = new Connection();
             conn.OpenConection();
-            string query = "SELECT * From Member WHERE MemberId = " + MemberId;
+            string query = "SELECT m.*, g.* From Member m LEFT JOIN MonthlyDepositDetails g ON m.MemberId=g.MemberId where g.MemberId = " + id;
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
+                ID = (int)reader["MDId"];
+                MemberId = (int)reader["MemberId"];
                 Name = (string)reader["MemberName"];
                 MemberVoterID = (string)reader["MemberVoterId"];
                 MemberFather = (string)reader["MemberFather"];
@@ -934,9 +936,40 @@ namespace AccountingSystem.Models
                 MemberReligion = (string)reader["MemberReligion"];
                 MemberNationality = (string)reader["MemberNationality"];
                 MemberCell = (string)reader["MemberCell"];
+                Duration = (double)reader["MDDuration"];
+                RefererId = (int)reader["MDRefererMemberId"];
+                FNominee = (string)reader["MDFNomineeName"];
+                FNAge = (int)reader["MDFNomineeAge"];
+                FNRelation = (string)reader["MDFNomineeRelation"];
+                FNShare = (string)reader["MDFNomineeShare"];
+                FNAddress = (string)reader["MDFNomineeAddress"];
+                SNominee = (string)reader["MDSNomineeName"];
+                SNAge = (int)reader["MDSNomineeAge"];
+                SNRelation = (string)reader["MDSNomineeRelation"];
+                SNShare = (string)reader["MDSNomineeShare"];
+                SNAddress = (string)reader["MDSNomineeAddress"];
+                TNominee = (string)reader["MDTNomineeName"];
+                TNAge = (int)reader["MDTNomineeAge"];
+                TNRelation = (string)reader["MDTNomineeRelation"];
+                TNShare = (string)reader["MDTNomineeShare"];
+                TNAddress = (string)reader["MDTNomineeAddress"];
             }
+            conn.CloseConnection();
+            if (RefererId != 0)
+            {
+                conn.OpenConection();
+                query = "SELECT * From Member WHERE MemberId = " + RefererId;
+                reader = conn.DataReader(query);
+                while (reader.Read())
+                {
+                    RefererName = (string)reader["MemberName"];
+                    RefererCell = (string)reader["MemberCell"];
 
-            Paragraph line0 = new Paragraph("Name : " + Name);
+                }
+            }
+            Paragraph line0 = new Paragraph("MemberID : " + MemberId + "           Deposit Account No: " + ID);
+            doc.Add(line0);
+            line0 = new Paragraph("Name : " + Name);
             doc.Add(line0);
             Paragraph line1 = new Paragraph("National ID : " + MemberVoterID);
             doc.Add(line1);
@@ -952,8 +985,62 @@ namespace AccountingSystem.Models
             doc.Add(line6);
             Paragraph line7 = new Paragraph("Cell No : " + MemberCell);
             doc.Add(line7);
+            line7 = new Paragraph("Date of Birth : " + MemberDOB);
+            doc.Add(line7);
+            line7 = new Paragraph("Account Duration : " + Duration + " year(s)");
+            doc.Add(line7);
+            line7 = new Paragraph("First Nominee Name : " + FNominee);
+            doc.Add(line7);
+            line7 = new Paragraph("Age : " + FNAge + "   Relation : " + FNRelation);
+            doc.Add(line7);
+            line7 = new Paragraph("Share: " + FNShare + "Address: " + FNAddress);
+            doc.Add(line7);
+            line7 = new Paragraph("Second Nominee Name : " + SNominee);
+            doc.Add(line7);
+            line7 = new Paragraph("Age : " + SNAge + "   Relation : " + SNRelation);
+            doc.Add(line7);
+            line7 = new Paragraph("Share: " + SNShare + "Address: " + SNAddress);
+            doc.Add(line7);
+            line7 = new Paragraph("Third Nominee Name : " + TNominee);
+            doc.Add(line7);
+            line7 = new Paragraph("Age : " + TNAge + "   Relation : " + TNRelation);
+            doc.Add(line7);
+            line7 = new Paragraph("Share: " + TNShare + "Address: " + TNAddress);
+            doc.Add(line7);
+            line7 = new Paragraph("Referer ID: " + RefererId + "Name: " + RefererName + "Cell: " + RefererCell);
+            doc.Add(line7);
+
             conn.CloseConnection();
             doc.Close();
+        }
+
+        public void PublishPDFLedger(DateTime? FromDate, DateTime? ToDate, int id)
+        {
+            string pageTitle = "Monthly Deposit";
+            float[] size = new float[] { 3, 2, 3, 3, 3, 3, 3, 3 };
+            string[] tableHeaders = new String[] { "Entry No.", "Account No", "Member ID", "Date", "Details", "Deposit", "Withdraw", "Balance" };
+            PDF myPDF = new PDF(pageTitle, size, tableHeaders);
+            string FDate = FromDate?.ToString("yyyyMMdd");
+            string TDate = ToDate?.ToString("yyyyMMdd");
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * From MonthlyDepositLedger where FixedId = " + id + " AND CAST(MonthlyDate AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                myPDF.AddToTable(reader["MonthlyEntryId"].ToString());
+                myPDF.AddToTable(reader["MonthlyId"].ToString());
+                myPDF.AddToTable(reader["MemberId"].ToString());
+                DateTime OnlyDate = (DateTime)reader["MonthlyDate"];
+                myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
+                myPDF.AddToTable(reader["MonthlyDetails"].ToString());
+                myPDF.AddToTable(reader["MonthlyDeposit"].ToString());
+                myPDF.AddToTable(reader["MonthlyWithdraw"].ToString());
+                myPDF.AddToTable(reader["MonthlyBalance"].ToString());
+            }
+
+            conn.CloseConnection();
+            myPDF.Done();
         }
         #endregion
     }

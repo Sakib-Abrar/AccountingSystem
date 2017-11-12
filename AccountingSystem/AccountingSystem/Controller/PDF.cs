@@ -40,6 +40,10 @@ namespace AccountingSystem.Controller
         public void AddToTable(string Data) {
             table.AddCell(new Cell().Add(new Paragraph(Data)));
         }
+        public void AddParagraph(string Data) {
+            Paragraph p1 = new Paragraph(Data);
+            doc.Add(p1);
+        }
         public void Done() {
             doc.Add(table);
             doc.Close();
