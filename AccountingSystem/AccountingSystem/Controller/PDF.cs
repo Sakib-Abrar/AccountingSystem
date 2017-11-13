@@ -47,6 +47,7 @@ namespace AccountingSystem.Controller
         public void Done() {
             doc.Add(table);
             doc.Close();
+            System.Windows.MessageBox.Show("PDF Created Successfully");
         }
     }
 }

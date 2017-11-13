@@ -37,7 +37,7 @@ namespace AccountingSystem.Views
             PrintDialogView getDate = new PrintDialogView();
             if (getDate.ShowDialog() == true)
             {
-                new SecurityFund().PublishPDF(getDate.FromDate, getDate.ToDate);
+                new LoanLedger().PublishPDFLedger(getDate.FromDate, getDate.ToDate, method);
             }
         }
     }

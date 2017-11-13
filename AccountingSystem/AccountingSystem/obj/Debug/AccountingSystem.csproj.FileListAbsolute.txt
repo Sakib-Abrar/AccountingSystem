@@ -256,3 +256,11 @@ F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.csproj.GenerateResource.Cache
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.exe.manifest
 F:\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\AccountingSystem.application
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\Page1.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\StuffDetailsView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\StuffEntryView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\StuffListView.g.cs
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\Page1.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\StuffDetailsView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\StuffEntryView.baml
+C:\Users\Shini\Documents\AccountingSystem\AccountingSystem\AccountingSystem\obj\Debug\Views\StuffListView.baml
