@@ -31,7 +31,7 @@ namespace AccountingSystem.Models
 
         private string m_sector = "";
         private string m_name = "";
-        private string m_account = "";
+        private int m_account;
         private double? m_amount;
         private double? m_service;
         private double? m_lifetime;
@@ -127,7 +127,7 @@ namespace AccountingSystem.Models
                 OnPropertyChanged("Fine");
             }
         }
-        public string Account
+        public int Account
         {
             get
             {
@@ -268,11 +268,11 @@ namespace AccountingSystem.Models
               using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
 
-                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [LoanCollection] (LoanCollection_Date, LoanCollection_Collection, LoanCollection_Method, LoanCollection_Collector, LoanCollection_Loan, LoanCollection_Installment) VALUES (@Date, @Collection, @Methode, @Collector, @Loan, @Installment)", conn);
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [LoanCollection] (LoanCollection_Date, LoanCollection_Collection, LoanCollection_Method, LoanCollection_Collector, LoanCollection_Loan, LoanCollection_Installment) VALUES (@Date, @Collection, @Method, @Collector, @Loan, @Installment)", conn);
                     conn.Open();
                     CmdSql.Parameters.AddWithValue("@Date", Login.GlobalDate);
                     CmdSql.Parameters.AddWithValue("@Collection", collection);
-                    CmdSql.Parameters.AddWithValue("@Methode", method);
+                    CmdSql.Parameters.AddWithValue("@Method", method);
                     CmdSql.Parameters.AddWithValue("@Collector", collector);
                     CmdSql.Parameters.AddWithValue("@Loan", loan);
                     CmdSql.Parameters.AddWithValue("@Installment", installment);
@@ -299,7 +299,7 @@ namespace AccountingSystem.Models
                     conn.Close();
 
                 //Inserting value in Entry table
-                    string table = method+" Ledger(Loan)";
+                    string table = method+" Loan Ledger";
                     string type = "Inserted";
                     string color = "Green";
                     EntryLog entry = new EntryLog();
@@ -307,10 +307,54 @@ namespace AccountingSystem.Models
                     MessageBox.Show("Successfully Inserted");
                 }
         }
-
-
         #endregion
 
+        #region Update Entry
+        public void UpdateTable(string collection, string method, string collector, string loan, string installment, double balance, DateTime nextDate, int id, object sender, RoutedEventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+            {
+
+                SqlCommand CmdSql = new SqlCommand("Update [LoanCollection] SET LoanCollection_Date=@Date, LoanCollection_Collection=@Collection, LoanCollection_Method=@Method, LoanCollection_Collector=@Collector, LoanCollection_Loan=@Loan, LoanCollection_Installment=@Installment WHERE LoanCollection_Id="+id, conn);
+                conn.Open();
+                CmdSql.Parameters.AddWithValue("@Date", Login.GlobalDate);
+                CmdSql.Parameters.AddWithValue("@Collection", collection);
+                CmdSql.Parameters.AddWithValue("@Method", method);
+                CmdSql.Parameters.AddWithValue("@Collector", collector);
+                CmdSql.Parameters.AddWithValue("@Loan", loan);
+                CmdSql.Parameters.AddWithValue("@Installment", installment);
+                CmdSql.ExecuteNonQuery();
+                conn.Close();
+                //Updating LoanDetails Table         
+                double fine = 0.00;
+                double newBalance = balance - Convert.ToDouble(collection);
+                DateTime dtd = nextDate;
+                if (method == "Daily") { dtd = dtd.AddDays(1); }
+                else if (method == "Weekly") { dtd = dtd.AddDays(7); }
+                else if (method == "Monthly") { dtd = dtd.AddMonths(1); }
+
+                SqlCommand CmdSql2 = new SqlCommand("UPDATE [LoanDetails] SET LoanDetails_LastPaid = @Date , LoanDetails_NextDate = @NextDate, LoanDetails_Fine = @Fine, LoanDetails_Due = @Due, LoanDetails_Balance = @Balance WHERE LoanDetails_Id=" + loan, conn);
+                conn.Open();
+
+                CmdSql2.Parameters.AddWithValue("@Date", Login.GlobalDate);
+                CmdSql2.Parameters.AddWithValue("@NextDate", dtd);
+                CmdSql2.Parameters.AddWithValue("@Fine", fine);
+                CmdSql2.Parameters.AddWithValue("@Due", 0);
+                CmdSql2.Parameters.AddWithValue("@Balance", newBalance);
+
+                CmdSql2.ExecuteNonQuery();
+                conn.Close();
+
+                //Inserting value in Entry table
+                string table = method + " Loan Ledger";
+                string type = "Updated";
+                string color = "Blue";
+                EntryLog entry = new EntryLog();
+                entry.Add_Entry(table, type, id, Login.GlobalDate, color);
+                MessageBox.Show("Successfully Updated");
+            }
+        }
+        #endregion
         #region Due List
         public void DueChecker()
         {
@@ -497,7 +541,7 @@ namespace AccountingSystem.Models
                 conn2.CloseConnection();
                 Loan= (int)reader["LoanDetails_Id"];
                 double total = Convert.ToDouble(reader["LoanDetails_InstallmentAmount"]) + Convert.ToDouble(reader["LoanDetails_Fine"]);
-                Account = (string)reader["LoanDetails_Account"];
+                Account = (int)reader["LoanDetails_Account"];
                 LastPaid= (DateTime)reader["LoanDetails_LastPaid"];
                 Total= (double)reader["LoanDetails_Total"];
                 Installment = (int)reader["LoanDetails_Installment"];
@@ -602,19 +646,7 @@ namespace AccountingSystem.Models
         #region PDFCreation
         public void PublishPDFIndividualLedger(DateTime? FromDate, DateTime? ToDate, int id, string method)
         {
-            Connection conn1 = new Connection();
-            conn1.OpenConection();
-            string firstquery = "Select m.MemberName From LoanDetails l Left Join Member m ON l.LoanDetails_Account=CONVERT(text ,m.MemberId) where l.LoanDetails_Id = " + id;
-            SqlDataReader reader1 = conn1.DataReader(firstquery);
-            string name="";
-            while (reader1.Read())
-            {
-                name="Name : " + reader1["MemberName"].ToString();
-            }
-
-            conn1.CloseConnection();
-
-            string pageTitle = "Loan Ledger\n"+name;
+            string pageTitle = "Loan Ledger";
             float[] size = new float[] { 3, 2, 3, 3, 3, 3};
             string[] tableHeaders = new String[] { "Entry No.", "Date", "Loan ID", "Collection", "Installment", "Balance" };
             PDF myPDF = new PDF(pageTitle, size, tableHeaders);
@@ -640,8 +672,53 @@ namespace AccountingSystem.Models
             }
 
             conn.CloseConnection();
+
+            Connection conn1 = new Connection();
+            conn1.OpenConection();
+            string firstquery = "Select m.MemberName From LoanDetails l Left Join Member m ON l.LoanDetails_Account=m.MemberId where l.LoanDetails_Id = " + id;
+            SqlDataReader reader1 = conn1.DataReader(firstquery);
+            string name = "";
+            while (reader1.Read())
+            {
+                name = "Name : " + reader1["MemberName"].ToString();
+            }
+
+            myPDF.AddParagraph("Name : "+ name);
+            conn1.CloseConnection();
+
             myPDF.Done();
         }
         #endregion
+
+        public void PublishPDFLedger(DateTime? FromDate, DateTime? ToDate, string method)
+        {
+            string pageTitle = "Loan Ledger";
+            float[] size = new float[] { 3, 2, 3, 3, 3, 3 };
+            string[] tableHeaders = new String[] { "Entry No.", "Date", "Loan ID", "Collection", "Installment", "Balance" };
+            PDF myPDF = new PDF(pageTitle, size, tableHeaders);
+
+
+
+            string FDate = FromDate?.ToString("yyyyMMdd");
+            string TDate = ToDate?.ToString("yyyyMMdd");
+
+            Connection conn = new Connection();
+            conn.OpenConection();
+            string query = "SELECT * FROM [LoanCollection] WHERE LoanCollection_Method = '" + method + "' AND CAST(LoanCollection_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
+            {
+                myPDF.AddToTable(reader["LoanCollection_Id"].ToString());
+                DateTime OnlyDate = (DateTime)reader["LoanCollection_Date"];
+                myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
+                myPDF.AddToTable(reader["LoanCollection_Loan"].ToString());
+                myPDF.AddToTable(reader["LoanCollection_Collection"].ToString());
+                myPDF.AddToTable(reader["LoanCollection_Installment"].ToString());
+                myPDF.AddToTable(reader["LoanCollection_Balance"].ToString());
+            }
+
+            conn.CloseConnection();
+            myPDF.Done();
+        }
     }
 }

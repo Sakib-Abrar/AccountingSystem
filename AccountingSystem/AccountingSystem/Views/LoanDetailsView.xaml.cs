@@ -109,79 +109,86 @@ namespace AccountingSystem.Views
             if (method == "Daily") { nextDate = nextDate.AddDays(1); }
             else if (method == "Weekly") { nextDate = nextDate.AddDays(7); }
             else if(method == "Monthly") { nextDate = nextDate.AddMonths(1); }
-         
+
 
             if ((string)Save.Content == "Insert")
+            {
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
-                    {
 
+                    double charge = (Convert.ToDouble(Amount.Text) * Convert.ToDouble(ServiceCharge.Text)) / 100;
+                    double total = Convert.ToDouble(Amount.Text) + charge;
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [LoanDetails] (LoanDetails_Account, LoanDetails_Sector, LoanDetails_Amount, LoanDetails_Service, LoanDetails_Sanction,LoanDetails_LastPaid,LoanDetails_NextDate,LoanDetails_Collection, LoanDetails_Lifetime, LoanDetails_Installment, LoanDetails_InstallmentAmount,LoanDetails_Total,LoanDetails_Balance) VALUES (@Account, @Sector, @Amount, @Service, @Sanction, @LastPaid,@NextDate, @Collection, @Lifetime, @Installment, @InstallmentAmount, @Total ,@Balance)", conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Account", AccountId.Text);
+                    CmdSql.Parameters.AddWithValue("@Sector", Sector.Text);
+                    CmdSql.Parameters.AddWithValue("@Amount", Amount.Text);
+                    CmdSql.Parameters.AddWithValue("@Service", ServiceCharge.Text);
+                    CmdSql.Parameters.AddWithValue("@Sanction", SanctionDate.Text);
+                    CmdSql.Parameters.AddWithValue("@LastPaid", SanctionDate.Text);
+                    CmdSql.Parameters.AddWithValue("@NextDate", nextDate);
+                    CmdSql.Parameters.AddWithValue("@Lifetime", LifeTime.Text);
+                    CmdSql.Parameters.AddWithValue("@Collection", method);
+                    CmdSql.Parameters.AddWithValue("@Installment", Installment.Text);
+                    CmdSql.Parameters.AddWithValue("@InstallmentAmount", total / Convert.ToDouble(Installment.Text));
+                    CmdSql.Parameters.AddWithValue("@Total", total);
+                    CmdSql.Parameters.AddWithValue("@Balance", total);
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
 
-                        double charge = (Convert.ToDouble(Amount.Text) * Convert.ToDouble(ServiceCharge.Text)) / 100;
-                        double total = Convert.ToDouble(Amount.Text) + charge;
-                        SqlCommand CmdSql = new SqlCommand("INSERT INTO [LoanDetails] (LoanDetails_Account, LoanDetails_Sector, LoanDetails_Amount, LoanDetails_Service, LoanDetails_Sanction,LoanDetails_LastPaid,LoanDetails_NextDate,LoanDetails_Collection, LoanDetails_Lifetime, LoanDetails_Installment, LoanDetails_InstallmentAmount,LoanDetails_Total,LoanDetails_Balance) VALUES (@Account, @Sector, @Amount, @Service, @Sanction, @LastPaid,@NextDate, @Collection, @Lifetime, @Installment, @InstallmentAmount, @Total ,@Balance)", conn);
-                        conn.Open();
-                        CmdSql.Parameters.AddWithValue("@Account", AccountId.Text);
-                        CmdSql.Parameters.AddWithValue("@Sector", Sector.Text);
-                        CmdSql.Parameters.AddWithValue("@Amount", Amount.Text);
-                        CmdSql.Parameters.AddWithValue("@Service", ServiceCharge.Text);
-                        CmdSql.Parameters.AddWithValue("@Sanction", SanctionDate.Text);
-                        CmdSql.Parameters.AddWithValue("@LastPaid", SanctionDate.Text);
-                        CmdSql.Parameters.AddWithValue("@NextDate", nextDate);
-                        CmdSql.Parameters.AddWithValue("@Lifetime", LifeTime.Text);
-                        CmdSql.Parameters.AddWithValue("@Collection", method);
-                        CmdSql.Parameters.AddWithValue("@Installment", Installment.Text);
-                        CmdSql.Parameters.AddWithValue("@InstallmentAmount", total / Convert.ToDouble(Installment.Text));
-                        CmdSql.Parameters.AddWithValue("@Total", total);
-                        CmdSql.Parameters.AddWithValue("@Balance", total);
-                        CmdSql.ExecuteNonQuery();
-                        conn.Close();
+                    //Inserting value in Entry table
 
-                        //Inserting value in Entry table
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    dateTime = DateTime.Today;
 
-                        Id = Convert.ToInt32(EntryNo.Text);
-                        dateTime = DateTime.Today;
-
-                        string table = "Loan Details";
-                        string type = "Inserted";
-                        string color = "Green";
-                        EntryLog entry = new EntryLog();
-                        entry.Add_Entry(table, type, Id, dateTime, color);
-                        MessageBox.Show("Successfully Inserted");
-                    }
+                    string table = "Loan Details";
+                    string type = "Inserted";
+                    string color = "Green";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
+                    MessageBox.Show("Successfully Inserted");
                 }
+            }
 
-                else
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    double remain = this.edited_total();
-                    using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
-                    {
 
-                        //  SqlCommand CmdSql = new SqlCommand("UPDATE [LoanDetails] SET Security_Date = @Date , Security_Details = @Details, Security_Deposit = @Deposit, Security_Expenses = @Expenses, Security_Remains = @Remains WHERE Security_Id=" + EntryNo.Text, conn);
-                        // conn.Open();
-                        //  CmdSql.Parameters.AddWithValue("@Date", Date.SelectedDate);
-                        // CmdSql.Parameters.AddWithValue("@Details", Details.Text);
-                        //// CmdSql.Parameters.AddWithValue("@Deposit", Deposit.Text);
-                        // CmdSql.Parameters.AddWithValue("@Expenses", Expenses.Text);
-                        // CmdSql.Parameters.AddWithValue("@Remains", remain + Convert.ToDouble(Deposit.Text) - Convert.ToDouble(Expenses.Text));
-                        //  CmdSql.ExecuteNonQuery();
-                        // conn.Close();
+                    double charge = (Convert.ToDouble(Amount.Text) * Convert.ToDouble(ServiceCharge.Text)) / 100;
+                    double total = Convert.ToDouble(Amount.Text) + charge;
+                    SqlCommand CmdSql = new SqlCommand("UPDATE [LoanDetails] SET LoanDetails_Account = @Account, LoanDetails_Sector=@Sector, LoanDetails_Amount=@Amount, LoanDetails_Service=@Service, LoanDetails_Sanction=@Sanction,LoanDetails_LastPaid=@LastPaid,LoanDetails_NextDate=@NextDate,LoanDetails_Collection=@Collection, LoanDetails_Lifetime=@LifeTime, LoanDetails_Installment=@Installment, LoanDetails_InstallmentAmount=@InstallmentAmount,LoanDetails_Total=@Total,LoanDetails_Balance=@Balance", conn);
+                    conn.Open();
+                    CmdSql.Parameters.AddWithValue("@Account", AccountId.Text);
+                    CmdSql.Parameters.AddWithValue("@Sector", Sector.Text);
+                    CmdSql.Parameters.AddWithValue("@Amount", Amount.Text);
+                    CmdSql.Parameters.AddWithValue("@Service", ServiceCharge.Text);
+                    CmdSql.Parameters.AddWithValue("@Sanction", SanctionDate.Text);
+                    CmdSql.Parameters.AddWithValue("@LastPaid", SanctionDate.Text);
+                    CmdSql.Parameters.AddWithValue("@NextDate", nextDate);
+                    CmdSql.Parameters.AddWithValue("@Lifetime", LifeTime.Text);
+                    CmdSql.Parameters.AddWithValue("@Collection", method);
+                    CmdSql.Parameters.AddWithValue("@Installment", Installment.Text);
+                    CmdSql.Parameters.AddWithValue("@InstallmentAmount", total / Convert.ToDouble(Installment.Text));
+                    CmdSql.Parameters.AddWithValue("@Total", total);
+                    CmdSql.Parameters.AddWithValue("@Balance", total);
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
 
-                        //Inserting value in Entry table
+                    //Inserting value in Entry table
 
-                        // Id = Convert.ToInt32(EntryNo.Text);
-                        // dateTime = DateTime.Today;
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    dateTime = DateTime.Today;
 
-                        // string table = "Security Fund";
-                        //  string type = "Updated";
-                        // string color = "Blue";
-                        //  EntryLog entry = new EntryLog();
-                        //  entry.Add_Entry(table, type, Id, dateTime, color);
-
-                    }
-                    Save.Content = "Insert";
+                    string table = "Loan Details";
+                    string type = "Update";
+                    string color = "Blue";
+                    EntryLog entry = new EntryLog();
+                    entry.Add_Entry(table, type, Id, dateTime, color);
                     MessageBox.Show("Successfully Updated");
                 }
+                Save.Content = "Insert";
+            }
     
             
             LoanDetails data = new LoanDetails();
@@ -211,18 +218,21 @@ namespace AccountingSystem.Views
                 }
                 Connection conn = new Connection();
                 conn.OpenConection();
-                string query = "SELECT * From LoanDetails WHERE Security_Id = " + handle.FirstInput;
+                string query = "SELECT * From LaonDetails WHERE LoanDetails_Id = " + handle.FirstInput;
                 SqlDataReader reader = conn.DataReader(query);
                 if (reader == null)
                     return;
                 while (reader.Read())
                 {
-                   // EntryNo.Text = reader["Security_Id"].ToString();
-                   // Id = Convert.ToInt32(EntryNo.Text);
-                   // Date.SelectedDate = (DateTime)reader["Security_Date"];
-                   // Details.Text = (string)reader["Security_Details"];
-                   // Deposit.Text = reader["Security_Deposit"].ToString();
-                   // Expenses.Text = reader["Security_Expenses"].ToString();
+                    EntryNo.Text = reader["LoanDetails_Id"].ToString();
+                    Id = Convert.ToInt32(EntryNo.Text);
+                    AccountId.Text = (string)reader["LoanDetails_Account"];
+                    Sector.Text = reader["LoanDetails_Sector"].ToString();
+                    Amount.Text = reader["LoanDetails_Amount"].ToString();
+                    ServiceCharge.Text = reader["LoanDetails_Service"].ToString();
+                    SanctionDate.SelectedDate = (DateTime)reader["LoanDetails_Sanction"];
+                    LifeTime.Text = reader["LoanDetails_Lifetime"].ToString();
+                    Installment.Text = reader["LoanDetails_Installment"].ToString();
                 }
 
                 conn.CloseConnection();

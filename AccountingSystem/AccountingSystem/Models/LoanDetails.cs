@@ -344,8 +344,6 @@ namespace AccountingSystem.Models
                         validationMessage = "Only Digits Are Allowed";
                     }
                     break;
-             
-                    break;
                 case "ID":
                     break;
             }
