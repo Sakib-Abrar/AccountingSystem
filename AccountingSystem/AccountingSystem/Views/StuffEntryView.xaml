@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="950"
+      d:DesignHeight="460" d:DesignWidth="950"
       Title="stuff_info">
 
     <Grid Margin="13,-12,-13,-143">
@@ -66,7 +66,7 @@
         <Label Content="Permanent Address : " HorizontalAlignment="Left" Margin="603,280,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="C / O:" HorizontalAlignment="Left" Margin="604,311,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="StuffPermanentCO" Text="{Binding MemberPermanentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="656,315,0,0" Width="250" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="StuffPermanentCO" Text="{Binding StuffPermanentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="656,315,0,0" Width="250" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
         <Label Content="Village:" HorizontalAlignment="Left" Margin="604,338,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
         <TextBox Name="StuffPermanentVillage" Text="{Binding StuffPermanentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="661,345,0,0" Width="102" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
@@ -83,7 +83,34 @@
 
         <Label Content="Cell no:" HorizontalAlignment="Left" Margin="605,123,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="69"/>
         <TextBox Name="StuffCell" Text="{Binding StuffCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="687,125,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <Button Content="Add Stuff" HorizontalAlignment="Left" Margin="808,419,0,0" VerticalAlignment="Top" Width="98" Height="23" Click="AddStuff" FontSize="13" Grid.Column="1">
+
+        <Label Margin="13,419,845,59" x:Name="DocumentLabel" Content="Document: " FontSize="14.667" Grid.ColumnSpan="2"/>
+        <TextBox Margin="105,422,644,161" Height="22" Name="DocumentName" Width="183" Text="{Binding DocumentName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" >
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Enter a Document Name" Foreground="LightSlateGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <Button Name="SaveStuff" Content="Add Stuff" HorizontalAlignment="Left" Margin="808,419,0,0" VerticalAlignment="Top" Width="98" Height="23" Click="AddStuff" FontSize="13" Grid.Column="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -105,8 +132,8 @@
         </Button>
 
         <Label Margin="13,184,868,295" x:Name="Label1" Content="Photo: " FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Margin="105,191,644,292" Height="22" Name="PhotoNameLabel" Width="183" Text="{Binding PhotoNameLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
-        <Button Margin="214,191,643,292" Height="22" Name="PhotoBrowse" Width="75" Content="Browse" Click="BrowsePhoto" Grid.Column="1">
+        <TextBox Margin="105,200,644,383" Height="22" Name="PhotoNameLabel" Width="183" Text="{Binding PhotoNameLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
+        <Button Margin="216,204,641,389" Height="22" Name="PhotoBrowse" Width="75" Content="Browse" Click="BrowsePhoto" Grid.Column="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -126,10 +153,32 @@
                 </Style>
             </Button.Resources>
         </Button>
+
+        <Button Margin="252,422,605,161" Height="22" Name="DocumentBrowse" Width="75" Content="Browse" Click="DocumentBrowse_Click" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
         <Image x:Name="PhotoViewer" HorizontalAlignment="Left" Height="120" Margin="335,121,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.2,-0.3" Grid.Column="1"/>
         <Label Margin="13,210,845,264" x:Name="signature" Content="Signature: " FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Margin="106,219,643,264" Height="22" Width="183" x:Name="SignatureLabel" Text="{Binding SignatureLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
-        <Button Margin="214,219,643,264" Height="22" x:Name="SignatureBrowse" Width="75" Click="BrowsSignature" Content="Browse" Grid.Column="1" RenderTransformOrigin="-0.2,0.909">
+        <TextBox Margin="106,229,643,354" Height="22" Width="183" x:Name="SignatureLabel" Text="{Binding SignatureLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
+        <Button Margin="214,229,643,354" Height="22" x:Name="SignatureBrowse" Width="75" Click="BrowsSignature" Content="Browse" Grid.Column="1" RenderTransformOrigin="-0.2,0.909">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -150,8 +199,8 @@
             </Button.Resources>
         </Button>
         <CheckBox x:Name="AddressCheckBox" Content="Same as Present" Grid.Column="1" HorizontalAlignment="Left" Margin="773,287,0,0" VerticalAlignment="Top" FontSize="13.333" BorderThickness="1.5" Checked="ImportPresentAddress" Unchecked="ImportNullAddress"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="605,171,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="69"/>
-        <TextBox x:Name="StuffPassword" Text="{Binding StuffPassword, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="687,173,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="605,171,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="83"/>
+        <TextBox x:Name="StuffPassword" Text="{Binding StuffPassword, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="693,173,0,0" Width="160" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
     </Grid>
 </Page>
