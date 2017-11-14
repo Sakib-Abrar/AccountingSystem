@@ -136,6 +136,7 @@ namespace AccountingSystem.Views
                 }
                 StuffEntryView StfEntryObj = new StuffEntryView();
                 StfEntryObj.SetForEdit(handle.FirstInput);
+                StfEntryObj.SaveStuff.Content = "Update Stuff";
                 this.NavigationService.Navigate(StfEntryObj);
 
             }

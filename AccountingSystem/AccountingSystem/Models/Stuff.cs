@@ -446,6 +446,7 @@ namespace AccountingSystem.Models
             {
                 StuffName = (string)reader["Stuff_Name"];
                 StuffVoterID = (string)reader["Stuff_VoterId"];
+                StuffPassword = (string)reader["Stuff_Password"];
                 StuffFather = (string)reader["Stuff_Father"];
                 StuffMother = (string)reader["Stuff_Mother"];
                 StuffDOB = (DateTime)reader["Stuff_DOB"];

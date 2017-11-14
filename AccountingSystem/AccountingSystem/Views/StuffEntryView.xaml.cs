@@ -16,6 +16,9 @@ namespace AccountingSystem.Views
     public partial class StuffEntryView : Page
     {
         Stuff data;
+        string DocAddress;
+        bool changePhoto = false;
+        bool changeSignature = false;
         public StuffEntryView()
         {
             InitializeComponent();
@@ -41,94 +44,268 @@ namespace AccountingSystem.Views
 
         private void AddStuff(object sender, RoutedEventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+            if ((string)SaveStuff.Content == "Add Stuff")
             {
-                if (CheckForError(StuffID) || CheckForError(StuffName) || CheckForError(StuffVoterId) || CheckForError(StuffFather) || CheckForError(StuffMother) || CheckForError(StuffCell))
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
                 {
-                    MessageBox.Show("Error!Check Input Again");
-                    return;
-                }
-                else
-                {
-                    SqlCommand CmdSql = new SqlCommand("INSERT INTO [Stuff] (Stuff_ID, Stuff_Name, Stuff_VoterId, Stuff_DOB, Stuff_Father, Stuff_Mother, Stuff_Nationality, Stuff_Religion, Stuff_Profession, Stuff_PresentCO, Stuff_PresentVillage, Stuff_PresentPost, Stuff_PresentThana, Stuff_PresentDistrict, Stuff_PermanentCO, Stuff_PermanentVillage, Stuff_PermanentPost, Stuff_PermanentThana, Stuff_PermanentDistrict, Stuff_Cell, Stuff_Photo, Stuff_Password, Stuff_Signature) VALUES (@StuffID, @StuffName, @StuffVoterId, @StuffDOB, @StuffFather, @StuffMother, @StuffNationality, @StuffReligion, @StuffProfession,  @StuffPresentCO, @StuffPresentVillage, @StuffPresentPost, @StuffPresentThana, @StuffPresentDistrict, @StuffPermanentCO, @StuffPermanentVillage, @StuffPermanentPost, @StuffPermanentThana, @StuffPermanentDistrict, @StuffCell, @StuffPhoto, @StuffPassword, @StuffSignature)", conn);
-                    conn.Open();
-
-                    //photo upload to the directory
-                    //string appStartPath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-                    //string path = appStartPath.Substring(0, appStartPath.Length - 10);
-
-                    string StuffPhoto = "";
-                    string StuffSignature = "";
-                    if (PhotoNameLabel.Text != "")
+                    if (CheckForError(StuffID) || CheckForError(StuffName) || CheckForError(StuffVoterId) || CheckForError(StuffFather) || CheckForError(StuffMother) || CheckForError(StuffCell))
                     {
-                        string filename = "Photo_" + StuffName.Text + "_" + StuffID.Text + ".jpg";
-                        try
-                        {
-                            File.Copy(PhotoNameLabel.Text, Path.GetFullPath("Images/" + filename));
-                        }
-                        catch (Exception exc)
-                        {
-                            MessageBox.Show("Error\n" + exc, "warning");
-                        }
-                        StuffPhoto = filename;
-                    }
-                    ////Signature upload to the directory
-                    if (SignatureLabel.Text != "")
-                    {
-                        string filenameSign = "Sign_" + StuffName.Text + "_" + StuffID.Text + ".jpg";
-                        try
-                        {
-                            File.Copy(SignatureLabel.Text, Path.GetFullPath("Images/" + filenameSign));
-                        }
-                        catch (Exception exc)
-                        {
-                            MessageBox.Show("Error\n" + exc, "warning");
-                        }
-                        StuffSignature = filenameSign;
-                    }
-
-                    CmdSql.Parameters.AddWithValue("@StuffID", StuffID.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffName", StuffName.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffVoterId", StuffVoterId.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffDOB", StuffDOB.SelectedDate);
-                    CmdSql.Parameters.AddWithValue("@StuffFather", StuffFather.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffMother", StuffMother.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffProfession", StuffProfession.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffReligion", StuffReligion.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffNationality", StuffNationality.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPassword", StuffPassword.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPresentCO", StuffPresentCO.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPresentVillage", StuffPresentVillage.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPresentPost", StuffPresentPost.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPresentThana", StuffPresentThana.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPresentDistrict", StuffPresentDistrict.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPermanentCO", StuffPermanentCO.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPermanentVillage", StuffPermanentVillage.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPermanentPost", StuffPermanentPost.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPermanentThana", StuffPermanentThana.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPermanentDistrict", StuffPermanentDistrict.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffCell", StuffCell.Text);
-                    CmdSql.Parameters.AddWithValue("@StuffPhoto", StuffPhoto);
-                    CmdSql.Parameters.AddWithValue("@StuffSignature", StuffSignature);
-                    try
-                    {
-                        CmdSql.ExecuteNonQuery();
-                    }
-                    catch (SqlException exception)
-                    {
-                        if (exception.ErrorCode == 2627)
-                            MessageBox.Show("Error.Id already exists.", "warning");
-                        else
-                            MessageBox.Show("Error\n" + exception, "warning");
+                        MessageBox.Show("Error!Check Input Again");
                         return;
                     }
-                    conn.Close();
-                    data.SetStuffID();
-                    MessageBox.Show("Succesfully Added New Stuff");
+                    else
+                    {
+                        SqlCommand CmdSql = new SqlCommand("INSERT INTO [Stuff] (Stuff_Id, Stuff_Name, Stuff_Password, Stuff_VoterId, Stuff_DOB, Stuff_Father, Stuff_Mother, Stuff_Nationality, Stuff_Religion, Stuff_Profession, Stuff_PresentCO, Stuff_PresentVillage, Stuff_PresentPost, Stuff_PresentThana, Stuff_PresentDistrict, Stuff_PermanentCO, Stuff_PermanentVillage, Stuff_PermanentPost, Stuff_PermanentThana, Stuff_PermanentDistrict, Stuff_Cell, Stuff_Photo, Stuff_Signature) VALUES (@StuffID, @StuffName, @StuffPassword, @StuffVoterId, @StuffDOB, @StuffFather, @StuffMother, @StuffNationality, @StuffReligion, @StuffProfession,  @StuffPresentCO, @StuffPresentVillage, @StuffPresentPost, @StuffPresentThana, @StuffPresentDistrict, @StuffPermanentCO, @StuffPermanentVillage, @StuffPermanentPost, @StuffPermanentThana, @StuffPermanentDistrict, @StuffCell, @StuffPhoto, @StuffSignature)", conn);
+                        conn.Open();
+
+                        string StuffPhoto = "";
+                        string StuffSignature = "";
+                        string extension = Path.GetExtension(PhotoNameLabel.Text);
+
+                        if (PhotoNameLabel.Text != "")
+                        {
+                            string filename = "Photo_" + StuffName.Text + "_" + StuffID.Text + extension;
+                            try
+                            {
+                                File.Copy(PhotoNameLabel.Text, Path.GetFullPath("Images/" + filename));
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show("Error\n" + exc, "warning");
+                            }
+                            StuffPhoto = filename;
+                        }
+                        ////Signature upload to the directory
+                        string signExtension = Path.GetExtension(SignatureLabel.Text);
+                        if (SignatureLabel.Text != "")
+                        {
+                            string filenameSign = "Sign_" + StuffName.Text + "_" + StuffID.Text + signExtension;
+                            try
+                            {
+                                File.Copy(SignatureLabel.Text, Path.GetFullPath("Images/" + filenameSign));
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show("Error\n" + exc, "warning");
+                            }
+                            StuffSignature = filenameSign;
+                        }
+
+                        CmdSql.Parameters.AddWithValue("@StuffID", StuffID.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffName", StuffName.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPassword", StuffPassword.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffVoterId", StuffVoterId.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffDOB", StuffDOB.SelectedDate);
+                        CmdSql.Parameters.AddWithValue("@StuffFather", StuffFather.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffMother", StuffMother.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffProfession", StuffProfession.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffReligion", StuffReligion.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffNationality", StuffNationality.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentCO", StuffPresentCO.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentVillage", StuffPresentVillage.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentPost", StuffPresentPost.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentThana", StuffPresentThana.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentDistrict", StuffPresentDistrict.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentCO", StuffPermanentCO.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentVillage", StuffPermanentVillage.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentPost", StuffPermanentPost.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentThana", StuffPermanentThana.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentDistrict", StuffPermanentDistrict.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffCell", StuffCell.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPhoto", StuffPhoto);
+                        CmdSql.Parameters.AddWithValue("@StuffSignature", StuffSignature);
+                        try
+                        {
+                            CmdSql.ExecuteNonQuery();
+                        }
+                        catch (SqlException exception)
+                        {
+                            if (exception.ErrorCode == 2627)
+                                MessageBox.Show("Error.Id already exists.", "warning");
+                            else
+                                MessageBox.Show("Error\n" + exception, "warning");
+                            return;
+                        }
+
+                        if ((string)DocumentBrowse.Content == "Found")
+                        {
+                            if (CheckForError(DocumentName))
+                            {
+                                MessageBox.Show("Error!Check Input Again");
+                                return;
+                            }
+                            string ext = Path.GetExtension(DocAddress);
+                            string filename = "Document_" + StuffName.Text + "_" + StuffName.Text + ext;
+                            try
+                            {
+                                File.Copy(DocAddress, Path.GetFullPath("Images/" + filename));
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show("Error\n" + exc, "warning");
+                            }
+                            DocAddress = filename;
+                            CmdSql = new SqlCommand("INSERT INTO [Documents] ( Stuff_Id, DocumentAddress, DocumentName) VALUES (@StuffId, @DocumentAddress, @DocumentName)", conn);
+                            CmdSql.Parameters.AddWithValue("@StuffId", StuffID.Text);
+                            CmdSql.Parameters.AddWithValue("@DocumentAddress", DocAddress);
+                            CmdSql.Parameters.AddWithValue("@DocumentName", DocumentName.Text);
+
+                            try
+                            {
+                                CmdSql.ExecuteNonQuery();
+                            }
+                            catch (SqlException exception)
+                            {
+                                if (exception.ErrorCode == 2627)
+                                    MessageBox.Show("Error.Id already exists.", "warning");
+                                else
+                                    MessageBox.Show("Error\n" + exception, "warning");
+                                return;
+                            }
+
+                            DocumentBrowse.Content = "Browse";
+                        }
+
+                        conn.Close();
+                        data.SetStuffID();
+                        MessageBox.Show("Succesfully Added New Stuff");
+
+                    }
 
                 }
+            }
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
+                {
+                    if (CheckForError(StuffID) || CheckForError(StuffName) || CheckForError(StuffVoterId) || CheckForError(StuffFather) || CheckForError(StuffMother) || CheckForError(StuffCell))
+                    {
+                        MessageBox.Show("Error!Check Input Again");
+                        return;
+                    }
+                    else
+                    {
+                        SqlCommand CmdSql = new SqlCommand("UPDATE [Stuff] SET Stuff_Name = @StuffName, Stuff_VoterId = @StuffVoterId, Stuff_DOB = @StuffDOB, Stuff_Father = @StuffFather, Stuff_Mother = @StuffMother, Stuff_Nationality = @StuffNationality, Stuff_Religion = @StuffReligion, Stuff_Profession = @StuffProfession, Stuff_PresentCO = @StuffPresentCO, Stuff_PresentVillage = @StuffPresentVillage, Stuff_PresentPost = @StuffPresentPost, Stuff_PresentThana = @StuffPresentThana, Stuff_PresentDistrict = @StuffPresentDistrict, Stuff_PermanentCO = @StuffPermanentCO, Stuff_PermanentVillage = @StuffPermanentVillage, Stuff_PermanentPost = @StuffPermanentPost, Stuff_PermanentThana = @StuffPermanentThana, Stuff_PermanentDistrict = @StuffPermanentDistrict, Stuff_Cell = @StuffCell, Stuff_Photo = @StuffPhoto, Stuff_Signature = @StuffSignature WHERE Stuff_Id=" + StuffID.Text, conn);
+                        conn.Open();
 
+                        string StuffPhoto = "";
+                        string StuffSignature = "";
+                        string extension = Path.GetExtension(PhotoNameLabel.Text);
 
+                        if (changePhoto)
+                        {
+                            string filename = "Photo_" + StuffName.Text + "_" + StuffID.Text + extension;
+                            try
+                            {
+                                File.Copy(PhotoNameLabel.Text, Path.GetFullPath("Images/" + filename));
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show("Error\n" + exc, "warning");
+                            }
+                            StuffPhoto = filename;
+                        }
+                        else
+                        {
+                            StuffPhoto = "Photo_" + StuffName.Text + "_" + StuffID.Text + extension;
+                        }
+                        ////Signature upload to the directory
+                        string signExtension = Path.GetExtension(SignatureLabel.Text);
+                        if (changeSignature)
+                        {
+                            string filenameSign = "Sign_" + StuffName.Text + "_" + StuffID.Text + signExtension;
+                            try
+                            {
+                                File.Copy(SignatureLabel.Text, Path.GetFullPath("Images/" + filenameSign));
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show("Error\n" + exc, "warning");
+                            }
+                            StuffSignature = filenameSign;
+                        }
+                        else
+                        {
+                            StuffSignature = "Sign_" + StuffName.Text + "_" + StuffID.Text + signExtension;
+                        }
+
+                        CmdSql.Parameters.AddWithValue("@StuffName", StuffName.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffVoterId", StuffVoterId.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffDOB", StuffDOB.SelectedDate);
+                        CmdSql.Parameters.AddWithValue("@StuffFather", StuffFather.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffMother", StuffMother.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffProfession", StuffProfession.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffReligion", StuffReligion.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffNationality", StuffNationality.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentCO", StuffPresentCO.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentVillage", StuffPresentVillage.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentPost", StuffPresentPost.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentThana", StuffPresentThana.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPresentDistrict", StuffPresentDistrict.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentCO", StuffPermanentCO.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentVillage", StuffPermanentVillage.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentPost", StuffPermanentPost.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentThana", StuffPermanentThana.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPermanentDistrict", StuffPermanentDistrict.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffCell", StuffCell.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffPhoto", StuffPhoto);
+                        CmdSql.Parameters.AddWithValue("@StuffSignature", StuffSignature);
+
+                        try
+                        {
+                            CmdSql.ExecuteNonQuery();
+                        }
+                        catch (SqlException exception)
+                        {
+                            MessageBox.Show("Error\n" + exception, "warning");
+                            return;
+                        }
+
+                        if ((string)DocumentBrowse.Content == "Found")
+                        {
+                            if (CheckForError(DocumentName))
+                            {
+                                MessageBox.Show("Error!Check Input Again");
+                                return;
+                            }
+                            string ext = Path.GetExtension(DocAddress);
+                            string filename = "Document_" + StuffName.Text + "_" + DocumentName.Text + ext;
+                            try
+                            {
+                                File.Copy(DocAddress, Path.GetFullPath("Images/" + filename));
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show("Error\n" + exc, "warning");
+                            }
+                            DocAddress = filename;
+                            CmdSql = new SqlCommand("INSERT INTO [Documents] ( StuffId, DocumentAddress, DocumentName) VALUES (@StuffId, @DocumentAddress, @DocumentName)", conn);
+                            CmdSql.Parameters.AddWithValue("@StuffId", StuffID.Text);
+                            CmdSql.Parameters.AddWithValue("@DocumentAddress", DocAddress);
+                            CmdSql.Parameters.AddWithValue("@DocumentName", DocumentName.Text);
+
+                            try
+                            {
+                                CmdSql.ExecuteNonQuery();
+                            }
+                            catch (SqlException exception)
+                            {
+                                if (exception.ErrorCode == 2627)
+                                    MessageBox.Show("Error.Id already exists.", "warning");
+                                else
+                                    MessageBox.Show("Error\n" + exception, "warning");
+                                return;
+                            }
+
+                            DocumentBrowse.Content = "Browse";
+                        }
+
+                        conn.Close();
+                        MessageBox.Show("Succesfully Updated Stuff");
+
+                    }
+
+                }
             }
         }
 
@@ -195,6 +372,21 @@ namespace AccountingSystem.Views
             data = new Stuff();
             data.GetData(id);
             DataContext = data;
+        }
+
+        private void DocumentBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.InitialDirectory = "C:\\";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *; *.bmp)| *.jpg; *.jpeg; *.gif; *.bmp";
+            open.FilterIndex = 1;
+            open.ShowDialog();
+
+            if (open.CheckFileExists)
+            {
+                DocumentBrowse.Content = "Found";
+                DocAddress = open.FileName;
+            }
         }
 
 
