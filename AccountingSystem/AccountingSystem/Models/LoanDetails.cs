@@ -355,30 +355,31 @@ namespace AccountingSystem.Models
         #region PDFCreation
         public void PublishPDF(DateTime? FromDate, DateTime? ToDate)
         {
-            string pageTitle = "Security Fund";
-            float[] size = new float[] { 4, 2, 3, 4, 3, 3 };
-            string[] tableHeaders = new String[] { "Entry No.", "Date", "Details", "Deposit", "Expenses", "Remains" };
+            string pageTitle = "Loanee List";
+            float[] size = new float[] { 3, 3, 3, 3, 3, 3, 3, 3 };
+            string[] tableHeaders = new String[] { "Loan No.", "Name", "Account ID", "Amount", "Balance", "Method", "Last Paid", "Total" };
             PDF myPDF = new PDF(pageTitle, size, tableHeaders);
 
-            string FDate = FromDate?.ToString("yyyyMMdd");
-            string TDate = ToDate?.ToString("yyyyMMdd");
             Connection conn = new Connection();
             conn.OpenConection();
-            string query = "SELECT * FROM LoanDetails WHERE CAST(Security_Date AS date) BETWEEN '" + FDate + "' and '" + TDate + "'";
+            string query = "Select m.MemberName, l.* From LoanDetails l Left Join Member m ON l.LoanDetails_Account=m.MemberId";
             SqlDataReader reader = conn.DataReader(query);
             while (reader.Read())
             {
-                myPDF.AddToTable(reader["Security_Id"].ToString());
-                DateTime OnlyDate = (DateTime)reader["Security_Date"];
+                myPDF.AddToTable(reader["LoanDetails_Id"].ToString());
+                myPDF.AddToTable(reader["MemberName"].ToString());
+                myPDF.AddToTable(reader["LoanDetails_Account"].ToString());
+                myPDF.AddToTable(reader["LoanDetails_Amount"].ToString());
+                myPDF.AddToTable(reader["LoanDetails_Balance"].ToString());
+                myPDF.AddToTable(reader["LoanDetails_Collection"].ToString());
+                DateTime OnlyDate = (DateTime)reader["LoanDetails_LastPaid"];
                 myPDF.AddToTable(OnlyDate.ToString("dd-MM-yyyy"));
-                myPDF.AddToTable(reader["Security_Details"].ToString());
-                myPDF.AddToTable(reader["Security_Deposit"].ToString());
-                myPDF.AddToTable(reader["Security_Expenses"].ToString());
-                myPDF.AddToTable(reader["Security_Remains"].ToString());
+                myPDF.AddToTable(reader["LoanDetails_Total"].ToString());
             }
+
             conn.CloseConnection();
             myPDF.Done();
-        }
+    }
         #endregion
     }
 }

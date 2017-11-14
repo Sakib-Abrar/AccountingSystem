@@ -533,7 +533,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>AccountingSystemDatabase.mdf</DependentUpon>
     </Content>
-    <SplashScreen Include="Images\Resoft-1.png" />
+    <SplashScreen Include="Images\e77e9f20223693.562e7bcc9275a.png" />
     <Resource Include="Images\urgayetottere.jpg" />
     <Resource Include="Images\titleImage.jpg" />
     <Resource Include="Images\account.png" />

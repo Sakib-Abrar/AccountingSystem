@@ -771,10 +771,19 @@ namespace AccountingSystem.Models
                 StuffCell = (string)reader["Stuff_Cell"];
                 StuffPhoto = Path.GetFullPath("Images/" + (string)reader["Stuff_Photo"]);
             }
-
-            Image Photo = new Image(ImageDataFactory.Create(StuffPhoto)).SetWidth(40).SetHeight(52);
-            Paragraph imageP = new Paragraph("Stuff No : " + StuffID + "                                                                                                ").Add(Photo);
-            doc.Add(imageP);
+            try
+            {
+                Image Photo = new Image(ImageDataFactory.Create(StuffPhoto)).SetWidth(40).SetHeight(52);
+                Paragraph imageP = new Paragraph("Stuff No : " + StuffID + "                                                                                                ").Add(Photo);
+                doc.Add(imageP);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Stuff Image not found.Press OK to continue.\n");
+                Paragraph imageP = new Paragraph("Stuff No : " + StuffID );
+                doc.Add(imageP);
+            }
+            
             Paragraph line0 = new Paragraph("Name : " + StuffName);
             doc.Add(line0);
             Paragraph line1 = new Paragraph("National ID : " + StuffVoterID);

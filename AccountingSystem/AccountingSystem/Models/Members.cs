@@ -824,9 +824,17 @@ namespace AccountingSystem.Models
                 MemberSignature = Path.GetFullPath("Images/" + (string)reader["MemberSignature"]);
             }
 
-            Image Photo = new Image(ImageDataFactory.Create(MemberPhoto)).SetWidth(40).SetHeight(52);
-            Paragraph imageP = new Paragraph("Member No : "+MemberID+"                                                                                                ").Add(Photo);
-            doc.Add(imageP);
+            try
+            {
+                Image Photo = new Image(ImageDataFactory.Create(MemberPhoto)).SetWidth(40).SetHeight(52);
+                Paragraph imageP = new Paragraph("Member No : " + MemberID + "                                                                                                ").Add(Photo);
+                doc.Add(imageP);
+            }
+            catch (Exception e) {
+                MessageBox.Show("Member image not found. Press OK to continue.\n");
+                Paragraph imageP = new Paragraph("Member No : " + MemberID);
+                doc.Add(imageP);
+            }
             Paragraph line0 = new Paragraph("Name : " + MemberName);
             doc.Add(line0);
             Paragraph line1 = new Paragraph("National ID : " + MemberVoterID);

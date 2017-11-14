@@ -61,7 +61,7 @@ namespace AccountingSystem {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
-            SplashScreen splashScreen = new SplashScreen("images/resoft-1.png");
+            SplashScreen splashScreen = new SplashScreen("images/e77e9f20223693.562e7bcc9275a.png");
             splashScreen.Show(true);
             AccountingSystem.App app = new AccountingSystem.App();
             app.InitializeComponent();

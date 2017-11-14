@@ -57,7 +57,7 @@
                                     </DataGridTextColumn>
 
 
-                                    <DataGridTextColumn x:Name="tableCollection" Header="Collection Methode" Binding="{Binding Collection}" Width="120">
+                                    <DataGridTextColumn x:Name="tableCollection" Header="Collection Method" Binding="{Binding Collection}" Width="120">
                                         <DataGridTextColumn.HeaderStyle>
                                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
