@@ -112,7 +112,7 @@ namespace AccountingSystem.Views
                     Id = Convert.ToInt32(EntryNo.Text);
                     dateTime = DateTime.Today;
 
-                    string table = "Security Fund";
+                    string table = "Office Rent";
                     string type = "Updated";
                     string color = "Blue";
                     EntryLog entry = new EntryLog();

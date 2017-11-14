@@ -45,19 +45,19 @@ namespace AccountingSystem.Views
 
             }
         private double last_total()
+        {
+            Connection conn = new Connection();
+            double total = 0.00;
+            string query = "SELECT TOP 1 * FROM ReservedFund ORDER BY Reserved_Id DESC";
+            conn.OpenConection();
+            SqlDataReader reader = conn.DataReader(query);
+            while (reader.Read())
             {
-                Connection conn = new Connection();
-                double total = 0.00;
-                string query = "SELECT TOP 1 * FROM ReservedFund ORDER BY Reserved_Id DESC";
-                conn.OpenConection();
-                SqlDataReader reader = conn.DataReader(query);
-                while (reader.Read())
-                {
-                    total = (double)reader["Reserved_Total"];
-                }
-                conn.CloseConnection();
-                return total;
+                total = (double)reader["Reserved_Total"];
             }
+            conn.CloseConnection();
+            return total;
+        }
         private double edited_total()
         {
             Connection conn = new Connection();

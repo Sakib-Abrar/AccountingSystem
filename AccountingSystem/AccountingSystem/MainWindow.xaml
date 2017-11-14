@@ -245,7 +245,7 @@
                         <MenuItem Header="_Salary" Width="199" Padding="6,4" FontSize="16" Click="LoadSalaryView"/>
                         <MenuItem Header="_Stuff" Width="199" Padding="6,4" FontSize="16" Click="StuffView"/>
                         <MenuItem Header="_Office Rent"  Width="199" Padding="6,4" FontSize="16" Click="LoadOfficeRentView"/>
-                        <MenuItem Header="_Miscellenous"  Width="199" Padding="6,4" FontSize="16" />
+                        <MenuItem Header="_Miscellenous"  Width="199" Padding="6,4" FontSize="16" Click="LoadMiscellaneousView"/>
                     </Menu>
 
                 </Expander>

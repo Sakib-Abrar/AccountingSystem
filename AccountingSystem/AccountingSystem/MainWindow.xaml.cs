@@ -131,5 +131,11 @@ namespace AccountingSystem
             MainFrame.Navigate(new BalanceSheetView());
 
         }
+        private void LoadMiscellaneousView(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MiscellaneousView());
+
+        }
+        
     }
 }

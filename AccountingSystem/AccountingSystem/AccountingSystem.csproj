@@ -131,6 +131,7 @@
     <Compile Include="Models\LoanLedger.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Members.cs" />
+    <Compile Include="Models\Miscellaneous.cs" />
     <Compile Include="Models\MonthlyDeposit.cs" />
     <Compile Include="Models\OfficeRent.cs" />
     <Compile Include="Models\ReservedFund.cs" />
@@ -218,6 +219,9 @@
     <Compile Include="Views\MemberView.xaml.cs">
       <DependentUpon>MemberView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MiscellaneousView.xaml.cs">
+      <DependentUpon>MiscellaneousView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MonthlyDepositDetailsView.xaml.cs">
       <DependentUpon>MonthlyDepositDetailsView.xaml</DependentUpon>
     </Compile>
@@ -241,9 +245,6 @@
     </Compile>
     <Compile Include="Views\OfficeRentView.xaml.cs">
       <DependentUpon>OfficeRentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrintDialogView.xaml.cs">
       <DependentUpon>PrintDialogView.xaml</DependentUpon>
@@ -404,6 +405,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MiscellaneousView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MonthlyDepositDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -433,10 +438,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OfficeRentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
