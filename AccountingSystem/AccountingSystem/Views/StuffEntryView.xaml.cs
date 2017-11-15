@@ -19,6 +19,7 @@ namespace AccountingSystem.Views
         string DocAddress;
         bool changePhoto = false;
         bool changeSignature = false;
+        String stuffType;
         public StuffEntryView()
         {
             InitializeComponent();
@@ -44,6 +45,15 @@ namespace AccountingSystem.Views
 
         private void AddStuff(object sender, RoutedEventArgs e)
         {
+            
+            if (Type_Stuff.IsChecked == true)
+            {
+                stuffType = "stuff";
+            }
+            else if (Type_Admin.IsChecked == true)
+            {
+                stuffType = "admin";
+            }
             if ((string)SaveStuff.Content == "Add Stuff")
             {
                 using (SqlConnection conn = new SqlConnection(@Connection.ConnectionString))
@@ -55,7 +65,7 @@ namespace AccountingSystem.Views
                     }
                     else
                     {
-                        SqlCommand CmdSql = new SqlCommand("INSERT INTO [Stuff] (Stuff_Id, Stuff_Name, Stuff_Password, Stuff_VoterId, Stuff_DOB, Stuff_Father, Stuff_Mother, Stuff_Nationality, Stuff_Religion, Stuff_Profession, Stuff_PresentCO, Stuff_PresentVillage, Stuff_PresentPost, Stuff_PresentThana, Stuff_PresentDistrict, Stuff_PermanentCO, Stuff_PermanentVillage, Stuff_PermanentPost, Stuff_PermanentThana, Stuff_PermanentDistrict, Stuff_Cell, Stuff_Photo, Stuff_Signature) VALUES (@StuffID, @StuffName, @StuffPassword, @StuffVoterId, @StuffDOB, @StuffFather, @StuffMother, @StuffNationality, @StuffReligion, @StuffProfession,  @StuffPresentCO, @StuffPresentVillage, @StuffPresentPost, @StuffPresentThana, @StuffPresentDistrict, @StuffPermanentCO, @StuffPermanentVillage, @StuffPermanentPost, @StuffPermanentThana, @StuffPermanentDistrict, @StuffCell, @StuffPhoto, @StuffSignature)", conn);
+                        SqlCommand CmdSql = new SqlCommand("INSERT INTO [Stuff] (Stuff_Id, Stuff_Name, Stuff_Password, Stuff_VoterId, Stuff_DOB, Stuff_Join, Stuff_Father, Stuff_Mother, Stuff_Nationality, Stuff_Religion, Stuff_Profession, Stuff_PresentCO, Stuff_PresentVillage, Stuff_PresentPost, Stuff_PresentThana, Stuff_PresentDistrict, Stuff_PermanentCO, Stuff_PermanentVillage, Stuff_PermanentPost, Stuff_PermanentThana, Stuff_PermanentDistrict, Stuff_Cell, Stuff_Type, Stuff_Photo, Stuff_Signature) VALUES (@StuffID, @StuffName, @StuffPassword, @StuffVoterId, @StuffDOB, @StuffJoin, @StuffFather, @StuffMother, @StuffNationality, @StuffReligion, @StuffProfession,  @StuffPresentCO, @StuffPresentVillage, @StuffPresentPost, @StuffPresentThana, @StuffPresentDistrict, @StuffPermanentCO, @StuffPermanentVillage, @StuffPermanentPost, @StuffPermanentThana, @StuffPermanentDistrict, @StuffCell, @StuffType, @StuffPhoto, @StuffSignature)", conn);
                         conn.Open();
 
                         string StuffPhoto = "";
@@ -96,6 +106,7 @@ namespace AccountingSystem.Views
                         CmdSql.Parameters.AddWithValue("@StuffPassword", StuffPassword.Text);
                         CmdSql.Parameters.AddWithValue("@StuffVoterId", StuffVoterId.Text);
                         CmdSql.Parameters.AddWithValue("@StuffDOB", StuffDOB.SelectedDate);
+                        CmdSql.Parameters.AddWithValue("@StuffJoin", StuffJoin.SelectedDate);
                         CmdSql.Parameters.AddWithValue("@StuffFather", StuffFather.Text);
                         CmdSql.Parameters.AddWithValue("@StuffMother", StuffMother.Text);
                         CmdSql.Parameters.AddWithValue("@StuffProfession", StuffProfession.Text);
@@ -112,6 +123,7 @@ namespace AccountingSystem.Views
                         CmdSql.Parameters.AddWithValue("@StuffPermanentThana", StuffPermanentThana.Text);
                         CmdSql.Parameters.AddWithValue("@StuffPermanentDistrict", StuffPermanentDistrict.Text);
                         CmdSql.Parameters.AddWithValue("@StuffCell", StuffCell.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffType", stuffType);
                         CmdSql.Parameters.AddWithValue("@StuffPhoto", StuffPhoto);
                         CmdSql.Parameters.AddWithValue("@StuffSignature", StuffSignature);
                         try
@@ -185,7 +197,7 @@ namespace AccountingSystem.Views
                     }
                     else
                     {
-                        SqlCommand CmdSql = new SqlCommand("UPDATE [Stuff] SET Stuff_Name = @StuffName, Stuff_VoterId = @StuffVoterId, Stuff_DOB = @StuffDOB, Stuff_Father = @StuffFather, Stuff_Mother = @StuffMother, Stuff_Nationality = @StuffNationality, Stuff_Religion = @StuffReligion, Stuff_Profession = @StuffProfession, Stuff_PresentCO = @StuffPresentCO, Stuff_PresentVillage = @StuffPresentVillage, Stuff_PresentPost = @StuffPresentPost, Stuff_PresentThana = @StuffPresentThana, Stuff_PresentDistrict = @StuffPresentDistrict, Stuff_PermanentCO = @StuffPermanentCO, Stuff_PermanentVillage = @StuffPermanentVillage, Stuff_PermanentPost = @StuffPermanentPost, Stuff_PermanentThana = @StuffPermanentThana, Stuff_PermanentDistrict = @StuffPermanentDistrict, Stuff_Cell = @StuffCell, Stuff_Photo = @StuffPhoto, Stuff_Signature = @StuffSignature WHERE Stuff_Id=" + StuffID.Text, conn);
+                        SqlCommand CmdSql = new SqlCommand("UPDATE [Stuff] SET Stuff_Name = @StuffName, Stuff_VoterId = @StuffVoterId, Stuff_DOB = @StuffDOB, Stuff_Join = @StuffJoin, Stuff_Father = @StuffFather, Stuff_Mother = @StuffMother, Stuff_Nationality = @StuffNationality, Stuff_Religion = @StuffReligion, Stuff_Profession = @StuffProfession, Stuff_PresentCO = @StuffPresentCO, Stuff_PresentVillage = @StuffPresentVillage, Stuff_PresentPost = @StuffPresentPost, Stuff_PresentThana = @StuffPresentThana, Stuff_PresentDistrict = @StuffPresentDistrict, Stuff_PermanentCO = @StuffPermanentCO, Stuff_PermanentVillage = @StuffPermanentVillage, Stuff_PermanentPost = @StuffPermanentPost, Stuff_PermanentThana = @StuffPermanentThana, Stuff_PermanentDistrict = @StuffPermanentDistrict, Stuff_Cell = @StuffCell, Stuff_Type=@StuffType, Stuff_Photo = @StuffPhoto, Stuff_Signature = @StuffSignature WHERE Stuff_Id=" + StuffID.Text, conn);
                         conn.Open();
 
                         string StuffPhoto = "";
@@ -232,6 +244,7 @@ namespace AccountingSystem.Views
                         CmdSql.Parameters.AddWithValue("@StuffName", StuffName.Text);
                         CmdSql.Parameters.AddWithValue("@StuffVoterId", StuffVoterId.Text);
                         CmdSql.Parameters.AddWithValue("@StuffDOB", StuffDOB.SelectedDate);
+                        CmdSql.Parameters.AddWithValue("@StuffJoin", StuffJoin.SelectedDate);
                         CmdSql.Parameters.AddWithValue("@StuffFather", StuffFather.Text);
                         CmdSql.Parameters.AddWithValue("@StuffMother", StuffMother.Text);
                         CmdSql.Parameters.AddWithValue("@StuffProfession", StuffProfession.Text);
@@ -248,6 +261,7 @@ namespace AccountingSystem.Views
                         CmdSql.Parameters.AddWithValue("@StuffPermanentThana", StuffPermanentThana.Text);
                         CmdSql.Parameters.AddWithValue("@StuffPermanentDistrict", StuffPermanentDistrict.Text);
                         CmdSql.Parameters.AddWithValue("@StuffCell", StuffCell.Text);
+                        CmdSql.Parameters.AddWithValue("@StuffType", stuffType);
                         CmdSql.Parameters.AddWithValue("@StuffPhoto", StuffPhoto);
                         CmdSql.Parameters.AddWithValue("@StuffSignature", StuffSignature);
 
@@ -371,7 +385,18 @@ namespace AccountingSystem.Views
             int id = Convert.ToInt32(s_id);
             data = new Stuff();
             data.GetData(id);
+            stuffType = data.StuffType;
+
+            if (stuffType=="stuff") 
+            {
+                Type_Stuff.IsChecked = true;
+            }
+            else
+            {
+                Type_Admin.IsChecked = true;
+            }
             DataContext = data;
+            
         }
 
         private void DocumentBrowse_Click(object sender, RoutedEventArgs e)

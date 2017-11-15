@@ -18,6 +18,7 @@ namespace AccountingSystem.Models
     class Stuff : INotifyPropertyChanged, IDataErrorInfo
     {
 
+
         /// <summary>
         /// UselessParse is used for TryParse method which needs an output parameter but we don't.
         /// </summary>
@@ -38,6 +39,8 @@ namespace AccountingSystem.Models
         private string s_stuffFather;
         private string s_stuffMother;
         private DateTime s_stuffDOB = new DateTime(1985, 03, 01);
+
+        private DateTime s_stuffJoin = new DateTime(1995, 01, 01);
 
         private string s_stuffProfession;
         private string s_stuffNationality;
@@ -181,6 +184,21 @@ namespace AccountingSystem.Models
                     s_stuffDOB = value;
                 }
                 OnPropertyChanged("StuffDOB");
+            }
+        }
+        public DateTime StuffJoin
+        {
+            get
+            {
+                return s_stuffJoin;
+            }
+            set
+            {
+                if (s_stuffJoin != value)
+                {
+                    s_stuffJoin = value;
+                }
+                OnPropertyChanged("StuffJoin");
             }
         }
         public string StuffProfession
@@ -437,6 +455,7 @@ namespace AccountingSystem.Models
         public void GetData(int stuffID)
         {
             StuffID = stuffID;
+
             Connection conn = new Connection();
             conn.OpenConection();
             string query = "SELECT * From Stuff WHERE Stuff_Id = " + stuffID;
@@ -450,6 +469,7 @@ namespace AccountingSystem.Models
                 StuffFather = (string)reader["Stuff_Father"];
                 StuffMother = (string)reader["Stuff_Mother"];
                 StuffDOB = (DateTime)reader["Stuff_DOB"];
+                StuffJoin = (DateTime)reader["Stuff_Join"];
                 StuffProfession = (string)reader["Stuff_Profession"];
                 StuffReligion = (string)reader["Stuff_Religion"];
                 StuffNationality = (string)reader["Stuff_Nationality"];
@@ -464,7 +484,9 @@ namespace AccountingSystem.Models
                 StuffPermanentThana = (string)reader["Stuff_PermanentThana"];
                 StuffPermanentDistrict = (string)reader["Stuff_PermanentDistrict"];
                 StuffCell = (string)reader["Stuff_Cell"];
+
                 StuffPhoto = Path.GetFullPath("Images/" + (string)reader["Stuff_Photo"]);
+                StuffType = (string)reader["Stuff_Type"];
                 checkExistence = 1;
 
             }
