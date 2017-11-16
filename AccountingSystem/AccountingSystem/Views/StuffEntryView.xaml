@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="460" d:DesignWidth="950"
+      d:DesignHeight="500" d:DesignWidth="950"
       Title="stuff_info">
 
-    <Grid Margin="13,-12,-13,-143">
+    <Grid Margin="13,-11,-13,-144">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="157*"/>
@@ -43,22 +43,22 @@
 
 
 
-        <Label Content="Present Address : " HorizontalAlignment="Left" Margin="13,276,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
+        <Label Content="Present Address : " HorizontalAlignment="Left" Margin="14,195,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
 
-        <Label Content="C / O:" HorizontalAlignment="Left" Margin="14,303,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="StuffPresentCO" Text="{Binding StuffPresentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="61,308,0,0" Width="251" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="C / O:" HorizontalAlignment="Left" Margin="15,222,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
+        <TextBox Name="StuffPresentCO" Text="{Binding StuffPresentCO, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Margin="62,227,0,0" Width="251" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
-        <Label Content="Village:" HorizontalAlignment="Left" Margin="13,328,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="StuffPresentThana" Text="{Binding StuffPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="62,369,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="Village:" HorizontalAlignment="Left" Margin="14,247,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
+        <TextBox Name="StuffPresentThana" Text="{Binding StuffPresentThana, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="63,288,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
-        <Label Content="P/O:" HorizontalAlignment="Left" Margin="162,335,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="StuffPresentPost" Text="{Binding StuffPresentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="223,340,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="P/O:" HorizontalAlignment="Left" Margin="163,254,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="StuffPresentPost" Text="{Binding StuffPresentPost, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="224,259,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
-        <Label Content="Thana:" HorizontalAlignment="Left" Margin="13,358,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Name="StuffPresentVillage" Text="{Binding StuffPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="62,340,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="Thana:" HorizontalAlignment="Left" Margin="14,277,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.ColumnSpan="2"/>
+        <TextBox Name="StuffPresentVillage" Text="{Binding StuffPresentVillage, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"  HorizontalAlignment="Left" Margin="63,259,0,0" Width="101" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
-        <Label Content="District:" HorizontalAlignment="Left" Margin="162,360,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
-        <TextBox Name="StuffPresentDistrict" Text="{Binding StuffPresentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="222,368,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="District:" HorizontalAlignment="Left" Margin="163,279,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <TextBox Name="StuffPresentDistrict" Text="{Binding StuffPresentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="223,287,0,0" Width="89" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
 
 
@@ -81,11 +81,11 @@
         <TextBox Name="StuffPermanentDistrict" Text="{Binding StuffPermanentDistrict, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"   HorizontalAlignment="Left" Margin="826,375,0,0" Width="80" Height="22" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
 
-        <Label Content="Cell no:" HorizontalAlignment="Left" Margin="605,123,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="69"/>
-        <TextBox Name="StuffCell" Text="{Binding StuffCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="687,125,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="Cell no:" HorizontalAlignment="Left" Margin="605,117,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="69"/>
+        <TextBox Name="StuffCell" Text="{Binding StuffCell, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="687,119,0,0" Width="165" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
-        <Label Margin="13,419,845,59" x:Name="DocumentLabel" Content="Document: " FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Margin="105,422,644,161" Height="22" Name="DocumentName" Width="183" Text="{Binding DocumentName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" >
+        <Label Margin="13,418,845,130" x:Name="DocumentLabel" Content="Document: " FontSize="14.667" Grid.ColumnSpan="2"/>
+        <TextBox Margin="105,421,649,142" Name="DocumentName" Text="{Binding DocumentName, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" >
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
@@ -131,9 +131,9 @@
             </Button.Resources>
         </Button>
 
-        <Label Margin="13,184,868,295" x:Name="Label1" Content="Photo: " FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Margin="105,200,644,383" Height="22" Name="PhotoNameLabel" Width="183" Text="{Binding PhotoNameLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
-        <Button Margin="216,204,641,389" Height="22" Name="PhotoBrowse" Width="75" Content="Browse" Click="BrowsePhoto" Grid.Column="1">
+        <Label Margin="13,318,868,161" x:Name="Label1" Content="Photo: " FontSize="14.667" Grid.ColumnSpan="2"/>
+        <TextBox Margin="130,329,649,235" Name="PhotoNameLabel" Text="{Binding PhotoNameLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
+        <Button Margin="234,329,623,235" Name="PhotoBrowse" Width="75" Content="Browse" Click="BrowsePhoto" Grid.Column="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -154,7 +154,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Margin="252,422,605,161" Height="22" Name="DocumentBrowse" Width="75" Content="Browse" Click="DocumentBrowse_Click" Grid.Column="1">
+        <Button Margin="238,421,619,142" Name="DocumentBrowse" Width="75" Content="Browse" Click="DocumentBrowse_Click" Grid.Column="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -175,10 +175,10 @@
             </Button.Resources>
         </Button>
 
-        <Image x:Name="PhotoViewer" HorizontalAlignment="Left" Height="120" Margin="335,121,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.2,-0.3" Grid.Column="1"/>
-        <Label Margin="13,210,845,264" x:Name="signature" Content="Signature: " FontSize="14.667" Grid.ColumnSpan="2"/>
-        <TextBox Margin="106,229,643,354" Height="22" Width="183" x:Name="SignatureLabel" Text="{Binding SignatureLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
-        <Button Margin="214,229,643,354" Height="22" x:Name="SignatureBrowse" Width="75" Click="BrowsSignature" Content="Browse" Grid.Column="1" RenderTransformOrigin="-0.2,0.909">
+        <Image x:Name="PhotoViewer" HorizontalAlignment="Left" Height="120" Margin="377,117,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.2,-0.3" Grid.Column="1"/>
+        <Label Margin="13,371,845,116" x:Name="signature" Content="Signature: " FontSize="14.667" Grid.ColumnSpan="2"/>
+        <TextBox Margin="130,374,649,190" x:Name="SignatureLabel" Text="{Binding SignatureLabel, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Grid.Column="1" />
+        <Button Margin="234,374,623,190" x:Name="SignatureBrowse" Width="75" Click="BrowsSignature" Content="Browse" Grid.Column="1" RenderTransformOrigin="-0.2,0.909">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF2Bc0EC" Offset="1"/>
@@ -199,8 +199,14 @@
             </Button.Resources>
         </Button>
         <CheckBox x:Name="AddressCheckBox" Content="Same as Present" Grid.Column="1" HorizontalAlignment="Left" Margin="773,287,0,0" VerticalAlignment="Top" FontSize="13.333" BorderThickness="1.5" Checked="ImportPresentAddress" Unchecked="ImportNullAddress"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="605,171,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="83"/>
-        <TextBox x:Name="StuffPassword" Text="{Binding StuffPassword, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="693,173,0,0" Width="160" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="605,155,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="83"/>
+        <TextBox x:Name="StuffPassword" Text="{Binding StuffPassword, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}" Padding="0,-4,0,0"   HorizontalAlignment="Left" Margin="693,157,0,0" Width="160" Height="24" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1"/>
 
+
+        <RadioButton x:Name="Type_Stuff" GroupName="StuffType" Content="Stuff" HorizontalAlignment="Left" Margin="715,240,0,0"  FontSize="14.667" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="52"/>
+        <RadioButton x:Name="Type_Admin" GroupName="StuffType" Content="Admin" HorizontalAlignment="Left" Margin="773,239,0,0"  FontSize="14.667" VerticalAlignment="Top" Grid.Column="1" Height="23"/>
+        <Label Content="Stuff Type:" HorizontalAlignment="Left" Margin="607,233,0,0" VerticalAlignment="Top" FontSize="14.667" Grid.Column="1" Height="32" Width="83"/>
+        <Label Content="Join Date : " HorizontalAlignment="Right" Margin="0,187,284,0" VerticalAlignment="Top" FontSize="14.667" Width="99" Grid.Column="1"/>
+        <DatePicker x:Name="StuffJoin" HorizontalAlignment="Left" Padding="0,-5,0,0" Margin="672,192,0,0" VerticalAlignment="Top"  Width="183" Height="22"  SelectedDate="{Binding StuffJoin}" FontSize="14.667" Grid.Column="1"/>
     </Grid>
 </Page>

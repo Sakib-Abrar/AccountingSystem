@@ -192,6 +192,10 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <Label Content="Stuff Type : " HorizontalAlignment="Left" Margin="20,147,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding StuffType, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,147,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="Join Date : " HorizontalAlignment="Left" Margin="402,141,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label Content="{Binding StuffJoin, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="507,141,0,0" VerticalAlignment="Top" FontSize="13"/>
 
 
     </Grid>

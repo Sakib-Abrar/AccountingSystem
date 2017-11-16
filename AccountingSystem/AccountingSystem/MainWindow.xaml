@@ -23,7 +23,7 @@
                 <TextBlock Margin="0,-10,0,0" Padding="0,0,20,0" FontWeight="Bold" FontFamily="Segoe UI Semibold" Foreground="#ddd" FontSize="24.8" TextDecorations="{x:Null}">_____________________</TextBlock>
 
 
-                <Expander Name="entryExpander" Height="auto" FontSize="20" Width="240" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                <Expander Name="entryExpander" Height="auto" FontSize="20" Width="240" FontWeight="Bold" FlowDirection="RightToLeft"  IsExpanded="False">
                     <Expander.Header>
                         <BulletDecorator  Margin="40,0,0,0" FlowDirection="LeftToRight">
 
@@ -38,8 +38,7 @@
                     </Expander.Header>
 
                 </Expander>
-
-
+                
 
 
 
@@ -65,11 +64,14 @@
 
 
 
-                <Expander x:Name="Members"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
-                    <Expander.Header>
-                        <BulletDecorator FlowDirection="LeftToRight">
 
-                            <TextBlock Margin="15,3,0,0" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,151,0"  Foreground="#FFF0E5E5">Members</TextBlock>
+
+
+                <Expander Name="Members" Height="auto" FontSize="20" Width="240" FontWeight="Bold" FlowDirection="RightToLeft"  IsExpanded="False">
+                    <Expander.Header>
+                        <BulletDecorator  Margin="40,0,0,0" FlowDirection="LeftToRight">
+
+                            <TextBlock Text="Members" Margin="15,3,0,0"  Background="#2a2a2a" FontWeight="Normal" FontFamily="Prestige Elite Std"  Padding="0,0,60,0" Foreground="#FFF0E5E5" PreviewMouseDown="MemberInformationView" Width="150"/>
 
                             <BulletDecorator.Bullet>
                                 <Image Width="25" Source="/Images/member.png"/>
@@ -78,18 +80,13 @@
 
                         </BulletDecorator>
                     </Expander.Header>
-                    <Menu HorizontalAlignment="Right" Height="auto" Width="199" FlowDirection="LeftToRight" Background="#2b2b2b" Foreground="#ccc">
-                        <MenuItem Header="_Member Details" Width="199" Padding="6,4" FontSize="15"  Click="MemberInformationView"/>
-                        <MenuItem Header="_Member Loan Account" Width="199" Padding="6,4" FontSize="15"/>
-                        <MenuItem Header="_Member Ledger"  Width="199" Padding="6,4" FontSize="15" />
-                    </Menu>
 
                 </Expander>
 
 
 
 
-                <Expander x:Name="LoanInfo"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                <Expander x:Name="LoanInfo" Expanded="LoanInfo_Expanded"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
                     <Expander.Header>
                         <BulletDecorator FlowDirection="LeftToRight">
 
@@ -121,7 +118,7 @@
 
 
 
-                <Expander x:Name="Savings"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                <Expander x:Name="Savings"  Expanded="Savings_Expanded" Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
                     <Expander.Header>
                         <BulletDecorator FlowDirection="LeftToRight">
 
@@ -170,7 +167,7 @@
 
 
 
-                <Expander x:Name="Fund"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                <Expander x:Name="Fund"  Expanded="Fund_Expanded"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
                     <Expander.Header>
                         <BulletDecorator FlowDirection="LeftToRight" >
 
@@ -200,7 +197,7 @@
 
 
 
-                <Expander x:Name="Accounts"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                <Expander x:Name="Accounts"  Expanded="Accounts_Expanded"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
                     <Expander.Header>
                         <BulletDecorator FlowDirection="LeftToRight">
 
@@ -228,7 +225,7 @@
 
 
 
-                <Expander x:Name="Expenses"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
+                <Expander x:Name="Expenses"  Expanded="Expenses_Expanded"  Height="auto" FontSize="20" FontWeight="Bold" FlowDirection="RightToLeft" IsExpanded="False">
                     <Expander.Header>
                         <BulletDecorator FlowDirection="LeftToRight">
 

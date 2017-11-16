@@ -15,9 +15,13 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <dsig:DigestValue>foZyTLHW1CEg84r7eMfhXRe7llpXtHFJ5/o2XcqvVy8=</dsig:DigestValue>
 =======
         <dsig:DigestValue>Ok+olA9coxSMCX7j1llc0cdDpf6ZDrjv79XDpDhz4P0=</dsig:DigestValue>
+>>>>>>> master
+=======
+        <dsig:DigestValue>A6lA3VF8gVL9mdApqPtc8f8TDjX4RMlqRu2SJsA7GJw=</dsig:DigestValue>
 >>>>>>> master
       </hash>
     </dependentAssembly>

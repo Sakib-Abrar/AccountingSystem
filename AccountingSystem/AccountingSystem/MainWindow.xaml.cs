@@ -87,7 +87,7 @@ namespace AccountingSystem
         }
 
         private void LoadWeeklyDueLView(object sender, RoutedEventArgs e)
-        {
+        { 
             MainFrame.Navigate(new WeeklyDueView());
         }
 
@@ -131,11 +131,53 @@ namespace AccountingSystem
             MainFrame.Navigate(new BalanceSheetView());
 
         }
+<<<<<<< HEAD
         private void LoadMiscellaneousView(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new MiscellaneousView());
 
         }
         
+=======
+
+        private void Fund_Expanded(object sender, RoutedEventArgs args)
+        {
+            //Do something when the Expander control expands
+            LoanInfo.IsExpanded = false;
+            Savings.IsExpanded = false;
+            Accounts.IsExpanded = false;
+        }
+
+        private void LoanInfo_Expanded(object sender, RoutedEventArgs e)
+        {
+            Savings.IsExpanded = false;
+            Fund.IsExpanded = false;
+            Accounts.IsExpanded = false;
+            Expenses.IsExpanded = false;
+        }
+
+        private void Savings_Expanded(object sender, RoutedEventArgs e)
+        {
+            LoanInfo.IsExpanded = false;
+            Fund.IsExpanded = false;
+            Accounts.IsExpanded = false;
+            Expenses.IsExpanded = false;
+        }
+
+        private void Accounts_Expanded(object sender, RoutedEventArgs e)
+        {
+            LoanInfo.IsExpanded = false;
+            Fund.IsExpanded = false;
+            Savings.IsExpanded = false;
+            Expenses.IsExpanded = false;
+        }
+        private void Expenses_Expanded(object sender, RoutedEventArgs e)
+        {
+            LoanInfo.IsExpanded = false;
+            Fund.IsExpanded = false;
+            Savings.IsExpanded = false;
+            Accounts.IsExpanded = false;
+        }
+>>>>>>> master
     }
 }
