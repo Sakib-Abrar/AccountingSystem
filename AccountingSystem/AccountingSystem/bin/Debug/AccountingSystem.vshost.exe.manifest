@@ -42,30 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="1434048">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="1227712">
->>>>>>> master
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="1230784">
->>>>>>> master
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccountingSystem.exe" size="1475520">
       <assemblyIdentity name="AccountingSystem" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <dsig:DigestValue>VGkYEi0pSwnZl7MIbSfkNpF4DF98C4sb5dMn9oFZ0gM=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>xX3ngA+t4y1v3mTaIzY156cpXYojVTV4M8gU/yoswGo=</dsig:DigestValue>
->>>>>>> master
-=======
-        <dsig:DigestValue>K1cI46WWCfXZycinvA0Pu0+0m7wtDZm39ZDjJ/fhZDQ=</dsig:DigestValue>
->>>>>>> master
+        <dsig:DigestValue>rTFnzxc8OnJ4G8YGgQVf2l75oDEGS/yagPxfLlzYEVo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -168,15 +152,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <dsig:DigestValue>Mt4BmVpSbbPxxwDL4TfMeSaziFpnma0xDhm9pnj3lHU=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>0xuSaU6nvd+oiAAc1cOU8hkFd4Upp1zt3KN1yzgaIKM=</dsig:DigestValue>
->>>>>>> master
-=======
-      <dsig:DigestValue>ZttF/aiTtvIKciCcCJ+8LpBxNChooHW74eSX/GlIAJQ=</dsig:DigestValue>
->>>>>>> master
+      <dsig:DigestValue>Zc106GU9B4gH+scLOmjVjNWsLXNaNrTbieSjSUxvbOo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\AccountingSystemDatabase_log.ldf" size="851968" writeableType="applicationData">
@@ -185,15 +161,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <dsig:DigestValue>4Ua3eYF3toI+q69EXla5OmCMBucipyQ6G4OednDKXfA=</dsig:DigestValue>
-=======
-      <dsig:DigestValue>B7DQ2i7fjtlmH/G2LrpTFLhEq1AwdMQ+sPIG9Cn7tGI=</dsig:DigestValue>
->>>>>>> master
-=======
-      <dsig:DigestValue>vb/5rUM5Mo/EIuJP0WT/A1ofC4HopLIUCFyICWfZHco=</dsig:DigestValue>
->>>>>>> master
+      <dsig:DigestValue>+1UxmrUi2tKrPWzSzgNx3MPY/3FQ6J6/ubMHgO/0kDM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

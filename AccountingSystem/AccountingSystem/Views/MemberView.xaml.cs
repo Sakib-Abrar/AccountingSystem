@@ -43,7 +43,7 @@ namespace AccountingSystem.Views
         {
             MemEntryObj = new MemberEntryView();
             memberData.Navigate(MemEntryObj);
-        }
+        }        
 
     }
 }

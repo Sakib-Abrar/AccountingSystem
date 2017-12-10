@@ -248,7 +248,7 @@
                 </Expander>
 
             </StackPanel>
-            <Frame Name="MainFrame" Content="" NavigationUIVisibility="Hidden" Width="1157"/>
+            <Frame x:Name="MainFrame" Content="" NavigationUIVisibility="Hidden" Width="1157"/>
 
 
         </StackPanel>

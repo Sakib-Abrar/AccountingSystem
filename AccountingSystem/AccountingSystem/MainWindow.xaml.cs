@@ -131,14 +131,11 @@ namespace AccountingSystem
             MainFrame.Navigate(new BalanceSheetView());
 
         }
-<<<<<<< HEAD
         private void LoadMiscellaneousView(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new MiscellaneousView());
 
         }
-        
-=======
 
         private void Fund_Expanded(object sender, RoutedEventArgs args)
         {
@@ -178,6 +175,5 @@ namespace AccountingSystem
             Savings.IsExpanded = false;
             Accounts.IsExpanded = false;
         }
->>>>>>> master
     }
 }

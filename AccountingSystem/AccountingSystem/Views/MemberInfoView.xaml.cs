@@ -178,5 +178,22 @@ namespace AccountingSystem.Views
                 
             }
         }
+
+        private void Loan_Click(object sender, RoutedEventArgs e)
+        {
+            LoanListDialog ShowList = new LoanListDialog((int)label_MemberID.Content);
+            if (ShowList.ShowDialog() == true)
+            {
+            }
+        }
+
+        private void Deposit_Click(object sender, RoutedEventArgs e)
+        {
+            DepositListDialog ShowList = new DepositListDialog((int)label_MemberID.Content);
+            if (ShowList.ShowDialog() == true)
+            {
+
+            }
+        }
     }
 }

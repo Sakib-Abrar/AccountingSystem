@@ -52,6 +52,47 @@
         <Label Content="Thana:" HorizontalAlignment="Left" Margin="20,256,0,0" VerticalAlignment="Top" FontSize="13"/>
         <Label Content="{Binding MemberPresentThana, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="65,256,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 
+        <Button Name="Loan" Content="Loans" HorizontalAlignment="Left" Margin="20,296,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Loan_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="Deposit" Content="Deposits" HorizontalAlignment="Left" Margin="403,296,0,0" VerticalAlignment="Top" Width="78" Height="25" Click="Deposit_Click" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2Bc0EC" Offset="1"/>
+                    <GradientStop Color="#0C92FB" Offset="0.75"/>
+                    <GradientStop Color="#0C92FB" Offset="0.25"/>
+                    <GradientStop Color="#FF2Bc0EC" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Style.Triggers>
+                        <Trigger Property ="IsMouseOver" Value="True">
+                            <Setter Property= "Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Label Content="District:" HorizontalAlignment="Left" Margin="173,256,0,0" VerticalAlignment="Top" FontSize="13"/>
         <Label Content="{Binding MemberPresentDistrict, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="225,256,0,0" VerticalAlignment="Top" FontSize="12.667"/>
 

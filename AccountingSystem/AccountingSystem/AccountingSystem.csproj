@@ -122,6 +122,7 @@
     <Compile Include="Models\BankAccountInformation.cs" />
     <Compile Include="Models\CashInformation.cs" />
     <Compile Include="Models\CooperativeDevelopment.cs" />
+    <Compile Include="Models\Deposits.cs" />
     <Compile Include="Models\DueModel.cs" />
     <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\EntryModel.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Models\GeneralLedger.cs" />
     <Compile Include="Models\LoanDetails.cs" />
     <Compile Include="Models\LoanLedger.cs" />
+    <Compile Include="Models\Loans.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Members.cs" />
     <Compile Include="Models\Miscellaneous.cs" />
@@ -161,6 +163,9 @@
     </Compile>
     <Compile Include="Views\DailyDueView.xaml.cs">
       <DependentUpon>DailyDueView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepositListDialog.xaml.cs">
+      <DependentUpon>DepositListDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DocumentDisplayDialog.xaml.cs">
       <DependentUpon>DocumentDisplayDialog.xaml</DependentUpon>
@@ -206,6 +211,9 @@
     </Compile>
     <Compile Include="Views\LoanDetailsView.xaml.cs">
       <DependentUpon>LoanDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoanListDialog.xaml.cs">
+      <DependentUpon>LoanListDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MemberEntryView.xaml.cs">
       <DependentUpon>MemberEntryView.xaml</DependentUpon>
@@ -329,6 +337,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DepositListDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DocumentDisplayDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -386,6 +398,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoanDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoanListDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
